@@ -5,6 +5,11 @@
   --foreground: #171717;
 }
 
+.dark {
+  --background: #111827;
+  --foreground: #fafafa;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
