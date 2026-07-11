@@ -13,6 +13,8 @@ export default function AppProviders({ children }: AppProvidersProps) {
       defaultTheme="system"
       enableSystem
       disableTransitionOnChange
+      storageKey="theme"
+      themes={["light", "dark"]}
     >
       {children}
     </ThemeProvider>

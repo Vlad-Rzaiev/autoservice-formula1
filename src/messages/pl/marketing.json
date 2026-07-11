@@ -1,0 +1,9 @@
+{
+  "loader": {
+    "title": "Ładowanie..."
+  },
+  "main": {
+    "title": "Witamy",
+    "language": "Język"
+  }
+}

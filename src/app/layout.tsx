@@ -1,6 +1,10 @@
-import { Plus_Jakarta_Sans } from "next/font/google";
-import AppProviders from "@/app/providers";
+import { Plus_Jakarta_Sans, Geist } from "next/font/google";
+import AppProviders from "@/providers/providers";
+import ClientGate from "@/app/components/client-gate";
 import "./globals.css";
+import { cn } from "@/lib/utils";
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 const font = Plus_Jakarta_Sans({ subsets: ["latin"] });
 
@@ -10,9 +14,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={cn("font-sans", geist.variable)}>
       <body className={font.className}>
-        <AppProviders>{children}</AppProviders>
+        <AppProviders>
+          <ClientGate>{children}</ClientGate>
+        </AppProviders>
       </body>
     </html>
   );
