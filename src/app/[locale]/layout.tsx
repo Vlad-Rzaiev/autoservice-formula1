@@ -9,7 +9,7 @@ import {
 } from "next-intl/server";
 import HtmlLangSync from "@/app/components/locale/html-lang-sync";
 import Container from "@/app/components/layout/container";
-import Header from "@/app/components/header/header";
+import Header from "@/app/components/layout/header/header";
 
 interface LocaleLayoutProps {
   children: React.ReactNode;
@@ -61,11 +61,8 @@ export default async function LocaleLayout({
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>
       <HtmlLangSync locale={locale} />
-      <Container>
-        <Header />
-
-        {children}
-      </Container>
+      <Header />
+      <Container>{children}</Container>
     </NextIntlClientProvider>
   );
 }

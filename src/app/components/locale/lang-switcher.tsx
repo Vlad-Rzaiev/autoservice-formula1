@@ -5,13 +5,9 @@ import { usePathname, useRouter } from "@/i18n/navigation";
 import { useLocale } from "next-intl";
 import { Button } from "@/app/components/ui/button";
 import Image from "next/image";
+import { cn } from "@/lib/utils";
 
 const lang = [
-  {
-    code: "uk",
-    label: "UA",
-    flag: "ua.svg",
-  },
   {
     code: "pl",
     label: "PL",
@@ -22,15 +18,24 @@ const lang = [
     label: "EN",
     flag: "uk.svg",
   },
+  {
+    code: "uk",
+    label: "UA",
+    flag: "ua.svg",
+  },
 ] as const;
 
-export default function LangSwitcher() {
+interface LangSwitcherProps {
+  className?: string;
+}
+
+export default function LangSwitcher({ className }: LangSwitcherProps) {
   const router = useRouter();
   const pathName = usePathname();
   const currentLang = useLocale();
 
   return (
-    <div className="flex flex-col gap-2 w-25 mb-4">
+    <div className={cn("flex flex-col gap-2 w-25", className)}>
       <div className=" flex flex-row gap 2">
         {lang.map((language) => {
           const isActive = currentLang === language.code;
@@ -66,7 +71,7 @@ export default function LangSwitcher() {
                 )}
                 width={24}
                 height={24}
-                src={`/icons/${language.flag}`}
+                src={`/icons/locale/${language.flag}`}
                 alt={language.label}
                 loading="eager"
               />

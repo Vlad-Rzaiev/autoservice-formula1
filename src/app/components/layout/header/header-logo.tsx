@@ -1,3 +1,5 @@
+"use client";
+
 import { Link } from "@/i18n/navigation";
 
 export default function HeaderLogo() {
@@ -5,7 +7,7 @@ export default function HeaderLogo() {
     <Link
       href="/"
       aria-label="main page"
-      className="group relative inline-flex h-8 items-center overflow-hidden rounded-xl border border-border bg-foreground px-4 text-background shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg active:translate-y-0"
+      className="group relative inline-flex h-8 items-center overflow-hidden rounded-xl border border-border bg-foreground px-4 text-background shadow-md transition-all duration-300 hover:shadow-lg active:translate-y-0"
     >
       <span
         aria-hidden="true"
@@ -21,7 +23,7 @@ export default function HeaderLogo() {
           1
         </span>
 
-        <span className="ml-3 flex flex-col gap-1">
+        <span className="ml-3 w-7 flex flex-col gap-1">
           <span className="h-0.5 w-5 rounded-full bg-red-500 transition-all duration-300 group-hover:w-7 group-hover:bg-white" />
           <span className="h-0.5 w-3 rounded-full bg-red-500 transition-all duration-300 group-hover:w-5 group-hover:bg-white" />
         </span>

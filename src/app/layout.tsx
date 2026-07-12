@@ -1,7 +1,7 @@
 import { Plus_Jakarta_Sans, Geist } from "next/font/google";
 import { getLocale } from "next-intl/server";
 
-import AppProviders from "@/app/components/theme/theme-provider";
+import AppProviders from "@/providers/theme-provider";
 import ClientGate from "@/app/components/common/client-gate";
 
 import "./globals.css";

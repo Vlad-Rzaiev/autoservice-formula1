@@ -5,7 +5,11 @@ import { useTheme } from "next-themes";
 import { Switch } from "@/app/components/ui/switch";
 import { Moon, Sun } from "lucide-react";
 
-export default function ThemeSwitcher() {
+interface ThemeSwitcherProps {
+  className?: string;
+}
+
+export default function ThemeSwitcher({ className }: ThemeSwitcherProps) {
   const { resolvedTheme, setTheme } = useTheme();
 
   const isDark = resolvedTheme === "dark";
@@ -23,7 +27,7 @@ export default function ThemeSwitcher() {
 
   return (
     <Switch
-      className="cursor-pointer"
+      className={cn("cursor-pointer", className)}
       size="lg"
       checked={isDark}
       onCheckedChange={handleThemeChange}
