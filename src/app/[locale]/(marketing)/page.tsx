@@ -1,20 +1,17 @@
 "use client";
 
-import LangSwitcher from "@/app/components/lang-switcher";
-import ThemeSwitcher from "@/app/components/theme-switcher";
-import { Button } from "@/app/components/ui/button";
+import { Link } from "@/i18n/navigation";
 
 export default function Home() {
   return (
-    <div>
-      <main>
-        <ThemeSwitcher />
-        <LangSwitcher />
-
-        <Button className="inline-flex bg-red-500 cursor-pointer">
-          Hello World
-        </Button>
-      </main>
-    </div>
+    <main>
+      <Link className="block mb-2" href="/login">
+        Login page
+      </Link>
+      <Link className="block mb-2" href="/register">
+        Register page
+      </Link>
+      <Link href="/clients">Clients page</Link>
+    </main>
   );
 }

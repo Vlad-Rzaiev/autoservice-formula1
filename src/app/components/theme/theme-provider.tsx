@@ -2,9 +2,9 @@
 
 import { ThemeProvider } from "next-themes";
 
-type AppProvidersProps = {
+interface AppProvidersProps {
   children: React.ReactNode;
-};
+}
 
 export default function AppProviders({ children }: AppProvidersProps) {
   return (
@@ -12,7 +12,6 @@ export default function AppProviders({ children }: AppProvidersProps) {
       attribute="class"
       defaultTheme="system"
       enableSystem
-      disableTransitionOnChange
       storageKey="theme"
       themes={["light", "dark"]}
     >

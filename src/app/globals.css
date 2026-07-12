@@ -91,8 +91,8 @@ html {
 
 body {
   transition:
-    background-color 0.1s ease,
-    color 0.1s ease;
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 @theme inline {
@@ -147,5 +147,64 @@ body {
   }
   html {
     @apply font-sans;
+  }
+}
+
+.loader-smoke {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(45px);
+  opacity: 0.45;
+  background: radial-gradient(
+    circle,
+    rgba(160, 160, 160, 0.55),
+    transparent 70%
+  );
+}
+
+.loader-smoke-left {
+  width: 420px;
+  height: 220px;
+  bottom: 15%;
+  left: -120px;
+  animation: smoke-left 5s infinite ease-in-out;
+}
+
+.loader-smoke-right {
+  width: 420px;
+  height: 220px;
+  bottom: 15%;
+  right: -120px;
+  animation: smoke-right 6s infinite ease-in-out;
+}
+
+.loader-smoke-ground {
+  width: 650px;
+  height: 120px;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0.25;
+}
+
+@keyframes smoke-left {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(90px, -30px) scale(1.25);
+  }
+}
+
+@keyframes smoke-right {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(-90px, -20px) scale(1.3);
   }
 }

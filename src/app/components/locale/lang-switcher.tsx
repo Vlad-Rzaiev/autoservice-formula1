@@ -2,7 +2,7 @@
 
 import clsx from "clsx";
 import { usePathname, useRouter } from "@/i18n/navigation";
-import { useLocale, useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
 import { Button } from "@/app/components/ui/button";
 import Image from "next/image";
 
@@ -28,13 +28,9 @@ export default function LangSwitcher() {
   const router = useRouter();
   const pathName = usePathname();
   const currentLang = useLocale();
-  const t = useTranslations();
 
   return (
     <div className="flex flex-col gap-2 w-25 mb-4">
-      <p className="text-sm text-center  font-medium text-foreground">
-        {t("marketing.main.language")}
-      </p>
       <div className=" flex flex-row gap 2">
         {lang.map((language) => {
           const isActive = currentLang === language.code;

@@ -1,6 +1,12 @@
 export default function PageLoader() {
   return (
     <div className="fixed inset-0 flex flex-col items-center justify-center bg-white dark:bg-zinc-950 transition-colors duration-200">
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="loader-smoke loader-smoke-left" />
+        <div className="loader-smoke loader-smoke-right" />
+        <div className="loader-smoke loader-smoke-ground" />
+      </div>
+
       <div className="relative flex items-center justify-center">
         <svg
           className="w-24 h-24 animate-spin text-zinc-400 dark:text-zinc-600"
@@ -63,10 +69,6 @@ export default function PageLoader() {
 
         <div className="absolute -bottom-2 w-16 h-1.5 bg-zinc-900/10 dark:bg-black/40 rounded-full blur-sm" />
       </div>
-
-      {/* <p className="mt-6 text-sm font-medium tracking-widest uppercase text-zinc-500 dark:text-zinc-400 animate-pulse">
-        LOADING...
-      </p> */}
     </div>
   );
 }

@@ -1,7 +1,7 @@
 "use client";
 
-import PageLoader from "@/app/components/page-loader";
 import { useEffect, useState } from "react";
+import PageLoader from "@/app/components/common/page-loader";
 
 interface ClientGateProps {
   children: React.ReactNode;
@@ -11,6 +11,7 @@ export default function ClientGate({ children }: ClientGateProps) {
   const [hasHydrated, setHasHydrated] = useState(false);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setHasHydrated(true);
   }, []);
 
@@ -18,5 +19,5 @@ export default function ClientGate({ children }: ClientGateProps) {
     return <PageLoader />;
   }
 
-  return <>{children}</>;
+  return children;
 }

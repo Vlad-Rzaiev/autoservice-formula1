@@ -3,6 +3,7 @@ export const translationModules = [
   "clients",
   "dashboard",
   "marketing",
+  "metadata",
 ] as const;
 
 export type TranslationModule = (typeof translationModules)[number];
