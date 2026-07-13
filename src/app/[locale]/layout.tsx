@@ -8,7 +8,6 @@ import {
   setRequestLocale,
 } from "next-intl/server";
 import HtmlLangSync from "@/app/components/locale/html-lang-sync";
-import Container from "@/app/components/layout/container";
 import Header from "@/app/components/layout/header/header";
 
 interface LocaleLayoutProps {
@@ -62,7 +61,7 @@ export default async function LocaleLayout({
     <NextIntlClientProvider locale={locale} messages={messages}>
       <HtmlLangSync locale={locale} />
       <Header />
-      <Container>{children}</Container>
+      {children}
     </NextIntlClientProvider>
   );
 }

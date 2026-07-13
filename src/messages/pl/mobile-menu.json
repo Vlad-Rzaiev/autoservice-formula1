@@ -1,3 +1,9 @@
 {
-  "theme": "Motyw"
+  "theme": "Motyw",
+  "navigation": {
+    "features": "Funkcje",
+    "workflow": "Przepływ pracy",
+    "roles": "Dla kogo",
+    "faq": "FAQ"
+  }
 }

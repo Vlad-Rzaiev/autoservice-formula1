@@ -1,0 +1,48 @@
+.hero {
+  height: 640px;
+  overflow: hidden;
+
+  height: 640px;
+
+  background-image:
+    linear-gradient(
+      90deg,
+      rgb(0 0 0 / 75%) 0%,
+      rgb(0 0 0 / 50%) 45%,
+      rgb(0 0 0 / 20%) 100%
+    ),
+    url("/images/hero/hero-mobile.webp");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@media (min-width: 768px) {
+  .hero {
+    height: 576px;
+
+    background-image:
+      linear-gradient(
+        90deg,
+        rgb(0 0 0 / 75%) 0%,
+        rgb(0 0 0 / 45%) 50%,
+        rgb(0 0 0 / 15%) 100%
+      ),
+      url("/images/hero/hero-tablet.webp");
+  }
+}
+
+@media (min-width: 1280px) {
+  .hero {
+    height: 600px;
+
+    background-image:
+      linear-gradient(
+        90deg,
+        rgb(0 0 0 / 80%) 0%,
+        rgb(0 0 0 / 50%) 40%,
+        rgb(0 0 0 / 10%) 75%
+      ),
+      url("/images/hero/hero-desktop.webp");
+  }
+}

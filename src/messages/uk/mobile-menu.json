@@ -1,3 +1,9 @@
 {
-  "theme": "Тема"
+  "theme": "Тема",
+  "navigation": {
+    "features": "Можливості",
+    "workflow": "Як це працює",
+    "roles": "Ролі",
+    "faq": "FAQ"
+  }
 }

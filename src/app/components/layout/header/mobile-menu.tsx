@@ -1,8 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
+import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
+import ThemeSwitcher from "@/app/components/theme/theme-switcher";
 import {
   Drawer,
   DrawerClose,
@@ -11,11 +13,35 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/app/components/ui/drawer";
-import ThemeSwitcher from "@/app/components/theme/theme-switcher";
+
+const mediumBreakpointQuery = "(min-width: 48rem)";
 
 export default function MobileMenu() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const t = useTranslations();
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia(mediumBreakpointQuery);
+
+    const closeMenuOnDesktop = (event: MediaQueryListEvent): void => {
+      if (event.matches) {
+        setIsOpen(false);
+      }
+    };
+
+    mediaQuery.addEventListener("change", closeMenuOnDesktop);
+
+    return () => {
+      mediaQuery.removeEventListener("change", closeMenuOnDesktop);
+    };
+  }, []);
+
+  const navItems = [
+    { href: "#features", label: t("mobile-menu.navigation.features") },
+    { href: "#workflow", label: t("mobile-menu.navigation.workflow") },
+    { href: "#roles", label: t("mobile-menu.navigation.roles") },
+    { href: "#faq", label: t("mobile-menu.navigation.faq") },
+  ];
 
   return (
     <Drawer open={isOpen} onOpenChange={setIsOpen} swipeDirection="right">
@@ -34,8 +60,8 @@ export default function MobileMenu() {
         }
       ></DrawerTrigger>
 
-      <DrawerContent className="w-[85%] max-w-sm">
-        <DrawerHeader className="flex-row items-center justify-between border-b border-border p-2">
+      <DrawerContent className="w-[85%] max-w-sm flex flex-1 flex-col gap-5 p-4">
+        <DrawerHeader className="flex-row items-center justify-between border-b border-border mb-2 p-0 pb-2">
           <DrawerTitle className="text-xl font-black italic">
             <span>F</span>
             <span className="text-red-500">1</span>
@@ -54,16 +80,30 @@ export default function MobileMenu() {
           </DrawerClose>
         </DrawerHeader>
 
-        <nav>
-          <ul className="flex flex-1 flex-col items-end gap-5 p-4">
-            <li className="flex w-full items-center justify-between">
-              <p className="text-base font-semibold tracking-tight text-foreground">
-                {t("mobile-menu.theme")}
-              </p>
-              <ThemeSwitcher />
-            </li>
-          </ul>
-        </nav>
+        <div className="flex flex-col justify-between">
+          <nav>
+            <ul>
+              {navItems.map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href}>{item.label}</Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <div className="flex flex-col">
+            <Link href="/login">{t("auth.login.loginBtn")}</Link>
+            <Link href="/register">{t("auth.reg.regBtn")}</Link>
+          </div>
+        </div>
+
+        <div className="flex w-full items-center justify-between">
+          <p className="text-base font-semibold tracking-tight text-foreground">
+            {t("mobile-menu.theme")}
+          </p>
+
+          <ThemeSwitcher />
+        </div>
       </DrawerContent>
     </Drawer>
   );

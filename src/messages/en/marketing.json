@@ -5,5 +5,12 @@
   "main": {
     "title": "Welcome",
     "language": "English"
+  },
+  "hero": {
+    "title": "The entire <accent>car service</accent> — in <accent>one</accent> system",
+    "description": "Clients, vehicles, appointments, repairs, mechanics, parts and invoices — <accent>all</accent> in one convenient <accent>system</accent>."
+  },
+  "features": {
+    "title": "Features"
   }
 }

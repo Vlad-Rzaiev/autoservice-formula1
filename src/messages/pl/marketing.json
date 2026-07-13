@@ -5,5 +5,12 @@
   "main": {
     "title": "Witamy",
     "language": "Polski"
+  },
+  "hero": {
+    "title": "Cały <accent>serwis</accent> samochodowy — w <accent>jednym</accent> systemie",
+    "description": "Klienci, samochody, wizyty, naprawy, mechanicy, części i faktury — <accent>wszystko</accent> w jednym wygodnym <accent>systemie</accent>."
+  },
+  "features": {
+    "title": "Funkcje"
   }
 }

@@ -1,3 +1,9 @@
 {
-  "theme": "Theme"
+  "theme": "Theme",
+  "navigation": {
+    "features": "Features",
+    "workflow": "Workflow",
+    "roles": "Roles",
+    "faq": "FAQ"
+  }
 }
