@@ -8,7 +8,7 @@ export default function Hero() {
   const t = useTranslations();
 
   return (
-    <section className={cn(styles.hero, "text-white pt-20")}>
+    <section className={cn(styles.hero, "text-white pt-35")}>
       <Container>
         <h1
           className="max-w-3xl rounded-2xl border border-white/10

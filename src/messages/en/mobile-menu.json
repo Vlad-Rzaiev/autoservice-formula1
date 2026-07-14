@@ -4,6 +4,9 @@
     "features": "Features",
     "workflow": "Workflow",
     "roles": "Roles",
-    "faq": "FAQ"
-  }
+    "faq": "FAQ",
+    "label": "Main navigation"
+  },
+  "home": "To main page",
+  "close": "Close menu"
 }

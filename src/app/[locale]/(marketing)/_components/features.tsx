@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { useTranslations } from "next-intl";
 import Section from "@/app/components/layout/section";
@@ -8,12 +10,12 @@ export interface FeaturesProps {
 }
 
 export default function Features({}: FeaturesProps) {
-  const t = useTranslations();
+  const t = useTranslations("marketing.features");
 
   return (
     <Section id="features">
       <Container>
-        <h2>{t("marketing.features.title")}</h2>
+        <h2>{t("title")}</h2>
 
         <p>
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit enim

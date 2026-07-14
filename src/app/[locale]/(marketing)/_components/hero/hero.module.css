@@ -46,3 +46,9 @@
       url("/images/hero/hero-desktop.webp");
   }
 }
+
+@media (min-width: 2560px) {
+  .hero {
+    height: 800px;
+  }
+}

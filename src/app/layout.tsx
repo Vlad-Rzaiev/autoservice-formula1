@@ -24,7 +24,7 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} suppressHydrationWarning className={geist.variable}>
-      <body className={plusJakartaSans.className}>
+      <body id="top" className={plusJakartaSans.className}>
         <AppProviders>
           <ClientGate>{children}</ClientGate>
         </AppProviders>

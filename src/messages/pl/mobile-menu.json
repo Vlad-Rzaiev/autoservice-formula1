@@ -4,6 +4,9 @@
     "features": "Funkcje",
     "workflow": "Przepływ pracy",
     "roles": "Dla kogo",
-    "faq": "FAQ"
-  }
+    "faq": "FAQ",
+    "label": "Główna nawigacja"
+  },
+  "home": "Do strony głównej",
+  "close": "Zamknij menu"
 }

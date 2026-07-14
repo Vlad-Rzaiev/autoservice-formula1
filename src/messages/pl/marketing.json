@@ -12,5 +12,23 @@
   },
   "features": {
     "title": "Funkcje"
+  },
+  "workflow": {
+    "title": "Przepływ pracy"
+  },
+  "roles": {
+    "title": "Dla kogo"
+  },
+  "faq": {
+    "title": "FAQ"
+  },
+  "footer": {
+    "home": "Przejdź do strony głównej",
+    "description": "Jeden system do zarządzania klientami, pojazdami, wizytami, naprawami, mechanikami, częściami i fakturami.",
+    "navTitle": "Nawigacja",
+    "label": "Nawigacja w stopce",
+    "accountTitle": "Konto",
+    "copyright": "Wszelkie prawa zastrzeżone.",
+    "backToTop": "Na początek"
   }
 }

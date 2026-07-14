@@ -12,5 +12,23 @@
   },
   "features": {
     "title": "Features"
+  },
+  "workflow": {
+    "title": "Workflow"
+  },
+  "roles": {
+    "title": "Roles"
+  },
+  "faq": {
+    "title": "FAQ"
+  },
+  "footer": {
+    "home": "Go to the home page",
+    "description": "A unified system for managing customers, vehicles, appointments, repairs, mechanics, parts and invoices.",
+    "navTitle": "Navigation",
+    "label": "Footer navigation",
+    "accountTitle": "Account",
+    "copyright": "All rights reserved.",
+    "backToTop": "Back to top"
   }
 }
