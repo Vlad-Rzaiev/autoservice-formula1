@@ -1,6 +1,4 @@
 {
-  "dashboard": {
-    "title": "Dashboard",
-    "revenue": "Revenue this month"
-  }
+  "title": "Dashboard",
+  "revenue": "Revenue this month"
 }

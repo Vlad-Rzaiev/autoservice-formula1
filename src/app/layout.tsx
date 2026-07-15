@@ -1,6 +1,7 @@
 import { Plus_Jakarta_Sans, Geist } from "next/font/google";
 import { getLocale } from "next-intl/server";
 
+import { MobileMenuProvider } from "@/providers/mobile-menu-provider";
 import AppProviders from "@/providers/theme-provider";
 import ClientGate from "@/app/components/common/client-gate";
 
@@ -26,7 +27,9 @@ export default async function RootLayout({
     <html lang={locale} suppressHydrationWarning className={geist.variable}>
       <body id="top" className={plusJakartaSans.className}>
         <AppProviders>
-          <ClientGate>{children}</ClientGate>
+          <MobileMenuProvider>
+            <ClientGate>{children}</ClientGate>
+          </MobileMenuProvider>
         </AppProviders>
       </body>
     </html>

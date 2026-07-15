@@ -1,33 +1,47 @@
 {
-  "loader": {
-    "title": "Ładowanie..."
+  "header": {
+    "navigation": {
+      "services": "Usługi",
+      "specialists": "Zespół",
+      "completedWorks": "Realizacje",
+      "warranty": "Gwarancja",
+      "contacts": "Kontakt"
+    },
+    "actions": {
+      "account": "Panel klienta",
+      "booking": "Umów wizytę"
+    },
+    "contacts": {
+      "phone": "+48 777 777 777",
+      "phoneHref": "tel:+48777777777",
+      "hours": "Pon.-Pt. 09:00-18:00, Sob. 09.00-14.00",
+      "address": "Jagiellonska 1, 77-777 Bydgoszcz",
+      "mapHref": "https://www.google.com/maps/search/?api=1&query=Jagiellońska+1+Bydgoszcz"
+    }
   },
-  "main": {
-    "title": "Witamy",
-    "language": "Polski"
-  },
+
   "hero": {
-    "title": "Cały <accent>serwis</accent> samochodowy — w <accent>jednym</accent> systemie",
-    "description": "Klienci, samochody, wizyty, naprawy, mechanicy, części i faktury — <accent>wszystko</accent> w jednym wygodnym <accent>systemie</accent>."
+    "title": "<accent>Profesjonalna</accent> naprawa samochodów o <accent>każdym</accent> stopniu złożoności",
+    "description": "Kompleksowa diagnostyka, obsługa techniczna i <accent>naprawa</accent> z przejrzystym kosztorysem, akceptacją każdego etapu oraz <accent>gwarancją</accent> na wykonane prace."
   },
-  "features": {
-    "title": "Funkcje"
-  },
-  "workflow": {
-    "title": "Przepływ pracy"
-  },
-  "roles": {
-    "title": "Dla kogo"
-  },
-  "faq": {
-    "title": "FAQ"
-  },
+
+  "why-us": { "title": "Dlaczego warto wybrać nasz serwis" },
+  "services": { "title": "Usługi serwisu samochodowego" },
+  "diagnostics": { "title": "Profesjonalna diagnostyka" },
+  "completed-works": { "title": "Wykonane naprawy" },
+  "specialists": { "title": "Nasi specjaliści" },
+  "repair-process": { "title": "Jak przebiega naprawa" },
+  "warranty": { "title": "Gwarancja i standardy" },
+  "reviews": { "title": "Opinie klientów" },
+  "booking": { "title": "Umów wizytę w serwisie" },
+  "contacts": { "title": "Kontakt" },
+
   "footer": {
     "home": "Przejdź do strony głównej",
     "description": "Jeden system do zarządzania klientami, pojazdami, wizytami, naprawami, mechanikami, częściami i fakturami.",
     "navTitle": "Nawigacja",
     "label": "Nawigacja w stopce",
-    "accountTitle": "Konto",
+    "accountTitle": "Moje konto",
     "copyright": "Wszelkie prawa zastrzeżone.",
     "backToTop": "Na początek"
   }

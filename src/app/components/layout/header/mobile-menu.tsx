@@ -1,10 +1,23 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { useEffect } from "react";
+import { useMobileMenu } from "@/providers/mobile-menu-provider";
+import {
+  CalendarDays,
+  ChevronRight,
+  Clock3,
+  LogIn,
+  MapPin,
+  Menu,
+  Phone,
+  X,
+} from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
+
+import LangSwitcher from "@/app/components/locale/lang-switcher";
 import ThemeSwitcher from "@/app/components/theme/theme-switcher";
+import { navItems } from "@/app/components/layout/header/navigation";
 import {
   Drawer,
   DrawerClose,
@@ -13,58 +26,112 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/app/components/ui/drawer";
-import { navItems } from "@/app/components/layout/header/navigation";
 
-const mediumBreakpointQuery = "(min-width: 48rem)";
+const desktopBreakpointQuery = "(min-width: 1180px)";
 
 export default function MobileMenu() {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const { isOpen, setIsOpen, closeMenu } = useMobileMenu();
   const t = useTranslations();
 
-  const closeMenu = (): void => {
-    setIsOpen(false);
-  };
-
   useEffect(() => {
-    const mediaQuery = window.matchMedia(mediumBreakpointQuery);
+    const desktopMediaQuery = window.matchMedia(desktopBreakpointQuery);
 
-    const closeMenuOnDesktop = (event: MediaQueryListEvent): void => {
+    const handleDesktopBreakpointChange = (
+      event: MediaQueryListEvent,
+    ): void => {
       if (event.matches) {
-        setIsOpen(false);
+        closeMenu();
       }
     };
 
-    mediaQuery.addEventListener("change", closeMenuOnDesktop);
+    desktopMediaQuery.addEventListener("change", handleDesktopBreakpointChange);
 
     return () => {
-      mediaQuery.removeEventListener("change", closeMenuOnDesktop);
+      desktopMediaQuery.removeEventListener(
+        "change",
+        handleDesktopBreakpointChange,
+      );
     };
-  }, []);
+  }, [closeMenu]);
 
   return (
     <Drawer open={isOpen} onOpenChange={setIsOpen} swipeDirection="right">
       <DrawerTrigger
         render={
           <button
-            className="group inline-flex w-8 h-8 items-center justify-center rounded-xl border-border bg-surface transition-colors  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring md:hidden cursor-pointer"
             type="button"
-            aria-label="open menu"
+            aria-label={t("mobile-menu.open")}
+            aria-expanded={isOpen}
+            className="
+              group relative inline-flex size-10 cursor-pointer
+              items-center justify-center overflow-hidden
+              rounded-xl border border-border
+              bg-surface text-foreground
+              shadow-[0_8px_24px_-14px_rgba(15,23,42,0.65)]
+              transition-all duration-200
+              hover:-translate-y-0.5
+              hover:border-red-500/40
+              hover:bg-foreground/5
+              hover:text-red-500
+              active:translate-y-0
+              active:scale-95
+              focus-visible:outline-none
+              focus-visible:ring-2
+              focus-visible:ring-ring
+              focus-visible:ring-offset-2
+              focus-visible:ring-offset-background
+            "
           >
-            <Menu
-              className="size-8 text-foreground transition-transform duration-200 group-hover:scale-110 group-focus:scale-110"
+            <span
               aria-hidden="true"
+              className="
+                absolute inset-0
+                bg-linear-to-br
+                from-red-500/0 to-red-600/0
+                transition-colors duration-200
+                group-hover:from-red-500/5
+                group-hover:to-red-600/10
+              "
+            />
+
+            <Menu
+              aria-hidden="true"
+              className="
+                relative size-5
+                transition-transform duration-200
+                group-hover:scale-110
+                group-focus-visible:scale-110
+              "
             />
           </button>
         }
-      ></DrawerTrigger>
+      />
 
-      <DrawerContent className="w-[85%] max-w-sm flex flex-1 flex-col gap-5 p-4">
-        <DrawerHeader className="flex-row items-center justify-between border-b border-border mb-2 p-0 pb-2">
-          <DrawerTitle className="text-xl font-black italic">
+      <DrawerContent
+        className="
+          flex h-dvh w-[92vw] max-w-md
+          flex-col gap-0 overflow-hidden
+          border-l border-border
+          bg-background/95 p-0
+          shadow-2xl backdrop-blur-xl
+        "
+      >
+        <DrawerHeader
+          className="
+            relative flex-row items-center justify-between
+            border-b border-border
+            px-4 py-3
+            sm:px-5
+          "
+        >
+          <DrawerTitle>
             <Link
+              href="/"
+              onClick={closeMenu}
+              aria-label={t("mobile-menu.home")}
               className="
                 group inline-flex items-center
-                rounded-lg px-2 py-1
+                rounded-lg px-1 py-1
                 text-2xl font-black italic tracking-tighter
                 text-foreground
                 transition-transform duration-200
@@ -74,14 +141,12 @@ export default function MobileMenu() {
                 focus-visible:ring-ring
                 focus-visible:ring-offset-2
               "
-              href="/"
-              onClick={closeMenu}
-              aria-label={t("mobile-menu.home")}
             >
-              <span className="transition-colors duration-200 group-hover:text-foreground/80">
+              <span className="transition-colors group-hover:text-foreground/75">
                 F
               </span>
-              <span className="text-red-500 transition-colors duration-200 group-hover:text-red-600">
+
+              <span className="text-red-500 transition-colors group-hover:text-red-600">
                 1
               </span>
             </Link>
@@ -91,6 +156,7 @@ export default function MobileMenu() {
             render={
               <button
                 type="button"
+                aria-label={t("mobile-menu.close")}
                 className="
                   group inline-flex size-10 cursor-pointer
                   items-center justify-center
@@ -100,14 +166,14 @@ export default function MobileMenu() {
                   transition-all duration-200
                   hover:border-red-500/40
                   hover:bg-foreground/5
-                  hover:shadow-md
+                  hover:text-red-500
                   active:scale-95
                   focus-visible:outline-none
                   focus-visible:ring-2
                   focus-visible:ring-ring
                   focus-visible:ring-offset-2
+                  focus-visible:ring-offset-background
                 "
-                aria-label={t("mobile-menu.close")}
               />
             }
           >
@@ -115,110 +181,292 @@ export default function MobileMenu() {
               aria-hidden="true"
               className="
                 size-5
-                transition-all duration-200
-                group-hover:scale-110
+                transition-transform duration-200
                 group-hover:rotate-90
-                group-hover:text-red-500
+                group-hover:scale-110
               "
             />
           </DrawerClose>
+
+          <span
+            aria-hidden="true"
+            className="
+              absolute inset-x-0 bottom-0 h-px
+              bg-linear-to-r
+              from-transparent
+              via-red-500/60
+              to-transparent
+            "
+          />
         </DrawerHeader>
 
-        <div className="flex flex-col  pt-4">
-          <div className="flex flex-1 flex-col justify-between mb-6">
-            <nav aria-label={t("mobile-menu.navigation.label")}>
-              <ul className="flex flex-col">
-                {navItems.map((item) => (
-                  <li
-                    className="border-b border-border last:border-b-0"
-                    key={item.href}
-                  >
-                    <Link
-                      className="
-                        group relative flex min-h-12 w-full items-center
-                        px-3 py-3
-                        text-base font-semibold tracking-tight
-                        text-foreground/75
-                        transition-colors duration-200
-                        hover:bg-foreground/5
-                        hover:text-foreground
-                        focus-visible:rounded-lg
-                        focus-visible:outline-none
-                        focus-visible:ring-2
-                        focus-visible:ring-ring
-                      "
-                      href={item.href}
-                      onClick={closeMenu}
-                    >
-                      <span
-                        aria-hidden="true"
-                        className="
-                          absolute top-1/2 left-0
-                          h-6 w-1
-                          -translate-y-1/2 scale-y-0
-                          rounded-full bg-red-500
-                          transition-transform duration-200
-                          group-hover:scale-y-100
-                          group-focus-visible:scale-y-100
-                        "
-                      />
-
-                      <span className="transition-transform duration-200 group-hover:translate-x-2 group-focus-visible:translate-x-2"></span>
-                      {t(item.translationKey)}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-          </div>
-
-          <div className="mb-6 flex flex-col gap-3">
-            <Link
+        <div
+          className="
+            flex min-h-0 flex-1 flex-col
+            overflow-y-auto overscroll-contain
+            px-4 py-5
+            sm:px-5
+          "
+        >
+          <div
+            className="
+              mb-5 rounded-2xl
+              border border-border
+              bg-foreground/2.5
+              p-3.5
+              shadow-sm
+              dark:bg-white/2.5
+            "
+          >
+            <a
+              href={t("marketing.header.contacts.phoneHref")}
               className="
-                inline-flex min-h-12 w-full items-center justify-center
-                rounded-xl border border-border
-                bg-surface px-4 py-3
-                text-base font-semibold text-foreground
-                transition-all duration-200
-                hover:border-red-500/50
-                hover:bg-foreground/5
-                active:scale-[0.98]
+                group flex items-center gap-3
+                rounded-xl
                 focus-visible:outline-none
                 focus-visible:ring-2
                 focus-visible:ring-ring
-                focus-visible:ring-offset-2
               "
-              href="/login"
             >
-              {t("auth.login.loginBtn")}
-            </Link>
-            <Link
+              <span
+                className="
+                  inline-flex size-10 shrink-0
+                  items-center justify-center
+                  rounded-xl bg-red-500/10
+                  text-red-500
+                  transition-colors duration-200
+                  group-hover:bg-red-500
+                  group-hover:text-white
+                "
+              >
+                <Phone className="size-4.5" aria-hidden="true" />
+              </span>
+
+              <span className="flex min-w-0 flex-col">
+                <span className="text-xs font-medium text-foreground/55">
+                  {t("mobile-menu.call")}
+                </span>
+
+                <span
+                  className="
+                    truncate text-base font-bold
+                    text-foreground
+                    transition-colors duration-200
+                    group-hover:text-red-500
+                  "
+                >
+                  {t("marketing.header.contacts.phone")}
+                </span>
+              </span>
+            </a>
+
+            <div className="mt-3 space-y-2 border-t border-border pt-3">
+              <p
+                className="
+                  flex items-start gap-2
+                  text-sm leading-5 text-foreground/65
+                "
+              >
+                <Clock3
+                  className="mt-0.5 size-4 shrink-0 text-red-500"
+                  aria-hidden="true"
+                />
+
+                <span>{t("marketing.header.contacts.hours")}</span>
+              </p>
+
+              <Link
+                href="/#contacts"
+                onClick={closeMenu}
+                className="
+                  flex items-start gap-2
+                  rounded-md
+                  text-sm leading-5 text-foreground/65
+                  transition-colors duration-200
+                  hover:text-red-500
+                  focus-visible:outline-none
+                  focus-visible:ring-2
+                  focus-visible:ring-ring
+                "
+              >
+                <MapPin
+                  className="mt-0.5 size-4 shrink-0 text-red-500"
+                  aria-hidden="true"
+                />
+
+                <span>{t("marketing.header.contacts.address")}</span>
+              </Link>
+            </div>
+          </div>
+
+          <nav className="mb-6" aria-label={t("mobile-menu.navigation.label")}>
+            <ul
               className="
-                inline-flex min-h-12 w-full items-center justify-center
-                rounded-xl bg-red-500 px-4 py-3
-                text-base font-semibold text-white
-                shadow-sm
+                overflow-hidden rounded-2xl
+                border border-border
+                bg-surface
+              "
+            >
+              {navItems.map((item) => (
+                <li
+                  key={item.href}
+                  className="border-b border-border last:border-b-0"
+                >
+                  <Link
+                    href={item.href}
+                    onClick={closeMenu}
+                    className="
+                      group relative flex min-h-13 w-full
+                      items-center justify-between
+                      gap-3 px-4 py-3
+                      text-base font-semibold tracking-tight
+                      text-foreground/70
+                      transition-colors duration-200
+                      hover:bg-foreground/5
+                      hover:text-foreground
+                      focus-visible:outline-none
+                      focus-visible:ring-2
+                      focus-visible:ring-inset
+                      focus-visible:ring-ring
+                    "
+                  >
+                    <span
+                      aria-hidden="true"
+                      className="
+                        absolute top-1/2 left-0
+                        h-7 w-1
+                        -translate-y-1/2 scale-y-0
+                        rounded-r-full bg-red-500
+                        transition-transform duration-200
+                        group-hover:scale-y-100
+                        group-focus-visible:scale-y-100
+                      "
+                    />
+
+                    <span
+                      className="
+                        transition-transform duration-200
+                        group-hover:translate-x-1.5
+                        group-focus-visible:translate-x-1.5
+                      "
+                    >
+                      {t(item.translationKey)}
+                    </span>
+
+                    <ChevronRight
+                      aria-hidden="true"
+                      className="
+                        size-4 shrink-0 text-foreground/35
+                        transition-all duration-200
+                        group-hover:translate-x-1
+                        group-hover:text-red-500
+                      "
+                    />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <div className="mt-auto flex flex-col gap-3">
+            <Link
+              href="/#booking"
+              onClick={closeMenu}
+              className="
+                inline-flex min-h-12 w-full
+                items-center justify-center gap-2
+                rounded-xl bg-red-500
+                px-4 py-3
+                text-base font-bold text-white
+                shadow-[0_10px_24px_-12px_rgba(239,68,68,0.9)]
                 transition-all duration-200
+                hover:-translate-y-0.5
                 hover:bg-red-600
-                hover:shadow-md
+                hover:shadow-[0_14px_28px_-12px_rgba(239,68,68,0.95)]
+                active:translate-y-0
                 active:scale-[0.98]
                 focus-visible:outline-none
                 focus-visible:ring-2
                 focus-visible:ring-red-500
                 focus-visible:ring-offset-2
+                focus-visible:ring-offset-background
               "
-              href="/register"
             >
-              {t("auth.reg.regBtn")}
+              <CalendarDays className="size-5" aria-hidden="true" />
+              {t("marketing.header.actions.booking")}
             </Link>
-          </div>
 
-          <div className="flex w-full items-center justify-between">
-            <p className="text-base font-semibold tracking-tight text-foreground">
-              {t("mobile-menu.theme")}
+            <Link
+              href="/login"
+              onClick={closeMenu}
+              className="
+                inline-flex min-h-12 w-full
+                items-center justify-center gap-2
+                rounded-xl border border-border
+                bg-surface px-4 py-3
+                text-base font-semibold text-foreground
+                transition-all duration-200
+                hover:border-red-500/40
+                hover:bg-foreground/5
+                hover:text-red-500
+                active:scale-[0.98]
+                focus-visible:outline-none
+                focus-visible:ring-2
+                focus-visible:ring-ring
+                focus-visible:ring-offset-2
+                focus-visible:ring-offset-background
+              "
+            >
+              <LogIn className="size-5" aria-hidden="true" />
+              {t("marketing.header.actions.account")}
+            </Link>
+
+            <p className="text-center text-sm text-foreground/55">
+              {t("mobile-menu.noAccount")}{" "}
+              <Link
+                href="/register"
+                onClick={closeMenu}
+                className="
+                  font-semibold text-red-500
+                  transition-colors duration-200
+                  hover:text-red-600
+                  hover:underline
+                  focus-visible:rounded-sm
+                  focus-visible:outline-none
+                  focus-visible:ring-2
+                  focus-visible:ring-ring
+                "
+              >
+                {t("auth.reg.regBtn")}
+              </Link>
             </p>
+          </div>
+        </div>
 
-            <ThemeSwitcher />
+        <div
+          className="
+            shrink-0 border-t border-border
+            bg-background/90
+            px-4 py-3 backdrop-blur-xl
+            sm:px-5
+          "
+        >
+          <div className="flex flex-col gap-3">
+            <div className="flex min-h-10 items-center justify-between gap-4">
+              <p className="text-sm font-semibold text-foreground/70">
+                {t("mobile-menu.language")}
+              </p>
+
+              <LangSwitcher />
+            </div>
+
+            <div className="flex min-h-10 items-center justify-between gap-4">
+              <p className="text-sm font-semibold text-foreground/70">
+                {t("mobile-menu.theme")}
+              </p>
+
+              <ThemeSwitcher />
+            </div>
           </div>
         </div>
       </DrawerContent>

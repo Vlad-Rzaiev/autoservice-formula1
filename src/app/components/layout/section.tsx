@@ -10,7 +10,11 @@ export default function Section({
 }: SectionProps) {
   return (
     <section
-      className={cn("py-16 md:py-20 lg:py-24", className)}
+      className={cn(
+        "py-16 md:py-20 lg:py-24",
+        "scroll-mt-(--marketing-header-height)",
+        className,
+      )}
       {...sectionProps}
     >
       {children}

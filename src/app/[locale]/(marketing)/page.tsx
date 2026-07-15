@@ -1,17 +1,29 @@
+import Booking from "@/app/[locale]/(marketing)/_components/booking";
+import CompletedWorks from "@/app/[locale]/(marketing)/_components/completed-works";
+import Contacts from "@/app/[locale]/(marketing)/_components/contacts";
+import Diagnostics from "@/app/[locale]/(marketing)/_components/diagnostics";
 import Hero from "@/app/[locale]/(marketing)/_components/hero/hero";
-import Features from "@/app/[locale]/(marketing)/_components/features";
-import Workflow from "@/app/[locale]/(marketing)/_components/workflow";
-import Roles from "@/app/[locale]/(marketing)/_components/roles";
-import Faq from "@/app/[locale]/(marketing)/_components/faq";
+import RepairProcess from "@/app/[locale]/(marketing)/_components/repair-process";
+import Reviews from "@/app/[locale]/(marketing)/_components/reviews";
+import Services from "@/app/[locale]/(marketing)/_components/services";
+import Specialists from "@/app/[locale]/(marketing)/_components/specialists";
+import Warranty from "@/app/[locale]/(marketing)/_components/warranty";
+import WhyUs from "@/app/[locale]/(marketing)/_components/whyUs";
 
 export default function Home() {
   return (
-    <main>
+    <main className="pt-(--marketing-header-height)">
       <Hero />
-      <Features />
-      <Workflow />
-      <Roles />
-      <Faq />
+      <WhyUs />
+      <Services />
+      <Diagnostics />
+      <CompletedWorks />
+      <Specialists />
+      <RepairProcess />
+      <Warranty />
+      <Reviews />
+      <Booking />
+      <Contacts />
     </main>
   );
 }

@@ -61,7 +61,10 @@ export default function LangSwitcher({ className }: LangSwitcherProps) {
               type="button"
               aria-current={isActive ? "true" : undefined}
               onClick={() =>
-                router.replace(pathName, { locale: language.code })
+                router.replace(pathName, {
+                  locale: language.code,
+                  scroll: false,
+                })
               }
             >
               <Image

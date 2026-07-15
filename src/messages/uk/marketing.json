@@ -1,30 +1,73 @@
 {
-  "loader": {
-    "title": "Завантаження..."
+  "header": {
+    "navigation": {
+      "services": "Послуги",
+      "specialists": "Команда",
+      "completedWorks": "Виконані роботи",
+      "warranty": "Гарантія",
+      "contacts": "Контакти"
+    },
+    "actions": {
+      "account": "Кабінет клієнта",
+      "booking": "Записатися на сервіс"
+    },
+    "contacts": {
+      "phone": "+48 777 777 777",
+      "phoneHref": "tel:+48777777777",
+      "hours": "Пн–Пт 09:00–18:00, Сб 09:00–14:00",
+      "address": "Jagiellonska 1, 77-777 Bydgoszcz",
+      "mapHref": "https://www.google.com/maps/search/?api=1&query=Jagiellońska+1+Bydgoszcz"
+    }
   },
-  "main": {
-    "title": "Ласкаво просимо",
-    "language": "Українська"
-  },
+
   "hero": {
-    "title": "Увесь <accent>автосервіс</accent> — в <accent>одній</accent> системі",
-    "description": "Клієнти, автомобілі, записи, ремонти, механіки, запчастини та рахунки — <accent>усе</accent> в одній зручній <accent>системі</accent>."
+    "title": "<accent>Професійний</accent> ремонт автомобілів <accent>будь-якої</accent> складності",
+    "description": "Комплексна діагностика, технічне обслуговування та <accent>ремонт</accent> із прозорим кошторисом, погодженням кожного етапу та <accent>гарантією</accent> на виконані роботи."
   },
-  "features": {
-    "title": "Можливості"
+
+  "why-us": {
+    "title": "Чому обирають наш сервіс"
   },
-  "workflow": {
-    "title": "Як це працює"
+
+  "services": {
+    "title": "Послуги автосервісу"
   },
-  "roles": {
-    "title": "Ролі"
+
+  "diagnostics": {
+    "title": "Професійна діагностика"
   },
-  "faq": {
-    "title": "FAQ"
+
+  "completed-works": {
+    "title": "Виконані роботи"
   },
+
+  "specialists": {
+    "title": "Наші спеціалісти"
+  },
+
+  "repair-process": {
+    "title": "Як проходить ремонт"
+  },
+
+  "warranty": {
+    "title": "Гарантія та стандарти"
+  },
+
+  "reviews": {
+    "title": "Відгуки клієнтів"
+  },
+
+  "booking": {
+    "title": "Запис на сервіс"
+  },
+
+  "contacts": {
+    "title": "Контакти"
+  },
+
   "footer": {
     "home": "На головну сторінку",
-    "description": "Єдина система для керування клієнтами, автомобілями, записами, ремонтами, механіками, запчастинами та рахунками автосервісу.",
+    "description": "Єдина система для керування автосервісом: клієнтами, автомобілями, записами, ремонтами, механіками, запчастинами та рахунками.",
     "navTitle": "Навігація",
     "label": "Навігація у футері",
     "accountTitle": "Особистий кабінет",

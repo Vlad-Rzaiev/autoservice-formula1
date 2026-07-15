@@ -8,7 +8,7 @@ export default function Hero() {
   const t = useTranslations();
 
   return (
-    <section className={cn(styles.hero, "text-white pt-35")}>
+    <section className={cn(styles.hero, "text-white pt-20 lg:pt-30")}>
       <Container>
         <h1
           className="max-w-3xl rounded-2xl border border-white/10
@@ -28,7 +28,7 @@ export default function Hero() {
         <p className="mt-6 max-w-xl rounded-xl border border-white/10 bg-black/15 px-4 py-3 text-base           font-medium leading-7 text-white shadow-lg backdrop-blur-[3px] md:text-lg md:leading-8">
           {t.rich("marketing.hero.description", {
             accent: (textChunks) => (
-              <span className="font-semibold text-red-400">{textChunks}</span>
+              <span className="font-semibold text-red-500">{textChunks}</span>
             ),
           })}
         </p>

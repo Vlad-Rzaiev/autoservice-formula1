@@ -1,8 +1,24 @@
 export const navItems = [
-  { href: "/#features", translationKey: "mobile-menu.navigation.features" },
-  { href: "/#workflow", translationKey: "mobile-menu.navigation.workflow" },
-  { href: "/#roles", translationKey: "mobile-menu.navigation.roles" },
-  { href: "/#faq", translationKey: "mobile-menu.navigation.faq" },
+  {
+    href: "/#services",
+    translationKey: "marketing.header.navigation.services",
+  },
+  {
+    href: "/#specialists",
+    translationKey: "marketing.header.navigation.specialists",
+  },
+  {
+    href: "/#completed-works",
+    translationKey: "marketing.header.navigation.completedWorks",
+  },
+  {
+    href: "/#warranty",
+    translationKey: "marketing.header.navigation.warranty",
+  },
+  {
+    href: "/#contacts",
+    translationKey: "marketing.header.navigation.contacts",
+  },
 ] as const;
 
 export type NavigationItems = (typeof navItems)[number];

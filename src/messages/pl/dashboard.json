@@ -1,6 +1,4 @@
 {
-  "dashboard": {
-    "title": "Panel",
-    "revenue": "Przychód w tym miesiącu"
-  }
+  "title": "Panel",
+  "revenue": "Przychód w tym miesiącu"
 }

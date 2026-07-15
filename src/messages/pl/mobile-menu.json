@@ -1,12 +1,22 @@
 {
+  "open": "Otwórz menu",
+  "close": "Zamknij menu",
+  "home": "Przejdź do strony głównej",
+  "call": "Zadzwoń do nas",
+  "noAccount": "Nie masz jeszcze konta?",
+  "language": "Język",
   "theme": "Motyw",
   "navigation": {
-    "features": "Funkcje",
-    "workflow": "Przepływ pracy",
-    "roles": "Dla kogo",
-    "faq": "FAQ",
+    "why-us": "Dlaczego warto wybrać nasz serwis",
+    "services": "Usługi serwisu samochodowego",
+    "diagnostics": "Profesjonalna diagnostyka",
+    "completed-works": "Wykonane prace",
+    "specialists": "Nasi specjaliści",
+    "repair-process": "Jak przebiega naprawa",
+    "warranty": "Gwarancja i standardy",
+    "reviews": "Opinie klientów",
+    "booking": "Umów wizytę w serwisie",
+    "contacts": "Kontakt",
     "label": "Główna nawigacja"
-  },
-  "home": "Do strony głównej",
-  "close": "Zamknij menu"
+  }
 }

@@ -1,30 +1,41 @@
 {
-  "loader": {
-    "title": "Loading..."
+  "header": {
+    "navigation": {
+      "services": "Services",
+      "specialists": "Our Team",
+      "completedWorks": "Completed Work",
+      "warranty": "Warranty",
+      "contacts": "Contact"
+    },
+    "actions": { "account": "Client Portal", "booking": "Book an Appointment" },
+    "contacts": {
+      "phone": "+48 777 777 777",
+      "phoneHref": "tel:+48777777777",
+      "hours": "Mon–Fri 09:00–18:00, Sat 09:00–14:00",
+      "address": "Jagiellonska 1, 77-777 Bydgoszcz",
+      "mapHref": "https://www.google.com/maps/search/?api=1&query=Jagiellońska+1+Bydgoszcz"
+    }
   },
-  "main": {
-    "title": "Welcome",
-    "language": "English"
-  },
+
   "hero": {
-    "title": "The entire <accent>car service</accent> — in <accent>one</accent> system",
-    "description": "Clients, vehicles, appointments, repairs, mechanics, parts and invoices — <accent>all</accent> in one convenient <accent>system</accent>."
+    "title": "<accent>Professional</accent> vehicle repairs of <accent>any</accent> complexity",
+    "description": "Comprehensive diagnostics, maintenance, and <accent>repairs</accent> with a transparent estimate, approval at every stage, and a <accent>warranty</accent> on all completed work."
   },
-  "features": {
-    "title": "Features"
-  },
-  "workflow": {
-    "title": "Workflow"
-  },
-  "roles": {
-    "title": "Roles"
-  },
-  "faq": {
-    "title": "FAQ"
-  },
+
+  "why-us": { "title": "Why Choose Our Auto Service" },
+  "services": { "title": "Auto Repair Services" },
+  "diagnostics": { "title": "Professional Diagnostics" },
+  "completed-works": { "title": "Completed Repairs" },
+  "specialists": { "title": "Our Specialists" },
+  "repair-process": { "title": "How the Repair Process Works" },
+  "warranty": { "title": "Warranty and Standards" },
+  "reviews": { "title": "Customer Reviews" },
+  "booking": { "title": "Book a Service Appointment" },
+  "contacts": { "title": "Contact Us" },
+
   "footer": {
     "home": "Go to the home page",
-    "description": "A unified system for managing customers, vehicles, appointments, repairs, mechanics, parts and invoices.",
+    "description": "A unified system for managing clients, vehicles, appointments, repairs, mechanics, parts, and invoices.",
     "navTitle": "Navigation",
     "label": "Footer navigation",
     "accountTitle": "Account",

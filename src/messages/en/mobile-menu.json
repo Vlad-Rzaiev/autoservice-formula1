@@ -1,12 +1,22 @@
 {
+  "open": "Open menu",
+  "close": "Close menu",
+  "home": "Go to the home page",
+  "call": "Call us",
+  "noAccount": "Don't have an account yet?",
+  "language": "Language",
   "theme": "Theme",
   "navigation": {
-    "features": "Features",
-    "workflow": "Workflow",
-    "roles": "Roles",
-    "faq": "FAQ",
+    "why-us": "Why Choose Our Service",
+    "services": "Auto Service Services",
+    "diagnostics": "Professional Diagnostics",
+    "completed-works": "Completed Work",
+    "specialists": "Our Specialists",
+    "repair-process": "How the Repair Process Works",
+    "warranty": "Warranty and Standards",
+    "reviews": "Customer Reviews",
+    "booking": "Book a Service",
+    "contacts": "Contacts",
     "label": "Main navigation"
-  },
-  "home": "To main page",
-  "close": "Close menu"
+  }
 }
