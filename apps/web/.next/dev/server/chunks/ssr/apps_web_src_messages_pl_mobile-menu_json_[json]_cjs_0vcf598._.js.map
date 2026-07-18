@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 3, "column": 0}, "map": {"version":3,"sources":["turbopack:///apps/web/src/messages/pl/mobile-menu.json"],"sourcesContent":["{\"open\":\"Otwórz menu\",\"close\":\"Zamknij menu\",\"home\":\"Przejdź do strony głównej\",\"call\":\"Zadzwoń do nas\",\"noAccount\":\"Nie masz jeszcze konta?\",\"language\":\"Język\",\"theme\":\"Motyw\",\"navigation\":{\"why-us\":\"Dlaczego warto wybrać nasz serwis\",\"services\":\"Usługi serwisu samochodowego\",\"diagnostics\":\"Profesjonalna diagnostyka\",\"completed-works\":\"Wykonane prace\",\"specialists\":\"Nasi specjaliści\",\"repair-process\":\"Jak przebiega naprawa\",\"warranty\":\"Gwarancja i standardy\",\"reviews\":\"Opinie klientów\",\"booking\":\"Umów wizytę w serwisie\",\"contacts\":\"Kontakt\",\"label\":\"Główna nawigacja\"}}"],"names":[],"mappings":""}}]
-}

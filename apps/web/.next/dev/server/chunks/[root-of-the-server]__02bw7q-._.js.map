@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 76, "column": 0}, "map": {"version":3,"sources":["file:///C:/Projects/next.js/autoservice-formula1/apps/web/src/i18n/routing.ts"],"sourcesContent":["import { defineRouting } from \"next-intl/routing\";\r\n\r\nexport const routing = defineRouting({\r\n  locales: [\"uk\", \"en\", \"pl\"],\r\n  defaultLocale: \"pl\",\r\n});\r\n"],"names":["routing","locales","defaultLocale"],"mappings":";;;;AAAA;;AAEO,MAAMA,UAAU,IAAA,mPAAa,EAAC;IACnCC,SAAS;QAAC;QAAM;QAAM;KAAK;IAC3BC,eAAe;AACjB"}},
-    {"offset": {"line": 94, "column": 0}, "map": {"version":3,"sources":["file:///C:/Projects/next.js/autoservice-formula1/apps/web/src/proxy.ts"],"sourcesContent":["import createMiddleware from \"next-intl/middleware\";\r\nimport { routing } from \"./i18n/routing\";\r\n\r\nexport default createMiddleware(routing);\r\n\r\nexport const config = {\r\n  matcher: \"/((?!api|trpc|_next|_vercel|.*\\\\..*).*)\",\r\n};\r\n"],"names":["config","matcher"],"mappings":";;;;;;AAAA;AACA;;;uCAEe,IAAA,iMAAgB,EAAC,gJAAO;AAEhC,MAAMA,SAAS;IACpBC,SAAS;AACX"}}]
-}

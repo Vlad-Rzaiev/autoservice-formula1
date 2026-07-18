@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 3, "column": 0}, "map": {"version":3,"sources":["turbopack:///apps/web/src/messages/en/dashboard.json"],"sourcesContent":["{\"title\":\"Dashboard\",\"revenue\":\"Revenue this month\"}"],"names":[],"mappings":""}}]
-}

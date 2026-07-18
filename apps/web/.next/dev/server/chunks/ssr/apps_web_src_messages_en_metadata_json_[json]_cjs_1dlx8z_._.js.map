@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 3, "column": 0}, "map": {"version":3,"sources":["turbopack:///apps/web/src/messages/en/metadata.json"],"sourcesContent":["{\"title\":\"Formula 1 — Auto Service\",\"description\":\"A system for managing an auto repair shop, clients, and repairs\"}"],"names":[],"mappings":""}}]
-}

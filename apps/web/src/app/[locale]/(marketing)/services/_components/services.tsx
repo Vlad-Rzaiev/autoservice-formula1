@@ -1,18 +1,71 @@
+"use client";
+
 import React from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Wrench } from "lucide-react";
+import { useFeaturedServices } from "@/app/[locale]/(marketing)/services/api/use-services";
+import {
+  serviceLocales,
+  type ServiceLocale,
+} from "@/app/[locale]/(marketing)/services/model/service.types";
+import { serviceIconMap } from "@/app/[locale]/(marketing)/services/lib/service-icon-map";
 import Section from "@/app/components/layout/section";
 import Container from "@/app/components/layout/container";
 import SectionTitle from "@/app/components/layout/section-title";
-import { servicesItems } from "@/app/[locale]/(marketing)/services/cardsItems";
+
+function isServiceLocale(locale: string): locale is ServiceLocale {
+  return serviceLocales.includes(locale as ServiceLocale);
+}
 
 export interface ServicesProps {
   children?: React.ReactNode;
 }
 
 export default function Services({}: ServicesProps) {
+  const locale = useLocale();
   const t = useTranslations();
+
+  const {
+    data: services = [],
+    isPending,
+    isError,
+    refetch,
+  } = useFeaturedServices();
+
+  const currentLocale: ServiceLocale = isServiceLocale(locale) ? locale : "uk";
+
+  if (isPending) {
+    return (
+      <p className="mt-10 text-center text-muted-foreground">
+        {t("marketing.services.loading")}
+      </p>
+    );
+  }
+
+  if (isError) {
+    return (
+      <div className="mt-10 text-center">
+        <p className="text-destructive">{t("marketing.services.error")}</p>
+
+        <button
+          type="button"
+          className="mt-4 rounded-xl bg-primary px-5 py-3 text-primary-foreground"
+          onClick={() => refetch()}
+        >
+          {t("marketing.services.retry")}
+        </button>
+      </div>
+    );
+  }
+
+  if (services.length === 0) {
+    return (
+      <p className="mt-10 text-center text-muted-foreground">
+        {t("marketing.services.empty")}
+      </p>
+    );
+  }
 
   return (
     <Section id="services">
@@ -26,12 +79,13 @@ export default function Services({}: ServicesProps) {
         </div>
 
         <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:mt-14 lg:grid-cols-3 lg:gap-6">
-          {servicesItems.map((item) => {
-            const Icon = item.icon;
+          {services.map((service) => {
+            const Icon = serviceIconMap[service.iconKey] ?? Wrench;
+            const serviceTranslation = service.translations[currentLocale];
 
             return (
               <li
-                key={item.id}
+                key={service._id}
                 className="
                   group relative flex min-h-64 flex-col overflow-hidden
                   rounded-2xl border border-border bg-surface p-6
@@ -72,7 +126,6 @@ export default function Services({}: ServicesProps) {
                     group-hover:border-red-500
                     group-hover:bg-red-600
                     group-hover:text-white
-                    dark:text-red-400
                     dark:group-hover:text-white
                   "
                 >
@@ -92,11 +145,11 @@ export default function Services({}: ServicesProps) {
                       dark:group-hover:text-red-400
                     "
                   >
-                    {t(item.title)}
+                    {serviceTranslation.title}
                   </h3>
 
                   <p className="mt-3 text-sm leading-6 text-muted-foreground sm:text-base">
-                    {t(item.description)}
+                    {serviceTranslation.description}
                   </p>
                 </div>
               </li>

@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 3, "column": 0}, "map": {"version":3,"sources":["turbopack:///apps/web/src/messages/uk/mobile-menu.json"],"sourcesContent":["{\"open\":\"Відкрити меню\",\"close\":\"Закрити меню\",\"home\":\"Перейти на головну сторінку\",\"call\":\"Зателефонуйте нам\",\"noAccount\":\"Ще не маєте облікового запису?\",\"language\":\"Мова\",\"theme\":\"Тема\",\"navigation\":{\"why-us\":\"Чому обирають наш сервіс\",\"services\":\"Послуги автосервісу\",\"diagnostics\":\"Професійна діагностика\",\"completed-works\":\"Виконані роботи\",\"specialists\":\"Наші спеціалісти\",\"repair-process\":\"Як проходить ремонт\",\"warranty\":\"Гарантія та стандарти\",\"reviews\":\"Відгуки клієнтів\",\"booking\":\"Запис на сервіс\",\"contacts\":\"Контакти\",\"label\":\"Головна навігація\"}}"],"names":[],"mappings":""}}]
-}

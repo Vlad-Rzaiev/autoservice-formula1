@@ -47,7 +47,11 @@
   "services": {
     "title": "Complete Vehicle Maintenance and Repair",
     "description": "We provide professional diagnostics, maintenance, and repairs for vehicles of any complexity.",
-    "view-all": "View All Services"
+    "view-all": "View All Services",
+    "loading": "Loading services...",
+    "error": "Failed to load services.",
+    "retry": "Try again",
+    "empty": "There are currently no services available."
   },
 
   "diagnostics": {

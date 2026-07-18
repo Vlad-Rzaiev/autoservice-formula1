@@ -50,7 +50,11 @@
   "services": {
     "title": "Kompleksowa obsługa i naprawa samochodów",
     "description": "Wykonujemy profesjonalną diagnostykę, obsługę techniczną oraz naprawy samochodów o każdym stopniu złożoności.",
-    "view-all": "Zobacz wszystkie usługi"
+    "view-all": "Zobacz wszystkie usługi",
+    "loading": "Ładowanie usług...",
+    "error": "Nie udało się załadować usług.",
+    "retry": "Spróbuj ponownie",
+    "empty": "Obecnie nie ma dostępnych usług."
   },
 
   "diagnostics": {
