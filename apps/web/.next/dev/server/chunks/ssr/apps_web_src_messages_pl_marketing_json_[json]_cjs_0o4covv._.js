@@ -50,41 +50,7 @@ module.exports = {
     "services": {
         "title": "Kompleksowa obsługa i naprawa samochodów",
         "description": "Wykonujemy profesjonalną diagnostykę, obsługę techniczną oraz naprawy samochodów o każdym stopniu złożoności.",
-        "view-all": "Zobacz wszystkie usługi",
-        "cards": {
-            "diagnostics": {
-                "title": "Diagnostyka samochodu",
-                "description": "Komputerowa i kompleksowa kontrola najważniejszych układów samochodu."
-            },
-            "engine-repair": {
-                "title": "Naprawa silnika",
-                "description": "Diagnostyka, obsługa i naprawa silników o różnym stopniu złożoności."
-            },
-            "chassis-repair": {
-                "title": "Naprawa układu jezdnego",
-                "description": "Kontrola i naprawa zawieszenia, układu kierowniczego oraz amortyzatorów."
-            },
-            "brake-system": {
-                "title": "Układ hamulcowy",
-                "description": "Diagnostyka i wymiana klocków, tarcz, zacisków oraz płynu hamulcowego."
-            },
-            "transmission": {
-                "title": "Skrzynia biegów",
-                "description": "Obsługa i naprawa manualnych oraz automatycznych skrzyń biegów."
-            },
-            "auto-electrics": {
-                "title": "Elektryka samochodowa",
-                "description": "Wykrywanie usterek oraz naprawa układów elektrycznych i elektronicznych."
-            },
-            "climate-systems": {
-                "title": "Systemy klimatyzacji",
-                "description": "Diagnostyka, napełnianie i naprawa klimatyzacji oraz systemów kontroli klimatu."
-            },
-            "maintenance": {
-                "title": "Obsługa techniczna",
-                "description": "Planowa wymiana olejów, filtrów, płynów oraz innych materiałów eksploatacyjnych."
-            }
-        }
+        "view-all": "Zobacz wszystkie usługi"
     },
     "diagnostics": {
         "title": "Profesjonalna diagnostyka"

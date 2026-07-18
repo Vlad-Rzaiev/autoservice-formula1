@@ -4,6 +4,10 @@ import pino from 'pino';
 import { pinoHttp } from 'pino-http';
 
 import { getEnvVar } from './utils/getEnvVar.js';
+import { notFoundHandler } from './middleware/notFoundHandler.js';
+import { errorHandler } from './middleware/errorHandler.js';
+
+import servicesRouter from './modules/services/service.routes.js';
 
 const logger = pino({
   transport:
@@ -32,13 +36,11 @@ export const startServer = () => {
     }),
   );
 
-  app.get('/api/v1/health', (req, res) => {
-    res.status(200).json({
-      status: 200,
-      success: true,
-      message: 'Autoservice API working!',
-    });
-  });
+  app.use(servicesRouter);
+
+  app.use(notFoundHandler);
+
+  app.use(errorHandler);
 
   app.listen(PORT, () => {
     logger.info(

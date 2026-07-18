@@ -1,0 +1,508 @@
+[
+  {
+    "slug": "diagnostics",
+    "category": "diagnostics",
+    "iconKey": "scan-search",
+    "featured": true,
+    "sortOrder": 1,
+    "isActive": true,
+    "translations": {
+      "uk": {
+        "title": "Діагностика автомобіля",
+        "description": "Комп’ютерна та комплексна перевірка двигуна, електроніки, ходової частини й основних систем автомобіля."
+      },
+      "en": {
+        "title": "Vehicle diagnostics",
+        "description": "Computer-based and comprehensive inspection of the engine, electronics, chassis, and main vehicle systems."
+      },
+      "pl": {
+        "title": "Diagnostyka samochodu",
+        "description": "Komputerowa i kompleksowa kontrola silnika, elektroniki, zawieszenia oraz głównych układów pojazdu."
+      }
+    }
+  },
+  {
+    "slug": "engine-repair",
+    "category": "engine-and-transmission",
+    "iconKey": "settings",
+    "featured": true,
+    "sortOrder": 2,
+    "isActive": true,
+    "translations": {
+      "uk": {
+        "title": "Ремонт двигуна",
+        "description": "Діагностика, технічне обслуговування, частковий і капітальний ремонт бензинових та дизельних двигунів."
+      },
+      "en": {
+        "title": "Engine repair",
+        "description": "Diagnostics, maintenance, partial repair, and complete overhaul of petrol and diesel engines."
+      },
+      "pl": {
+        "title": "Naprawa silnika",
+        "description": "Diagnostyka, obsługa techniczna, naprawy częściowe i remonty kapitalne silników benzynowych oraz wysokoprężnych."
+      }
+    }
+  },
+  {
+    "slug": "chassis-repair",
+    "category": "chassis-and-steering",
+    "iconKey": "car-front",
+    "featured": true,
+    "sortOrder": 3,
+    "isActive": true,
+    "translations": {
+      "uk": {
+        "title": "Ремонт ходової частини",
+        "description": "Перевірка та відновлення підвіски, амортизаторів, важелів, сайлентблоків, маточин і кульових опор."
+      },
+      "en": {
+        "title": "Chassis and suspension repair",
+        "description": "Inspection and repair of suspension components, shock absorbers, control arms, bushings, wheel hubs, and ball joints."
+      },
+      "pl": {
+        "title": "Naprawa zawieszenia",
+        "description": "Kontrola i naprawa zawieszenia, amortyzatorów, wahaczy, tulei, piast oraz sworzni."
+      }
+    }
+  },
+  {
+    "slug": "brake-system",
+    "category": "chassis-and-steering",
+    "iconKey": "disc-3",
+    "featured": true,
+    "sortOrder": 4,
+    "isActive": true,
+    "translations": {
+      "uk": {
+        "title": "Гальмівна система",
+        "description": "Діагностика та ремонт гальмівної системи, заміна колодок, дисків, супортів і гальмівної рідини."
+      },
+      "en": {
+        "title": "Brake system",
+        "description": "Brake system diagnostics and repair, including replacement of pads, discs, calipers, and brake fluid."
+      },
+      "pl": {
+        "title": "Układ hamulcowy",
+        "description": "Diagnostyka i naprawa układu hamulcowego, wymiana klocków, tarcz, zacisków oraz płynu hamulcowego."
+      }
+    }
+  },
+  {
+    "slug": "transmission",
+    "category": "engine-and-transmission",
+    "iconKey": "cog",
+    "featured": true,
+    "sortOrder": 5,
+    "isActive": true,
+    "translations": {
+      "uk": {
+        "title": "Коробка передач",
+        "description": "Діагностика, обслуговування та ремонт механічних, автоматичних і роботизованих коробок передач."
+      },
+      "en": {
+        "title": "Transmission service",
+        "description": "Diagnostics, maintenance, and repair of manual, automatic, and automated transmissions."
+      },
+      "pl": {
+        "title": "Serwis skrzyni biegów",
+        "description": "Diagnostyka, obsługa i naprawa manualnych, automatycznych oraz zautomatyzowanych skrzyń biegów."
+      }
+    }
+  },
+  {
+    "slug": "auto-electrics",
+    "category": "electrical",
+    "iconKey": "zap",
+    "featured": true,
+    "sortOrder": 6,
+    "isActive": true,
+    "translations": {
+      "uk": {
+        "title": "Автоелектрика",
+        "description": "Пошук несправностей і ремонт електричних та електронних систем, проводки, датчиків і блоків керування."
+      },
+      "en": {
+        "title": "Automotive electrical repair",
+        "description": "Diagnostics and repair of electrical and electronic systems, wiring, sensors, and control modules."
+      },
+      "pl": {
+        "title": "Elektryka samochodowa",
+        "description": "Diagnostyka i naprawa układów elektrycznych oraz elektronicznych, instalacji, czujników i sterowników."
+      }
+    }
+  },
+  {
+    "slug": "maintenance",
+    "category": "maintenance",
+    "iconKey": "circle-gauge",
+    "featured": false,
+    "sortOrder": 7,
+    "isActive": true,
+    "translations": {
+      "uk": {
+        "title": "Технічне обслуговування",
+        "description": "Планове обслуговування автомобіля відповідно до регламенту та рекомендацій виробника."
+      },
+      "en": {
+        "title": "Scheduled maintenance",
+        "description": "Routine vehicle maintenance performed according to the manufacturer’s service schedule and recommendations."
+      },
+      "pl": {
+        "title": "Przegląd i obsługa okresowa",
+        "description": "Planowa obsługa samochodu zgodnie z harmonogramem i zaleceniami producenta."
+      }
+    }
+  },
+  {
+    "slug": "oil-fluid-change",
+    "category": "maintenance",
+    "iconKey": "droplets",
+    "featured": false,
+    "sortOrder": 8,
+    "isActive": true,
+    "translations": {
+      "uk": {
+        "title": "Заміна мастил і технічних рідин",
+        "description": "Заміна моторного й трансмісійного мастила, антифризу, гальмівної та інших технічних рідин."
+      },
+      "en": {
+        "title": "Oil and fluid change",
+        "description": "Replacement of engine oil, transmission oil, coolant, brake fluid, and other operating fluids."
+      },
+      "pl": {
+        "title": "Wymiana olejów i płynów",
+        "description": "Wymiana oleju silnikowego i przekładniowego, płynu chłodniczego, hamulcowego oraz innych płynów eksploatacyjnych."
+      }
+    }
+  },
+  {
+    "slug": "timing-drive",
+    "category": "engine-and-transmission",
+    "iconKey": "cog",
+    "featured": false,
+    "sortOrder": 9,
+    "isActive": true,
+    "translations": {
+      "uk": {
+        "title": "Заміна приводу ГРМ",
+        "description": "Перевірка та заміна ременя або ланцюга ГРМ, роликів, натягувачів і водяної помпи."
+      },
+      "en": {
+        "title": "Timing belt and chain service",
+        "description": "Inspection and replacement of timing belts or chains, pulleys, tensioners, and the water pump."
+      },
+      "pl": {
+        "title": "Wymiana rozrządu",
+        "description": "Kontrola i wymiana paska lub łańcucha rozrządu, rolek, napinaczy oraz pompy wody."
+      }
+    }
+  },
+  {
+    "slug": "tire-service",
+    "category": "wheels",
+    "iconKey": "circle-dot",
+    "featured": false,
+    "sortOrder": 10,
+    "isActive": true,
+    "translations": {
+      "uk": {
+        "title": "Шиномонтаж",
+        "description": "Монтаж і демонтаж шин, балансування коліс, ремонт проколів та сезонна заміна комплектів."
+      },
+      "en": {
+        "title": "Tire service",
+        "description": "Tire fitting and removal, wheel balancing, puncture repair, and seasonal tire replacement."
+      },
+      "pl": {
+        "title": "Serwis opon",
+        "description": "Montaż i demontaż opon, wyważanie kół, naprawa przebić oraz sezonowa wymiana ogumienia."
+      }
+    }
+  },
+  {
+    "slug": "wheel-alignment",
+    "category": "wheels",
+    "iconKey": "route",
+    "featured": false,
+    "sortOrder": 11,
+    "isActive": true,
+    "translations": {
+      "uk": {
+        "title": "Розвал-сходження",
+        "description": "Комп’ютерне вимірювання та точне регулювання кутів установлення коліс."
+      },
+      "en": {
+        "title": "Wheel alignment",
+        "description": "Computer-assisted measurement and precise adjustment of wheel alignment angles."
+      },
+      "pl": {
+        "title": "Geometria kół",
+        "description": "Komputerowy pomiar i precyzyjna regulacja kątów ustawienia kół."
+      }
+    }
+  },
+  {
+    "slug": "steering-system",
+    "category": "chassis-and-steering",
+    "iconKey": "gauge",
+    "featured": false,
+    "sortOrder": 12,
+    "isActive": true,
+    "translations": {
+      "uk": {
+        "title": "Ремонт кермового управління",
+        "description": "Діагностика та ремонт кермових рейок, тяг, наконечників і гідравлічних або електричних підсилювачів."
+      },
+      "en": {
+        "title": "Steering system repair",
+        "description": "Diagnostics and repair of steering racks, tie rods, ends, and hydraulic or electric power steering systems."
+      },
+      "pl": {
+        "title": "Naprawa układu kierowniczego",
+        "description": "Diagnostyka i naprawa przekładni kierowniczych, drążków, końcówek oraz wspomagania hydraulicznego lub elektrycznego."
+      }
+    }
+  },
+  {
+    "slug": "climate-systems",
+    "category": "climate",
+    "iconKey": "air-vent",
+    "featured": false,
+    "sortOrder": 13,
+    "isActive": true,
+    "translations": {
+      "uk": {
+        "title": "Кондиціонери та кліматичні системи",
+        "description": "Діагностика, заправлення, очищення й ремонт кондиціонерів та систем клімат-контролю."
+      },
+      "en": {
+        "title": "Air conditioning and climate systems",
+        "description": "Diagnostics, refrigerant recharge, cleaning, and repair of air-conditioning and climate-control systems."
+      },
+      "pl": {
+        "title": "Klimatyzacja i układy klimatyczne",
+        "description": "Diagnostyka, napełnianie, czyszczenie i naprawa klimatyzacji oraz układów automatycznej kontroli temperatury."
+      }
+    }
+  },
+  {
+    "slug": "cooling-system",
+    "category": "engine-and-transmission",
+    "iconKey": "thermometer",
+    "featured": false,
+    "sortOrder": 14,
+    "isActive": true,
+    "translations": {
+      "uk": {
+        "title": "Система охолодження",
+        "description": "Діагностика та ремонт радіаторів, термостатів, помп, вентиляторів і патрубків системи охолодження."
+      },
+      "en": {
+        "title": "Cooling system",
+        "description": "Diagnostics and repair of radiators, thermostats, pumps, fans, and cooling-system hoses."
+      },
+      "pl": {
+        "title": "Układ chłodzenia",
+        "description": "Diagnostyka i naprawa chłodnic, termostatów, pomp, wentylatorów oraz przewodów układu chłodzenia."
+      }
+    }
+  },
+  {
+    "slug": "fuel-system",
+    "category": "engine-and-transmission",
+    "iconKey": "fuel",
+    "featured": false,
+    "sortOrder": 15,
+    "isActive": true,
+    "translations": {
+      "uk": {
+        "title": "Паливна система",
+        "description": "Діагностика й ремонт форсунок, паливних насосів, магістралей і систем подавання пального."
+      },
+      "en": {
+        "title": "Fuel system",
+        "description": "Diagnostics and repair of injectors, fuel pumps, fuel lines, and fuel-delivery systems."
+      },
+      "pl": {
+        "title": "Układ paliwowy",
+        "description": "Diagnostyka i naprawa wtryskiwaczy, pomp paliwa, przewodów oraz układów zasilania paliwem."
+      }
+    }
+  },
+  {
+    "slug": "exhaust-system",
+    "category": "engine-and-transmission",
+    "iconKey": "wind",
+    "featured": false,
+    "sortOrder": 16,
+    "isActive": true,
+    "translations": {
+      "uk": {
+        "title": "Вихлопна система",
+        "description": "Діагностика, ремонт і заміна глушників, каталізаторів, сажових фільтрів та інших компонентів."
+      },
+      "en": {
+        "title": "Exhaust system",
+        "description": "Diagnostics, repair, and replacement of mufflers, catalytic converters, particulate filters, and related components."
+      },
+      "pl": {
+        "title": "Układ wydechowy",
+        "description": "Diagnostyka, naprawa i wymiana tłumików, katalizatorów, filtrów cząstek stałych oraz pozostałych elementów."
+      }
+    }
+  },
+  {
+    "slug": "battery-service",
+    "category": "electrical",
+    "iconKey": "battery-charging",
+    "featured": false,
+    "sortOrder": 17,
+    "isActive": true,
+    "translations": {
+      "uk": {
+        "title": "Обслуговування акумулятора",
+        "description": "Перевірка стану, заряджання, тестування системи заряджання, підбір і заміна акумулятора."
+      },
+      "en": {
+        "title": "Battery service",
+        "description": "Battery condition testing, charging, charging-system inspection, selection, and replacement."
+      },
+      "pl": {
+        "title": "Serwis akumulatora",
+        "description": "Kontrola stanu, ładowanie, test układu ładowania, dobór i wymiana akumulatora."
+      }
+    }
+  },
+  {
+    "slug": "starter-alternator",
+    "category": "electrical",
+    "iconKey": "zap",
+    "featured": false,
+    "sortOrder": 18,
+    "isActive": true,
+    "translations": {
+      "uk": {
+        "title": "Ремонт стартера та генератора",
+        "description": "Діагностика, відновлення й заміна компонентів системи запуску двигуна та заряджання акумулятора."
+      },
+      "en": {
+        "title": "Starter and alternator repair",
+        "description": "Diagnostics, rebuilding, and replacement of engine-starting and battery-charging system components."
+      },
+      "pl": {
+        "title": "Naprawa rozrusznika i alternatora",
+        "description": "Diagnostyka, regeneracja i wymiana elementów układu rozruchowego oraz ładowania akumulatora."
+      }
+    }
+  },
+  {
+    "slug": "pre-purchase-inspection",
+    "category": "diagnostics",
+    "iconKey": "file-check-2",
+    "featured": false,
+    "sortOrder": 19,
+    "isActive": true,
+    "translations": {
+      "uk": {
+        "title": "Перевірка автомобіля перед купівлею",
+        "description": "Комплексна оцінка технічного стану, електроніки, кузова та основних агрегатів автомобіля."
+      },
+      "en": {
+        "title": "Pre-purchase vehicle inspection",
+        "description": "Comprehensive assessment of the vehicle’s technical condition, electronics, bodywork, and major components."
+      },
+      "pl": {
+        "title": "Sprawdzenie samochodu przed zakupem",
+        "description": "Kompleksowa ocena stanu technicznego, elektroniki, nadwozia oraz najważniejszych podzespołów pojazdu."
+      }
+    }
+  },
+  {
+    "slug": "spare-parts",
+    "category": "additional",
+    "iconKey": "package-search",
+    "featured": false,
+    "sortOrder": 20,
+    "isActive": true,
+    "translations": {
+      "uk": {
+        "title": "Підбір і заміна запчастин",
+        "description": "Підбір оригінальних деталей та якісних аналогів за VIN-кодом із подальшим професійним встановленням."
+      },
+      "en": {
+        "title": "Parts selection and replacement",
+        "description": "Selection of original parts and reliable alternatives by VIN, followed by professional installation."
+      },
+      "pl": {
+        "title": "Dobór i wymiana części",
+        "description": "Dobór oryginalnych części i sprawdzonych zamienników według numeru VIN wraz z profesjonalnym montażem."
+      }
+    }
+  },
+  {
+    "slug": "body-repair",
+    "category": "bodywork",
+    "iconKey": "wrench",
+    "featured": false,
+    "sortOrder": 21,
+    "isActive": true,
+    "translations": {
+      "uk": {
+        "title": "Кузовний ремонт",
+        "description": "Відновлення геометрії та кузовних деталей після пошкоджень, деформацій і корозії."
+      },
+      "en": {
+        "title": "Body repair",
+        "description": "Restoration of body geometry and body panels after damage, deformation, or corrosion."
+      },
+      "pl": {
+        "title": "Naprawy blacharskie",
+        "description": "Przywracanie geometrii nadwozia i naprawa elementów po uszkodzeniach, odkształceniach lub korozji."
+      }
+    }
+  },
+  {
+    "slug": "car-painting",
+    "category": "bodywork",
+    "iconKey": "paintbrush",
+    "featured": false,
+    "sortOrder": 22,
+    "isActive": true,
+    "translations": {
+      "uk": {
+        "title": "Фарбування автомобіля",
+        "description": "Локальне або повне фарбування кузова, усунення дефектів і точний комп’ютерний підбір відтінку."
+      },
+      "en": {
+        "title": "Vehicle painting",
+        "description": "Local or complete body painting, defect correction, and precise computer-assisted color matching."
+      },
+      "pl": {
+        "title": "Lakierowanie samochodu",
+        "description": "Miejscowe lub kompleksowe lakierowanie nadwozia, usuwanie wad oraz komputerowy dobór koloru."
+      }
+    }
+  },
+  {
+    "slug": "headlight-restoration",
+    "category": "bodywork",
+    "iconKey": "sparkles",
+    "featured": false,
+    "sortOrder": 23,
+    "isActive": true,
+    "translations": {
+      "uk": {
+        "title": "Відновлення фар",
+        "description": "Полірування, герметизація, відновлення прозорості та покращення світловіддачі автомобільної оптики."
+      },
+      "en": {
+        "title": "Headlight restoration",
+        "description": "Polishing, sealing, clarity restoration, and improvement of automotive lighting performance."
+      },
+      "pl": {
+        "title": "Regeneracja reflektorów",
+        "description": "Polerowanie, uszczelnianie, przywracanie przejrzystości oraz poprawa skuteczności oświetlenia."
+      }
+    }
+  }
+]
