@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 3, "column": 0}, "map": {"version":3,"sources":["turbopack:///apps/web/src/messages/pl/auth.json"],"sourcesContent":["{\"reg\":{\"regBtn\":\"Zarejestruj się\"},\"login\":{\"loginBtn\":\"Zaloguj się\",\"loginField\":{\"email\":\"Podaj swój adres e-mail\",\"pwd\":\"Wprowadź swoje hasło\"}}}"],"names":[],"mappings":""}}]
+}

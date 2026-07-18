@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 3, "column": 0}, "map": {"version":3,"sources":["turbopack:///apps/web/src/messages/pl/clients.json"],"sourcesContent":["{\"title\":\"Klienci\"}"],"names":[],"mappings":""}}]
+}

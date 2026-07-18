@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 3, "column": 0}, "map": {"version":3,"sources":["turbopack:///apps/web/src/messages/en/mobile-menu.json"],"sourcesContent":["{\"open\":\"Open menu\",\"close\":\"Close menu\",\"home\":\"Go to the home page\",\"call\":\"Call us\",\"noAccount\":\"Don't have an account yet?\",\"language\":\"Language\",\"theme\":\"Theme\",\"navigation\":{\"why-us\":\"Why Choose Our Service\",\"services\":\"Auto Service Services\",\"diagnostics\":\"Professional Diagnostics\",\"completed-works\":\"Completed Work\",\"specialists\":\"Our Specialists\",\"repair-process\":\"How the Repair Process Works\",\"warranty\":\"Warranty and Standards\",\"reviews\":\"Customer Reviews\",\"booking\":\"Book a Service\",\"contacts\":\"Contacts\",\"label\":\"Main navigation\"}}"],"names":[],"mappings":""}}]
+}

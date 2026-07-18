@@ -1,0 +1,29 @@
+module.exports = [
+"[project]/apps/web/src/messages/pl/mobile-menu.json.[json].cjs [app-rsc] (ecmascript)", ((__turbopack_context__, module, exports) => {
+
+module.exports = {
+    "open": "Otwórz menu",
+    "close": "Zamknij menu",
+    "home": "Przejdź do strony głównej",
+    "call": "Zadzwoń do nas",
+    "noAccount": "Nie masz jeszcze konta?",
+    "language": "Język",
+    "theme": "Motyw",
+    "navigation": {
+        "why-us": "Dlaczego warto wybrać nasz serwis",
+        "services": "Usługi serwisu samochodowego",
+        "diagnostics": "Profesjonalna diagnostyka",
+        "completed-works": "Wykonane prace",
+        "specialists": "Nasi specjaliści",
+        "repair-process": "Jak przebiega naprawa",
+        "warranty": "Gwarancja i standardy",
+        "reviews": "Opinie klientów",
+        "booking": "Umów wizytę w serwisie",
+        "contacts": "Kontakt",
+        "label": "Główna nawigacja"
+    }
+};
+}),
+];
+
+//# sourceMappingURL=apps_web_src_messages_pl_mobile-menu_json_%5Bjson%5D_cjs_0vcf598._.js.map
