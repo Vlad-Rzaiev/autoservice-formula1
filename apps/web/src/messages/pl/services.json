@@ -1,0 +1,14 @@
+{
+  "allServices": {
+    "title": "All services page"
+  },
+  "servicePage": {
+    "title": "Strona usługi",
+    "loading-title": "Proszę czekać",
+    "error-title": "Nie udało się załadować usługi",
+    "error-description": "Sprawdź połączenie z internetem i spróbuj ponownie.",
+    "retry": "Spróbuj ponownie",
+    "empty-title": "Ta usługa jest obecnie niedostępna",
+    "empty-description": "Aktualizujemy listę usług. Sprawdź tę stronę ponownie nieco później."
+  }
+}

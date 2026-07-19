@@ -1,7 +1,10 @@
 "use client";
 
 import { useQuery } from "@tanstack/react-query";
-import { servicesQueryOptions } from "@/app/[locale]/(marketing)/services/api/services-query-options";
+import {
+  serviceByIdQueryOptions,
+  servicesQueryOptions,
+} from "@/app/[locale]/(marketing)/services/api/services-query-options";
 import {
   selectActiveServices,
   selectFeaturedServices,
@@ -19,4 +22,8 @@ export function useFeaturedServices() {
     ...servicesQueryOptions,
     select: selectFeaturedServices,
   });
+}
+
+export function useServiceById(serviceId: string) {
+  return useQuery(serviceByIdQueryOptions(serviceId));
 }

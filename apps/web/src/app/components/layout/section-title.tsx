@@ -10,7 +10,7 @@ export default function SectionTitle({
   className = "",
 }: SectionTitleProps) {
   return (
-    <div className={`flex flex-col items-center gap-4 pt-8 ${className}`}>
+    <div className={`flex flex-col items-center gap-4 pt-6 ${className}`}>
       <h2 className="max-w-3xl text-center text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl lg:text-5xl dark:text-zinc-100">
         {children}
       </h2>

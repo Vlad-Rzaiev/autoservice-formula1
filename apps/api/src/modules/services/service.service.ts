@@ -5,3 +5,9 @@ export const getAllServices = async () => {
 
   return services;
 };
+
+export const getServiceById = async (serviceId: string) => {
+  const service = await ServiceCollection.findById(serviceId);
+
+  return service;
+};

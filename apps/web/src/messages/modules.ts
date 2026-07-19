@@ -5,6 +5,7 @@ export const translationModules = [
   "marketing",
   "metadata",
   "mobile-menu",
+  "services",
 ] as const;
 
 export type TranslationModule = (typeof translationModules)[number];
