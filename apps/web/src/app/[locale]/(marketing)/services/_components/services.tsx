@@ -13,6 +13,9 @@ import { serviceIconMap } from "@/app/[locale]/(marketing)/services/lib/service-
 import Section from "@/app/components/layout/section";
 import Container from "@/app/components/layout/container";
 import SectionTitle from "@/app/components/layout/section-title";
+import LoadingState from "@/app/components/states/loading-state";
+import ErrorState from "@/app/components/states/error-state";
+import EmptyState from "@/app/components/states/empty-state";
 
 function isServiceLocale(locale: string): locale is ServiceLocale {
   return serviceLocales.includes(locale as ServiceLocale);
@@ -30,42 +33,11 @@ export default function Services({}: ServicesProps) {
     data: services = [],
     isPending,
     isError,
+    isFetching,
     refetch,
   } = useFeaturedServices();
 
   const currentLocale: ServiceLocale = isServiceLocale(locale) ? locale : "uk";
-
-  if (isPending) {
-    return (
-      <p className="mt-10 text-center text-muted-foreground">
-        {t("marketing.services.loading")}
-      </p>
-    );
-  }
-
-  if (isError) {
-    return (
-      <div className="mt-10 text-center">
-        <p className="text-destructive">{t("marketing.services.error")}</p>
-
-        <button
-          type="button"
-          className="mt-4 rounded-xl bg-primary px-5 py-3 text-primary-foreground"
-          onClick={() => refetch()}
-        >
-          {t("marketing.services.retry")}
-        </button>
-      </div>
-    );
-  }
-
-  if (services.length === 0) {
-    return (
-      <p className="mt-10 text-center text-muted-foreground">
-        {t("marketing.services.empty")}
-      </p>
-    );
-  }
 
   return (
     <Section id="services">
@@ -78,15 +50,33 @@ export default function Services({}: ServicesProps) {
           </p>
         </div>
 
-        <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:mt-14 lg:grid-cols-3 lg:gap-6">
-          {services.map((service) => {
-            const Icon = serviceIconMap[service.iconKey] ?? Wrench;
-            const serviceTranslation = service.translations[currentLocale];
+        {isPending ? (
+          <LoadingState title={t("marketing.loading-state.loading-title")} />
+        ) : isError ? (
+          <ErrorState
+            title={t("marketing.loading-state.error-title")}
+            description={t("marketing.loading-state.error-description")}
+            retryLabel={t("marketing.loading-state.retry")}
+            isRetrying={isFetching}
+            onRetry={() => void refetch()}
+          />
+        ) : services.length === 0 ? (
+          <EmptyState
+            title={t("marketing.loading-state.empty-title")}
+            description={t("marketing.loading-state.empty-description")}
+            icon={Wrench}
+          />
+        ) : (
+          <>
+            <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:mt-14 lg:grid-cols-3 lg:gap-6">
+              {services.map((service) => {
+                const Icon = serviceIconMap[service.iconKey] ?? Wrench;
+                const serviceTranslation = service.translations[currentLocale];
 
-            return (
-              <li
-                key={service._id}
-                className="
+                return (
+                  <li
+                    key={service._id}
+                    className="
                   group relative flex min-h-64 flex-col overflow-hidden
                   rounded-2xl border border-border bg-surface p-6
                   shadow-sm transition-all duration-300
@@ -95,29 +85,29 @@ export default function Services({}: ServicesProps) {
                   hover:shadow-[0_20px_45px_-24px_rgba(220,38,38,0.45)]
                   sm:p-7
                 "
-              >
-                <span
-                  aria-hidden="true"
-                  className="
+                  >
+                    <span
+                      aria-hidden="true"
+                      className="
                     absolute inset-x-0 top-0 h-1
                     origin-left scale-x-0 bg-red-600
                     transition-transform duration-300
                     group-hover:scale-x-100
                   "
-                />
+                    />
 
-                <span
-                  aria-hidden="true"
-                  className="
+                    <span
+                      aria-hidden="true"
+                      className="
                     absolute -right-20 -top-20 size-44 rounded-full
                     bg-red-500/0 blur-3xl
                     transition-colors duration-300
                     group-hover:bg-red-500/10
                   "
-                />
+                    />
 
-                <div
-                  className="
+                    <div
+                      className="
                     relative flex size-12 items-center justify-center
                     rounded-xl border border-red-500/20
                     bg-red-500/10 text-red-600
@@ -128,39 +118,39 @@ export default function Services({}: ServicesProps) {
                     group-hover:text-white
                     dark:group-hover:text-white
                   "
-                >
-                  <Icon
-                    aria-hidden="true"
-                    className="size-6"
-                    strokeWidth={1.8}
-                  />
-                </div>
+                    >
+                      <Icon
+                        aria-hidden="true"
+                        className="size-6"
+                        strokeWidth={1.8}
+                      />
+                    </div>
 
-                <div className="relative mt-7">
-                  <h3
-                    className="
+                    <div className="relative mt-7">
+                      <h3
+                        className="
                       text-xl font-semibold tracking-tight text-foreground
                       transition-colors duration-300
                       group-hover:text-red-600
                       dark:group-hover:text-red-400
                     "
-                  >
-                    {serviceTranslation.title}
-                  </h3>
+                      >
+                        {serviceTranslation.title}
+                      </h3>
 
-                  <p className="mt-3 text-sm leading-6 text-muted-foreground sm:text-base">
-                    {serviceTranslation.description}
-                  </p>
-                </div>
-              </li>
-            );
-          })}
-        </ul>
+                      <p className="mt-3 text-sm leading-6 text-muted-foreground sm:text-base">
+                        {serviceTranslation.description}
+                      </p>
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
 
-        <div className="mt-10 flex justify-center lg:mt-14">
-          <Link
-            href="/services"
-            className="
+            <div className="mt-10 flex justify-center lg:mt-14">
+              <Link
+                href="/services"
+                className="
               group inline-flex min-h-12 items-center justify-center gap-2
               rounded-xl bg-red-600 px-6 py-3
               text-sm font-semibold text-white
@@ -177,15 +167,17 @@ export default function Services({}: ServicesProps) {
               focus-visible:ring-offset-2
               focus-visible:ring-offset-background
             "
-          >
-            {t("marketing.services.view-all")}
+              >
+                {t("marketing.services.view-all")}
 
-            <ArrowRight
-              aria-hidden="true"
-              className="size-4 transition-transform duration-200 group-hover:translate-x-1"
-            />
-          </Link>
-        </div>
+                <ArrowRight
+                  aria-hidden="true"
+                  className="size-4 transition-transform duration-200 group-hover:translate-x-1"
+                />
+              </Link>
+            </div>
+          </>
+        )}
       </Container>
     </Section>
   );

@@ -66,12 +66,12 @@ export default function Header() {
           <div className="flex items-center gap-5">
             <a
               className="inline-flex items-center gap-2
-    transition-colors duration-200
-    hover:text-red-500
-    focus-visible:rounded-md
-    focus-visible:outline-none
-    focus-visible:ring-2
-    focus-visible:ring-ring"
+                transition-colors duration-200
+                hover:text-red-500
+                focus-visible:rounded-md
+                focus-visible:outline-none
+                focus-visible:ring-2
+                focus-visible:ring-ring"
               href={t("marketing.header.contacts.mapHref")}
               target="_blank"
             >
@@ -192,6 +192,8 @@ export default function Header() {
               rounded-xl border border-border
               bg-surface text-foreground
               transition-colors duration-200
+              hover:-translate-y-0.5
+              hover:bg-foreground/5
               hover:border-red-500/40
               hover:text-red-500
               focus-visible:outline-none
