@@ -1,6 +1,32 @@
 {
   "allServices": {
-    "title": "All services page"
+    "title": "All Services",
+    "hero": {
+      "eyebrow": "Auto Repair Services",
+      "title": "Complete <accent>vehicle maintenance</accent> and repair",
+      "description": "We provide professional diagnostics, maintenance, and repairs for vehicles of any complexity. Before starting any work, we explain the cause of the issue and agree on the cost and completion time.",
+      "call": "Call us",
+      "phoneHref": "tel:+48777777777",
+      "booking": "Book a service appointment",
+      "services-count": "Available services: {count}",
+      "benefits": {
+        "diagnostics": "We begin with accurate diagnostics",
+        "approval": "We agree on the work and cost before starting repairs",
+        "warranty": "We provide a warranty on completed work"
+      }
+    },
+    "cta": {
+      "eyebrow": "Need help from a technician?",
+      "title": "Not sure which service you need?",
+      "description": "Book a diagnostic appointment. A technician will inspect your vehicle, identify the cause of the issue, and agree with you on the scope of work, cost, and completion time.",
+      "booking": "Book a diagnostic appointment",
+      "call": "Call us",
+      "benefits": {
+        "diagnostics": "Diagnostics before repair",
+        "approval": "Cost approval",
+        "warranty": "Warranty on completed work"
+      }
+    }
   },
   "servicePage": {
     "title": "Service Page",

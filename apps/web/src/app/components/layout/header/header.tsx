@@ -53,7 +53,10 @@ export default function Header() {
                 focus-visible:ring-ring
               "
             >
-              <Phone className="size-3.5" aria-hidden="true" />
+              <Phone
+                className="size-3.5 animate-phone-ring motion-reduce:animate-none"
+                aria-hidden="true"
+              />
               <span>{t("marketing.header.contacts.phone")}</span>
             </a>
 
@@ -201,7 +204,10 @@ export default function Header() {
               focus-visible:ring-ring
             "
           >
-            <Phone className="size-4.5" aria-hidden="true" />
+            <Phone
+              className="size-4.5 animate-phone-ring motion-reduce:animate-none"
+              aria-hidden="true"
+            />
           </a>
 
           <div className="hidden sm:block">

@@ -1,6 +1,32 @@
 {
   "allServices": {
-    "title": "All services page"
+    "title": "Wszystkie usługi",
+    "hero": {
+      "eyebrow": "Usługi serwisu samochodowego",
+      "title": "Kompleksowa <accent>obsługa techniczna</accent> i naprawa",
+      "description": "Wykonujemy profesjonalną diagnostykę, obsługę techniczną oraz naprawy samochodów o każdym stopniu złożoności. Przed rozpoczęciem prac wyjaśniamy przyczynę usterki oraz uzgadniamy koszt i termin realizacji.",
+      "call": "Zadzwoń do nas",
+      "phoneHref": "tel:+48777777777",
+      "booking": "Umów wizytę w serwisie",
+      "services-count": "Dostępne usługi: {count}",
+      "benefits": {
+        "diagnostics": "Zaczynamy od precyzyjnej diagnostyki",
+        "approval": "Zakres prac i koszt uzgadniamy przed rozpoczęciem naprawy",
+        "warranty": "Udzielamy gwarancji na wykonane prace"
+      }
+    },
+    "cta": {
+      "eyebrow": "Potrzebujesz pomocy mechanika?",
+      "title": "Nie wiesz, jakiej usługi potrzebujesz?",
+      "description": "Umów się na diagnostykę. Mechanik sprawdzi samochód, ustali przyczynę usterki oraz uzgodni z Tobą zakres prac, koszt i termin realizacji.",
+      "booking": "Umów się na diagnostykę",
+      "call": "Zadzwoń do nas",
+      "benefits": {
+        "diagnostics": "Diagnostyka przed naprawą",
+        "approval": "Uzgodnienie kosztu",
+        "warranty": "Gwarancja na wykonane prace"
+      }
+    }
   },
   "servicePage": {
     "title": "Strona usługi",

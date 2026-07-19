@@ -239,7 +239,10 @@ export default function MobileMenu() {
                   group-hover:text-white
                 "
               >
-                <Phone className="size-4.5" aria-hidden="true" />
+                <Phone
+                  className="size-4.5 animate-phone-ring motion-reduce:animate-none"
+                  aria-hidden="true"
+                />
               </span>
 
               <span className="flex min-w-0 flex-col">
