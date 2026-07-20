@@ -1,4 +1,11 @@
 {
   "title": "Formula 1 — Auto Service",
-  "description": "A system for managing an auto repair shop, clients, and repairs"
+  "description": "A system for managing an auto repair shop, clients, and repairs",
+  "og": {
+    "title": "Formula 1 — professional auto service",
+    "description": "Professional diagnostics, maintenance and vehicle repair of any complexity.",
+    "image": "/og/og-en.png",
+    "imageAlt": "Formula 1 — professional car repair",
+    "openGraphLocale": "en_US"
+  }
 }

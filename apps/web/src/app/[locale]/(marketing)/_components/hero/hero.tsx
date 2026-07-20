@@ -1,8 +1,8 @@
+import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 import Container from "@/app/components/layout/container";
 import styles from "./hero.module.css";
-import { Link } from "@/i18n/navigation";
 
 export default function Hero() {
   const t = useTranslations();

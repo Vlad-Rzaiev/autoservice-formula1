@@ -2,6 +2,7 @@
 
 import React from "react";
 import { useTranslations } from "next-intl";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Section from "@/app/components/layout/section";
 import Container from "@/app/components/layout/container";
 import SectionTitle from "@/app/components/layout/section-title";
@@ -21,8 +22,6 @@ export default function WhyUs({}: WhyUsProps) {
 
         <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:mt-14 lg:grid-cols-4 lg:gap-6">
           {cardsItems.map((item) => {
-            const Icon = item.icon;
-
             return (
               <li
                 key={item.id}
@@ -70,11 +69,7 @@ export default function WhyUs({}: WhyUsProps) {
                     dark:group-hover:text-white
                   "
                 >
-                  <Icon
-                    aria-hidden="true"
-                    strokeWidth={1.8}
-                    className="size-6"
-                  />
+                  <FontAwesomeIcon icon={item.icon} className="text-3xl" />
                 </div>
 
                 <div className="relative mt-auto">
