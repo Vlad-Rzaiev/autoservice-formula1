@@ -1,5 +1,6 @@
 export const translationModules = [
   "auth",
+  "booking",
   "clients",
   "dashboard",
   "marketing",

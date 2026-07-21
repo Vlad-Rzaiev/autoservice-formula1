@@ -1,7 +1,12 @@
 "use client";
 
 import React from "react";
-import { ArrowUp } from "lucide-react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faArrowUp,
+  faRightToBracket,
+  faUserPlus,
+} from "@fortawesome/free-solid-svg-icons";
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import { navItems } from "@/app/components/layout/header/navigation";
@@ -110,6 +115,15 @@ export default function Footer({}: FooterProps) {
                   focus-visible:ring-offset-2
                 "
               >
+                <FontAwesomeIcon
+                  icon={faRightToBracket}
+                  aria-hidden="true"
+                  className="
+                    h-4 w-4 shrink-0 pr-2
+                    transition-transform duration-200
+                    group-hover:translate-x-0.5
+                  "
+                />
                 {t("auth.login.loginBtn")}
               </Link>
 
@@ -130,6 +144,15 @@ export default function Footer({}: FooterProps) {
                   focus-visible:ring-offset-2
                 "
               >
+                <FontAwesomeIcon
+                  icon={faUserPlus}
+                  aria-hidden="true"
+                  className="
+                    h-4 w-4 shrink-0 pr-2
+                    transition-transform duration-200
+                    group-hover:scale-110
+                  "
+                />
                 {t("auth.reg.regBtn")}
               </Link>
             </div>
@@ -162,9 +185,14 @@ export default function Footer({}: FooterProps) {
           >
             {t("marketing.footer.backToTop")}
 
-            <ArrowUp
+            <FontAwesomeIcon
+              icon={faArrowUp}
               aria-hidden="true"
-              className="size-4 transition-transform duration-200 group-hover:-translate-y-1"
+              className="
+                h-4 w-4 shrink-0
+                transition-transform duration-200
+                group-hover:-translate-y-1
+              "
             />
           </Link>
         </div>

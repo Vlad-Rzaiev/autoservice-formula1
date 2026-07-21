@@ -2,18 +2,20 @@
 
 import { useEffect } from "react";
 import { useMobileMenu } from "@/providers/mobile-menu-provider";
-import {
-  CalendarDays,
-  ChevronRight,
-  Clock3,
-  LogIn,
-  MapPin,
-  Menu,
-  Phone,
-  X,
-} from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faBarsStaggered,
+  faCalendarCheck,
+  faChevronRight,
+  faClock,
+  faLocationDot,
+  faPhoneVolume,
+  faRightToBracket,
+  faXmark,
+} from "@fortawesome/free-solid-svg-icons";
 
 import LangSwitcher from "@/app/components/locale/lang-switcher";
 import ThemeSwitcher from "@/app/components/theme/theme-switcher";
@@ -94,7 +96,8 @@ export default function MobileMenu() {
               "
             />
 
-            <Menu
+            <FontAwesomeIcon
+              icon={faBarsStaggered}
               aria-hidden="true"
               className="
                 relative size-5
@@ -174,19 +177,20 @@ export default function MobileMenu() {
                   focus-visible:ring-offset-2
                   focus-visible:ring-offset-background
                 "
-              />
+              >
+                <FontAwesomeIcon
+                  icon={faXmark}
+                  aria-hidden="true"
+                  className="
+                    h-5 w-5
+                    transition-transform duration-200
+                    group-hover:rotate-90
+                    group-hover:scale-110
+                  "
+                />
+              </button>
             }
-          >
-            <X
-              aria-hidden="true"
-              className="
-                size-5
-                transition-transform duration-200
-                group-hover:rotate-90
-                group-hover:scale-110
-              "
-            />
-          </DrawerClose>
+          ></DrawerClose>
 
           <span
             aria-hidden="true"
@@ -239,9 +243,14 @@ export default function MobileMenu() {
                   group-hover:text-white
                 "
               >
-                <Phone
-                  className="size-4.5 animate-phone-ring motion-reduce:animate-none"
+                <FontAwesomeIcon
+                  icon={faPhoneVolume}
                   aria-hidden="true"
+                  className="
+                    h-4.5 w-4.5
+                    animate-phone-ring
+                    motion-reduce:animate-none
+                  "
                 />
               </span>
 
@@ -270,9 +279,10 @@ export default function MobileMenu() {
                   text-sm leading-5 text-foreground/65
                 "
               >
-                <Clock3
-                  className="mt-0.5 size-4 shrink-0 text-red-500"
+                <FontAwesomeIcon
+                  icon={faClock}
                   aria-hidden="true"
+                  className="mt-0.5 h-4 w-4 shrink-0 text-red-500"
                 />
 
                 <span>{t("marketing.header.contacts.hours")}</span>
@@ -292,9 +302,10 @@ export default function MobileMenu() {
                   focus-visible:ring-ring
                 "
               >
-                <MapPin
-                  className="mt-0.5 size-4 shrink-0 text-red-500"
+                <FontAwesomeIcon
+                  icon={faLocationDot}
                   aria-hidden="true"
+                  className="mt-0.5 h-4 w-4 shrink-0 text-red-500"
                 />
 
                 <span>{t("marketing.header.contacts.address")}</span>
@@ -356,10 +367,12 @@ export default function MobileMenu() {
                       {t(item.translationKey)}
                     </span>
 
-                    <ChevronRight
+                    <FontAwesomeIcon
+                      icon={faChevronRight}
                       aria-hidden="true"
                       className="
-                        size-4 shrink-0 text-foreground/35
+                        h-3.5 w-3.5 shrink-0
+                        text-foreground/35
                         transition-all duration-200
                         group-hover:translate-x-1
                         group-hover:text-red-500
@@ -395,7 +408,11 @@ export default function MobileMenu() {
                 focus-visible:ring-offset-background
               "
             >
-              <CalendarDays className="size-5" aria-hidden="true" />
+              <FontAwesomeIcon
+                icon={faCalendarCheck}
+                aria-hidden="true"
+                className="h-5 w-5"
+              />
               {t("marketing.header.actions.booking")}
             </Link>
 
@@ -420,7 +437,11 @@ export default function MobileMenu() {
                 focus-visible:ring-offset-background
               "
             >
-              <LogIn className="size-5" aria-hidden="true" />
+              <FontAwesomeIcon
+                icon={faRightToBracket}
+                aria-hidden="true"
+                className="h-5 w-5"
+              />
               {t("marketing.header.actions.account")}
             </Link>
 

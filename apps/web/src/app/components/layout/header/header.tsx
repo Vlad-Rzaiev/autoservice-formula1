@@ -1,6 +1,13 @@
 "use client";
 
-import { CalendarDays, Clock3, LogIn, MapPin, Phone } from "lucide-react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faPhoneVolume,
+  faClock,
+  faLocationDot,
+  faRightToBracket,
+  faCalendarCheck,
+} from "@fortawesome/free-solid-svg-icons";
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 
@@ -53,15 +60,20 @@ export default function Header() {
                 focus-visible:ring-ring
               "
             >
-              <Phone
-                className="size-3.5 animate-phone-ring motion-reduce:animate-none"
+              <FontAwesomeIcon
+                className="h-3.5 w-3.5 shrink-0 animate-phone-ring motion-reduce:animate-none"
+                icon={faPhoneVolume}
                 aria-hidden="true"
               />
               <span>{t("marketing.header.contacts.phone")}</span>
             </a>
 
             <span className="inline-flex items-center gap-2">
-              <Clock3 className="size-3.5" aria-hidden="true" />
+              <FontAwesomeIcon
+                className="h-3.5 w-3.5 shrink-0"
+                icon={faClock}
+                aria-hidden="true"
+              />
               {t("marketing.header.contacts.hours")}
             </span>
           </div>
@@ -78,7 +90,11 @@ export default function Header() {
               href={t("marketing.header.contacts.mapHref")}
               target="_blank"
             >
-              <MapPin className="size-3.5" aria-hidden="true" />
+              <FontAwesomeIcon
+                className="h-3.5 w-3.5 shrink-0"
+                icon={faLocationDot}
+                aria-hidden="true"
+              />
               {t("marketing.header.contacts.address")}
             </a>
 
@@ -95,7 +111,11 @@ export default function Header() {
                 focus-visible:ring-ring
               "
             >
-              <LogIn className="size-3.5" aria-hidden="true" />
+              <FontAwesomeIcon
+                className="h-3.5 w-3.5 shrink-0"
+                icon={faRightToBracket}
+                aria-hidden="true"
+              />
               {t("marketing.header.actions.account")}
             </Link>
           </div>
@@ -181,7 +201,11 @@ export default function Header() {
               focus-visible:ring-offset-background
             "
           >
-            <CalendarDays className="size-4" aria-hidden="true" />
+            <FontAwesomeIcon
+              className="h-4 w-4 shrink-0"
+              icon={faCalendarCheck}
+              aria-hidden="true"
+            />
             {t("marketing.header.actions.booking")}
           </Link>
         </div>
@@ -191,7 +215,7 @@ export default function Header() {
             href={t("marketing.header.contacts.phoneHref")}
             aria-label={t("marketing.header.contacts.phone")}
             className="
-              inline-flex size-9 items-center justify-center
+              inline-flex size-9.5 items-center justify-center
               rounded-xl border border-border
               bg-surface text-foreground
               transition-colors duration-200
@@ -204,8 +228,9 @@ export default function Header() {
               focus-visible:ring-ring
             "
           >
-            <Phone
-              className="size-4.5 animate-phone-ring motion-reduce:animate-none"
+            <FontAwesomeIcon
+              className="h-4 w-4 shrink-0 animate-phone-ring motion-reduce:animate-none"
+              icon={faPhoneVolume}
               aria-hidden="true"
             />
           </a>

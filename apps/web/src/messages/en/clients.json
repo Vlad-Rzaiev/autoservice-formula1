@@ -1,3 +1,8 @@
 {
-  "title": "Clients"
+  "title": "All Clients Page",
+  "dev": "In Development...",
+  "back-to-main": "Back to home",
+  "client": {
+    "title": "Client page with id"
+  }
 }

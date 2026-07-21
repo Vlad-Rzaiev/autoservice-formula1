@@ -1,3 +1,8 @@
 {
-  "title": "Klienci"
+  "title": "Strona wszystkich klientów",
+  "dev": "W trakcie tworzenia...",
+  "back-to-main": "Wróć na stronę główną",
+  "client": {
+    "title": "Strona klijenta z id"
+  }
 }

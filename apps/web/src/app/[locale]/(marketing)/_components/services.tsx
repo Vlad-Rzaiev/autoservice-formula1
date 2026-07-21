@@ -25,6 +25,8 @@ export default function Services({}: ServicesProps) {
     refetch,
   } = useFeaturedServices();
 
+  const hasLoadedServices = !isPending && !isError && services.length > 0;
+
   return (
     <Section id="services">
       <Container>
@@ -44,10 +46,11 @@ export default function Services({}: ServicesProps) {
           refetch={refetch}
         />
 
-        <div className="flex justify-center">
-          <Link
-            href="/services"
-            className="
+        {hasLoadedServices && (
+          <div className="flex justify-center">
+            <Link
+              href="/services"
+              className="
               group inline-flex min-h-12 items-center justify-center gap-2
               rounded-xl bg-red-600 px-6 py-3
               text-sm font-semibold text-white
@@ -64,15 +67,16 @@ export default function Services({}: ServicesProps) {
               focus-visible:ring-offset-2
               focus-visible:ring-offset-background
             "
-          >
-            {t("marketing.services.view-all")}
+            >
+              {t("marketing.services.view-all")}
 
-            <ArrowRight
-              aria-hidden="true"
-              className="size-4 transition-transform duration-200 group-hover:translate-x-1"
-            />
-          </Link>
-        </div>
+              <ArrowRight
+                aria-hidden="true"
+                className="size-4 transition-transform duration-200 group-hover:translate-x-1"
+              />
+            </Link>
+          </div>
+        )}
       </Container>
     </Section>
   );
