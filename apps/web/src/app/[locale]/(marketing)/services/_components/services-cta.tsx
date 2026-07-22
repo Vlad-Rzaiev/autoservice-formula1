@@ -114,8 +114,6 @@ export default function ServicesCta() {
                 "
               >
                 {ctaBenefits.map((benefit) => {
-                  const BenefitIcon = benefit.icon;
-
                   return (
                     <li
                       key={benefit.translationKey}
