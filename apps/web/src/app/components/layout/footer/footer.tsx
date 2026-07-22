@@ -119,7 +119,7 @@ export default function Footer({}: FooterProps) {
                   icon={faRightToBracket}
                   aria-hidden="true"
                   className="
-                    h-4 w-4 shrink-0 pr-2
+                    text-xl shrink-0 pr-2
                     transition-transform duration-200
                     group-hover:translate-x-0.5
                   "
@@ -148,7 +148,7 @@ export default function Footer({}: FooterProps) {
                   icon={faUserPlus}
                   aria-hidden="true"
                   className="
-                    h-4 w-4 shrink-0 pr-2
+                    text-xl shrink-0 pr-2
                     transition-transform duration-200
                     group-hover:scale-110
                   "
@@ -189,7 +189,7 @@ export default function Footer({}: FooterProps) {
               icon={faArrowUp}
               aria-hidden="true"
               className="
-                h-4 w-4 shrink-0
+                text-sm shrink-0
                 transition-transform duration-200
                 group-hover:-translate-y-1
               "

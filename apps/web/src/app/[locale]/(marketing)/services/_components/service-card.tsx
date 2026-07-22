@@ -1,7 +1,10 @@
 "use client";
 
-import { Wrench } from "lucide-react";
-import { serviceIconMap } from "@/app/[locale]/(marketing)/services/lib/service-icon-map";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  defaultServiceIcon,
+  serviceIconMap,
+} from "@/app/[locale]/(marketing)/services/lib/service-icon-map";
 import { Link } from "@/i18n/navigation";
 
 export interface ServiceCardProps {
@@ -17,7 +20,7 @@ export default function ServiceCard({
   title,
   description,
 }: ServiceCardProps) {
-  const Icon = serviceIconMap[icon] ?? Wrench;
+  const serviceIcon = serviceIconMap[icon] ?? defaultServiceIcon;
 
   return (
     <li
@@ -64,7 +67,11 @@ export default function ServiceCard({
             dark:group-hover:text-white
             "
         >
-          <Icon aria-hidden="true" className="size-6" strokeWidth={1.8} />
+          <FontAwesomeIcon
+            icon={serviceIcon}
+            aria-hidden="true"
+            className="shrink-0 text-2xl"
+          />
         </div>
 
         <div className="relative mt-7">
@@ -79,7 +86,7 @@ export default function ServiceCard({
             {title}
           </h3>
 
-          <p className="mt-3 text-sm leading-6 text-muted-foreground              sm:text-base">
+          <p className="mt-3 text-sm leading-6 text-muted-foreground sm:text-base">
             {description}
           </p>
         </div>

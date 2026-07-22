@@ -61,7 +61,7 @@ export default function Header() {
               "
             >
               <FontAwesomeIcon
-                className="h-3.5 w-3.5 shrink-0 animate-phone-ring motion-reduce:animate-none"
+                className="text-sm shrink-0 animate-phone-ring motion-reduce:animate-none"
                 icon={faPhoneVolume}
                 aria-hidden="true"
               />
@@ -70,7 +70,7 @@ export default function Header() {
 
             <span className="inline-flex items-center gap-2">
               <FontAwesomeIcon
-                className="h-3.5 w-3.5 shrink-0"
+                className="text-sm shrink-0"
                 icon={faClock}
                 aria-hidden="true"
               />
@@ -91,7 +91,7 @@ export default function Header() {
               target="_blank"
             >
               <FontAwesomeIcon
-                className="h-3.5 w-3.5 shrink-0"
+                className="text-sm shrink-0"
                 icon={faLocationDot}
                 aria-hidden="true"
               />
@@ -112,7 +112,7 @@ export default function Header() {
               "
             >
               <FontAwesomeIcon
-                className="h-3.5 w-3.5 shrink-0"
+                className="text-sm shrink-0"
                 icon={faRightToBracket}
                 aria-hidden="true"
               />
@@ -202,7 +202,7 @@ export default function Header() {
             "
           >
             <FontAwesomeIcon
-              className="h-4 w-4 shrink-0"
+              className="text-lg shrink-0"
               icon={faCalendarCheck}
               aria-hidden="true"
             />
@@ -229,7 +229,7 @@ export default function Header() {
             "
           >
             <FontAwesomeIcon
-              className="h-4 w-4 shrink-0 animate-phone-ring motion-reduce:animate-none"
+              className="text-lg shrink-0 animate-phone-ring motion-reduce:animate-none"
               icon={faPhoneVolume}
               aria-hidden="true"
             />

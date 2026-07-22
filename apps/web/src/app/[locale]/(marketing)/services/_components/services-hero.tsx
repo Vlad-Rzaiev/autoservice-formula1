@@ -1,12 +1,14 @@
+import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  CalendarDays,
-  CarFront,
-  Check,
-  Phone,
-  ScanSearch,
-  ShieldCheck,
-  Wrench,
-} from "lucide-react";
+  faCalendarCheck,
+  faCarSide,
+  faClipboardCheck,
+  faMagnifyingGlassChart,
+  faPhoneVolume,
+  faScrewdriverWrench,
+  faShieldHalved,
+} from "@fortawesome/free-solid-svg-icons";
 import { useTranslations } from "next-intl";
 
 import { Link } from "@/i18n/navigation";
@@ -17,20 +19,27 @@ interface ServicesHeroProps {
   servicesCount?: number;
 }
 
+type BenefitTranslationKey = "diagnostics" | "approval" | "warranty";
+
+interface BenefitItem {
+  translationKey: BenefitTranslationKey;
+  icon: IconDefinition;
+}
+
 const benefits = [
   {
     translationKey: "diagnostics",
-    icon: ScanSearch,
+    icon: faMagnifyingGlassChart,
   },
   {
     translationKey: "approval",
-    icon: Check,
+    icon: faClipboardCheck,
   },
   {
     translationKey: "warranty",
-    icon: ShieldCheck,
+    icon: faShieldHalved,
   },
-] as const;
+] as const satisfies readonly BenefitItem[];
 
 export default function ServicesHero({ servicesCount }: ServicesHeroProps) {
   const t = useTranslations("services.allServices.hero");
@@ -70,7 +79,11 @@ export default function ServicesHero({ servicesCount }: ServicesHeroProps) {
                 dark:text-red-400
               "
             >
-              <Wrench className="size-4" aria-hidden="true" />
+              <FontAwesomeIcon
+                icon={faScrewdriverWrench}
+                aria-hidden="true"
+                className="shrink-0 text-sm"
+              />
 
               {t("eyebrow")}
             </div>
@@ -118,9 +131,14 @@ export default function ServicesHero({ servicesCount }: ServicesHeroProps) {
               >
                 {t("call")}
 
-                <Phone
-                  className="size-4 animate-phone-ring motion-reduce:animate-none"
+                <FontAwesomeIcon
+                  icon={faPhoneVolume}
                   aria-hidden="true"
+                  className="
+                    shrink-0 text-base
+                    animate-phone-ring
+                    motion-reduce:animate-none
+                  "
                 />
               </a>
 
@@ -138,7 +156,11 @@ export default function ServicesHero({ servicesCount }: ServicesHeroProps) {
                   focus-visible:ring-offset-background
                 "
               >
-                <CalendarDays className="size-4" aria-hidden="true" />
+                <FontAwesomeIcon
+                  icon={faCalendarCheck}
+                  aria-hidden="true"
+                  className="shrink-0 text-base"
+                />
 
                 {t("booking")}
               </Link>
@@ -197,18 +219,16 @@ export default function ServicesHero({ servicesCount }: ServicesHeroProps) {
                   shadow-[0_20px_45px_-18px_rgba(220,38,38,0.9)]
                 "
               >
-                <CarFront
-                  className="size-10"
-                  strokeWidth={1.6}
+                <FontAwesomeIcon
+                  icon={faCarSide}
                   aria-hidden="true"
+                  className="shrink-0 text-4xl"
                 />
               </div>
             </div>
 
             <ul className="relative mt-6 space-y-3">
               {benefits.map((benefit) => {
-                const BenefitIcon = benefit.icon;
-
                 return (
                   <li
                     key={benefit.translationKey}
@@ -225,10 +245,10 @@ export default function ServicesHero({ servicesCount }: ServicesHeroProps) {
                         dark:text-red-400
                       "
                     >
-                      <BenefitIcon
-                        className="size-5"
-                        strokeWidth={1.8}
+                      <FontAwesomeIcon
+                        icon={benefit.icon}
                         aria-hidden="true"
+                        className="shrink-0 text-lg"
                       />
                     </div>
 

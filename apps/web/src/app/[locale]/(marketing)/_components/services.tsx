@@ -3,7 +3,8 @@
 import React from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { ArrowRight } from "lucide-react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { useFeaturedServices } from "@/app/[locale]/(marketing)/services/api/use-services";
 import Section from "@/app/components/layout/section";
 import Container from "@/app/components/layout/container";
@@ -70,9 +71,10 @@ export default function Services({}: ServicesProps) {
             >
               {t("marketing.services.view-all")}
 
-              <ArrowRight
+              <FontAwesomeIcon
+                icon={faAngleRight}
                 aria-hidden="true"
-                className="size-4 transition-transform duration-200 group-hover:translate-x-1"
+                className="text-lg transition-transform duration-200 group-hover:translate-x-1"
               />
             </Link>
           </div>

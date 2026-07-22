@@ -28,6 +28,7 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/app/components/ui/drawer";
+import HeaderLogo from "@/app/components/layout/header/header-logo";
 
 const desktopBreakpointQuery = "(min-width: 1180px)";
 
@@ -100,7 +101,7 @@ export default function MobileMenu() {
               icon={faBarsStaggered}
               aria-hidden="true"
               className="
-                relative size-5
+                relative text-lg
                 transition-transform duration-200
                 group-hover:scale-110
                 group-focus-visible:scale-110
@@ -145,13 +146,7 @@ export default function MobileMenu() {
                 focus-visible:ring-offset-2
               "
             >
-              <span className="transition-colors group-hover:text-foreground/75">
-                F
-              </span>
-
-              <span className="text-red-500 transition-colors group-hover:text-red-600">
-                1
-              </span>
+              <HeaderLogo />
             </Link>
           </DrawerTitle>
 
@@ -182,7 +177,7 @@ export default function MobileMenu() {
                   icon={faXmark}
                   aria-hidden="true"
                   className="
-                    h-5 w-5
+                    text-lg
                     transition-transform duration-200
                     group-hover:rotate-90
                     group-hover:scale-110
@@ -247,7 +242,7 @@ export default function MobileMenu() {
                   icon={faPhoneVolume}
                   aria-hidden="true"
                   className="
-                    h-4.5 w-4.5
+                    text-lg
                     animate-phone-ring
                     motion-reduce:animate-none
                   "
@@ -282,7 +277,7 @@ export default function MobileMenu() {
                 <FontAwesomeIcon
                   icon={faClock}
                   aria-hidden="true"
-                  className="mt-0.5 h-4 w-4 shrink-0 text-red-500"
+                  className="mt-0.5 text-lg shrink-0 text-red-500"
                 />
 
                 <span>{t("marketing.header.contacts.hours")}</span>
@@ -305,7 +300,7 @@ export default function MobileMenu() {
                 <FontAwesomeIcon
                   icon={faLocationDot}
                   aria-hidden="true"
-                  className="mt-0.5 h-4 w-4 shrink-0 text-red-500"
+                  className="mt-0.5 text-lg shrink-0 text-red-500"
                 />
 
                 <span>{t("marketing.header.contacts.address")}</span>
@@ -371,7 +366,7 @@ export default function MobileMenu() {
                       icon={faChevronRight}
                       aria-hidden="true"
                       className="
-                        h-3.5 w-3.5 shrink-0
+                        text-lg shrink-0
                         text-foreground/35
                         transition-all duration-200
                         group-hover:translate-x-1
@@ -411,7 +406,7 @@ export default function MobileMenu() {
               <FontAwesomeIcon
                 icon={faCalendarCheck}
                 aria-hidden="true"
-                className="h-5 w-5"
+                className="text-xl shrink-0"
               />
               {t("marketing.header.actions.booking")}
             </Link>
@@ -440,7 +435,7 @@ export default function MobileMenu() {
               <FontAwesomeIcon
                 icon={faRightToBracket}
                 aria-hidden="true"
-                className="h-5 w-5"
+                className="text-xl shrink-0"
               />
               {t("marketing.header.actions.account")}
             </Link>

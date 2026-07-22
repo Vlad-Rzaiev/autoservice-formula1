@@ -1,31 +1,38 @@
+import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  CalendarDays,
-  Check,
-  Phone,
-  ScanSearch,
-  ShieldCheck,
-  WalletCards,
-} from "lucide-react";
+  faCalendarCheck,
+  faCircleCheck,
+  faClipboardCheck,
+  faMagnifyingGlass,
+  faPhoneVolume,
+  faShieldHalved,
+} from "@fortawesome/free-solid-svg-icons";
 import { useTranslations } from "next-intl";
 
 import { Link } from "@/i18n/navigation";
 import Container from "@/app/components/layout/container";
 import Section from "@/app/components/layout/section";
 
+interface CtaBenefit {
+  translationKey: "diagnostics" | "approval" | "warranty";
+  icon: IconDefinition;
+}
+
 const ctaBenefits = [
   {
     translationKey: "diagnostics",
-    icon: ScanSearch,
+    icon: faMagnifyingGlass,
   },
   {
     translationKey: "approval",
-    icon: WalletCards,
+    icon: faClipboardCheck,
   },
   {
     translationKey: "warranty",
-    icon: ShieldCheck,
+    icon: faShieldHalved,
   },
-] as const;
+] as const satisfies readonly CtaBenefit[];
 
 export default function ServicesCta() {
   const t = useTranslations("services.allServices.cta");
@@ -73,7 +80,11 @@ export default function ServicesCta() {
                   px-4 py-2 text-sm font-semibold text-red-400
                 "
               >
-                <Check className="size-4" aria-hidden="true" />
+                <FontAwesomeIcon
+                  icon={faCircleCheck}
+                  aria-hidden="true"
+                  className="shrink-0 text-sm"
+                />
 
                 {t("eyebrow")}
               </div>
@@ -120,10 +131,10 @@ export default function ServicesCta() {
                           bg-red-600/15 text-red-400
                         "
                       >
-                        <BenefitIcon
-                          className="size-4"
-                          strokeWidth={1.8}
+                        <FontAwesomeIcon
+                          icon={benefit.icon}
                           aria-hidden="true"
+                          className="shrink-0 text-base"
                         />
                       </span>
 
@@ -158,7 +169,11 @@ export default function ServicesCta() {
                   focus-visible:ring-offset-neutral-950
                 "
               >
-                <CalendarDays className="size-4" aria-hidden="true" />
+                <FontAwesomeIcon
+                  icon={faCalendarCheck}
+                  aria-hidden="true"
+                  className="shrink-0 text-base"
+                />
 
                 {t("booking")}
               </Link>
@@ -179,9 +194,14 @@ export default function ServicesCta() {
                   focus-visible:ring-offset-neutral-950
                 "
               >
-                <Phone
-                  className="size-4 animate-phone-ring motion-reduce:animate-none"
+                <FontAwesomeIcon
+                  icon={faPhoneVolume}
                   aria-hidden="true"
+                  className="
+                    shrink-0 text-base
+                    animate-phone-ring
+                    motion-reduce:animate-none
+                  "
                 />
 
                 {t("call")}
