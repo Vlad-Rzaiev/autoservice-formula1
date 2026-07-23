@@ -1,4 +1,7 @@
-import { LoaderCircle } from "lucide-react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+
+import { cn } from "@/lib/utils";
 
 export interface LoadingStateProps {
   title: string;
@@ -9,23 +12,42 @@ export interface LoadingStateProps {
 export default function LoadingState({
   title,
   description,
-  className = "",
+  className,
 }: LoadingStateProps) {
   return (
     <div
       role="status"
       aria-live="polite"
-      className={`flex min-h-52 flex-col items-center justify-center gap-4 rounded-2xl border border-border bg-surface/60 px-6 py-10 text-center shadow-sm ${className}`}
+      className={cn(
+        "flex min-h-52 flex-col items-center justify-center gap-4",
+        "rounded-2xl border border-border",
+        "bg-surface/60 px-6 py-10 text-center shadow-sm",
+        className,
+      )}
     >
       <div
         aria-hidden="true"
-        className="relative flex size-14 items-center justify-center rounded-2xl border border-red-500/20 bg-red-500/10"
+        className="
+          relative flex size-14 items-center justify-center
+          rounded-2xl border border-red-500/20
+          bg-red-500/10 text-red-600
+        "
       >
-        <span className="absolute inset-0 animate-ping rounded-2xl bg-red-500/10" />
+        <span
+          className="
+            absolute inset-0 animate-ping rounded-2xl
+            bg-red-500/10
+            motion-reduce:animate-none
+          "
+        />
 
-        <LoaderCircle
-          className="relative size-7 animate-spin text-red-600 dark:text-red-400"
-          strokeWidth={1.8}
+        <FontAwesomeIcon
+          icon={faSpinner}
+          className="
+            relative shrink-0 text-2xl
+            animate-spin
+            motion-reduce:animate-none
+          "
         />
       </div>
 

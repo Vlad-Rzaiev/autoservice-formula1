@@ -2,12 +2,12 @@
 
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
-import SectionTitle from "@/app/components/layout/section-title";
 import { useServiceById } from "@/app/[locale]/(marketing)/services/api/use-services";
+import SectionTitle from "@/app/components/layout/section-title";
 import LoadingState from "@/app/components/states/loading-state";
 import ErrorState from "@/app/components/states/error-state";
 import EmptyState from "@/app/components/states/empty-state";
-import { Wrench } from "lucide-react";
+import { faScrewdriverWrench } from "@fortawesome/free-solid-svg-icons";
 
 export interface ServiceDetailsProps {
   id: string;
@@ -39,7 +39,7 @@ export default function ServiceDetails({ id }: ServiceDetailsProps) {
         <EmptyState
           title={t("services.servicePage.empty-title")}
           description={t("services.servicePage.empty-description")}
-          icon={Wrench}
+          icon={faScrewdriverWrench}
         />
       ) : (
         <>

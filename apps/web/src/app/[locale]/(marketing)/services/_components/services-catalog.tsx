@@ -1,7 +1,7 @@
 "use client";
 
 import { useLocale, useTranslations } from "next-intl";
-import { Wrench } from "lucide-react";
+import { faScrewdriverWrench } from "@fortawesome/free-solid-svg-icons";
 import {
   Service,
   serviceLocales,
@@ -58,7 +58,7 @@ export default function ServicesCatalog({
           <EmptyState
             title={t("marketing.loading-state.empty-title")}
             description={t("marketing.loading-state.empty-description")}
-            icon={Wrench}
+            icon={faScrewdriverWrench}
           />
         ) : (
           <ul

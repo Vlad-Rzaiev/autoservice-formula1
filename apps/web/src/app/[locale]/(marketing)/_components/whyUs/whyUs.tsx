@@ -3,10 +3,10 @@
 import React from "react";
 import { useTranslations } from "next-intl";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { cardsItems } from "@/app/[locale]/(marketing)/_components/whyUs/cardsItems";
 import Section from "@/app/components/layout/section";
 import Container from "@/app/components/layout/container";
 import SectionTitle from "@/app/components/layout/section-title";
-import { cardsItems } from "@/app/[locale]/(marketing)/_components/whyUs/cardsItems";
 
 export interface WhyUsProps {
   children?: React.ReactNode;

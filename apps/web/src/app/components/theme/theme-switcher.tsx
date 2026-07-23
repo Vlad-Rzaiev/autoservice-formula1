@@ -1,9 +1,11 @@
 "use client";
 
-import { cn } from "@/lib/utils";
 import { useTheme } from "next-themes";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
+
 import { Switch } from "@/app/components/ui/switch";
-import { Moon, Sun } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 interface ThemeSwitcherProps {
   className?: string;
@@ -14,43 +16,45 @@ export default function ThemeSwitcher({ className }: ThemeSwitcherProps) {
 
   const isDark = resolvedTheme === "dark";
 
-  const handleThemeChange = (checked: boolean) => {
+  const handleThemeChange = (checked: boolean): void => {
     setTheme(checked ? "dark" : "light");
   };
 
   const iconSize = cn(
-    "absolute transition-all duration-300",
-    "group-data-[size=sm]/switch:size-3",
-    "group-data-[size=default]/switch:size-4",
-    "group-data-[size=lg]/switch:size-[22px]",
+    "absolute shrink-0 transition-all duration-300",
+    "group-data-[size=sm]/switch:text-xs",
+    "group-data-[size=default]/switch:text-sm",
+    "group-data-[size=lg]/switch:text-base",
   );
 
   return (
     <Switch
-      className={cn("cursor-pointer", className)}
       size="lg"
       checked={isDark}
       onCheckedChange={handleThemeChange}
-      aria-label="Toggle theme"
+      aria-label="Change theme"
+      className={cn("cursor-pointer", className)}
       thumbContent={
         <>
-          <Sun
+          <FontAwesomeIcon
+            icon={faMoon}
             aria-hidden="true"
             className={cn(
               iconSize,
-              "absolute size-3 text-amber-500 transition-all duration-300",
-              "opacity-100 rotate-0 scale-100",
+              "text-slate-800",
+              "rotate-0 scale-100 opacity-100",
               "group-data-checked/switch:rotate-90",
               "group-data-checked/switch:scale-0",
               "group-data-checked/switch:opacity-0",
             )}
           />
 
-          <Moon
+          <FontAwesomeIcon
+            icon={faSun}
             aria-hidden="true"
             className={cn(
               iconSize,
-              "absolute size-3 text-slate-800 transition-all duration-300",
+              "text-amber-500",
               "-rotate-90 scale-0 opacity-0",
               "group-data-checked/switch:rotate-0",
               "group-data-checked/switch:scale-100",
