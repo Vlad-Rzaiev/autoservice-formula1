@@ -45,7 +45,10 @@ export default function ServicesHero({ servicesCount }: ServicesHeroProps) {
   const t = useTranslations("services.allServices.hero");
 
   return (
-    <Section className="relative overflow-hidden border-b border-border">
+    <Section
+      className="relative overflow-hidden border-b border-border"
+      noTopPadding
+    >
       <div
         aria-hidden="true"
         className="

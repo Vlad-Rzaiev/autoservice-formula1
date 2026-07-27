@@ -19,7 +19,7 @@ export default function LoadingState({
       role="status"
       aria-live="polite"
       className={cn(
-        "flex min-h-52 flex-col items-center justify-center gap-4",
+        "mt-10 flex min-h-52 flex-col items-center justify-center gap-4",
         "rounded-2xl border border-border",
         "bg-surface/60 px-6 py-10 text-center shadow-sm",
         className,

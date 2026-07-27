@@ -1,13 +1,13 @@
 "use client";
 
+import axios from "axios";
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import { useServiceById } from "@/app/[locale]/(marketing)/services/api/use-services";
 import SectionTitle from "@/app/components/layout/section-title";
 import LoadingState from "@/app/components/states/loading-state";
 import ErrorState from "@/app/components/states/error-state";
-import EmptyState from "@/app/components/states/empty-state";
-import { faScrewdriverWrench } from "@fortawesome/free-solid-svg-icons";
+import { notFound } from "next/navigation";
 
 export interface ServiceDetailsProps {
   id: string;
@@ -19,45 +19,60 @@ export default function ServiceDetails({ id }: ServiceDetailsProps) {
     data: service,
     isPending,
     isError,
+    error,
     isRefetching,
     refetch,
   } = useServiceById(id);
 
+  const isNotFound =
+    axios.isAxiosError(error) && error.response?.status === 404;
+
+  if (isPending) {
+    return <LoadingState title={t("services.servicePage.loading-title")} />;
+  }
+
+  if (isNotFound) {
+    notFound();
+  }
+
+  if (isError) {
+    return (
+      <ErrorState
+        title={t("services.servicePage.error-title")}
+        description={t("services.servicePage.error-description")}
+        retryLabel={t("services.servicePage.retry")}
+        isRetrying={isRefetching}
+        onRetry={() => void refetch()}
+      />
+    );
+  }
+
+  if (!service) {
+    return (
+      <ErrorState
+        title={t("services.servicePage.error-title")}
+        description={t("services.servicePage.error-description")}
+      />
+    );
+  }
+
   return (
     <>
-      {isPending ? (
-        <LoadingState title={t("services.servicePage.loading-title")} />
-      ) : isError ? (
-        <ErrorState
-          title={t("services.servicePage.error-title")}
-          description={t("services.servicePage.error-description")}
-          retryLabel={t("services.servicePage.retry")}
-          isRetrying={isRefetching}
-          onRetry={() => void refetch()}
-        />
-      ) : !service ? (
-        <EmptyState
-          title={t("services.servicePage.empty-title")}
-          description={t("services.servicePage.empty-description")}
-          icon={faScrewdriverWrench}
-        />
-      ) : (
-        <>
-          <SectionTitle>{t("services.servicePage.title")}</SectionTitle>
-          <p className="text-center text-2xl mt-4">ID {id}</p>
-          <p
-            className="
+      <SectionTitle>{t("services.servicePage.title")}</SectionTitle>
+      <p className="text-center text-2xl mt-4">ID {id}</p>
+      <p
+        className="
               mx-auto my-5 max-w-2xl text-center
               text-lg leading-8 text-muted-foreground
               sm:text-xl sm:leading-9
             "
-          >
-            {t("clients.dev")}
-          </p>
+      >
+        {t("clients.dev")}
+      </p>
 
-          <Link
-            href="/"
-            className="
+      <Link
+        href="/"
+        className="
               flex mx-auto w-fit min-h-12 items-center justify-center
               gap-2 rounded-xl bg-red-600 px-6 py-3
               text-sm font-semibold text-white
@@ -66,11 +81,9 @@ export default function ServiceDetails({ id }: ServiceDetailsProps) {
               hover:-translate-y-0.5 hover:bg-red-700
               active:translate-y-0 active:scale-[0.98]
             "
-          >
-            {t("clients.back-to-main")}
-          </Link>
-        </>
-      )}
+      >
+        {t("clients.back-to-main")}
+      </Link>
     </>
   );
 }

@@ -19,7 +19,7 @@ import {
 
 import LangSwitcher from "@/app/components/locale/lang-switcher";
 import ThemeSwitcher from "@/app/components/theme/theme-switcher";
-import { navItems } from "@/app/components/layout/header/navigation";
+import { navItems } from "@/app/[locale]/(marketing)/_components/header/navigation";
 import {
   Drawer,
   DrawerClose,
@@ -32,7 +32,7 @@ import HeaderLogo from "@/app/components/layout/header/header-logo";
 
 const desktopBreakpointQuery = "(min-width: 1180px)";
 
-export default function MobileMenu() {
+export default function MarketingMobileMenu() {
   const { isOpen, setIsOpen, closeMenu } = useMobileMenu();
   const t = useTranslations();
 
@@ -129,25 +129,7 @@ export default function MobileMenu() {
           "
         >
           <DrawerTitle>
-            <Link
-              href="/"
-              onClick={closeMenu}
-              aria-label={t("mobile-menu.home")}
-              className="
-                group inline-flex items-center
-                rounded-lg px-1 py-1
-                text-2xl font-black italic tracking-tighter
-                text-foreground
-                transition-transform duration-200
-                hover:scale-105
-                focus-visible:outline-none
-                focus-visible:ring-2
-                focus-visible:ring-ring
-                focus-visible:ring-offset-2
-              "
-            >
-              <HeaderLogo />
-            </Link>
+            <HeaderLogo />
           </DrawerTitle>
 
           <DrawerClose

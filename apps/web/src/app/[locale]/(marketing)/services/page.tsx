@@ -3,16 +3,18 @@
 import React from "react";
 import { useTranslations } from "next-intl";
 import { useServices } from "@/app/[locale]/(marketing)/services/api/use-services";
+import Section from "@/app/components/layout/section";
+import Container from "@/app/components/layout/container";
 import SectionTitle from "@/app/components/layout/section-title";
 import ServicesHero from "@/app/[locale]/(marketing)/services/_components/services-hero";
 import ServicesCatalog from "@/app/[locale]/(marketing)/services/_components/services-catalog";
 import ServicesCta from "@/app/[locale]/(marketing)/services/_components/services-cta";
 
-export interface PageProps {
+export interface ServicesPageProps {
   children?: React.ReactNode;
 }
 
-export default function Page({}: PageProps) {
+export default function ServicesPage({}: ServicesPageProps) {
   const t = useTranslations();
 
   const {
@@ -24,22 +26,26 @@ export default function Page({}: PageProps) {
   } = useServices();
 
   return (
-    <main>
-      <SectionTitle className="sr-only">
-        {t("services.allServices.title")}
-      </SectionTitle>
-
+    <>
       <ServicesHero />
 
-      <ServicesCatalog
-        services={services}
-        isPending={isPending}
-        isError={isError}
-        isFetching={isFetching}
-        refetch={refetch}
-      />
+      <Section>
+        <Container>
+          <SectionTitle className="sr-only">
+            {t("services.allServices.title")}
+          </SectionTitle>
+
+          <ServicesCatalog
+            services={services}
+            isPending={isPending}
+            isError={isError}
+            isFetching={isFetching}
+            refetch={refetch}
+          />
+        </Container>
+      </Section>
 
       <ServicesCta />
-    </main>
+    </>
   );
 }

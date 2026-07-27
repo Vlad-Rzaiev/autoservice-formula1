@@ -1,6 +1,7 @@
 "use client";
 
 import { useTheme } from "next-themes";
+import useMounted from "@/hooks/useMounted";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 
@@ -12,7 +13,17 @@ interface ThemeSwitcherProps {
 }
 
 export default function ThemeSwitcher({ className }: ThemeSwitcherProps) {
+  const mounted = useMounted();
   const { resolvedTheme, setTheme } = useTheme();
+
+  if (!mounted) {
+    return (
+      <span
+        aria-hidden="true"
+        className={cn("inline-block h-8 w-14 shrink-0", className)}
+      />
+    );
+  }
 
   const isDark = resolvedTheme === "dark";
 

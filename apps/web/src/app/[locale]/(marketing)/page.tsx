@@ -12,7 +12,7 @@ import WhyUs from "@/app/[locale]/(marketing)/_components/whyUs/whyUs";
 
 export default function Home() {
   return (
-    <main className="pt-(--marketing-header-height)">
+    <>
       <Hero />
       <WhyUs />
       <Services />
@@ -24,6 +24,6 @@ export default function Home() {
       <Reviews />
       <Booking />
       <Contacts />
-    </main>
+    </>
   );
 }

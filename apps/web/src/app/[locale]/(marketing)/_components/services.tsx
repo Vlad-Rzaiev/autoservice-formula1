@@ -2,7 +2,6 @@
 
 import React from "react";
 import { useTranslations } from "next-intl";
-import { Link } from "@/i18n/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { useFeaturedServices } from "@/app/[locale]/(marketing)/services/api/use-services";
@@ -10,6 +9,7 @@ import Section from "@/app/components/layout/section";
 import Container from "@/app/components/layout/container";
 import SectionTitle from "@/app/components/layout/section-title";
 import ServicesCatalog from "@/app/[locale]/(marketing)/services/_components/services-catalog";
+import ButtonLink from "@/app/components/common/button-link/button-link";
 
 export interface ServicesProps {
   children?: React.ReactNode;
@@ -39,36 +39,19 @@ export default function Services({}: ServicesProps) {
           </p>
         </div>
 
-        <ServicesCatalog
-          services={services}
-          isPending={isPending}
-          isError={isError}
-          isFetching={isFetching}
-          refetch={refetch}
-        />
+        <div className="mt-10 md:mt-12 lg:mt-14">
+          <ServicesCatalog
+            services={services}
+            isPending={isPending}
+            isError={isError}
+            isFetching={isFetching}
+            refetch={refetch}
+          />
+        </div>
 
         {hasLoadedServices && (
-          <div className="flex justify-center">
-            <Link
-              href="/services"
-              className="
-              group inline-flex min-h-12 items-center justify-center gap-2
-              rounded-xl bg-red-600 px-6 py-3
-              text-sm font-semibold text-white
-              shadow-[0_12px_30px_-14px_rgba(220,38,38,0.8)]
-              transition-all duration-200
-              hover:-translate-y-0.5
-              hover:bg-red-700
-              hover:shadow-[0_16px_35px_-14px_rgba(220,38,38,0.9)]
-              active:translate-y-0
-              active:scale-[0.98]
-              focus-visible:outline-none
-              focus-visible:ring-2
-              focus-visible:ring-red-500
-              focus-visible:ring-offset-2
-              focus-visible:ring-offset-background
-            "
-            >
+          <div className="mt-10 flex justify-center md:mt-12">
+            <ButtonLink href="/services" variant="outline">
               {t("marketing.services.view-all")}
 
               <FontAwesomeIcon
@@ -76,7 +59,7 @@ export default function Services({}: ServicesProps) {
                 aria-hidden="true"
                 className="text-lg transition-transform duration-200 group-hover:translate-x-1"
               />
-            </Link>
+            </ButtonLink>
           </div>
         )}
       </Container>

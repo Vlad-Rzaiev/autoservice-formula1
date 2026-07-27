@@ -13,12 +13,10 @@ export default async function Page({ params }: PageProps) {
   const { id: serviceId } = await params;
 
   return (
-    <main>
-      <Section>
-        <Container>
-          <ServiceDetails id={serviceId} />
-        </Container>
-      </Section>
-    </main>
+    <Section noTopPadding>
+      <Container>
+        <ServiceDetails id={serviceId} />
+      </Container>
+    </Section>
   );
 }

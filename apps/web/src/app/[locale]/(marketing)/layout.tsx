@@ -4,6 +4,8 @@ import { hasLocale } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
+import MarketingHeader from "@/app/[locale]/(marketing)/_components/header/marketing-header";
+import MarketingFooter from "@/app/[locale]/(marketing)/_components/footer/marketing-footer";
 
 interface MarketingLayoutProps {
   children: React.ReactNode;
@@ -76,5 +78,11 @@ export async function generateMetadata({
 }
 
 export default function MarketingLayout({ children }: MarketingLayoutProps) {
-  return children;
+  return (
+    <>
+      <MarketingHeader />
+      <main className="pt-(--marketing-header-height)">{children}</main>
+      <MarketingFooter />
+    </>
+  );
 }

@@ -7,6 +7,7 @@ import { cardsItems } from "@/app/[locale]/(marketing)/_components/whyUs/cardsIt
 import Section from "@/app/components/layout/section";
 import Container from "@/app/components/layout/container";
 import SectionTitle from "@/app/components/layout/section-title";
+import ErrorButton from "@/app/components/common/error-button";
 
 export interface WhyUsProps {
   children?: React.ReactNode;
@@ -19,6 +20,8 @@ export default function WhyUs({}: WhyUsProps) {
     <Section id="why-us">
       <Container>
         <SectionTitle>{t("marketing.why-us.title")}</SectionTitle>
+
+        <ErrorButton />
 
         <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:mt-14 lg:grid-cols-4 lg:gap-6">
           {cardsItems.map((item) => {

@@ -9,14 +9,15 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
-import { navItems } from "@/app/components/layout/header/navigation";
+import { navItems } from "@/app/[locale]/(marketing)/_components/header/navigation";
 import Container from "@/app/components/layout/container";
+import ButtonLink from "@/app/components/common/button-link/button-link";
 
 export interface FooterProps {
   children?: React.ReactNode;
 }
 
-export default function Footer({}: FooterProps) {
+export default function MarketingFooter({}: FooterProps) {
   const t = useTranslations();
   const currentYear = new Date().getFullYear();
 
@@ -98,23 +99,7 @@ export default function Footer({}: FooterProps) {
             </h2>
 
             <div className="mt-4 flex flex-col gap-3">
-              <Link
-                href="/login"
-                className="
-                  inline-flex min-h-11 items-center justify-center
-                  rounded-xl border border-border
-                  bg-background px-4 py-2.5
-                  text-sm font-semibold text-foreground
-                  transition-all duration-200
-                  hover:border-red-500/40
-                  hover:bg-foreground/5
-                  active:scale-[0.98]
-                  focus-visible:outline-none
-                  focus-visible:ring-2
-                  focus-visible:ring-ring
-                  focus-visible:ring-offset-2
-                "
-              >
+              <ButtonLink href="/login" variant="outline" fullWidth>
                 <FontAwesomeIcon
                   icon={faRightToBracket}
                   aria-hidden="true"
@@ -125,25 +110,9 @@ export default function Footer({}: FooterProps) {
                   "
                 />
                 {t("auth.login.loginBtn")}
-              </Link>
+              </ButtonLink>
 
-              <Link
-                href="/register"
-                className="
-                  inline-flex min-h-11 items-center justify-center
-                  rounded-xl bg-red-500 px-4 py-2.5
-                  text-sm font-semibold text-white
-                  shadow-sm
-                  transition-all duration-200
-                  hover:bg-red-600
-                  hover:shadow-md
-                  active:scale-[0.98]
-                  focus-visible:outline-none
-                  focus-visible:ring-2
-                  focus-visible:ring-red-500
-                  focus-visible:ring-offset-2
-                "
-              >
+              <ButtonLink href="/register" fullWidth>
                 <FontAwesomeIcon
                   icon={faUserPlus}
                   aria-hidden="true"
@@ -154,7 +123,7 @@ export default function Footer({}: FooterProps) {
                   "
                 />
                 {t("auth.reg.regBtn")}
-              </Link>
+              </ButtonLink>
             </div>
           </div>
         </div>
@@ -170,19 +139,7 @@ export default function Footer({}: FooterProps) {
             © {currentYear} F1 AutoService. {t("marketing.footer.copyright")}
           </p>
 
-          <Link
-            href="#top"
-            className="
-              group inline-flex w-fit items-center gap-2
-              rounded-lg px-2 py-1
-              text-sm font-medium text-foreground/65
-              transition-colors duration-200
-              hover:text-red-500
-              focus-visible:outline-none
-              focus-visible:ring-2
-              focus-visible:ring-ring
-            "
-          >
+          <ButtonLink href="#top" variant="subtle" size="compact">
             {t("marketing.footer.backToTop")}
 
             <FontAwesomeIcon
@@ -194,7 +151,7 @@ export default function Footer({}: FooterProps) {
                 group-hover:-translate-y-1
               "
             />
-          </Link>
+          </ButtonLink>
         </div>
       </Container>
     </footer>

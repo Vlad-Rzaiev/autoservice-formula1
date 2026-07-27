@@ -29,7 +29,7 @@ export default function ErrorState({
       role="alert"
       aria-live="assertive"
       className={cn(
-        "flex min-h-52 flex-col items-center justify-center",
+        "my-10 flex min-h-52 flex-col items-center justify-center",
         "rounded-2xl border border-destructive/20",
         "bg-destructive/5 px-6 py-10 text-center shadow-sm",
         className,

@@ -35,6 +35,9 @@
     "error-description": "Sprawdź połączenie z internetem i spróbuj ponownie.",
     "retry": "Spróbuj ponownie",
     "empty-title": "Ta usługa jest obecnie niedostępna",
-    "empty-description": "Aktualizujemy listę usług. Sprawdź tę stronę ponownie nieco później."
+    "empty-description": "Aktualizujemy listę usług. Sprawdź tę stronę ponownie nieco później.",
+    "not-found-title": "Nie znaleziono usługi",
+    "not-found-description": "Usługa mogła zostać usunięta lub ten link nie jest już aktualny.",
+    "back-to-services": "Wróć do usług"
   }
 }
