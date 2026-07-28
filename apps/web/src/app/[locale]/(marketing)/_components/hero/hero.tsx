@@ -1,7 +1,7 @@
-import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 import Container from "@/app/components/layout/container";
+import ButtonLink from "@/app/components/common/button-link/button-link";
 import styles from "./hero.module.css";
 
 export default function Hero() {
@@ -34,40 +34,23 @@ export default function Hero() {
         </p>
 
         <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-          <Link
-            className="
-                inline-flex h-12 items-center justify-center rounded-xl
-                bg-red-600 px-6 text-base font-semibold text-white
-                shadow-lg shadow-red-950/30
-                transition-all duration-200
-                hover:-translate-y-0.5 hover:bg-red-500 hover:shadow-xl
-                focus-visible:outline-none
-                focus-visible:ring-2 focus-visible:ring-red-400
-                focus-visible:ring-offset-2 focus-visible:ring-offset-black
-                active:translate-y-0
-    "
+          <ButtonLink
             href="/register"
+            variant="primary"
+            fullWidth
+            className="sm:w-auto"
           >
             {t("auth.reg.regBtn")}
-          </Link>
+          </ButtonLink>
 
-          <Link
-            className="
-                inline-flex h-12 items-center justify-center rounded-xl
-                border border-white/25 bg-black/20 px-6
-                text-base font-semibold text-white
-                shadow-lg backdrop-blur-[3px]
-                transition-all duration-200
-                hover:-translate-y-0.5 hover:border-white/40 hover:bg-white/15
-                focus-visible:outline-none
-                focus-visible:ring-2 focus-visible:ring-white/70
-                focus-visible:ring-offset-2 focus-visible:ring-offset-black
-                active:translate-y-0
-    "
+          <ButtonLink
             href="/login"
+            variant="outline"
+            fullWidth
+            className="sm:w-auto"
           >
             {t("auth.login.loginBtn")}
-          </Link>
+          </ButtonLink>
         </div>
       </Container>
     </section>

@@ -1,17 +1,20 @@
 "use client";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import {
   defaultServiceIcon,
   serviceIconMap,
 } from "@/app/[locale]/(marketing)/services/lib/service-icon-map";
 import { Link } from "@/i18n/navigation";
+import { IconCard } from "@/app/components/common/icon-card";
 
 export interface ServiceCardProps {
   id: string;
   icon: string;
   title: string;
   description: string;
+  actionLabel: string;
 }
 
 export default function ServiceCard({
@@ -19,77 +22,69 @@ export default function ServiceCard({
   icon,
   title,
   description,
+  actionLabel,
 }: ServiceCardProps) {
   const serviceIcon = serviceIconMap[icon] ?? defaultServiceIcon;
 
   return (
     <li
       className="
-        group relative flex min-h-64 flex-col overflow-hidden
-        rounded-2xl border border-border bg-surface p-6
-        shadow-sm transition-all duration-300
-        hover:-translate-y-1
-        hover:border-red-500/40
-        hover:shadow-[0_20px_45px_-24px_rgba(220,38,38,0.45)]
-        sm:p-7
-    "
+        group/service relative isolate h-full
+        rounded-xl
+        before:pointer-events-none
+        before:absolute before:inset-2 before:-z-10
+        before:rounded-xl before:bg-red-500/20
+        before:opacity-0 before:blur-xl
+        before:transition-opacity before:duration-300
+        hover:before:opacity-100
+        focus-within:before:opacity-100
+        motion-reduce:before:transition-none
+      "
     >
-      <Link href={`/services/${id}`}>
-        <span
-          aria-hidden="true"
-          className="
-            absolute inset-x-0 top-0 h-1
-            origin-left scale-x-0 bg-red-600
-            transition-transform duration-300
-            group-hover:scale-x-100
-            "
-        />
-        <span
-          aria-hidden="true"
-          className="
-            absolute -right-20 -top-20 size-44 rounded-full
-            bg-red-500/0 blur-3xl
-            transition-colors duration-300
-            group-hover:bg-red-500/10
-            "
-        />
-
-        <div
-          className="
-            relative flex size-12 items-center justify-center
-            rounded-xl border border-red-500/20
-            bg-red-500/10 text-red-600
-            transition-all duration-300
-            group-hover:scale-105
-            group-hover:border-red-500
-            group-hover:bg-red-600
-            group-hover:text-white
-            dark:group-hover:text-white
-            "
-        >
-          <FontAwesomeIcon
-            icon={serviceIcon}
-            aria-hidden="true"
-            className="shrink-0 text-2xl"
-          />
-        </div>
-
-        <div className="relative mt-7">
-          <h3
-            className="
-            text-xl font-semibold tracking-tight text-foreground
-            transition-colors duration-300
-            group-hover:text-red-600
-            dark:group-hover:text-red-400
+      <Link
+        href={`/services/${id}`}
+        className="
+          block h-full rounded-xl
+          focus-visible:outline-none
+          focus-visible:ring-2
+          focus-visible:ring-red-500
+          focus-visible:ring-offset-2
+          focus-visible:ring-offset-background
         "
-          >
-            {title}
-          </h3>
+      >
+        <IconCard
+          icon={serviceIcon}
+          title={title}
+          description={description}
+          className="
+            transition-all duration-300
+            group-hover/service:-translate-y-1
+            group-hover/service:border-red-500/30
+            group-hover/service:shadow-lg
+            group-focus-within/service:-translate-y-1
+            group-focus-within/service:border-red-500/30
+            group-focus-within/service:shadow-lg
+            motion-reduce:transform-none
+            motion-reduce:transition-none
+          "
+          footer={
+            <span className="flex items-center gap-2 font-semibold text-red-500">
+              {actionLabel}
 
-          <p className="mt-3 text-sm leading-6 text-muted-foreground sm:text-base">
-            {description}
-          </p>
-        </div>
+              <FontAwesomeIcon
+                icon={faArrowRight}
+                aria-hidden="true"
+                className="
+                  text-sm transition-transform duration-200
+                  group-hover/service:translate-x-1
+                  group-focus-within/service:translate-x-1
+                  motion-reduce:transform-none
+                  motion-reduce:transition-none
+                "
+              />
+            </span>
+          }
+        />
       </Link>
     </li>
   );

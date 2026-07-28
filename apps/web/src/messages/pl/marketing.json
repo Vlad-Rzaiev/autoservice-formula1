@@ -1,4 +1,8 @@
 {
+  "brand": {
+    "homeLabel": "Formula 1 — strona główna"
+  },
+
   "header": {
     "navigation": {
       "services": "Usługi",
@@ -15,7 +19,7 @@
       "phone": "+48 777 777 777",
       "phoneHref": "tel:+48777777777",
       "hours": "Pon.-Pt. 09:00-18:00, Sob. 09.00-14.00",
-      "address": "Jagiellonska 1, 77-777 Bydgoszcz",
+      "address": "Jagiellonska 1, 85-005 Bydgoszcz",
       "mapHref": "https://www.google.com/maps/search/?api=1&query=Jagiellońska+1+Bydgoszcz"
     }
   },
@@ -54,7 +58,10 @@
     "loading": "Ładowanie usług...",
     "error": "Nie udało się załadować usług.",
     "retry": "Spróbuj ponownie",
-    "empty": "Obecnie nie ma dostępnych usług."
+    "empty": "Obecnie nie ma dostępnych usług.",
+    "card": {
+      "details": "Więcej szczegółów"
+    }
   },
 
   "diagnostics": {

@@ -72,6 +72,7 @@ export default function ServicesCatalog({
                 icon={service.iconKey}
                 title={serviceTranslation.title}
                 description={serviceTranslation.description}
+                actionLabel={t("marketing.services.card.details")}
               />
             );
           })}

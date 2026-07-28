@@ -27,7 +27,7 @@ export const buttonLinkVariants = cva(
 
         outline: [
           ...ctaInteractionClasses,
-          "border border-red-600 bg-transparent text-red-600",
+          "border border-red-600 bg-transparent backdrop-blur-xs text-red-600",
           "hover:-translate-y-0.5 hover:bg-red-600 hover:text-white",
           "focus-visible:ring-red-500",
           "focus-visible:ring-offset-background",
@@ -57,23 +57,6 @@ export const buttonLinkVariants = cva(
           "rounded-md font-normal text-inherit",
           "transition-colors duration-200",
           "hover:text-red-500",
-          "focus-visible:ring-ring",
-          "focus-visible:ring-offset-2",
-          "focus-visible:ring-offset-background",
-        ],
-
-        headerControl: [
-          "relative cursor-pointer overflow-hidden",
-          "rounded-xl border border-border",
-          "bg-surface text-foreground",
-          "shadow-[0_8px_24px_-14px_rgba(15,23,42,0.65)]",
-          "transition-all duration-200",
-          "hover:-translate-y-0.5",
-          "hover:border-red-500/40",
-          "hover:bg-foreground/5",
-          "hover:text-red-500",
-          "active:translate-y-0",
-          "active:scale-95",
           "focus-visible:ring-ring",
           "focus-visible:ring-offset-2",
           "focus-visible:ring-offset-background",

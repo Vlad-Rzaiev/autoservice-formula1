@@ -8,17 +8,16 @@ import {
   faRightToBracket,
   faCalendarCheck,
 } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
-import { navItems } from "@/app/[locale]/(marketing)/_components/header/navigation";
 import { buttonLinkVariants } from "@/app/components/common/button-link/button-link-variants";
 
 import LangSwitcher from "@/app/components/locale/lang-switcher";
 import ThemeSwitcher from "@/app/components/theme/theme-switcher";
-import HeaderLogo from "@/app/components/layout/header/header-logo";
 import MarketingMobileMenu from "@/app/[locale]/(marketing)/_components/header/marketing-mobile-menu";
 import ButtonLink from "@/app/components/common/button-link/button-link";
-import { navigationLinkVariants } from "@/app/components/layout/header/navigation-link-variants";
+import MarketingNavigation from "@/app/[locale]/(marketing)/_components/nav/marketing-navigation";
+import { IconButton } from "@/app/components/common/icon-button/icon-button";
+import BrandLogo from "@/app/components/common/brand-logo/brand-logo";
 
 export default function MarketingHeader() {
   const t = useTranslations();
@@ -93,20 +92,14 @@ export default function MarketingHeader() {
               {t("marketing.header.contacts.address")}
             </a>
 
-            <Link
-              href="/login"
-              className={buttonLinkVariants({
-                variant: "inline",
-                size: "inline",
-              })}
-            >
+            <ButtonLink href="/login" variant="subtle" size="compact">
               <FontAwesomeIcon
                 className="text-sm shrink-0"
                 icon={faRightToBracket}
                 aria-hidden="true"
               />
               {t("marketing.header.actions.account")}
-            </Link>
+            </ButtonLink>
           </div>
         </div>
       </div>
@@ -120,34 +113,9 @@ export default function MarketingHeader() {
           xl:px-8
         "
       >
-        <HeaderLogo />
+        <BrandLogo variant="header" />
 
-        <nav
-          className="hidden min-[1180px]:block"
-          aria-label={t("mobile-menu.navigation.label")}
-        >
-          <ul className="flex items-center gap-1 xl:gap-2">
-            {navItems.map((item) => (
-              <li key={item.href}>
-                <Link href={item.href} className={navigationLinkVariants()}>
-                  {t(item.translationKey)}
-
-                  <span
-                    aria-hidden="true"
-                    className="
-                      absolute inset-x-2.5 bottom-0.5
-                      h-0.5 origin-left scale-x-0
-                      rounded-full bg-red-500
-                      transition-transform duration-200
-                      group-hover:scale-x-100
-                      group-focus-visible:scale-x-100
-                    "
-                  />
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
+        <MarketingNavigation variant="header" />
 
         <div className="hidden items-center gap-2 min-[1180px]:flex">
           <LangSwitcher />
@@ -165,20 +133,22 @@ export default function MarketingHeader() {
         </div>
 
         <div className="flex items-center gap-2 min-[1180px]:hidden">
-          <a
-            href={t("marketing.header.contacts.phoneHref")}
+          <IconButton
+            asChild
             aria-label={t("marketing.header.contacts.phone")}
-            className={buttonLinkVariants({
-              variant: "headerControl",
-              size: "icon",
-            })}
+            className="min-[1180px]:hidden"
           >
-            <FontAwesomeIcon
-              className="text-lg shrink-0 animate-phone-ring motion-reduce:animate-none"
-              icon={faPhoneVolume}
-              aria-hidden="true"
-            />
-          </a>
+            <a
+              href={t("marketing.header.contacts.phoneHref")}
+              aria-label={t("marketing.header.contacts.phone")}
+            >
+              <FontAwesomeIcon
+                className="text-lg shrink-0 animate-phone-ring motion-reduce:animate-none"
+                icon={faPhoneVolume}
+                aria-hidden="true"
+              />
+            </a>
+          </IconButton>
 
           <div className="hidden sm:block">
             <LangSwitcher />

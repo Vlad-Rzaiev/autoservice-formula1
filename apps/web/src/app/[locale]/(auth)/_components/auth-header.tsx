@@ -1,4 +1,4 @@
-import HeaderLogo from "@/app/components/layout/header/header-logo";
+import BrandLogo from "@/app/components/common/brand-logo/brand-logo";
 import ThemeSwitcher from "@/app/components/theme/theme-switcher";
 import React from "react";
 
@@ -19,7 +19,7 @@ export default function AuthHeader({}: AuthHeaderProps) {
         dark:border-white/10
       "
     >
-      <HeaderLogo />
+      <BrandLogo />
 
       <ThemeSwitcher />
     </header>

@@ -7,11 +7,11 @@ import {
   faRightToBracket,
   faUserPlus,
 } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
-import { navItems } from "@/app/[locale]/(marketing)/_components/header/navigation";
 import Container from "@/app/components/layout/container";
+import BrandLogo from "@/app/components/common/brand-logo/brand-logo";
 import ButtonLink from "@/app/components/common/button-link/button-link";
+import MarketingNavigation from "@/app/[locale]/(marketing)/_components/nav/marketing-navigation";
 
 export interface FooterProps {
   children?: React.ReactNode;
@@ -26,28 +26,7 @@ export default function MarketingFooter({}: FooterProps) {
       <Container>
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr]">
           <div className="max-w-md">
-            <Link
-              href="/"
-              aria-label={t("marketing.footer.home")}
-              className="
-                group inline-flex items-center
-                rounded-lg
-                text-3xl font-black italic tracking-tighter
-                text-foreground
-                focus-visible:outline-none
-                focus-visible:ring-2
-                focus-visible:ring-ring
-                focus-visible:ring-offset-2
-              "
-            >
-              <span className="transition-colors duration-200 group-hover:text-foreground/75">
-                F
-              </span>
-
-              <span className="text-red-500 transition-colors duration-200 group-hover:text-red-600">
-                1
-              </span>
-            </Link>
+            <BrandLogo variant="footer" />
 
             <p className="mt-4 max-w-sm text-sm leading-6 text-foreground/65 md:text-base">
               {t("marketing.footer.description")}
@@ -59,38 +38,7 @@ export default function MarketingFooter({}: FooterProps) {
               {t("marketing.footer.navTitle")}
             </h2>
 
-            <nav className="mt-4" aria-label={t("marketing.footer.label")}>
-              <ul className="flex flex-col gap-3">
-                {navItems.map(({ href, translationKey }) => (
-                  <li key={href}>
-                    <Link
-                      href={href}
-                      className="
-                        group inline-flex items-center
-                        text-sm font-medium text-foreground/65
-                        transition-colors duration-200
-                        hover:text-red-500
-                        focus-visible:rounded-sm
-                        focus-visible:outline-none
-                        focus-visible:ring-2
-                        focus-visible:ring-ring
-                      "
-                    >
-                      <span
-                        aria-hidden="true"
-                        className="
-                          mr-0 h-px w-0 bg-red-500
-                          transition-all duration-200
-                          group-hover:mr-2 group-hover:w-4
-                        "
-                      />
-
-                      {t(translationKey)}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </nav>
+            <MarketingNavigation variant="footer" />
           </div>
 
           <div>

@@ -1,15 +1,14 @@
 "use client";
 
 import { useEffect } from "react";
-import { useMobileMenu } from "@/providers/mobile-menu-provider";
-import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
+import { cn } from "@/lib/utils";
+import { useMobileMenu } from "@/providers/mobile-menu-provider";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBarsStaggered,
   faCalendarCheck,
-  faChevronRight,
   faClock,
   faLocationDot,
   faPhoneVolume,
@@ -19,7 +18,6 @@ import {
 
 import LangSwitcher from "@/app/components/locale/lang-switcher";
 import ThemeSwitcher from "@/app/components/theme/theme-switcher";
-import { navItems } from "@/app/[locale]/(marketing)/_components/header/navigation";
 import {
   Drawer,
   DrawerClose,
@@ -28,7 +26,11 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/app/components/ui/drawer";
-import HeaderLogo from "@/app/components/layout/header/header-logo";
+import { IconButton } from "@/app/components/common/icon-button/icon-button";
+import { buttonLinkVariants } from "@/app/components/common/button-link/button-link-variants";
+import MarketingNavigation from "@/app/[locale]/(marketing)/_components/nav/marketing-navigation";
+import ButtonLink from "@/app/components/common/button-link/button-link";
+import BrandLogo from "@/app/components/common/brand-logo/brand-logo";
 
 const desktopBreakpointQuery = "(min-width: 1180px)";
 
@@ -61,42 +63,7 @@ export default function MarketingMobileMenu() {
     <Drawer open={isOpen} onOpenChange={setIsOpen} swipeDirection="right">
       <DrawerTrigger
         render={
-          <button
-            type="button"
-            aria-label={t("mobile-menu.open")}
-            aria-expanded={isOpen}
-            className="
-              group relative inline-flex size-10 cursor-pointer
-              items-center justify-center overflow-hidden
-              rounded-xl border border-border
-              bg-surface text-foreground
-              shadow-[0_8px_24px_-14px_rgba(15,23,42,0.65)]
-              transition-all duration-200
-              hover:-translate-y-0.5
-              hover:border-red-500/40
-              hover:bg-foreground/5
-              hover:text-red-500
-              active:translate-y-0
-              active:scale-95
-              focus-visible:outline-none
-              focus-visible:ring-2
-              focus-visible:ring-ring
-              focus-visible:ring-offset-2
-              focus-visible:ring-offset-background
-            "
-          >
-            <span
-              aria-hidden="true"
-              className="
-                absolute inset-0
-                bg-linear-to-br
-                from-red-500/0 to-red-600/0
-                transition-colors duration-200
-                group-hover:from-red-500/5
-                group-hover:to-red-600/10
-              "
-            />
-
+          <IconButton aria-label={t("mobile-menu.open")} aria-expanded={isOpen}>
             <FontAwesomeIcon
               icon={faBarsStaggered}
               aria-hidden="true"
@@ -107,7 +74,7 @@ export default function MarketingMobileMenu() {
                 group-focus-visible:scale-110
               "
             />
-          </button>
+          </IconButton>
         }
       />
 
@@ -129,32 +96,12 @@ export default function MarketingMobileMenu() {
           "
         >
           <DrawerTitle>
-            <HeaderLogo />
+            <BrandLogo variant="mobileMenu" />
           </DrawerTitle>
 
           <DrawerClose
             render={
-              <button
-                type="button"
-                aria-label={t("mobile-menu.close")}
-                className="
-                  group inline-flex size-10 cursor-pointer
-                  items-center justify-center
-                  rounded-xl border border-border
-                  bg-surface text-foreground
-                  shadow-sm
-                  transition-all duration-200
-                  hover:border-red-500/40
-                  hover:bg-foreground/5
-                  hover:text-red-500
-                  active:scale-95
-                  focus-visible:outline-none
-                  focus-visible:ring-2
-                  focus-visible:ring-ring
-                  focus-visible:ring-offset-2
-                  focus-visible:ring-offset-background
-                "
-              >
+              <IconButton aria-label={t("mobile-menu.close")}>
                 <FontAwesomeIcon
                   icon={faXmark}
                   aria-hidden="true"
@@ -165,7 +112,7 @@ export default function MarketingMobileMenu() {
                     group-hover:scale-110
                   "
                 />
-              </button>
+              </IconButton>
             }
           ></DrawerClose>
 
@@ -201,13 +148,10 @@ export default function MarketingMobileMenu() {
           >
             <a
               href={t("marketing.header.contacts.phoneHref")}
-              className="
-                group flex items-center gap-3
-                rounded-xl
-                focus-visible:outline-none
-                focus-visible:ring-2
-                focus-visible:ring-ring
-              "
+              className={buttonLinkVariants({
+                variant: "inline",
+                size: "inline",
+              })}
             >
               <span
                 className="
@@ -251,10 +195,13 @@ export default function MarketingMobileMenu() {
 
             <div className="mt-3 space-y-2 border-t border-border pt-3">
               <p
-                className="
-                  flex items-start gap-2
-                  text-sm leading-5 text-foreground/65
-                "
+                className={cn(
+                  buttonLinkVariants({
+                    variant: "inline",
+                    size: "inline",
+                  }),
+                  "hover:bg-transparent hover:text-inherit",
+                )}
               >
                 <FontAwesomeIcon
                   icon={faClock}
@@ -265,19 +212,14 @@ export default function MarketingMobileMenu() {
                 <span>{t("marketing.header.contacts.hours")}</span>
               </p>
 
-              <Link
-                href="/#contacts"
+              <a
+                href={t("marketing.header.contacts.mapHref")}
+                target="_blank"
                 onClick={closeMenu}
-                className="
-                  flex items-start gap-2
-                  rounded-md
-                  text-sm leading-5 text-foreground/65
-                  transition-colors duration-200
-                  hover:text-red-500
-                  focus-visible:outline-none
-                  focus-visible:ring-2
-                  focus-visible:ring-ring
-                "
+                className={buttonLinkVariants({
+                  variant: "inline",
+                  size: "inline",
+                })}
               >
                 <FontAwesomeIcon
                   icon={faLocationDot}
@@ -286,133 +228,27 @@ export default function MarketingMobileMenu() {
                 />
 
                 <span>{t("marketing.header.contacts.address")}</span>
-              </Link>
+              </a>
             </div>
           </div>
 
-          <nav className="mb-6" aria-label={t("mobile-menu.navigation.label")}>
-            <ul
-              className="
-                overflow-hidden rounded-2xl
-                border border-border
-                bg-surface
-              "
-            >
-              {navItems.map((item) => (
-                <li
-                  key={item.href}
-                  className="border-b border-border last:border-b-0"
-                >
-                  <Link
-                    href={item.href}
-                    onClick={closeMenu}
-                    className="
-                      group relative flex min-h-13 w-full
-                      items-center justify-between
-                      gap-3 px-4 py-3
-                      text-base font-semibold tracking-tight
-                      text-foreground/70
-                      transition-colors duration-200
-                      hover:bg-foreground/5
-                      hover:text-foreground
-                      focus-visible:outline-none
-                      focus-visible:ring-2
-                      focus-visible:ring-inset
-                      focus-visible:ring-ring
-                    "
-                  >
-                    <span
-                      aria-hidden="true"
-                      className="
-                        absolute top-1/2 left-0
-                        h-7 w-1
-                        -translate-y-1/2 scale-y-0
-                        rounded-r-full bg-red-500
-                        transition-transform duration-200
-                        group-hover:scale-y-100
-                        group-focus-visible:scale-y-100
-                      "
-                    />
-
-                    <span
-                      className="
-                        transition-transform duration-200
-                        group-hover:translate-x-1.5
-                        group-focus-visible:translate-x-1.5
-                      "
-                    >
-                      {t(item.translationKey)}
-                    </span>
-
-                    <FontAwesomeIcon
-                      icon={faChevronRight}
-                      aria-hidden="true"
-                      className="
-                        text-lg shrink-0
-                        text-foreground/35
-                        transition-all duration-200
-                        group-hover:translate-x-1
-                        group-hover:text-red-500
-                      "
-                    />
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
+          <MarketingNavigation variant="mobile" onNavigate={closeMenu} />
 
           <div className="mt-auto flex flex-col gap-3">
-            <Link
-              href="/#booking"
-              onClick={closeMenu}
-              className="
-                inline-flex min-h-12 w-full
-                items-center justify-center gap-2
-                rounded-xl bg-red-500
-                px-4 py-3
-                text-base font-bold text-white
-                shadow-[0_10px_24px_-12px_rgba(239,68,68,0.9)]
-                transition-all duration-200
-                hover:-translate-y-0.5
-                hover:bg-red-600
-                hover:shadow-[0_14px_28px_-12px_rgba(239,68,68,0.95)]
-                active:translate-y-0
-                active:scale-[0.98]
-                focus-visible:outline-none
-                focus-visible:ring-2
-                focus-visible:ring-red-500
-                focus-visible:ring-offset-2
-                focus-visible:ring-offset-background
-              "
-            >
+            <ButtonLink href="/#booking" onClick={closeMenu} fullWidth>
               <FontAwesomeIcon
                 icon={faCalendarCheck}
                 aria-hidden="true"
                 className="text-xl shrink-0"
               />
               {t("marketing.header.actions.booking")}
-            </Link>
+            </ButtonLink>
 
-            <Link
+            <ButtonLink
               href="/login"
               onClick={closeMenu}
-              className="
-                inline-flex min-h-12 w-full
-                items-center justify-center gap-2
-                rounded-xl border border-border
-                bg-surface px-4 py-3
-                text-base font-semibold text-foreground
-                transition-all duration-200
-                hover:border-red-500/40
-                hover:bg-foreground/5
-                hover:text-red-500
-                active:scale-[0.98]
-                focus-visible:outline-none
-                focus-visible:ring-2
-                focus-visible:ring-ring
-                focus-visible:ring-offset-2
-                focus-visible:ring-offset-background
-              "
+              fullWidth
+              variant="outline"
             >
               <FontAwesomeIcon
                 icon={faRightToBracket}
@@ -420,27 +256,22 @@ export default function MarketingMobileMenu() {
                 className="text-xl shrink-0"
               />
               {t("marketing.header.actions.account")}
-            </Link>
+            </ButtonLink>
 
-            <p className="text-center text-sm text-foreground/55">
-              {t("mobile-menu.noAccount")}{" "}
-              <Link
+            <div className="flex gap items-center justify-center">
+              <p className="text-center text-sm text-foreground/55">
+                {t("mobile-menu.noAccount")}
+              </p>
+              <ButtonLink
                 href="/register"
+                className="text-red-500 hover:text-red-700 hover:underline"
                 onClick={closeMenu}
-                className="
-                  font-semibold text-red-500
-                  transition-colors duration-200
-                  hover:text-red-600
-                  hover:underline
-                  focus-visible:rounded-sm
-                  focus-visible:outline-none
-                  focus-visible:ring-2
-                  focus-visible:ring-ring
-                "
+                variant="subtle"
+                size="compact"
               >
                 {t("auth.reg.regBtn")}
-              </Link>
-            </p>
+              </ButtonLink>
+            </div>
           </div>
         </div>
 
