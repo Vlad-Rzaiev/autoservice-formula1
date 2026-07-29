@@ -27,7 +27,7 @@ export default function ServicesPage({}: ServicesPageProps) {
 
   return (
     <>
-      <ServicesHero />
+      <ServicesHero servicesCount={services.length} />
 
       <Section>
         <Container>

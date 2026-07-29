@@ -1,45 +1,22 @@
-import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCalendarCheck,
-  faCarSide,
-  faClipboardCheck,
-  faMagnifyingGlassChart,
   faPhoneVolume,
   faScrewdriverWrench,
-  faShieldHalved,
 } from "@fortawesome/free-solid-svg-icons";
 import { useTranslations } from "next-intl";
+import { cn } from "@/lib/utils";
 
-import { Link } from "@/i18n/navigation";
+import { buttonLinkVariants } from "@/app/components/common/button-link/button-link-variants";
+import { benefits } from "@/app/[locale]/(marketing)/services/lib/service-benefit-items";
 import Section from "@/app/components/layout/section";
 import Container from "@/app/components/layout/container";
+import ButtonLink from "@/app/components/common/button-link/button-link";
+import BenefitList from "@/app/[locale]/(marketing)/services/_components/benefit-list";
 
 interface ServicesHeroProps {
   servicesCount?: number;
 }
-
-type BenefitTranslationKey = "diagnostics" | "approval" | "warranty";
-
-interface BenefitItem {
-  translationKey: BenefitTranslationKey;
-  icon: IconDefinition;
-}
-
-const benefits = [
-  {
-    translationKey: "diagnostics",
-    icon: faMagnifyingGlassChart,
-  },
-  {
-    translationKey: "approval",
-    icon: faClipboardCheck,
-  },
-  {
-    translationKey: "warranty",
-    icon: faShieldHalved,
-  },
-] as const satisfies readonly BenefitItem[];
 
 export default function ServicesHero({ servicesCount }: ServicesHeroProps) {
   const t = useTranslations("services.allServices.hero");
@@ -118,19 +95,7 @@ export default function ServicesHero({ servicesCount }: ServicesHeroProps) {
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <a
                 href={t("phoneHref")}
-                className="
-                  group inline-flex min-h-12 items-center justify-center
-                  gap-2 rounded-xl bg-red-600 px-6 py-3
-                  text-sm font-semibold text-white
-                  shadow-[0_14px_34px_-16px_rgba(220,38,38,0.85)]
-                  transition-all duration-200
-                  hover:-translate-y-0.5 hover:bg-red-700
-                  active:translate-y-0 active:scale-[0.98]
-                  focus-visible:outline-none
-                  focus-visible:ring-2 focus-visible:ring-red-500
-                  focus-visible:ring-offset-2
-                  focus-visible:ring-offset-background
-                "
+                className={cn(buttonLinkVariants(), "w-auto")}
               >
                 {t("call")}
 
@@ -145,19 +110,11 @@ export default function ServicesHero({ servicesCount }: ServicesHeroProps) {
                 />
               </a>
 
-              <Link
+              <ButtonLink
                 href="/booking"
-                className="
-                  inline-flex min-h-12 items-center justify-center
-                  gap-2 rounded-xl border border-border bg-background
-                  px-6 py-3 text-sm font-semibold text-foreground
-                  transition-all duration-200
-                  hover:border-red-500/40 hover:bg-red-500/5
-                  focus-visible:outline-none
-                  focus-visible:ring-2 focus-visible:ring-red-500
-                  focus-visible:ring-offset-2
-                  focus-visible:ring-offset-background
-                "
+                variant="outline"
+                fullWidth
+                className="sm:w-auto"
               >
                 <FontAwesomeIcon
                   icon={faCalendarCheck}
@@ -166,7 +123,7 @@ export default function ServicesHero({ servicesCount }: ServicesHeroProps) {
                 />
 
                 {t("booking")}
-              </Link>
+              </ButtonLink>
             </div>
 
             {typeof servicesCount === "number" && servicesCount > 0 && (
@@ -217,51 +174,22 @@ export default function ServicesHero({ servicesCount }: ServicesHeroProps) {
 
               <div
                 className="
+                  text-3xl font-extrabold italic
                   flex size-20 items-center justify-center
-                  rounded-2xl bg-red-600 text-white
+                  rounded-2xl bg-red-600 
                   shadow-[0_20px_45px_-18px_rgba(220,38,38,0.9)]
                 "
               >
-                <FontAwesomeIcon
-                  icon={faCarSide}
-                  aria-hidden="true"
-                  className="shrink-0 text-4xl"
-                />
+                <span className="text-white tracking-[0.15em]">F</span>
+                <span className="text-black tracking-widest">1</span>
               </div>
             </div>
 
-            <ul className="relative mt-6 space-y-3">
-              {benefits.map((benefit) => {
-                return (
-                  <li
-                    key={benefit.translationKey}
-                    className="
-                      flex items-center gap-4 rounded-xl
-                      border border-border bg-background/70
-                      px-4 py-3
-                    "
-                  >
-                    <div
-                      className="
-                        flex size-10 shrink-0 items-center justify-center
-                        rounded-lg bg-red-500/10 text-red-600
-                        dark:text-red-400
-                      "
-                    >
-                      <FontAwesomeIcon
-                        icon={benefit.icon}
-                        aria-hidden="true"
-                        className="shrink-0 text-lg"
-                      />
-                    </div>
-
-                    <span className="text-sm font-medium text-foreground sm:text-base">
-                      {t(`benefits.${benefit.translationKey}`)}
-                    </span>
-                  </li>
-                );
-              })}
-            </ul>
+            <BenefitList
+              items={benefits}
+              variant="default"
+              getLabel={(translationKey) => t(`benefits.${translationKey}`)}
+            />
           </div>
         </div>
       </Container>

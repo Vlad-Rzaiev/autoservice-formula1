@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import { useTranslations } from "next-intl";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
@@ -11,11 +10,7 @@ import SectionTitle from "@/app/components/layout/section-title";
 import ServicesCatalog from "@/app/[locale]/(marketing)/services/_components/services-catalog";
 import ButtonLink from "@/app/components/common/button-link/button-link";
 
-export interface ServicesProps {
-  children?: React.ReactNode;
-}
-
-export default function Services({}: ServicesProps) {
+export default function Services() {
   const t = useTranslations();
 
   const {

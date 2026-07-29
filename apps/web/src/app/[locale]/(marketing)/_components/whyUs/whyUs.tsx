@@ -7,6 +7,7 @@ import Section from "@/app/components/layout/section";
 import Container from "@/app/components/layout/container";
 import SectionTitle from "@/app/components/layout/section-title";
 import { IconCard } from "@/app/components/common/icon-card";
+import CardGrid from "@/app/components/common/card-grid/card-grid";
 
 export interface WhyUsProps {
   children?: React.ReactNode;
@@ -18,9 +19,11 @@ export default function WhyUs({}: WhyUsProps) {
   return (
     <Section id="why-us">
       <Container>
-        <SectionTitle>{t("marketing.why-us.title")}</SectionTitle>
+        <SectionTitle className="mb-8 lg:mb-12">
+          {t("marketing.why-us.title")}
+        </SectionTitle>
 
-        <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:mt-14 lg:grid-cols-4 lg:gap-6">
+        <CardGrid columns="four">
           {cardsItems.map((item) => (
             <li key={item.id}>
               <IconCard
@@ -37,7 +40,7 @@ export default function WhyUs({}: WhyUsProps) {
               />
             </li>
           ))}
-        </ul>
+        </CardGrid>
       </Container>
     </Section>
   );

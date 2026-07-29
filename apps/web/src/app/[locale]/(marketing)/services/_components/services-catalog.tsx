@@ -12,6 +12,7 @@ import ServiceCard from "@/app/[locale]/(marketing)/services/_components/service
 import LoadingState from "@/app/components/states/loading-state";
 import ErrorState from "@/app/components/states/error-state";
 import EmptyState from "@/app/components/states/empty-state";
+import CardGrid from "@/app/components/common/card-grid/card-grid";
 
 function isServiceLocale(locale: string): locale is ServiceLocale {
   return serviceLocales.includes(locale as ServiceLocale);
@@ -58,10 +59,7 @@ export default function ServicesCatalog({
           icon={faScrewdriverWrench}
         />
       ) : (
-        <ul
-          id="services-catalog"
-          className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6"
-        >
+        <CardGrid columns="three" gap="large">
           {services.map((service) => {
             const serviceTranslation = service.translations[currentLocale];
 
@@ -76,7 +74,7 @@ export default function ServicesCatalog({
               />
             );
           })}
-        </ul>
+        </CardGrid>
       )}
     </>
   );
