@@ -5,8 +5,16 @@ import {
 
 import { apiClient } from "@/lib/api/api-client";
 
-export async function getServices(): Promise<ServiceDto[]> {
-  const response = await apiClient.get<unknown>("/services");
+interface GetServiceByIdOptions {
+  signal?: AbortSignal;
+}
+
+export async function getServices(
+  options: GetServiceByIdOptions = {},
+): Promise<ServiceDto[]> {
+  const response = await apiClient.get<unknown>("/services", {
+    signal: options.signal,
+  });
 
   const parsedResponse = servicesResponseSchema.parse(response.data);
 
