@@ -1,12 +1,11 @@
 "use client";
 
+import { usePathname, useRouter } from "@/i18n/navigation";
 import Image from "next/image";
 import { useLocale } from "next-intl";
-
-import { IconButton } from "@/app/components/common/icon-button/icon-button";
-import { lang } from "@/app/components/locale/lang-list";
-import { usePathname, useRouter } from "@/i18n/navigation";
+import { localeOptions } from "@/i18n/locale-config";
 import { cn } from "@/lib/utils";
+import { IconButton } from "@/app/components/common/buttons/icon-button/icon-button";
 
 interface LangSwitcherProps {
   className?: string;
@@ -19,7 +18,7 @@ export default function LangSwitcher({ className }: LangSwitcherProps) {
 
   return (
     <div className={cn("flex items-center gap", className)} role="group">
-      {lang.map((language) => {
+      {localeOptions.map((language) => {
         const isActive = currentLang === language.code;
 
         return (

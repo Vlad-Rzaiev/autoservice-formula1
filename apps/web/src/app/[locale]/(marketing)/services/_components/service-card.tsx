@@ -1,5 +1,3 @@
-"use client";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import {
@@ -8,10 +6,11 @@ import {
 } from "@/app/[locale]/(marketing)/services/lib/service-icon-map";
 import { Link } from "@/i18n/navigation";
 import { IconCard } from "@/app/components/common/icon-card";
+import { ServiceIconKey } from "@autoservice/contracts";
 
 export interface ServiceCardProps {
   id: string;
-  icon: string;
+  icon: ServiceIconKey;
   title: string;
   description: string;
   actionLabel: string;

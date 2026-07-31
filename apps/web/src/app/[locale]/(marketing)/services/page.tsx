@@ -1,33 +1,17 @@
-"use client";
-
-import React from "react";
 import { useTranslations } from "next-intl";
-import { useServices } from "@/app/[locale]/(marketing)/services/api/use-services";
 import Section from "@/app/components/layout/section";
 import Container from "@/app/components/layout/container";
 import SectionTitle from "@/app/components/layout/section-title";
 import ServicesHero from "@/app/[locale]/(marketing)/services/_components/services-hero";
-import ServicesCatalog from "@/app/[locale]/(marketing)/services/_components/services-catalog";
+import ServicesCatalogContainer from "@/app/[locale]/(marketing)/services/_components/services-catalog-container";
 import ServicesCta from "@/app/[locale]/(marketing)/services/_components/services-cta";
 
-export interface ServicesPageProps {
-  children?: React.ReactNode;
-}
-
-export default function ServicesPage({}: ServicesPageProps) {
+export default function ServicesPage() {
   const t = useTranslations();
-
-  const {
-    data: services = [],
-    isPending,
-    isError,
-    isFetching,
-    refetch,
-  } = useServices();
 
   return (
     <>
-      <ServicesHero servicesCount={services.length} />
+      <ServicesHero />
 
       <Section>
         <Container>
@@ -35,13 +19,7 @@ export default function ServicesPage({}: ServicesPageProps) {
             {t("services.allServices.title")}
           </SectionTitle>
 
-          <ServicesCatalog
-            services={services}
-            isPending={isPending}
-            isError={isError}
-            isFetching={isFetching}
-            refetch={refetch}
-          />
+          <ServicesCatalogContainer />
         </Container>
       </Section>
 

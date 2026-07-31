@@ -13,11 +13,7 @@
     },
     "actions": { "account": "Client Portal", "booking": "Book an Appointment" },
     "contacts": {
-      "phone": "+48 777 777 777",
-      "phoneHref": "tel:+48777777777",
-      "hours": "Mon–Fri 09:00–18:00, Sat 09:00–14:00",
-      "address": "Jagiellonska 1, 85-005 Bydgoszcz",
-      "mapHref": "https://www.google.com/maps/search/?api=1&query=Jagiellońska+1+Bydgoszcz"
+      "hours": "Mon–Fri 09:00–18:00, Sat 09:00–14:00"
     }
   },
 

@@ -1,25 +1,16 @@
+import {
+  servicesResponseSchema,
+  type ServiceDto,
+} from "@autoservice/contracts";
+
 import { apiClient } from "@/lib/api/api-client";
-import type {
-  Service,
-  ServicesResponse,
-} from "@/app/[locale]/(marketing)/services/model/service.types";
 
-interface GetServicesOptions {
-  signal?: AbortSignal;
-}
+export async function getServices(): Promise<ServiceDto[]> {
+  const response = await apiClient.get<unknown>("/services");
 
-export async function getServices(
-  options: GetServicesOptions = {},
-): Promise<Service[]> {
-  const res = await apiClient.get<ServicesResponse>("/services", {
-    signal: options.signal,
-  });
+  const parsedResponse = servicesResponseSchema.parse(response.data);
 
-  const resBody = res.data;
+  const services: ServiceDto[] = parsedResponse.data;
 
-  if (!resBody.success) {
-    throw new Error(resBody.message || "Failed to load services.");
-  }
-
-  return resBody.data;
+  return services;
 }

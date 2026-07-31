@@ -5,7 +5,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useTranslations } from "next-intl";
 
-import { Link } from "@/i18n/navigation";
+import ButtonLink from "@/app/components/common/buttons/button-link/button-link";
 
 export default function NotFound() {
   const t = useTranslations("services.servicePage");
@@ -60,26 +60,7 @@ export default function NotFound() {
         {t("not-found-description")}
       </p>
 
-      <Link
-        href="/services"
-        className="
-          group mt-7 inline-flex min-h-11
-          items-center justify-center gap-2
-          rounded-xl bg-red-600 px-5 py-2.5
-          text-sm font-semibold text-white
-          shadow-[0_12px_30px_-14px_rgba(220,38,38,0.8)]
-          transition-all duration-200
-          hover:-translate-y-0.5
-          hover:bg-red-700
-          active:translate-y-0
-          active:scale-[0.98]
-          focus-visible:outline-none
-          focus-visible:ring-2
-          focus-visible:ring-red-500
-          focus-visible:ring-offset-2
-          focus-visible:ring-offset-background
-        "
-      >
+      <ButtonLink href="/services">
         <FontAwesomeIcon
           icon={faArrowLeft}
           aria-hidden="true"
@@ -91,7 +72,7 @@ export default function NotFound() {
         />
 
         {t("back-to-services")}
-      </Link>
+      </ButtonLink>
     </div>
   );
 }

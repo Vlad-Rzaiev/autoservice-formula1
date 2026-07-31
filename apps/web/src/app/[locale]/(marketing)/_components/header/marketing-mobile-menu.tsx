@@ -26,11 +26,12 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/app/components/ui/drawer";
-import { IconButton } from "@/app/components/common/icon-button/icon-button";
-import { buttonLinkVariants } from "@/app/components/common/button-link/button-link-variants";
+import { IconButton } from "@/app/components/common/buttons/icon-button/icon-button";
+import { buttonLinkVariants } from "@/app/components/common/buttons/button-link/button-link-variants";
 import MarketingNavigation from "@/app/[locale]/(marketing)/_components/nav/marketing-navigation";
-import ButtonLink from "@/app/components/common/button-link/button-link";
+import ButtonLink from "@/app/components/common/buttons/button-link/button-link";
 import BrandLogo from "@/app/components/common/brand-logo/brand-logo";
+import { siteConfig } from "@/config/site-config";
 
 const desktopBreakpointQuery = "(min-width: 1180px)";
 
@@ -147,7 +148,7 @@ export default function MarketingMobileMenu() {
             "
           >
             <a
-              href={t("marketing.header.contacts.phoneHref")}
+              href={siteConfig.phone.href}
               className={buttonLinkVariants({
                 variant: "inline",
                 size: "inline",
@@ -188,7 +189,7 @@ export default function MarketingMobileMenu() {
                     group-hover:text-red-500
                   "
                 >
-                  {t("marketing.header.contacts.phone")}
+                  {siteConfig.phone.display}
                 </span>
               </span>
             </a>
@@ -213,7 +214,7 @@ export default function MarketingMobileMenu() {
               </p>
 
               <a
-                href={t("marketing.header.contacts.mapHref")}
+                href={siteConfig.address.googleMapsUrl}
                 target="_blank"
                 onClick={closeMenu}
                 className={buttonLinkVariants({
@@ -227,7 +228,7 @@ export default function MarketingMobileMenu() {
                   className="mt-0.5 text-lg shrink-0 text-red-500"
                 />
 
-                <span>{t("marketing.header.contacts.address")}</span>
+                <span>{siteConfig.address.display}</span>
               </a>
             </div>
           </div>
@@ -264,7 +265,7 @@ export default function MarketingMobileMenu() {
               </p>
               <ButtonLink
                 href="/register"
-                className="text-red-500 hover:text-red-700 hover:underline"
+                className="hover:underline"
                 onClick={closeMenu}
                 variant="subtle"
                 size="compact"

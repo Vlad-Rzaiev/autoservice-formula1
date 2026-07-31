@@ -1,8 +1,6 @@
+import type { ServiceDto, ServiceResponse } from "@autoservice/contracts";
+
 import { apiClient } from "@/lib/api/api-client";
-import {
-  ApiResponse,
-  Service,
-} from "@/app/[locale]/(marketing)/services/model/service.types";
 
 interface GetServiceByIdOptions {
   signal?: AbortSignal;
@@ -11,25 +9,25 @@ interface GetServiceByIdOptions {
 export async function getServiceById(
   serviceId: string,
   options: GetServiceByIdOptions = {},
-): Promise<Service> {
+): Promise<ServiceDto> {
   const normalizedServiceId = serviceId.trim();
 
   if (!normalizedServiceId) {
     throw new Error("Service ID is required!");
   }
 
-  const res = await apiClient.get<ApiResponse<Service>>(
+  const response = await apiClient.get<ServiceResponse>(
     `/services/${encodeURIComponent(normalizedServiceId)}`,
     {
       signal: options.signal,
     },
   );
 
-  const resBody = res.data;
+  const responseBody = response.data;
 
-  if (!resBody.success) {
-    throw new Error(resBody.message || "Failed to load service.");
+  if (!responseBody.success) {
+    throw new Error(responseBody.message || "Failed to load service.");
   }
 
-  return resBody.data;
+  return responseBody.data;
 }

@@ -4,15 +4,16 @@ import {
   faCircleCheck,
   faPhoneVolume,
 } from "@fortawesome/free-solid-svg-icons";
+import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
 
 import { benefits } from "@/app/[locale]/(marketing)/services/lib/service-benefit-items";
+import { buttonLinkVariants } from "@/app/components/common/buttons/button-link/button-link-variants";
 import Section from "@/app/components/layout/section";
 import Container from "@/app/components/layout/container";
 import BenefitList from "@/app/[locale]/(marketing)/services/_components/benefit-list";
-import ButtonLink from "@/app/components/common/button-link/button-link";
-import { buttonLinkVariants } from "@/app/components/common/button-link/button-link-variants";
-import { cn } from "@/lib/utils";
+import ButtonLink from "@/app/components/common/buttons/button-link/button-link";
+import { siteConfig } from "@/config/site-config";
 
 export default function ServicesCta() {
   const t = useTranslations("services.allServices.cta");
@@ -111,7 +112,7 @@ export default function ServicesCta() {
               </ButtonLink>
 
               <a
-                href="tel:+48777777777"
+                href={siteConfig.phone.href}
                 className={cn(
                   buttonLinkVariants({
                     variant: "outline",

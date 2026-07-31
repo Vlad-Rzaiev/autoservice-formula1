@@ -29,6 +29,7 @@
     }
   },
   "servicePage": {
+    "dev": "In Development...",
     "title": "Service Page",
     "loading-title": "Please wait",
     "error-title": "Failed to load the service",

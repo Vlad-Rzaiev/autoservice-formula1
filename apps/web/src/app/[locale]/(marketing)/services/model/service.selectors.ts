@@ -1,19 +1,19 @@
-import type { Service } from "@/app/[locale]/(marketing)/services/model/service.types";
+import type { ServiceDto } from "@autoservice/contracts";
 
 function compareServicesBySortOrder(
-  firstService: Service,
-  secondService: Service,
+  firstService: ServiceDto,
+  secondService: ServiceDto,
 ): number {
   return firstService.sortOrder - secondService.sortOrder;
 }
 
-export function selectActiveServices(services: Service[]): Service[] {
+export function selectActiveServices(services: ServiceDto[]): ServiceDto[] {
   return services
     .filter((service) => service.isActive)
     .sort(compareServicesBySortOrder);
 }
 
-export function selectFeaturedServices(services: Service[]): Service[] {
+export function selectFeaturedServices(services: ServiceDto[]): ServiceDto[] {
   return services
     .filter((service) => service.isActive && service.featured)
     .sort(compareServicesBySortOrder);

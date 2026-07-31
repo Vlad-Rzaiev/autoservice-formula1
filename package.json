@@ -6,14 +6,15 @@
     "packages/*"
   ],
   "scripts": {
-    "dev": "concurrently \"npm run dev -w apps/web\" \"npm run dev -w apps/api\"",
-    "dev:web": "npm run dev -w apps/web",
-    "dev:api": "npm run dev -w apps/api",
-    "build": "npm run build -w apps/web && npm run build -w apps/api",
-    "build:web": "npm run build -w apps/web",
-    "build:api": "npm run build -w apps/api",
+    "dev": "npm run build:contracts && concurrently \"npm run dev -w @autoservice/contracts\" \"npm run dev -w apps/web\" \"npm run dev -w apps/api\"",
+    "dev:web": "npm run build:contracts && npm run dev -w apps/web",
+    "dev:api": "npm run build:contracts && npm run dev -w apps/api",
+    "build": "npm run build:contracts && npm run build -w apps/web && npm run build -w apps/api",
+    "build:contracts": "npm run build -w @autoservice/contracts",
+    "build:web": "npm run build:contracts && npm run build -w apps/web",
+    "build:api": "npm run build:contracts && npm run build -w apps/api",
     "start:api": "npm run start -w apps/api",
-    "typecheck": "npm run typecheck -w apps/api"
+    "typecheck": "npm run typecheck -w @autoservice/contracts && npm run typecheck -w apps/api"
   },
   "devDependencies": {
     "concurrently": "^10.0.3"

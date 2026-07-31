@@ -9,7 +9,7 @@ export interface AuthFooterProps {
 export default function AuthFooter({}: AuthFooterProps) {
   return (
     <footer className="flex gap-3 py-4">
-      <BrandLogo />
+      <BrandLogo variant="footer" />
 
       <LangSwitcher />
     </footer>

@@ -7,12 +7,13 @@ import {
 import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 
-import { buttonLinkVariants } from "@/app/components/common/button-link/button-link-variants";
+import { buttonLinkVariants } from "@/app/components/common/buttons/button-link/button-link-variants";
 import { benefits } from "@/app/[locale]/(marketing)/services/lib/service-benefit-items";
 import Section from "@/app/components/layout/section";
 import Container from "@/app/components/layout/container";
-import ButtonLink from "@/app/components/common/button-link/button-link";
+import ButtonLink from "@/app/components/common/buttons/button-link/button-link";
 import BenefitList from "@/app/[locale]/(marketing)/services/_components/benefit-list";
+import { siteConfig } from "@/config/site-config";
 
 interface ServicesHeroProps {
   servicesCount?: number;
@@ -94,7 +95,7 @@ export default function ServicesHero({ servicesCount }: ServicesHeroProps) {
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <a
-                href={t("phoneHref")}
+                href={siteConfig.phone.href}
                 className={cn(buttonLinkVariants(), "w-auto")}
               >
                 {t("call")}

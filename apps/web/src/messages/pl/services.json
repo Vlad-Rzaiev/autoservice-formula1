@@ -29,6 +29,7 @@
     }
   },
   "servicePage": {
+    "dev": "W trakcie tworzenia...",
     "title": "Strona usługi",
     "loading-title": "Proszę czekać",
     "error-title": "Nie udało się załadować usługi",

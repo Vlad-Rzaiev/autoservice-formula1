@@ -1,4 +1,28 @@
-import { model, Schema } from 'mongoose';
+import {
+  serviceCategories,
+  serviceIconKeys,
+  type ServiceCategory,
+  type ServiceIconKey,
+  type ServiceLocale,
+} from '@autoservice/contracts';
+import { model, Schema, type HydratedDocument } from 'mongoose';
+
+export interface ServiceTranslationPersistence {
+  title: string;
+  description: string;
+}
+
+export interface ServicePersistence {
+  slug: string;
+  category: ServiceCategory;
+  iconKey: ServiceIconKey;
+  featured: boolean;
+  sortOrder: number;
+  isActive: boolean;
+  translations: Record<ServiceLocale, ServiceTranslationPersistence>;
+}
+
+export type ServiceDocument = HydratedDocument<ServicePersistence>;
 
 const serviceTranslationSchema = new Schema(
   {
@@ -38,7 +62,7 @@ const serviceTranslationsSchema = new Schema(
   },
 );
 
-const serviceSchema = new Schema(
+const serviceSchema = new Schema<ServicePersistence>(
   {
     slug: {
       type: String,
@@ -49,12 +73,14 @@ const serviceSchema = new Schema(
     },
     category: {
       type: String,
+      enum: serviceCategories,
       required: true,
       trim: true,
       lowercase: true,
     },
     iconKey: {
       type: String,
+      enum: serviceIconKeys,
       required: true,
       trim: true,
     },
@@ -85,4 +111,7 @@ const serviceSchema = new Schema(
   },
 );
 
-export const ServiceCollection = model('services', serviceSchema);
+export const ServiceCollection = model<ServicePersistence>(
+  'services',
+  serviceSchema,
+);

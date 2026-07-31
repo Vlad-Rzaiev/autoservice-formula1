@@ -1,5 +1,7 @@
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { navItems } from "@/app/[locale]/(marketing)/_components/header/navigation";
 import {
   navigationItemVariants,
@@ -8,8 +10,6 @@ import {
   NavigationVariant,
   navigationVariants,
 } from "@/app/[locale]/(marketing)/_components/nav/navigation-link-variants";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
 export interface MarketingNavigationProps {
   variant?: NavigationVariant;

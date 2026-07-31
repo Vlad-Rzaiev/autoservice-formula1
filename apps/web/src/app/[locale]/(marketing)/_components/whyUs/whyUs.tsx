@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import { useTranslations } from "next-intl";
 import { cardsItems } from "@/app/[locale]/(marketing)/_components/whyUs/cardsItems";

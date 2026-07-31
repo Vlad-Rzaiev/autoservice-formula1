@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -10,8 +8,8 @@ import {
 import { useTranslations } from "next-intl";
 import Container from "@/app/components/layout/container";
 import BrandLogo from "@/app/components/common/brand-logo/brand-logo";
-import ButtonLink from "@/app/components/common/button-link/button-link";
 import MarketingNavigation from "@/app/[locale]/(marketing)/_components/nav/marketing-navigation";
+import ButtonLink from "@/app/components/common/buttons/button-link/button-link";
 
 export interface FooterProps {
   children?: React.ReactNode;

@@ -1,5 +1,3 @@
-"use client";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPhoneVolume,
@@ -9,14 +7,15 @@ import {
   faCalendarCheck,
 } from "@fortawesome/free-solid-svg-icons";
 import { useTranslations } from "next-intl";
-import { buttonLinkVariants } from "@/app/components/common/button-link/button-link-variants";
+import { siteConfig } from "@/config/site-config";
+import { buttonLinkVariants } from "@/app/components/common/buttons/button-link/button-link-variants";
 
 import LangSwitcher from "@/app/components/locale/lang-switcher";
 import ThemeSwitcher from "@/app/components/theme/theme-switcher";
 import MarketingMobileMenu from "@/app/[locale]/(marketing)/_components/header/marketing-mobile-menu";
-import ButtonLink from "@/app/components/common/button-link/button-link";
+import ButtonLink from "@/app/components/common/buttons/button-link/button-link";
 import MarketingNavigation from "@/app/[locale]/(marketing)/_components/nav/marketing-navigation";
-import { IconButton } from "@/app/components/common/icon-button/icon-button";
+import { IconButton } from "@/app/components/common/buttons/icon-button/icon-button";
 import BrandLogo from "@/app/components/common/brand-logo/brand-logo";
 
 export default function MarketingHeader() {
@@ -37,7 +36,7 @@ export default function MarketingHeader() {
         className="
           hidden border-b border-border/70
           bg-foreground/2.5
-          min-[1180px]:block
+          navigation:block
           dark:bg-white/2.5
         "
       >
@@ -51,7 +50,7 @@ export default function MarketingHeader() {
         >
           <div className="flex items-center gap-5">
             <a
-              href={t("marketing.header.contacts.phoneHref")}
+              href={siteConfig.phone.href}
               className={buttonLinkVariants({
                 variant: "inline",
                 size: "inline",
@@ -62,7 +61,7 @@ export default function MarketingHeader() {
                 icon={faPhoneVolume}
                 aria-hidden="true"
               />
-              <span>{t("marketing.header.contacts.phone")}</span>
+              <span>{siteConfig.phone.display}</span>
             </a>
 
             <span className="inline-flex items-center gap-2 rounded-md font-normal text-inherit">
@@ -81,7 +80,7 @@ export default function MarketingHeader() {
                 variant: "inline",
                 size: "inline",
               })}
-              href={t("marketing.header.contacts.mapHref")}
+              href={siteConfig.address.googleMapsUrl}
               target="_blank"
             >
               <FontAwesomeIcon
@@ -89,7 +88,7 @@ export default function MarketingHeader() {
                 icon={faLocationDot}
                 aria-hidden="true"
               />
-              {t("marketing.header.contacts.address")}
+              {siteConfig.address.display}
             </a>
 
             <ButtonLink href="/login" variant="subtle" size="compact">
@@ -117,7 +116,7 @@ export default function MarketingHeader() {
 
         <MarketingNavigation variant="header" />
 
-        <div className="hidden items-center gap-2 min-[1180px]:flex">
+        <div className="hidden items-center gap-2 navigation:flex">
           <LangSwitcher />
 
           <ThemeSwitcher />
@@ -132,15 +131,15 @@ export default function MarketingHeader() {
           </ButtonLink>
         </div>
 
-        <div className="flex items-center gap-2 min-[1180px]:hidden">
+        <div className="flex items-center gap-2 navigation:hidden">
           <IconButton
             asChild
-            aria-label={t("marketing.header.contacts.phone")}
-            className="min-[1180px]:hidden"
+            aria-label={siteConfig.phone.display}
+            className="navigation:hidden"
           >
             <a
-              href={t("marketing.header.contacts.phoneHref")}
-              aria-label={t("marketing.header.contacts.phone")}
+              href={siteConfig.phone.href}
+              aria-label={siteConfig.phone.display}
             >
               <FontAwesomeIcon
                 className="text-lg shrink-0 animate-phone-ring motion-reduce:animate-none"

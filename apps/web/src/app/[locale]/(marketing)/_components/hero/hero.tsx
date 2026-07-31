@@ -1,7 +1,7 @@
-import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
+import { useTranslations } from "next-intl";
 import Container from "@/app/components/layout/container";
-import ButtonLink from "@/app/components/common/button-link/button-link";
+import ButtonLink from "@/app/components/common/buttons/button-link/button-link";
 import styles from "./hero.module.css";
 
 export default function Hero() {
@@ -25,7 +25,7 @@ export default function Hero() {
             ),
           })}
         </h1>
-        <p className="mt-6 max-w-xl rounded-xl border border-white/10 bg-black/15 px-4 py-3 text-base           font-medium leading-7 text-white shadow-lg backdrop-blur-[3px] md:text-lg md:leading-8">
+        <p className="mt-6 max-w-xl rounded-xl border border-white/10 bg-black/15 px-4 py-3 text-base font-medium leading-7 text-white shadow-lg backdrop-blur-[3px] md:text-lg md:leading-8">
           {t.rich("marketing.hero.description", {
             accent: (textChunks) => (
               <span className="font-semibold text-red-500">{textChunks}</span>

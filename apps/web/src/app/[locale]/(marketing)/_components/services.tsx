@@ -8,7 +8,7 @@ import Section from "@/app/components/layout/section";
 import Container from "@/app/components/layout/container";
 import SectionTitle from "@/app/components/layout/section-title";
 import ServicesCatalog from "@/app/[locale]/(marketing)/services/_components/services-catalog";
-import ButtonLink from "@/app/components/common/button-link/button-link";
+import ButtonLink from "@/app/components/common/buttons/button-link/button-link";
 
 export default function Services() {
   const t = useTranslations();
@@ -17,7 +17,7 @@ export default function Services() {
     data: services = [],
     isPending,
     isError,
-    isFetching,
+    isRefetching,
     refetch,
   } = useFeaturedServices();
 
@@ -39,7 +39,7 @@ export default function Services() {
             services={services}
             isPending={isPending}
             isError={isError}
-            isFetching={isFetching}
+            isRefetching={isRefetching}
             refetch={refetch}
           />
         </div>
