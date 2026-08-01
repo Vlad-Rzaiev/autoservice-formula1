@@ -9,7 +9,7 @@ import { IconCard } from "@/app/components/common/icon-card";
 import { ServiceIconKey } from "@autoservice/contracts";
 
 export interface ServiceCardProps {
-  id: string;
+  slug: string;
   icon: ServiceIconKey;
   title: string;
   description: string;
@@ -17,7 +17,7 @@ export interface ServiceCardProps {
 }
 
 export default function ServiceCard({
-  id,
+  slug,
   icon,
   title,
   description,
@@ -41,7 +41,7 @@ export default function ServiceCard({
       "
     >
       <Link
-        href={`/services/${id}`}
+        href={`/services/${slug}`}
         className="
           block h-full rounded-xl
           focus-visible:outline-none

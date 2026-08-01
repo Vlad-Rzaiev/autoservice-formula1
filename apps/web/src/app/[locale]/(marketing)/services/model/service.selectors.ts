@@ -1,6 +1,6 @@
 import type { ServiceDto } from "@autoservice/contracts";
 
-function compareServicesBySortOrder(
+function selectServicesBySortOrder(
   firstService: ServiceDto,
   secondService: ServiceDto,
 ): number {
@@ -10,11 +10,11 @@ function compareServicesBySortOrder(
 export function selectActiveServices(services: ServiceDto[]): ServiceDto[] {
   return services
     .filter((service) => service.isActive)
-    .sort(compareServicesBySortOrder);
+    .sort(selectServicesBySortOrder);
 }
 
 export function selectFeaturedServices(services: ServiceDto[]): ServiceDto[] {
   return services
     .filter((service) => service.isActive && service.featured)
-    .sort(compareServicesBySortOrder);
+    .sort(selectServicesBySortOrder);
 }

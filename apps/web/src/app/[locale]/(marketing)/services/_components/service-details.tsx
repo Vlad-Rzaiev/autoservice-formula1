@@ -3,15 +3,15 @@
 import axios from "axios";
 import { notFound } from "next/navigation";
 import { useTranslations } from "next-intl";
-import { useServiceById } from "@/app/[locale]/(marketing)/services/api/use-services";
+import { useServiceBySlug } from "@/app/[locale]/(marketing)/services/api/use-services";
 import QueryState from "@/app/components/states/query-state";
 import DevelopmentPlaceholder from "@/app/components/common/development-placeholder";
 
 export interface ServiceDetailsProps {
-  id: string;
+  slug: string;
 }
 
-export default function ServiceDetails({ id }: ServiceDetailsProps) {
+export default function ServiceDetails({ slug }: ServiceDetailsProps) {
   const t = useTranslations("services");
 
   const {
@@ -21,7 +21,7 @@ export default function ServiceDetails({ id }: ServiceDetailsProps) {
     error,
     isRefetching,
     refetch,
-  } = useServiceById(id);
+  } = useServiceBySlug(slug);
 
   const isNotFound =
     axios.isAxiosError(error) && error.response?.status === 404;
@@ -44,7 +44,7 @@ export default function ServiceDetails({ id }: ServiceDetailsProps) {
       {service && (
         <DevelopmentPlaceholder
           title={t("servicePage.title")}
-          id={id}
+          slug={slug}
           description={t("servicePage.dev")}
           linkHref="/services"
           linkText={t("servicePage.back-to-services")}

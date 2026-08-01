@@ -57,7 +57,7 @@ export default function ServicesCatalog({
           return (
             <ServiceCard
               key={service._id}
-              id={service._id}
+              slug={service.slug}
               icon={service.iconKey}
               title={serviceTranslation.title}
               description={serviceTranslation.description}

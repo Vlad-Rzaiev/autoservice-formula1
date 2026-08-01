@@ -2,7 +2,7 @@
 
 import { useQuery } from "@tanstack/react-query";
 import {
-  serviceByIdQueryOptions,
+  serviceBySlugQueryOptions,
   servicesQueryOptions,
 } from "@/app/[locale]/(marketing)/services/api/services-query-options";
 import {
@@ -24,6 +24,6 @@ export function useFeaturedServices() {
   });
 }
 
-export function useServiceById(serviceId: string) {
-  return useQuery(serviceByIdQueryOptions(serviceId));
+export function useServiceBySlug(serviceSlug: string) {
+  return useQuery(serviceBySlugQueryOptions(serviceSlug));
 }

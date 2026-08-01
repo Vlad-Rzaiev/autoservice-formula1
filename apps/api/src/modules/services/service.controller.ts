@@ -1,11 +1,11 @@
 import type { ServiceResponse, ServicesResponse } from '@autoservice/contracts';
 import type { RequestHandler } from 'express';
 import createHttpError from 'http-errors';
-import { getAllServices, getServiceById } from './service.service.js';
+import { getAllServices, getServiceBySlug } from './service.service.js';
 import { toServiceDto } from './service.mapper.js';
 
 interface GetServiceParams {
-  serviceId: string;
+  serviceSlug: string;
 }
 
 export const getServicesController: RequestHandler = async (_req, res) => {
@@ -22,11 +22,11 @@ export const getServicesController: RequestHandler = async (_req, res) => {
   res.status(responseBody.status).json(responseBody);
 };
 
-export const getServiceByIdController: RequestHandler<
+export const getServiceBySlugController: RequestHandler<
   GetServiceParams
 > = async (req, res) => {
-  const { serviceId } = req.params;
-  const service = await getServiceById(serviceId);
+  const { serviceSlug } = req.params;
+  const service = await getServiceBySlug(serviceSlug);
 
   if (!service) {
     throw createHttpError(404, 'Service not found.');
@@ -35,7 +35,7 @@ export const getServiceByIdController: RequestHandler<
   const responseBody: ServiceResponse = {
     status: 200,
     success: true,
-    message: `Successfully found service with id ${serviceId}`,
+    message: `Successfully found service with id ${serviceSlug}`,
     data: toServiceDto(service),
   };
 

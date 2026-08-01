@@ -1,6 +1,6 @@
 import { queryOptions } from "@tanstack/react-query";
 import { getServices } from "@/app/[locale]/(marketing)/services/api/get-services";
-import { getServiceById } from "@/app/[locale]/(marketing)/services/api/get-service-by-id";
+import { getServiceBySlug } from "@/app/[locale]/(marketing)/services/api/get-service-by-slug";
 
 const servicesStaleTimeMs = 10 * 60 * 1000;
 
@@ -13,8 +13,8 @@ export const servicesQueryKeys = {
 
   details: () => [...servicesQueryKeys.all, "detail"] as const,
 
-  detail: (serviceId: string) =>
-    [...servicesQueryKeys.details(), serviceId] as const,
+  detail: (serviceSlug: string) =>
+    [...servicesQueryKeys.details(), serviceSlug] as const,
 };
 
 export const servicesQueryOptions = queryOptions({
@@ -23,11 +23,11 @@ export const servicesQueryOptions = queryOptions({
   staleTime: servicesStaleTimeMs,
 });
 
-export function serviceByIdQueryOptions(serviceId: string) {
+export function serviceBySlugQueryOptions(serviceSlug: string) {
   return queryOptions({
-    queryKey: servicesQueryKeys.detail(serviceId),
-    queryFn: ({ signal }) => getServiceById(serviceId, { signal }),
+    queryKey: servicesQueryKeys.detail(serviceSlug),
+    queryFn: ({ signal }) => getServiceBySlug(serviceSlug, { signal }),
     staleTime: servicesStaleTimeMs,
-    enabled: Boolean(serviceId),
+    enabled: Boolean(serviceSlug),
   });
 }

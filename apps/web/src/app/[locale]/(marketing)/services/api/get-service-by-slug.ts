@@ -2,18 +2,18 @@ import type { ServiceDto, ServiceResponse } from "@autoservice/contracts";
 
 import { apiClient } from "@/lib/api/api-client";
 
-interface GetServiceByIdOptions {
+interface GetServiceBySlugOptions {
   signal?: AbortSignal;
 }
 
-export async function getServiceById(
-  serviceId: string,
-  options: GetServiceByIdOptions = {},
+export async function getServiceBySlug(
+  serviceSlug: string,
+  options: GetServiceBySlugOptions = {},
 ): Promise<ServiceDto> {
-  const normalizedServiceId = serviceId.trim();
+  const normalizedServiceId = serviceSlug.trim();
 
   if (!normalizedServiceId) {
-    throw new Error("Service ID is required!");
+    throw new Error("Service slug is required!");
   }
 
   const response = await apiClient.get<ServiceResponse>(

@@ -1,8 +1,10 @@
 import express from 'express';
 import cors from 'cors';
+import helmet from 'helmet';
 import pino from 'pino';
 import { pinoHttp } from 'pino-http';
 
+import { env } from './config/env.js';
 import { getEnvVar } from './utils/getEnvVar.js';
 import { notFoundHandler } from './middleware/notFoundHandler.js';
 import { errorHandler } from './middleware/errorHandler.js';
@@ -28,7 +30,21 @@ const PORT = Number(getEnvVar('PORT', '7777'));
 export const startServer = () => {
   const app = express();
 
-  app.use(cors());
+  app.disable('x-powered-by');
+  app.use(helmet());
+  app.use(
+    cors({
+      origin(origin, callback) {
+        if (!origin || env.CORS_ORIGINS.includes(origin)) {
+          callback(null, true);
+          return;
+        }
+
+        callback(new Error('Origin is not allowed by CORS'));
+      },
+      credentials: true,
+    }),
+  );
   app.use(express.json());
   app.use(
     pinoHttp({
