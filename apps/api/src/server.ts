@@ -4,7 +4,7 @@ import helmet from 'helmet';
 import pino from 'pino';
 import { pinoHttp } from 'pino-http';
 
-import { env } from './config/env.js';
+import { isOriginAllowed } from './utils/is-origin-allowed.js';
 import { getEnvVar } from './utils/getEnvVar.js';
 import { notFoundHandler } from './middleware/notFoundHandler.js';
 import { errorHandler } from './middleware/errorHandler.js';
@@ -32,19 +32,26 @@ export const startServer = () => {
 
   app.disable('x-powered-by');
   app.use(helmet());
+
   app.use(
     cors({
       origin(origin, callback) {
-        if (!origin || env.CORS_ORIGINS.includes(origin)) {
+        if (!origin || isOriginAllowed(origin)) {
           callback(null, true);
           return;
         }
 
-        callback(new Error('Origin is not allowed by CORS'));
+        console.warn('CORS origin rejected', {
+          origin,
+        });
+
+        callback(new Error(`Origin "${origin}" is not allowed by CORS`));
       },
+
       credentials: true,
     }),
   );
+
   app.use(express.json());
   app.use(
     pinoHttp({
