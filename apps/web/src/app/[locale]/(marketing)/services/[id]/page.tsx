@@ -5,17 +5,17 @@ import ServiceDetails from "@/app/[locale]/(marketing)/services/_components/serv
 export interface PageProps {
   params: Promise<{
     locale: string;
-    id: string;
+    slug: string;
   }>;
 }
 
 export default async function Page({ params }: PageProps) {
-  const { id: serviceId } = await params;
+  const { slug: serviceSlug } = await params;
 
   return (
     <Section noTopPadding>
       <Container>
-        <ServiceDetails id={serviceId} />
+        <ServiceDetails slug={serviceSlug} />
       </Container>
     </Section>
   );
