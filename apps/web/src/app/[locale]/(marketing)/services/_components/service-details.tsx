@@ -8,10 +8,10 @@ import QueryState from "@/app/components/states/query-state";
 import DevelopmentPlaceholder from "@/app/components/common/development-placeholder";
 
 export interface ServiceDetailsProps {
-  slug: string;
+  serviceSlug: string;
 }
 
-export default function ServiceDetails({ slug }: ServiceDetailsProps) {
+export default function ServiceDetails({ serviceSlug }: ServiceDetailsProps) {
   const t = useTranslations("services");
 
   const {
@@ -21,7 +21,7 @@ export default function ServiceDetails({ slug }: ServiceDetailsProps) {
     error,
     isRefetching,
     refetch,
-  } = useServiceBySlug(slug);
+  } = useServiceBySlug(serviceSlug);
 
   const isNotFound =
     axios.isAxiosError(error) && error.response?.status === 404;
@@ -44,7 +44,7 @@ export default function ServiceDetails({ slug }: ServiceDetailsProps) {
       {service && (
         <DevelopmentPlaceholder
           title={t("servicePage.title")}
-          id={slug}
+          id={serviceSlug}
           description={t("servicePage.dev")}
           linkHref="/services"
           linkText={t("servicePage.back-to-services")}
