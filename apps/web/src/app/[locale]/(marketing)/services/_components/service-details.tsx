@@ -44,7 +44,7 @@ export default function ServiceDetails({ slug }: ServiceDetailsProps) {
       {service && (
         <DevelopmentPlaceholder
           title={t("servicePage.title")}
-          slug={slug}
+          id={slug}
           description={t("servicePage.dev")}
           linkHref="/services"
           linkText={t("servicePage.back-to-services")}

@@ -3,7 +3,7 @@ import ButtonLink from "@/app/components/common/buttons/button-link/button-link"
 
 export interface DevelopmentPlaceholderProps {
   title?: string;
-  slug?: string;
+  id?: string;
   description?: string;
   linkText?: string;
   linkHref: string;
@@ -11,7 +11,7 @@ export interface DevelopmentPlaceholderProps {
 
 export default function DevelopmentPlaceholder({
   title,
-  slug,
+  id,
   description,
   linkText,
   linkHref,
@@ -20,7 +20,7 @@ export default function DevelopmentPlaceholder({
     <div className="flex flex-col items-center justify-center">
       {title && <SectionTitle>{title}</SectionTitle>}
 
-      {slug && <p className="text-2xl mt-4">ID {slug}</p>}
+      {id && <p className="text-2xl mt-4">ID {id}</p>}
 
       {description && (
         <p
