@@ -2,9 +2,9 @@
 
 import type { ReactNode } from "react";
 import { ThemeProvider } from "next-themes";
-import TanStackQueryProvider from "@/providers/tanstack-query-provider";
+import { TanStackQueryProvider } from "@/providers";
 
-interface AppProvidersProps {
+export interface AppProvidersProps {
   children: ReactNode;
 }
 

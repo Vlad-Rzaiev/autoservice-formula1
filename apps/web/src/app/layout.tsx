@@ -1,10 +1,10 @@
 import { Plus_Jakarta_Sans, Geist } from "next/font/google";
 import { getLocale } from "next-intl/server";
 
-import { MobileMenuProvider } from "@/providers/mobile-menu-provider";
-import AppProviders from "@/providers/app-providers";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
+
+import { MobileMenuProvider, AppProviders } from "@/providers";
 
 import "@/styles/globals.css";
 

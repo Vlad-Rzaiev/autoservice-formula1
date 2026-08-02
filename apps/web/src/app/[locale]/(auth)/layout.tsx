@@ -1,8 +1,5 @@
 import type { ReactNode } from "react";
-
-import AuthShell from "@/app/[locale]/(auth)/_components/auth-shell";
-import AuthHeader from "@/app/[locale]/(auth)/_components/auth-header";
-import AuthFooter from "@/app/[locale]/(auth)/_components/auth-footer";
+import { AuthFooter, AuthHeader, AuthShell } from "@/features";
 
 interface AuthLayoutProps {
   children: ReactNode;

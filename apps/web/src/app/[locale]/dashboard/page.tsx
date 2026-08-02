@@ -1,9 +1,7 @@
 import { useTranslations } from "next-intl";
-import Section from "@/app/components/layout/section";
-import Container from "@/app/components/layout/container";
-import DevelopmentPlaceholder from "@/app/components/common/development-placeholder";
+import { Section, Container, DevelopmentPlaceholder } from "@/components";
 
-export default function Page() {
+export default function DashboardPage() {
   const t = useTranslations();
 
   return (

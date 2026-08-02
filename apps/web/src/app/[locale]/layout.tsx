@@ -7,7 +7,7 @@ import {
   getTranslations,
   setRequestLocale,
 } from "next-intl/server";
-import HtmlLangSync from "@/app/components/locale/html-lang-sync";
+import { HtmlLangSync } from "@/components";
 
 interface LocaleLayoutProps {
   children: React.ReactNode;

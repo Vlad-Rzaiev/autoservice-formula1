@@ -1,6 +1,5 @@
 import { useTranslations } from "next-intl";
-import ButtonLink from "@/app/components/common/buttons/button-link/button-link";
-import DevelopmentPlaceholder from "@/app/components/common/development-placeholder";
+import { DevelopmentPlaceholder, ButtonLink } from "@/components";
 
 export default function LoginPage() {
   const t = useTranslations();

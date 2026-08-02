@@ -4,8 +4,7 @@ import {
   faMagnifyingGlass,
 } from "@fortawesome/free-solid-svg-icons";
 import { useTranslations } from "next-intl";
-
-import ButtonLink from "@/app/components/common/buttons/button-link/button-link";
+import { ButtonLink } from "@/components";
 
 export default function NotFound() {
   const t = useTranslations("services.servicePage");

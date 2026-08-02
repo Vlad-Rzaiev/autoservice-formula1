@@ -1,11 +1,10 @@
 import React from "react";
 import type { Metadata } from "next";
-import { hasLocale } from "next-intl";
-import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
+import { hasLocale } from "next-intl";
 import { routing } from "@/i18n/routing";
-import MarketingHeader from "@/app/[locale]/(marketing)/_components/header/marketing-header";
-import MarketingFooter from "@/app/[locale]/(marketing)/_components/footer/marketing-footer";
+import { getTranslations } from "next-intl/server";
+import { MarketingHeader, MarketingFooter } from "@/features";
 
 interface MarketingLayoutProps {
   children: React.ReactNode;

@@ -1,5 +1,5 @@
 import { useTranslations } from "next-intl";
-import DevelopmentPlaceholder from "@/app/components/common/development-placeholder";
+import { DevelopmentPlaceholder } from "@/components";
 
 export default function ForgotPasswordPage() {
   const t = useTranslations();

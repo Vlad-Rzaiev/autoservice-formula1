@@ -1,10 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-
-import ErrorState from "@/app/components/states/error-state";
-import Container from "@/app/components/layout/container";
-import Section from "@/app/components/layout/section";
+import { Section, Container, ErrorState } from "@/components";
 
 interface ServiceErrorProps {
   reset: () => void;

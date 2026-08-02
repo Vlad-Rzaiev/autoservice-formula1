@@ -1,7 +1,5 @@
 import { getTranslations } from "next-intl/server";
-import Section from "@/app/components/layout/section";
-import Container from "@/app/components/layout/container";
-import DevelopmentPlaceholder from "@/app/components/common/development-placeholder";
+import { Section, Container, DevelopmentPlaceholder } from "@/components";
 
 interface ClientPageProps {
   params: Promise<{

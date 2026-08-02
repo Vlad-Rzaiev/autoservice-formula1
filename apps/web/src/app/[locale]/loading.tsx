@@ -1,4 +1,4 @@
-import PageLoader from "@/app/components/common/page-loader";
+import { PageLoader } from "@/components";
 
 export default function Loading() {
   return <PageLoader />;

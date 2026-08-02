@@ -1,19 +1,20 @@
+import type { Metadata } from "next";
 import {
   dehydrate,
   HydrationBoundary,
   QueryClient,
 } from "@tanstack/react-query";
-import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { isAppLocale } from "@/i18n/locale-config";
 
-import { servicesQueryOptions } from "@/app/[locale]/(marketing)/services/api/services-query-options";
-import { createServicesMetadata } from "@/features/services/server/create-services-metadata";
-import Section from "@/app/components/layout/section";
-import Container from "@/app/components/layout/container";
-import ServicesHero from "@/app/[locale]/(marketing)/services/_components/services-hero";
-import ServicesCatalogContainer from "@/app/[locale]/(marketing)/services/_components/services-catalog-container";
-import ServicesCta from "@/app/[locale]/(marketing)/services/_components/services-cta";
+import {
+  servicesQueryOptions,
+  createServicesMetadata,
+  ServicesHero,
+  ServicesCatalogContainer,
+  ServicesCta,
+} from "@/features/marketing/services";
+import { Section, Container } from "@/components";
 
 export interface ServicesPageProps {
   params: Promise<{
