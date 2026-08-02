@@ -1,4 +1,4 @@
-export type { ApiResponse } from "./common/api-response.js";
+export type { ApiResponse, ApiSuccess } from "./common/api-response.js";
 
 export { isSupportedLocale, supportedLocales } from "./common/locale.js";
 
@@ -28,3 +28,10 @@ export {
   serviceResponseSchema,
   servicesResponseSchema,
 } from "./services/service-response.schemas.js";
+
+export { apiErrorSchema, type ApiError } from "./common/api-error.schema.js";
+
+export {
+  createServiceSchema,
+  type CreateServiceInput,
+} from "./services/service.schemas.js";

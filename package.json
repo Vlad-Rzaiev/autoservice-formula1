@@ -6,7 +6,8 @@
     "packages/*"
   ],
   "scripts": {
-    "dev": "npm run build:contracts && concurrently \"npm run dev -w @autoservice/contracts\" \"npm run dev -w apps/web\" \"npm run dev -w apps/api\"",
+    "dev": "npm run build:contracts && concurrently -k \"npm run dev -w @autoservice/contracts\" \"npm run dev -w apps/web\" \"npm run dev -w apps/api\"",
+    "dev:turbo": "npm run build:contracts && concurrently -k \"npm run dev -w @autoservice/contracts\" \"npm run dev:turbo -w apps/web\" \"npm run dev -w apps/api\"",
     "dev:web": "npm run build:contracts && npm run dev -w apps/web",
     "dev:api": "npm run build:contracts && npm run dev -w apps/api",
     "build": "npm run build:contracts && npm run build -w apps/web && npm run build -w apps/api",
@@ -14,14 +15,11 @@
     "build:web": "npm run build:contracts && npm run build -w apps/web",
     "build:api": "npm run build:contracts && npm run build -w apps/api",
     "start:api": "npm run start -w apps/api",
-    "typecheck": "npm run build:contracts && npm run typecheck --workspaces --if-present"
+    "typecheck": "npm run build:contracts && npm run typecheck --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present"
   },
   "devDependencies": {
     "concurrently": "^10.0.4"
-  },
-  "dependencies": {
-    "http-errors": "^2.0.1",
-    "joi": "^18.2.3"
   },
   "engines": {
     "node": ">=24.0.0 <25.0.0"

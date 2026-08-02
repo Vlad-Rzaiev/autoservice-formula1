@@ -7,7 +7,8 @@ if (!apiBaseURL) {
 }
 
 export const apiClient = axios.create({
-  baseURL: apiBaseURL,
+  baseURL: apiBaseURL.replace(/\/+$/, ""),
+  timeout: 10_000,
   headers: {
     Accept: "application/json",
   },

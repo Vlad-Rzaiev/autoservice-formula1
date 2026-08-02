@@ -1,4 +1,4 @@
-import type { ServiceDto, ServiceResponse } from "@autoservice/contracts";
+import { serviceResponseSchema, type ServiceDto } from "@autoservice/contracts";
 
 import { apiClient } from "@/lib/api/api-client";
 
@@ -16,18 +16,14 @@ export async function getServiceBySlug(
     throw new Error("Service slug is required!");
   }
 
-  const response = await apiClient.get<ServiceResponse>(
+  const response = await apiClient.get<unknown>(
     `/services/${encodeURIComponent(normalizedServiceId)}`,
     {
       signal: options.signal,
     },
   );
 
-  const responseBody = response.data;
+  const parsedResponse = serviceResponseSchema.parse(response.data);
 
-  if (!responseBody.success) {
-    throw new Error(responseBody.message || "Failed to load service.");
-  }
-
-  return responseBody.data;
+  return parsedResponse.data;
 }

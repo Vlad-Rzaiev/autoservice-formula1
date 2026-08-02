@@ -1,7 +1,19 @@
-import type { ServiceResponse, ServicesResponse } from '@autoservice/contracts';
 import type { RequestHandler } from 'express';
+import type { ParamsDictionary } from 'express-serve-static-core';
 import createHttpError from 'http-errors';
-import { getAllServices, getServiceBySlug } from './service.service.js';
+
+import type {
+  ServiceResponse,
+  ServicesResponse,
+  CreateServiceInput,
+  ApiSuccess,
+  ServiceDto,
+} from '@autoservice/contracts';
+import {
+  createService,
+  getAllServices,
+  getServiceBySlug,
+} from './service.service.js';
 import { toServiceDto } from './service.mapper.js';
 
 interface GetServiceParams {
@@ -29,7 +41,9 @@ export const getServiceBySlugController: RequestHandler<
   const service = await getServiceBySlug(serviceSlug);
 
   if (!service) {
-    throw createHttpError(404, 'Service not found.');
+    throw createHttpError(404, 'Service not found.', {
+      code: 'SERVICE_NOT_FOUND',
+    });
   }
 
   const responseBody: ServiceResponse = {
@@ -40,4 +54,20 @@ export const getServiceBySlugController: RequestHandler<
   };
 
   res.status(responseBody.status).json(responseBody);
+};
+
+export const createServiceController: RequestHandler<
+  ParamsDictionary,
+  ApiSuccess<ServiceDto>,
+  CreateServiceInput
+> = async (req, res) => {
+  const createdService = await createService(req.body);
+  const serviceDto = toServiceDto(createdService);
+
+  res.status(201).json({
+    status: 201,
+    success: true,
+    message: 'Service successfully created.',
+    data: serviceDto,
+  });
 };

@@ -1,32 +1,21 @@
 import type { RequestHandler } from 'express';
+import type { ZodType } from 'zod';
 import createHttpError from 'http-errors';
-import Joi, { type ObjectSchema } from 'joi';
 
-export const validateBody = <Body>(
-  schema: ObjectSchema<Body>,
-): RequestHandler => {
-  return async (req, _res, next) => {
-    try {
-      const validatedBody: Body = await schema.validateAsync(req.body, {
-        abortEarly: false,
-        stripUnknown: true,
-      });
+export function validateBody<TBody>(schema: ZodType<TBody>): RequestHandler {
+  return (req, _res, next) => {
+    const result = schema.safeParse(req.body);
 
-      req.body = validatedBody;
-
-      next();
-    } catch (error: unknown) {
-      if (Joi.isError(error)) {
-        next(
-          createHttpError(400, 'Bad Request', {
-            errors: error.details,
-          }),
-        );
-
-        return;
-      }
-
-      next(error);
+    if (!result.success) {
+      next(
+        createHttpError(400, 'Invalid request body', {
+          details: result.error.flatten(),
+        }),
+      );
+      return;
     }
+
+    req.body = result.data;
+    next();
   };
-};
+}

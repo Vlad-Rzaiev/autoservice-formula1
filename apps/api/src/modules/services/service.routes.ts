@@ -3,14 +3,25 @@ import { ctrlWrapper } from '../../utils/ctrlWrapper.js';
 import {
   getServicesController,
   getServiceBySlugController,
+  createServiceController,
 } from './service.controller.js';
+import { validateParams } from '../../middleware/validate-params.js';
+import { validateBody } from '../../middleware/validateBody.js';
+import { createServiceSchema } from '@autoservice/contracts';
+import { getServiceBySlugParamsSchema } from '../../validation/services/service-params.schema.js';
 
 const router = Router();
 
-router.get('/api/v1/services', ctrlWrapper(getServicesController));
+router.get('/', ctrlWrapper(getServicesController));
 router.get(
-  '/api/v1/services/:serviceSlug',
+  '/:serviceSlug',
+  validateParams(getServiceBySlugParamsSchema),
   ctrlWrapper(getServiceBySlugController),
+);
+router.post(
+  '/',
+  validateBody(createServiceSchema),
+  ctrlWrapper(createServiceController),
 );
 
 export default router;

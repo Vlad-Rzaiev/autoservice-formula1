@@ -1,7 +1,7 @@
 import type { ServiceDto, ServiceTranslationDto } from '@autoservice/contracts';
 
 import type {
-  ServiceDocument,
+  ServiceLeanDocument,
   ServiceTranslationPersistence,
 } from './service.model.js';
 
@@ -14,19 +14,21 @@ function toServiceTranslationDto(
   };
 }
 
-export function toServiceDto(serviceDocument: ServiceDocument): ServiceDto {
+export function toServiceDto(
+  serviceLeanDocument: ServiceLeanDocument,
+): ServiceDto {
   return {
-    _id: serviceDocument._id.toString(),
-    slug: serviceDocument.slug,
-    category: serviceDocument.category,
-    iconKey: serviceDocument.iconKey,
-    featured: serviceDocument.featured,
-    sortOrder: serviceDocument.sortOrder,
-    isActive: serviceDocument.isActive,
+    _id: serviceLeanDocument._id.toString(),
+    slug: serviceLeanDocument.slug,
+    category: serviceLeanDocument.category,
+    iconKey: serviceLeanDocument.iconKey,
+    featured: serviceLeanDocument.featured,
+    sortOrder: serviceLeanDocument.sortOrder,
+    isActive: serviceLeanDocument.isActive,
     translations: {
-      uk: toServiceTranslationDto(serviceDocument.translations.uk),
-      en: toServiceTranslationDto(serviceDocument.translations.en),
-      pl: toServiceTranslationDto(serviceDocument.translations.pl),
+      uk: toServiceTranslationDto(serviceLeanDocument.translations.uk),
+      en: toServiceTranslationDto(serviceLeanDocument.translations.en),
+      pl: toServiceTranslationDto(serviceLeanDocument.translations.pl),
     },
   };
 }

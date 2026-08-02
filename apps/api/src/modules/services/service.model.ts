@@ -1,3 +1,5 @@
+import { model, Schema, type Types } from 'mongoose';
+
 import {
   serviceCategories,
   serviceIconKeys,
@@ -5,7 +7,6 @@ import {
   type ServiceIconKey,
   type ServiceLocale,
 } from '@autoservice/contracts';
-import { model, Schema, type HydratedDocument } from 'mongoose';
 
 export interface ServiceTranslationPersistence {
   title: string;
@@ -22,7 +23,9 @@ export interface ServicePersistence {
   translations: Record<ServiceLocale, ServiceTranslationPersistence>;
 }
 
-export type ServiceDocument = HydratedDocument<ServicePersistence>;
+export type ServiceLeanDocument = ServicePersistence & {
+  _id: Types.ObjectId;
+};
 
 const serviceTranslationSchema = new Schema(
   {

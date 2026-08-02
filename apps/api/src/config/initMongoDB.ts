@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import { getEnvVar } from '../utils/getEnvVar.js';
+import { logger } from './logger.js';
 
 export const initMongoDB = async (): Promise<void> => {
   try {
@@ -12,9 +13,9 @@ export const initMongoDB = async (): Promise<void> => {
       `mongodb+srv://${user}:${pwd}@${url}/${db}?retryWrites=true&w=majority&appName=TEST-Cluster`,
     );
 
-    console.log('Mongo connection successfully established!');
+    logger.info('Mongo connection successfully established!');
   } catch (e) {
-    console.log('Error while setting up mongo connection', e);
+    logger.error({ err: e }, 'Error while setting up mongo connection');
     throw e;
   }
 };
