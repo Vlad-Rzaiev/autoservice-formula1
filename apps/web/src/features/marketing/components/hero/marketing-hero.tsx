@@ -1,7 +1,9 @@
 import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
-import { Container, ButtonLink } from "@/components";
+import { ButtonLink } from "@/components/common";
+import { Container } from "@/components/layout";
 import styles from "./hero.module.css";
+import { routes } from "@/config";
 
 export default function MarketingHero() {
   const t = useTranslations();
@@ -34,7 +36,7 @@ export default function MarketingHero() {
 
         <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
           <ButtonLink
-            href="/register"
+            href={routes.register}
             variant="primary"
             fullWidth
             className="sm:w-auto"
@@ -43,7 +45,7 @@ export default function MarketingHero() {
           </ButtonLink>
 
           <ButtonLink
-            href="/login"
+            href={routes.login}
             variant="outline"
             fullWidth
             className="sm:w-auto"

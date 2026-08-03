@@ -4,7 +4,7 @@ import { getLocale } from "next-intl/server";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 
-import { MobileMenuProvider, AppProviders } from "@/providers";
+import { AppProviders } from "@/providers";
 
 import "@/styles/globals.css";
 
@@ -34,9 +34,7 @@ export default async function RootLayout({
       className={geist.variable}
     >
       <body id="top" className={plusJakartaSans.className}>
-        <AppProviders>
-          <MobileMenuProvider>{children}</MobileMenuProvider>
-        </AppProviders>
+        <AppProviders>{children}</AppProviders>
       </body>
     </html>
   );

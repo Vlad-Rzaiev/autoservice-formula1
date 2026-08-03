@@ -10,7 +10,7 @@ import {
   navigationListVariants,
   NavigationVariant,
   navigationVariants,
-} from "@/features";
+} from "@/features/marketing";
 
 export interface MarketingNavigationProps {
   variant?: NavigationVariant;

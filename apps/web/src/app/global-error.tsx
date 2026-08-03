@@ -2,7 +2,8 @@
 
 import { useEffect } from "react";
 
-import { ErrorPage } from "@/components";
+import { ErrorPage } from "@/components/common";
+import { routes } from "@/config";
 
 interface GlobalErrorProps {
   error: Error & {
@@ -30,7 +31,7 @@ export default function GlobalError({ error, reset }: GlobalErrorProps) {
           retryLabel="Try again"
           onRetry={reset}
           homeLabel="To main page"
-          homeHref="/"
+          homeHref={routes.home}
           errorCode={error.digest}
           errorCodeLabel="Error code"
         />

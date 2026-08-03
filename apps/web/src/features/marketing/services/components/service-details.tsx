@@ -2,7 +2,8 @@
 
 import { useTranslations } from "next-intl";
 import { ServiceDto } from "@autoservice/contracts";
-import { Section, Container, DevelopmentPlaceholder } from "@/components";
+import { Section, Container } from "@/components/layout";
+import { DevelopmentPlaceholder } from "@/components/common";
 
 export interface ServiceDetailsProps {
   service: ServiceDto;

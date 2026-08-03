@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Button } from "@/components";
+import { Button } from "@/components/ui";
 
 export default function ErrorButton() {
   const [count, setCount] = useState(0);

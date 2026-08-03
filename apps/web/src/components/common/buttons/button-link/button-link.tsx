@@ -3,7 +3,7 @@ import { type VariantProps } from "class-variance-authority";
 
 import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
-import { buttonLinkVariants } from "@/components";
+import { buttonLinkVariants } from "@/components/common";
 
 export type ButtonLinkProps = ComponentProps<typeof Link> &
   VariantProps<typeof buttonLinkVariants>;

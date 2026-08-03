@@ -6,8 +6,10 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useTranslations } from "next-intl";
 
-import { Container, BrandLogo, ButtonLink } from "@/components";
-import { MarketingNavigation } from "@/features";
+import { BrandLogo, ButtonLink } from "@/components/common";
+import { Container } from "@/components/layout";
+import { MarketingNavigation } from "@/features/marketing";
+import { routes } from "@/config";
 
 export default function MarketingFooter() {
   const t = useTranslations();
@@ -39,7 +41,7 @@ export default function MarketingFooter() {
             </h2>
 
             <div className="mt-4 flex flex-col gap-3">
-              <ButtonLink href="/login" variant="outline" fullWidth>
+              <ButtonLink href={routes.login} variant="outline" fullWidth>
                 <FontAwesomeIcon
                   icon={faRightToBracket}
                   aria-hidden="true"
@@ -52,7 +54,7 @@ export default function MarketingFooter() {
                 {t("auth.login.loginBtn")}
               </ButtonLink>
 
-              <ButtonLink href="/register" fullWidth>
+              <ButtonLink href={routes.register} fullWidth>
                 <FontAwesomeIcon
                   icon={faUserPlus}
                   aria-hidden="true"

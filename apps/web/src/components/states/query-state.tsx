@@ -1,30 +1,34 @@
 import { ReactNode } from "react";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { faInbox } from "@fortawesome/free-solid-svg-icons";
-
-import { LoadingState } from "@/components";
-import { ErrorState } from "@/components";
-import { EmptyState } from "@/components";
+import { EmptyState, ErrorState, LoadingState } from "@/components/states";
 
 export interface QueryStateProps {
   isPending: boolean;
   isError: boolean;
   isEmpty?: boolean;
+
   loadingMessage: string;
   loadingDescription?: string;
+
   errorMessage: string;
   errorDescription?: string;
+
   emptyMessage?: string;
   emptyDescription?: string;
   emptyIcon?: IconDefinition;
-  retryLabel: string;
+
+  retryLabel?: string;
   actionLabel?: string;
+
   onRetry?: () => void;
   onAction?: () => void;
   isRetrying?: boolean;
+
   loadingClassName?: string;
   errorClassName?: string;
   emptyClassName?: string;
+
   children: ReactNode;
 }
 

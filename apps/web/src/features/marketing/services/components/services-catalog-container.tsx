@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { useServices, ServicesCatalog } from "@/features/marketing/services";
-import { SectionTitle } from "@/components";
+import { SectionTitle } from "@/components/layout";
 
 export default function ServicesCatalogContainer() {
   const t = useTranslations();

@@ -6,7 +6,8 @@ import {
   brandLogoContentVariants,
   brandLogoVariants,
   type BrandLogoVariant,
-} from "@/components";
+} from "@/components/common";
+import { routes } from "@/config";
 
 export interface BrandLogoProps {
   variant?: BrandLogoVariant;
@@ -23,7 +24,7 @@ export default function BrandLogo({
 
   return (
     <Link
-      href="/"
+      href={routes.home}
       aria-label={t("homeLabel")}
       onClick={onNavigate}
       className={cn(brandLogoVariants({ variant }), className)}

@@ -3,11 +3,12 @@ import {
   faArrowLeft,
   faMagnifyingGlass,
 } from "@fortawesome/free-solid-svg-icons";
-import { useTranslations } from "next-intl";
-import { ButtonLink } from "@/components";
+import { getTranslations } from "next-intl/server";
+import { ButtonLink } from "@/components/common";
+import { routes } from "@/config";
 
-export default function NotFound() {
-  const t = useTranslations("services.servicePage");
+export default async function NotFound() {
+  const t = await getTranslations("services.servicePage");
 
   return (
     <div
@@ -52,14 +53,14 @@ export default function NotFound() {
 
       <p
         className="
-          mt-3 max-w-md text-base leading-7
+          my-3 max-w-md text-base leading-7
           text-muted-foreground
         "
       >
         {t("not-found-description")}
       </p>
 
-      <ButtonLink href="/services">
+      <ButtonLink href={routes.services}>
         <FontAwesomeIcon
           icon={faArrowLeft}
           aria-hidden="true"

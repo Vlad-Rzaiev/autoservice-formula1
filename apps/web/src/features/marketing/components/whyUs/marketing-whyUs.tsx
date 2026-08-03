@@ -1,12 +1,7 @@
 import { useTranslations } from "next-intl";
-import { cardsItems } from "@/features";
-import {
-  Section,
-  Container,
-  SectionTitle,
-  IconCard,
-  CardGrid,
-} from "@/components";
+import { cardsItems } from "@/features/marketing";
+import { Section, Container, SectionTitle } from "@/components/layout";
+import { IconCard, CardGrid } from "@/components/common";
 
 export default function MarketingWhyUs() {
   const t = useTranslations();

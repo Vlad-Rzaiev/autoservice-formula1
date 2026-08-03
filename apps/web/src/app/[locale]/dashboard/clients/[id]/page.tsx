@@ -1,5 +1,7 @@
 import { getTranslations } from "next-intl/server";
-import { Section, Container, DevelopmentPlaceholder } from "@/components";
+import { Section, Container } from "@/components/layout";
+import { DevelopmentPlaceholder } from "@/components/common";
+import { routes } from "@/config";
 
 interface ClientPageProps {
   params: Promise<{
@@ -18,7 +20,7 @@ export default async function ClientPage({ params }: ClientPageProps) {
           id={id}
           title={t("clients.client.title")}
           description={t("clients.dev")}
-          linkHref="/"
+          linkHref={routes.home}
           linkText={t("clients.back-to-main")}
         />
       </Container>

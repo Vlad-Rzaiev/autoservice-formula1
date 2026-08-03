@@ -1,5 +1,5 @@
 import { useTranslations } from "next-intl";
-import { Section, Container, SectionTitle } from "@/components";
+import { Section, Container, SectionTitle } from "@/components/layout";
 
 export default function MarketingBooking() {
   const t = useTranslations();

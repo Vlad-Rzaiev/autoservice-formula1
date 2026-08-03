@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { cardGridVariants, type CardGridProps } from "@/components";
+import { cardGridVariants, type CardGridProps } from "@/components/common";
 
 export default function CardGrid({
   columns,

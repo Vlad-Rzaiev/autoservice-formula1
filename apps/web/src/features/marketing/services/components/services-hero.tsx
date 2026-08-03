@@ -8,14 +8,9 @@ import {
 import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 import { siteConfig } from "@/config";
-
+import { Section, Container } from "@/components/layout";
 import { benefits, BenefitList } from "@/features/marketing/services";
-import {
-  buttonLinkVariants,
-  Section,
-  Container,
-  ButtonLink,
-} from "@/components";
+import { buttonLinkVariants, ButtonLink } from "@/components/common";
 
 interface ServicesHeroProps {
   servicesCount?: number;

@@ -2,7 +2,7 @@ import { Link } from "@/i18n/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { ServiceIconKey } from "@autoservice/contracts";
-import { IconCard } from "@/components";
+import { IconCard } from "@/components/common";
 import {
   defaultServiceIcon,
   serviceIconMap,

@@ -4,7 +4,8 @@ import { useTranslations } from "next-intl";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
-import { Section, Container, SectionTitle, ButtonLink } from "@/components";
+import { ButtonLink } from "@/components/common";
+import { Section, Container, SectionTitle } from "@/components/layout";
 import {
   useFeaturedServices,
   ServicesCatalog,

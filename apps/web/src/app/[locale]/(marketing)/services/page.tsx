@@ -14,7 +14,7 @@ import {
   ServicesCatalogContainer,
   ServicesCta,
 } from "@/features/marketing/services";
-import { Section, Container } from "@/components";
+import { Section, Container } from "@/components/layout";
 
 export interface ServicesPageProps {
   params: Promise<{

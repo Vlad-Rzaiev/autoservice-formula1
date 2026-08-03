@@ -5,7 +5,7 @@ import { usePathname, useRouter } from "@/i18n/navigation";
 import { localeOptions } from "@/i18n/locale-config";
 import { useLocale } from "next-intl";
 import { cn } from "@/lib/utils";
-import { IconButton } from "@/components";
+import { IconButton } from "@/components/common";
 
 export interface LangSwitcherProps {
   className?: string;

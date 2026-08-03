@@ -1,10 +1,12 @@
 import React from "react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { hasLocale } from "next-intl";
+import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { routing } from "@/i18n/routing";
 import { getTranslations } from "next-intl/server";
-import { MarketingHeader, MarketingFooter } from "@/features";
+import { MobileMenuProvider } from "@/providers";
+import { MarketingHeader, MarketingFooter } from "@/features/marketing";
+import { clientMessageModules, getClientMessages } from "@/messages";
 
 interface MarketingLayoutProps {
   children: React.ReactNode;
@@ -76,12 +78,25 @@ export async function generateMetadata({
   };
 }
 
-export default function MarketingLayout({ children }: MarketingLayoutProps) {
+export default async function MarketingLayout({
+  children,
+  params,
+}: MarketingLayoutProps) {
+  const { locale } = await params;
+
+  if (!hasLocale(routing.locales, locale)) {
+    notFound();
+  }
+
+  const messages = await getClientMessages(clientMessageModules.marketing);
+
   return (
-    <>
-      <MarketingHeader />
-      <main className="pt-(--marketing-header-height)">{children}</main>
-      <MarketingFooter />
-    </>
+    <NextIntlClientProvider locale={locale} messages={messages}>
+      <MobileMenuProvider>
+        <MarketingHeader />
+        <main className="pt-(--marketing-header-height)">{children}</main>
+        <MarketingFooter />
+      </MobileMenuProvider>
+    </NextIntlClientProvider>
   );
 }

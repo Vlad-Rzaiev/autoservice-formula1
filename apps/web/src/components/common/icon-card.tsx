@@ -8,7 +8,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components";
+} from "@/components/ui";
 import { cn } from "@/lib/utils";
 
 export type IconCardProps = ComponentPropsWithoutRef<typeof Card> & {

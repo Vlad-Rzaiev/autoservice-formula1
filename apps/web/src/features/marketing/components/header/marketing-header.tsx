@@ -7,17 +7,17 @@ import {
   faCalendarCheck,
 } from "@fortawesome/free-solid-svg-icons";
 import { useTranslations } from "next-intl";
-import { siteConfig } from "@/config";
+import { routes, siteConfig } from "@/config";
 
-import { MarketingNavigation, MarketingMobileMenu } from "@/features";
+import { MarketingNavigation, MarketingMobileMenu } from "@/features/marketing";
+import { LangSwitcher } from "@/components/locale";
+import { ThemeSwitcher } from "@/components/theme";
 import {
   buttonLinkVariants,
-  LangSwitcher,
-  ThemeSwitcher,
   ButtonLink,
   IconButton,
   BrandLogo,
-} from "@/components";
+} from "@/components/common";
 
 export default function MarketingHeader() {
   const t = useTranslations();
@@ -92,7 +92,7 @@ export default function MarketingHeader() {
               {siteConfig.address.display}
             </a>
 
-            <ButtonLink href="/login" variant="subtle" size="compact">
+            <ButtonLink href={routes.login} variant="subtle" size="compact">
               <FontAwesomeIcon
                 className="text-sm shrink-0"
                 icon={faRightToBracket}

@@ -5,7 +5,7 @@ import { useMounted } from "@/hooks";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 
-import { Switch } from "@/components";
+import { Switch } from "@/components/ui";
 import { cn } from "@/lib/utils";
 
 export interface ThemeSwitcherProps {

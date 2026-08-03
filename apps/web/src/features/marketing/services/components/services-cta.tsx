@@ -9,12 +9,8 @@ import { useTranslations } from "next-intl";
 import { cn } from "@/lib";
 import { siteConfig } from "@/config";
 import { benefits, BenefitList } from "@/features/marketing/services";
-import {
-  buttonLinkVariants,
-  Section,
-  Container,
-  ButtonLink,
-} from "@/components";
+import { Section, Container } from "@/components/layout";
+import { buttonLinkVariants, ButtonLink } from "@/components/common";
 
 export default function ServicesCta() {
   const t = useTranslations("services.allServices.cta");

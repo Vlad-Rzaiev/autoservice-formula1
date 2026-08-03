@@ -1,15 +1,16 @@
-import { useTranslations } from "next-intl";
-import { DevelopmentPlaceholder } from "@/components";
+import { getTranslations } from "next-intl/server";
+import { DevelopmentPlaceholder } from "@/components/common";
+import { routes } from "@/config";
 
-export default function RegisterPage() {
-  const t = useTranslations();
+export default async function RegisterPage() {
+  const t = await getTranslations("auth");
 
   return (
     <DevelopmentPlaceholder
-      title={t("auth.reg.title")}
-      description={t("auth.reg.dev")}
-      linkHref="/"
-      linkText={t("auth.reg.back-to-main")}
+      title={t("reg.title")}
+      description={t("reg.dev")}
+      linkHref={routes.home}
+      linkText={t("reg.back-to-main")}
     />
   );
 }

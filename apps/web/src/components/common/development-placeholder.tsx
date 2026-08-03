@@ -1,4 +1,5 @@
-import { SectionTitle, ButtonLink } from "@/components";
+import { ButtonLink } from "@/components/common";
+import { SectionTitle } from "@/components/layout";
 
 export interface DevelopmentPlaceholderProps {
   title?: string;

@@ -17,21 +17,23 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import {
-  LangSwitcher,
-  ThemeSwitcher,
+  IconButton,
+  buttonLinkVariants,
+  ButtonLink,
+  BrandLogo,
+} from "@/components/common";
+import {
   Drawer,
   DrawerClose,
   DrawerContent,
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-  IconButton,
-  buttonLinkVariants,
-  ButtonLink,
-  BrandLogo,
-} from "@/components";
-import { MarketingNavigation } from "@/features";
-import { siteConfig } from "@/config";
+} from "@/components/ui";
+import { LangSwitcher } from "@/components/locale";
+import { ThemeSwitcher } from "@/components/theme";
+import { MarketingNavigation } from "@/features/marketing";
+import { routes, siteConfig } from "@/config";
 
 const desktopBreakpointQuery = "(min-width: 1180px)";
 
@@ -246,7 +248,7 @@ export default function MarketingMobileMenu() {
             </ButtonLink>
 
             <ButtonLink
-              href="/login"
+              href={routes.login}
               onClick={closeMenu}
               fullWidth
               variant="outline"
@@ -264,7 +266,7 @@ export default function MarketingMobileMenu() {
                 {t("mobile-menu.noAccount")}
               </p>
               <ButtonLink
-                href="/register"
+                href={routes.register}
                 className="hover:underline"
                 onClick={closeMenu}
                 variant="subtle"

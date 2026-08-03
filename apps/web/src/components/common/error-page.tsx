@@ -6,7 +6,7 @@ import {
   faRotateRight,
 } from "@fortawesome/free-solid-svg-icons";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib";
 
 export interface ErrorPageProps {
   eyebrow: string;

@@ -1,17 +1,19 @@
-import { useTranslations } from "next-intl";
-import { Section, Container, DevelopmentPlaceholder } from "@/components";
+import { getTranslations } from "next-intl/server";
+import { DevelopmentPlaceholder } from "@/components/common";
+import { Section, Container } from "@/components/layout";
+import { routes } from "@/config";
 
-export default function BookingPage() {
-  const t = useTranslations();
+export default async function BookingPage() {
+  const t = await getTranslations("booking");
 
   return (
     <Section noTopPadding>
       <Container>
         <DevelopmentPlaceholder
-          title={t("booking.title")}
-          description={t("booking.dev")}
-          linkHref="/"
-          linkText={t("booking.back-to-main")}
+          title={t("title")}
+          description={t("dev")}
+          linkHref={routes.home}
+          linkText={t("back-to-main")}
         />
       </Container>
     </Section>

@@ -4,7 +4,10 @@ import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 
 import { cn } from "@/lib/utils";
-import { iconButtonVariants, type IconButtonVariantProps } from "@/components";
+import {
+  iconButtonVariants,
+  type IconButtonVariantProps,
+} from "@/components/common";
 
 export interface IconButtonProps
   extends

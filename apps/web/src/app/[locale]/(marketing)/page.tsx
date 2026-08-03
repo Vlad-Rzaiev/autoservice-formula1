@@ -10,7 +10,7 @@ import {
   MarketingSpecialists,
   MarketingWarranty,
   MarketingWhyUs,
-} from "@/features";
+} from "@/features/marketing";
 
 export default function MarketingHome() {
   return (
