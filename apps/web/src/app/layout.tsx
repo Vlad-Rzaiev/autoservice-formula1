@@ -1,4 +1,5 @@
-import { Plus_Jakarta_Sans, Geist } from "next/font/google";
+import type { Metadata } from "next";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import { getLocale } from "next-intl/server";
 
 import { config } from "@fortawesome/fontawesome-svg-core";
@@ -10,14 +11,16 @@ import "@/styles/globals.css";
 
 config.autoAddCss = false;
 
-const geist = Geist({
-  subsets: ["latin"],
-  variable: "--font-sans",
-});
-
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
+  variable: "--font-plus-jakarta-sans",
 });
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+
+export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
+};
 
 export default async function RootLayout({
   children,
@@ -31,9 +34,9 @@ export default async function RootLayout({
       lang={locale}
       suppressHydrationWarning
       data-scroll-behavior="smooth"
-      className={geist.variable}
+      className={plusJakartaSans.variable}
     >
-      <body id="top" className={plusJakartaSans.className}>
+      <body id="top">
         <AppProviders>{children}</AppProviders>
       </body>
     </html>

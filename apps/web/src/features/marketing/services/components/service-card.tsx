@@ -7,6 +7,7 @@ import {
   defaultServiceIcon,
   serviceIconMap,
 } from "@/features/marketing/services";
+import { routes } from "@/config";
 
 export interface ServiceCardProps {
   slug: string;
@@ -41,7 +42,7 @@ export default function ServiceCard({
       "
     >
       <Link
-        href={`/services/${slug}`}
+        href={routes.service(slug)}
         className="
           block h-full rounded-xl
           focus-visible:outline-none

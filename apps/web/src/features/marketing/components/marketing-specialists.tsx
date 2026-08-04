@@ -1,8 +1,8 @@
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import { Section, Container, SectionTitle } from "@/components/layout";
 
-export default function MarketingSpecialists() {
-  const t = useTranslations();
+export default async function MarketingSpecialists() {
+  const t = await getTranslations();
 
   return (
     <Section id="specialists">

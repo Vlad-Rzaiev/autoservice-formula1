@@ -5,9 +5,9 @@ import {
   faScrewdriverWrench,
 } from "@fortawesome/free-solid-svg-icons";
 
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import { cn } from "@/lib/utils";
-import { siteConfig } from "@/config";
+import { routes, siteConfig } from "@/config";
 import { Section, Container } from "@/components/layout";
 import { benefits, BenefitList } from "@/features/marketing/services";
 import { buttonLinkVariants, ButtonLink } from "@/components/common";
@@ -16,8 +16,10 @@ interface ServicesHeroProps {
   servicesCount?: number;
 }
 
-export default function ServicesHero({ servicesCount }: ServicesHeroProps) {
-  const t = useTranslations("services.allServices.hero");
+export default async function ServicesHero({
+  servicesCount,
+}: ServicesHeroProps) {
+  const t = await getTranslations("services.allServices.hero");
 
   return (
     <Section
@@ -109,7 +111,7 @@ export default function ServicesHero({ servicesCount }: ServicesHeroProps) {
               </a>
 
               <ButtonLink
-                href="/booking"
+                href={routes.booking}
                 variant="outline"
                 fullWidth
                 className="sm:w-auto"

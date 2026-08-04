@@ -10,6 +10,7 @@ import {
   useFeaturedServices,
   ServicesCatalog,
 } from "@/features/marketing/services";
+import { routes } from "@/config";
 
 export default function MarketingServices() {
   const t = useTranslations();
@@ -47,7 +48,7 @@ export default function MarketingServices() {
 
         {hasLoadedServices && (
           <div className="mt-10 flex justify-center md:mt-12">
-            <ButtonLink href="/services" variant="outline">
+            <ButtonLink href={routes.services} variant="outline">
               {t("marketing.services.view-all")}
 
               <FontAwesomeIcon

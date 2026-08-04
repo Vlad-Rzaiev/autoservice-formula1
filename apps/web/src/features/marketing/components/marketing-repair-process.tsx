@@ -1,8 +1,8 @@
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import { Section, Container, SectionTitle } from "@/components/layout";
 
-export default function MarketingRepairProcess() {
-  const t = useTranslations();
+export default async function MarketingRepairProcess() {
+  const t = await getTranslations();
 
   return (
     <Section id="repair-process">

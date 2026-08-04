@@ -7,7 +7,7 @@ import {
 import { useTranslations } from "next-intl";
 
 import { cn } from "@/lib";
-import { siteConfig } from "@/config";
+import { routes, siteConfig } from "@/config";
 import { benefits, BenefitList } from "@/features/marketing/services";
 import { Section, Container } from "@/components/layout";
 import { buttonLinkVariants, ButtonLink } from "@/components/common";
@@ -98,7 +98,7 @@ export default function ServicesCta() {
                 sm:flex-row lg:min-w-64 lg:flex-col
               "
             >
-              <ButtonLink href="/booking" className="w-full sm:w-auto">
+              <ButtonLink href={routes.booking} className="w-full sm:w-auto">
                 <FontAwesomeIcon
                   icon={faCalendarCheck}
                   aria-hidden="true"

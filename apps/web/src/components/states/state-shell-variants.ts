@@ -1,4 +1,4 @@
-import { StateShellVariant } from "@/components";
+import { StateShellVariant } from "@/components/states";
 
 export const containerVariantClassNames: Record<StateShellVariant, string> = {
   default: ["border-dashed border-border", "bg-surface/50"].join(" "),
