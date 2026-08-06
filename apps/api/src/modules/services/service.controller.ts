@@ -49,7 +49,7 @@ export const getServiceBySlugController: RequestHandler<
   const responseBody: ServiceResponse = {
     status: 200,
     success: true,
-    message: `Successfully found service with id ${serviceSlug}`,
+    message: `Successfully found service with slug ${serviceSlug}.`,
     data: toServiceDto(service),
   };
 

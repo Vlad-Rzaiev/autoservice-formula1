@@ -23,7 +23,14 @@ export interface ServicePersistence {
   translations: Record<ServiceLocale, ServiceTranslationPersistence>;
 }
 
-export type ServiceLeanDocument = ServicePersistence & {
+export interface ServiceTimestamps {
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export type ServiceDocumentData = ServicePersistence & ServiceTimestamps;
+
+export type ServiceLeanDocument = ServiceDocumentData & {
   _id: Types.ObjectId;
 };
 
@@ -65,7 +72,7 @@ const serviceTranslationsSchema = new Schema(
   },
 );
 
-const serviceSchema = new Schema<ServicePersistence>(
+const serviceSchema = new Schema<ServiceDocumentData>(
   {
     slug: {
       type: String,
@@ -114,7 +121,7 @@ const serviceSchema = new Schema<ServicePersistence>(
   },
 );
 
-export const ServiceCollection = model<ServicePersistence>(
+export const ServiceCollection = model<ServiceDocumentData>(
   'services',
   serviceSchema,
 );

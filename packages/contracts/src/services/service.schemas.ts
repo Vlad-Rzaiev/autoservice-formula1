@@ -4,6 +4,16 @@ import { supportedLocales } from "../common/locale.js";
 import { serviceCategories, serviceIconKeys } from "./service.constants.js";
 import type { ServiceDto } from "./service.dto.js";
 
+export const serviceSlugSchema = z
+  .string()
+  .trim()
+  .min(1, "Slug is required.")
+  .max(50, "Slug must contain no more than 100 characters.")
+  .regex(
+    /^[a-z0-9]+(?:-[a-z0-9]+)*$/,
+    "Slug must contain only lowercase letters, numbers, and single hyphens.",
+  );
+
 export const serviceTranslationDtoSchema = z.object({
   title: z.string().trim().min(1),
   description: z.string().trim().min(1),
@@ -11,19 +21,23 @@ export const serviceTranslationDtoSchema = z.object({
 
 export const serviceDtoSchema = z.object({
   _id: z.string().min(1),
-  slug: z.string().trim().min(1),
+  slug: serviceSlugSchema,
   category: z.enum(serviceCategories),
   iconKey: z.enum(serviceIconKeys),
   featured: z.boolean(),
   sortOrder: z.number().int().positive(),
   isActive: z.boolean(),
   translations: z.record(z.enum(supportedLocales), serviceTranslationDtoSchema),
+  createdAt: z.string().datetime(),
+  updatedAt: z.string().datetime(),
 }) satisfies z.ZodType<ServiceDto>;
 
 export const createServiceSchema = serviceDtoSchema
   .omit({
     _id: true,
     sortOrder: true,
+    createdAt: true,
+    updatedAt: true,
   })
   .extend({
     featured: z.boolean().default(false),

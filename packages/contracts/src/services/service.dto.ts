@@ -15,4 +15,6 @@ export interface ServiceDto {
   sortOrder: number;
   isActive: boolean;
   translations: Record<ServiceLocale, ServiceTranslationDto>;
+  createdAt: string;
+  updatedAt: string;
 }

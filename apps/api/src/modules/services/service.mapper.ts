@@ -30,5 +30,7 @@ export function toServiceDto(
       en: toServiceTranslationDto(serviceLeanDocument.translations.en),
       pl: toServiceTranslationDto(serviceLeanDocument.translations.pl),
     },
+    createdAt: serviceLeanDocument.createdAt.toISOString(),
+    updatedAt: serviceLeanDocument.updatedAt.toISOString(),
   };
 }
