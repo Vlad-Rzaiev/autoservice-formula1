@@ -1,3 +1,6 @@
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
+
 import { hasLocale } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import { ImageResponse } from "next/og";
@@ -43,15 +46,15 @@ export default async function OpenGraphImage({ params }: OpenGraphImageProps) {
 
   const titleFontSize = getOpenGraphTitleFontSize(title);
 
-  const baseUrl =
-    process.env.NODE_ENV === "development"
-      ? "http://localhost:3000"
-      : siteConfig.url;
+  const heroImageBuffer = await readFile(
+    join(process.cwd(), "public", "images", "og", "hero-desktop.jpg"),
+  );
 
-  const heroImageSrc = new URL(
-    "/images/og/hero-desktop.jpg",
-    baseUrl,
-  ).toString();
+  const heroImageSrc = `data:image/jpeg;base64,${heroImageBuffer.toString(
+    "base64",
+  )}`;
+
+  console.log(heroImageSrc);
 
   return new ImageResponse(
     <div
@@ -66,7 +69,26 @@ export default async function OpenGraphImage({ params }: OpenGraphImageProps) {
         fontFamily: "sans-serif",
       }}
     >
-      <ImageBackground heroImageSrc={heroImageSrc} />
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={heroImageSrc}
+        alt=""
+        width={size.width}
+        height={size.height}
+        style={{
+          position: "absolute",
+          top: 0,
+          right: 0,
+          bottom: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          objectPosition: "center",
+        }}
+      />
+
+      <ImageBackground />
 
       <ImageContent
         brandTitle={brandTitle}

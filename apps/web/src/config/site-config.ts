@@ -10,5 +10,8 @@ export const siteConfig = {
     googleMapsUrl:
       "https://www.google.com/maps/search/?api=1&query=Jagiellońska+1+Bydgoszcz",
   },
-  url: "https://autoservice-formula1.vercel.app",
+  url: {
+    development: "http://localhost:3000",
+    production: "https://autoservice-formula1.vercel.app",
+  },
 } as const;
