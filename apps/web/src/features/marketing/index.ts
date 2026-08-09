@@ -14,7 +14,12 @@ export {
 
 export { default as MarketingFooter } from "./components/footer/marketing-footer";
 
-export { default as MarketingMobileMenu } from "./components/header/marketing-mobile-menu";
+export { default as MarketingMobileMenu } from "./components/mobile-menu/marketing-mobile-menu";
+export { default as MobileMenuTrigger } from "./components/mobile-menu/mobile-menu-trigger";
+export { default as MobileMenuContactCard } from "./components/mobile-menu/mobile-menu-contact-card";
+export { default as MobileMenuActions } from "./components/mobile-menu/mobile-menu-actions";
+export { default as MobileMenuPreferences } from "./components/mobile-menu/mobile-menu-preferences";
+export { default as MobileMenuHeader } from "./components/mobile-menu/mobile-menu-header";
 
 export { default as MarketingHeader } from "./components/header/marketing-header";
 
