@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev --webpack",
     "dev:turbo": "next dev --turbopack",
+    "prebuild": "npm run build -w @autoservice/contracts",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
