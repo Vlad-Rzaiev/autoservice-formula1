@@ -1,6 +1,7 @@
 import type { ErrorRequestHandler } from 'express';
 import createHttpError from 'http-errors';
 import { MongoServerError } from 'mongodb';
+import { sendApiError } from '../utils/send-api-error.js';
 
 function getErrorCode(error: unknown): string | undefined {
   if (
@@ -15,15 +16,22 @@ function getErrorCode(error: unknown): string | undefined {
   return undefined;
 }
 
+function getErrorDetails(error: unknown): unknown {
+  if (typeof error === 'object' && error !== null && 'details' in error) {
+    return error.details;
+  }
+
+  return undefined;
+}
+
 export const errorHandler: ErrorRequestHandler = (err, req, res, _next) => {
   if (err instanceof MongoServerError && err.code === 11000) {
     const duplicateFields = Object.keys(err.keyValue ?? {});
     const duplicateField = duplicateFields[0] ?? 'field';
     const duplicateValue = err.keyValue?.[duplicateField];
 
-    res.status(409).json({
+    sendApiError(res, {
       status: 409,
-      success: false,
       code: 'DUPLICATE_KEY',
       message: `A record with this ${duplicateField} already exists.`,
       details: {
@@ -38,13 +46,13 @@ export const errorHandler: ErrorRequestHandler = (err, req, res, _next) => {
 
   if (createHttpError.isHttpError(err)) {
     const errorCode = getErrorCode(err) ?? `HTTP_${err.statusCode}`;
+    const errorDetails = getErrorDetails(err);
 
-    res.status(err.statusCode).json({
+    sendApiError(res, {
       status: err.statusCode,
-      success: false,
       code: errorCode,
       message: err.message,
-      details: err.details,
+      details: errorDetails,
       requestId: req.id,
     });
 
@@ -53,9 +61,8 @@ export const errorHandler: ErrorRequestHandler = (err, req, res, _next) => {
 
   req.log.error({ err }, 'Unhandled request error');
 
-  res.status(500).json({
+  sendApiError(res, {
     status: 500,
-    success: false,
     code: 'INTERNAL_SERVER_ERROR',
     message: 'Something went wrong.',
     requestId: req.id,

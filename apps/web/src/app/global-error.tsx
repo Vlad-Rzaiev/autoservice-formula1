@@ -31,7 +31,7 @@ export default function GlobalError({ error, reset }: GlobalErrorProps) {
           retryLabel="Try again"
           onRetry={reset}
           homeLabel="To main page"
-          homeHref={routes.home}
+          homeHref={routes.marketing.home}
           errorCode={error.digest}
           errorCodeLabel="Error code"
         />

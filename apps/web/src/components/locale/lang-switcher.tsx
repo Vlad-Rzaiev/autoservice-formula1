@@ -25,8 +25,8 @@ export default function LangSwitcher({ className }: LangSwitcherProps) {
           <IconButton
             key={language.code}
             type="button"
-            variant="ghost"
-            size="small"
+            variant="iconGhost"
+            size="icon-lg"
             aria-label={language.label}
             aria-pressed={isActive}
             className={cn(

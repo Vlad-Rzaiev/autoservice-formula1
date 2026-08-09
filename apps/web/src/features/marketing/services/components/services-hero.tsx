@@ -10,7 +10,8 @@ import { cn } from "@/lib/utils";
 import { routes, siteConfig } from "@/config";
 import { Section, Container } from "@/components/layout";
 import { benefits, BenefitList } from "@/features/marketing/services";
-import { buttonLinkVariants, ButtonLink } from "@/components/common";
+import { ButtonLink } from "@/components/common";
+import { buttonVariants } from "@/components/ui";
 
 interface ServicesHeroProps {
   servicesCount?: number;
@@ -95,7 +96,10 @@ export default async function ServicesHero({
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <a
                 href={siteConfig.phone.href}
-                className={cn(buttonLinkVariants(), "w-auto")}
+                className={cn(
+                  buttonVariants({ variant: "ctaPrimary", size: "cta" }),
+                  "w-auto",
+                )}
               >
                 {t("call")}
 
@@ -111,8 +115,8 @@ export default async function ServicesHero({
               </a>
 
               <ButtonLink
-                href={routes.booking}
-                variant="outline"
+                href={routes.marketing.booking}
+                variant="ctaOutline"
                 fullWidth
                 className="sm:w-auto"
               >

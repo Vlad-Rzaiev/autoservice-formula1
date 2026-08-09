@@ -5,7 +5,7 @@ export function createApiResponseSchema<TDataSchema extends z.ZodType>(
 ) {
   return z.object({
     status: z.number().int(),
-    success: z.boolean(),
+    success: z.literal(true),
     message: z.string(),
     data: dataSchema,
   });

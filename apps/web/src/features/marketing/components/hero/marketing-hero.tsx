@@ -36,8 +36,8 @@ export default function MarketingHero() {
 
         <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
           <ButtonLink
-            href={routes.register}
-            variant="primary"
+            href={routes.auth.register}
+            variant="ctaPrimary"
             fullWidth
             className="sm:w-auto"
           >
@@ -45,8 +45,8 @@ export default function MarketingHero() {
           </ButtonLink>
 
           <ButtonLink
-            href={routes.login}
-            variant="outline"
+            href={routes.auth.login}
+            variant="ctaOutline"
             fullWidth
             className="sm:w-auto"
           >

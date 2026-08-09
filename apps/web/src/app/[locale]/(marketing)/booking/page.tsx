@@ -12,7 +12,7 @@ export default async function BookingPage() {
         <DevelopmentPlaceholder
           title={t("title")}
           description={t("dev")}
-          linkHref={routes.home}
+          linkHref={routes.marketing.home}
           linkText={t("back-to-main")}
         />
       </Container>

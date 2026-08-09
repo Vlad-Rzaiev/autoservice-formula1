@@ -42,7 +42,7 @@ export default function ServiceCard({
       "
     >
       <Link
-        href={routes.service(slug)}
+        href={routes.marketing.service(slug)}
         className="
           block h-full rounded-xl
           focus-visible:outline-none

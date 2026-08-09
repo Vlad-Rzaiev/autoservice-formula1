@@ -41,7 +41,11 @@ export default function MarketingFooter() {
             </h2>
 
             <div className="mt-4 flex flex-col gap-3">
-              <ButtonLink href={routes.login} variant="outline" fullWidth>
+              <ButtonLink
+                href={routes.auth.login}
+                variant="ctaOutline"
+                fullWidth
+              >
                 <FontAwesomeIcon
                   icon={faRightToBracket}
                   aria-hidden="true"
@@ -54,7 +58,7 @@ export default function MarketingFooter() {
                 {t("auth.login.loginBtn")}
               </ButtonLink>
 
-              <ButtonLink href={routes.register} fullWidth>
+              <ButtonLink href={routes.auth.register} fullWidth>
                 <FontAwesomeIcon
                   icon={faUserPlus}
                   aria-hidden="true"

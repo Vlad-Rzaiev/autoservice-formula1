@@ -1,24 +1,25 @@
 import type { ComponentProps } from "react";
-import { type VariantProps } from "class-variance-authority";
 
+import {
+  buttonVariants,
+  type ButtonVariantProps,
+} from "@/components/ui/button";
 import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
-import { buttonLinkVariants } from "@/components/common";
 
-export type ButtonLinkProps = ComponentProps<typeof Link> &
-  VariantProps<typeof buttonLinkVariants>;
+export type ButtonLinkProps = ComponentProps<typeof Link> & ButtonVariantProps;
 
 export default function ButtonLink({
-  variant,
-  size,
-  fullWidth,
+  variant = "ctaPrimary",
+  size = "cta-lg",
+  fullWidth = false,
   className,
   ...linkProps
 }: ButtonLinkProps) {
   return (
     <Link
       className={cn(
-        buttonLinkVariants({
+        buttonVariants({
           variant,
           size,
           fullWidth,

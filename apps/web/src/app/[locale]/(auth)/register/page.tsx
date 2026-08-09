@@ -9,7 +9,7 @@ export default async function RegisterPage() {
     <DevelopmentPlaceholder
       title={t("reg.title")}
       description={t("reg.dev")}
-      linkHref={routes.home}
+      linkHref={routes.marketing.home}
       linkText={t("reg.back-to-main")}
     />
   );

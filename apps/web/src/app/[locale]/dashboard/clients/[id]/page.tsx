@@ -20,7 +20,7 @@ export default async function ClientPage({ params }: ClientPageProps) {
           id={id}
           title={t("clients.client.title")}
           description={t("clients.dev")}
-          linkHref={routes.home}
+          linkHref={routes.marketing.home}
           linkText={t("clients.back-to-main")}
         />
       </Container>

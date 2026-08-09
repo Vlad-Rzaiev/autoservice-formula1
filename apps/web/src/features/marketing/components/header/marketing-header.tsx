@@ -12,12 +12,9 @@ import { routes, siteConfig } from "@/config";
 import { MarketingNavigation, MarketingMobileMenu } from "@/features/marketing";
 import { LangSwitcher } from "@/components/locale";
 import { ThemeSwitcher } from "@/components/theme";
-import {
-  buttonLinkVariants,
-  ButtonLink,
-  IconButton,
-  BrandLogo,
-} from "@/components/common";
+import { ButtonLink, IconButton, BrandLogo } from "@/components/common";
+import { cn } from "@/lib";
+import { buttonVariants } from "@/components/ui";
 
 export default function MarketingHeader() {
   const t = useTranslations();
@@ -52,10 +49,9 @@ export default function MarketingHeader() {
           <div className="flex items-center gap-5">
             <a
               href={siteConfig.phone.href}
-              className={buttonLinkVariants({
-                variant: "inline",
-                size: "inline",
-              })}
+              className={cn(
+                buttonVariants({ variant: "inline", size: "inline" }),
+              )}
             >
               <FontAwesomeIcon
                 className="text-sm shrink-0 animate-phone-ring motion-reduce:animate-none"
@@ -77,12 +73,12 @@ export default function MarketingHeader() {
 
           <div className="flex items-center gap-5">
             <a
-              className={buttonLinkVariants({
-                variant: "inline",
-                size: "inline",
-              })}
+              className={cn(
+                buttonVariants({ variant: "inline", size: "inline" }),
+              )}
               href={siteConfig.address.googleMapsUrl}
               target="_blank"
+              rel="noopener noreferrer"
             >
               <FontAwesomeIcon
                 className="text-sm shrink-0"
@@ -92,7 +88,11 @@ export default function MarketingHeader() {
               {siteConfig.address.display}
             </a>
 
-            <ButtonLink href={routes.login} variant="subtle" size="compact">
+            <ButtonLink
+              href={routes.auth.login}
+              variant="subtle"
+              size="compact"
+            >
               <FontAwesomeIcon
                 className="text-sm shrink-0"
                 icon={faRightToBracket}

@@ -16,13 +16,9 @@ import {
   faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 
+import { IconButton, ButtonLink, BrandLogo } from "@/components/common";
 import {
-  IconButton,
-  buttonLinkVariants,
-  ButtonLink,
-  BrandLogo,
-} from "@/components/common";
-import {
+  buttonVariants,
   Drawer,
   DrawerClose,
   DrawerContent,
@@ -151,14 +147,13 @@ export default function MarketingMobileMenu() {
           >
             <a
               href={siteConfig.phone.href}
-              className={buttonLinkVariants({
-                variant: "inline",
-                size: "inline",
-              })}
+              className={cn(
+                buttonVariants({ variant: "inline", size: "inline" }),
+              )}
             >
               <span
                 className="
-                  inline-flex size-10 shrink-0
+                  mr-2 inline-flex size-10 shrink-0
                   items-center justify-center
                   rounded-xl bg-red-500/10
                   text-red-500
@@ -199,7 +194,7 @@ export default function MarketingMobileMenu() {
             <div className="mt-3 space-y-2 border-t border-border pt-3">
               <p
                 className={cn(
-                  buttonLinkVariants({
+                  buttonVariants({
                     variant: "inline",
                     size: "inline",
                   }),
@@ -218,11 +213,11 @@ export default function MarketingMobileMenu() {
               <a
                 href={siteConfig.address.googleMapsUrl}
                 target="_blank"
+                rel="noopener noreferrer"
                 onClick={closeMenu}
-                className={buttonLinkVariants({
-                  variant: "inline",
-                  size: "inline",
-                })}
+                className={cn(
+                  buttonVariants({ variant: "inline", size: "inline" }),
+                )}
               >
                 <FontAwesomeIcon
                   icon={faLocationDot}
@@ -248,10 +243,10 @@ export default function MarketingMobileMenu() {
             </ButtonLink>
 
             <ButtonLink
-              href={routes.login}
+              href={routes.auth.login}
               onClick={closeMenu}
               fullWidth
-              variant="outline"
+              variant="ctaOutline"
             >
               <FontAwesomeIcon
                 icon={faRightToBracket}
@@ -266,7 +261,7 @@ export default function MarketingMobileMenu() {
                 {t("mobile-menu.noAccount")}
               </p>
               <ButtonLink
-                href={routes.register}
+                href={routes.auth.register}
                 className="hover:underline"
                 onClick={closeMenu}
                 variant="subtle"

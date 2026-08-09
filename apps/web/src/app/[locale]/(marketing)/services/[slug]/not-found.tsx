@@ -60,7 +60,7 @@ export default async function NotFound() {
         {t("not-found-description")}
       </p>
 
-      <ButtonLink href={routes.services}>
+      <ButtonLink href={routes.marketing.services}>
         <FontAwesomeIcon
           icon={faArrowLeft}
           aria-hidden="true"

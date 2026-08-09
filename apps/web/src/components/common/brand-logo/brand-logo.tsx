@@ -24,7 +24,7 @@ export default function BrandLogo({
 
   return (
     <Link
-      href={routes.home}
+      href={routes.marketing.home}
       aria-label={t("homeLabel")}
       onClick={onNavigate}
       className={cn(brandLogoVariants({ variant }), className)}

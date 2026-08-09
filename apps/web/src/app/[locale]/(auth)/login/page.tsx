@@ -10,7 +10,7 @@ export default async function LoginPage() {
       <DevelopmentPlaceholder
         title={t("login.title")}
         description={t("login.dev")}
-        linkHref={routes.home}
+        linkHref={routes.marketing.home}
         linkText={t("login.back-to-main")}
       />
 

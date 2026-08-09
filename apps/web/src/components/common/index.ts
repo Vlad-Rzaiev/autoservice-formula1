@@ -6,17 +6,9 @@ export {
   type BrandLogoVariant,
 } from "./brand-logo/brand-logo-variants";
 
-export {
-  buttonLinkVariants,
-  type ButtonLinkVariantProps,
-} from "./buttons/button-link/button-link-variants";
-export { default as ButtonLink } from "./buttons/button-link/button-link";
+export { default as ButtonLink } from "./buttons/button-link";
 
-export {
-  iconButtonVariants,
-  type IconButtonVariantProps,
-} from "./buttons/icon-button/icon-button-variants";
-export { IconButton } from "./buttons/icon-button/icon-button";
+export { IconButton } from "./buttons/icon-button";
 
 export { default as ErrorButton } from "./buttons/error-button";
 

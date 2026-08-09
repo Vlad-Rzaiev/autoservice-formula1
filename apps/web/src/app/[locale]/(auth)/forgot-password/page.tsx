@@ -9,7 +9,7 @@ export default async function ForgotPasswordPage() {
     <DevelopmentPlaceholder
       title={t("forgot-pwd.title")}
       description={t("forgot-pwd.dev")}
-      linkHref={routes.home}
+      linkHref={routes.marketing.home}
       linkText={t("forgot-pwd.back-to-main")}
     />
   );

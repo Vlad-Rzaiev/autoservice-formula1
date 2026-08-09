@@ -10,7 +10,8 @@ import { cn } from "@/lib";
 import { routes, siteConfig } from "@/config";
 import { benefits, BenefitList } from "@/features/marketing/services";
 import { Section, Container } from "@/components/layout";
-import { buttonLinkVariants, ButtonLink } from "@/components/common";
+import { ButtonLink } from "@/components/common";
+import { buttonVariants } from "@/components/ui";
 
 export default function ServicesCta() {
   const t = useTranslations("services.allServices.cta");
@@ -98,7 +99,11 @@ export default function ServicesCta() {
                 sm:flex-row lg:min-w-64 lg:flex-col
               "
             >
-              <ButtonLink href={routes.booking} className="w-full sm:w-auto">
+              <ButtonLink
+                href={routes.marketing.booking}
+                variant="ctaPrimary"
+                className="w-full sm:w-auto"
+              >
                 <FontAwesomeIcon
                   icon={faCalendarCheck}
                   aria-hidden="true"
@@ -111,8 +116,9 @@ export default function ServicesCta() {
               <a
                 href={siteConfig.phone.href}
                 className={cn(
-                  buttonLinkVariants({
-                    variant: "outline",
+                  buttonVariants({
+                    variant: "ctaOutline",
+                    size: "cta-lg",
                   }),
                   "w-full sm:w-auto",
                 )}
