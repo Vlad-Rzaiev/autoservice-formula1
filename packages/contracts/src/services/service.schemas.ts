@@ -8,7 +8,7 @@ export const serviceSlugSchema = z
   .string()
   .trim()
   .min(1, "Slug is required.")
-  .max(50, "Slug must contain no more than 100 characters.")
+  .max(50, "Slug must contain no more than 50 characters.")
   .regex(
     /^[a-z0-9]+(?:-[a-z0-9]+)*$/,
     "Slug must contain only lowercase letters, numbers, and single hyphens.",
@@ -32,16 +32,17 @@ export const serviceDtoSchema = z.object({
   updatedAt: z.string().datetime(),
 }) satisfies z.ZodType<ServiceDto>;
 
-export const createServiceSchema = serviceDtoSchema
-  .omit({
-    _id: true,
-    sortOrder: true,
-    createdAt: true,
-    updatedAt: true,
-  })
-  .extend({
-    featured: z.boolean().default(false),
-    isActive: z.boolean().default(true),
-  });
+const createServiceBaseSchema = serviceDtoSchema.omit({
+  _id: true,
+  sortOrder: true,
+  createdAt: true,
+  updatedAt: true,
+});
+
+export const createServiceSchema = z.strictObject({
+  ...createServiceBaseSchema.shape,
+  featured: z.boolean().default(false),
+  isActive: z.boolean().default(true),
+});
 
 export type CreateServiceInput = z.infer<typeof createServiceSchema>;

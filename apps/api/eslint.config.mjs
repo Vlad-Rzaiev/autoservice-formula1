@@ -1,16 +1,24 @@
 import globals from 'globals';
 import pluginJs from '@eslint/js';
+import { defineConfig } from 'eslint/config';
 import tseslint from 'typescript-eslint';
 
-export default tseslint.config(
-  pluginJs.configs.recommended,
-  ...tseslint.configs.recommended,
+export default defineConfig([
+  {
+    ignores: ['dist/**'],
+  },
 
   {
-    files: ['src/**/*.{ts,tsx}'],
+    files: ['src/**/*.ts'],
+
+    extends: [pluginJs.configs.recommended, tseslint.configs.recommended],
 
     languageOptions: {
       globals: globals.node,
+
+      parserOptions: {
+        tsconfigRootDir: import.meta.dirname,
+      },
     },
 
     rules: {
@@ -21,10 +29,11 @@ export default tseslint.config(
         'error',
         {
           args: 'none',
+          ignoreRestSiblings: true,
         },
       ],
 
       'no-undef': 'off',
     },
   },
-);
+]);

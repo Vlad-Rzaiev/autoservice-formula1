@@ -24,7 +24,7 @@ export default async function DashboardLayout({
   const messages = await getClientMessages(clientMessageModules.dashboard);
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>
-      <main className="pt-(--marketing-header-height)">{children}</main>
+      <main>{children}</main>
     </NextIntlClientProvider>
   );
 }

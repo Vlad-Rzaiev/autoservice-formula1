@@ -27,7 +27,7 @@ export const localeOptions = [
   {
     code: "en",
     label: "EN",
-    flag: "uk.svg",
+    flag: "gb.svg",
   },
   {
     code: "uk",

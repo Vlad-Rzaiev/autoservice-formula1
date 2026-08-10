@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useSearchParams } from "next/navigation";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { localeOptions } from "@/i18n/locale-config";
 import { useLocale } from "next-intl";
@@ -14,10 +15,11 @@ export interface LangSwitcherProps {
 export default function LangSwitcher({ className }: LangSwitcherProps) {
   const router = useRouter();
   const pathname = usePathname();
+  const searchParams = useSearchParams();
   const currentLang = useLocale();
 
   return (
-    <div className={cn("flex items-center gap", className)} role="group">
+    <div className={cn("flex items-center", className)} role="group">
       {localeOptions.map((language) => {
         const isActive = currentLang === language.code;
 
@@ -52,10 +54,18 @@ export default function LangSwitcher({ className }: LangSwitcherProps) {
                 return;
               }
 
-              router.replace(pathname, {
-                locale: language.code,
-                scroll: false,
-              });
+              const query = Object.fromEntries(searchParams.entries());
+
+              router.replace(
+                {
+                  pathname,
+                  query,
+                },
+                {
+                  locale: language.code,
+                  scroll: false,
+                },
+              );
             }}
           >
             <Image

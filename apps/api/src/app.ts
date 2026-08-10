@@ -1,8 +1,9 @@
 import express from 'express';
+import cors from 'cors';
+import helmet from 'helmet';
+import createHttpError from 'http-errors';
 import { pinoHttp } from 'pino-http';
 import { logger } from './config/logger.js';
-import helmet from 'helmet';
-import cors from 'cors';
 
 import { notFoundHandler } from './middleware/notFoundHandler.js';
 import { errorHandler } from './middleware/errorHandler.js';
@@ -41,11 +42,18 @@ export function createApp() {
           return;
         }
 
-        console.warn('CORS origin rejected', {
-          origin,
-        });
+        logger.warn(
+          {
+            origin,
+          },
+          'CORS origin rejected',
+        );
 
-        callback(new Error(`Origin "${origin}" is not allowed by CORS`));
+        callback(
+          createHttpError(403, 'Origin is not allowed by CORS', {
+            code: 'CORS_ORIGIN_NOT_ALLOWED',
+          }),
+        );
       },
 
       credentials: true,

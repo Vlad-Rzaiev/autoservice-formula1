@@ -5,5 +5,5 @@ export interface LayoutProps {
 }
 
 export default function ClientsLayout({ children }: LayoutProps) {
-  return <main className="pt-(--marketing-header-height)">{children}</main>;
+  return <main>{children}</main>;
 }
