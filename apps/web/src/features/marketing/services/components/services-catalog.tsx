@@ -1,17 +1,18 @@
 "use client";
 
+import { useLocale, useTranslations } from "next-intl";
+import { faScrewdriverWrench } from "@fortawesome/free-solid-svg-icons";
+import type { ServiceDto } from "@autoservice/contracts";
 import {
   defaultLocale,
   isAppLocale,
   type AppLocale,
 } from "@/i18n/locale-config";
-
-import { useLocale, useTranslations } from "next-intl";
-import { faScrewdriverWrench } from "@fortawesome/free-solid-svg-icons";
-import type { ServiceDto } from "@autoservice/contracts";
-import { useServices, ServiceCard } from "@/features/marketing/services";
 import { QueryState } from "@/components/states";
 import { CardGrid } from "@/components/common";
+
+import type { useServices } from "../api/use-services";
+import ServiceCard from "./service-card";
 
 type ServicesRefetch = ReturnType<typeof useServices>["refetch"];
 

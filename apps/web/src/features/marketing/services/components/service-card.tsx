@@ -3,10 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { ServiceIconKey } from "@autoservice/contracts";
 import { IconCard } from "@/components/common";
-import {
-  defaultServiceIcon,
-  serviceIconMap,
-} from "@/features/marketing/services";
+import { defaultServiceIcon, serviceIconMap } from "../lib/service-icon-map";
 import { routes } from "@/config";
 
 export interface ServiceCardProps {

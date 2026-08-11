@@ -1,5 +1,6 @@
 import { queryOptions } from "@tanstack/react-query";
-import { getServices, getServiceBySlug } from "@/features/marketing/services";
+import { getServiceBySlug } from "./get-service-by-slug";
+import { getServices } from "./get-services";
 
 const servicesStaleTimeMs = 10 * 60 * 1000;
 

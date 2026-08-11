@@ -4,9 +4,12 @@ import { useQuery } from "@tanstack/react-query";
 import {
   serviceBySlugQueryOptions,
   servicesQueryOptions,
+} from "./services-query-options";
+
+import {
   selectActiveServices,
   selectFeaturedServices,
-} from "@/features/marketing/services";
+} from "../model/service.selectors";
 
 export function useServices() {
   return useQuery({
