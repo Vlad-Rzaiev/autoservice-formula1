@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import { useTheme } from "next-themes";
-import { useMounted } from "@/hooks";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
+import { useTheme } from 'next-themes';
+import { useMounted } from '@/hooks';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 
-import { Switch } from "@/components/ui";
-import { cn } from "@/lib/utils";
+import { Switch } from '@/components/ui';
+import { cn } from '@/lib/utils';
 
 export interface ThemeSwitcherProps {
   className?: string;
@@ -20,22 +20,22 @@ export default function ThemeSwitcher({ className }: ThemeSwitcherProps) {
     return (
       <span
         aria-hidden="true"
-        className={cn("inline-block h-8 w-14 shrink-0", className)}
+        className={cn('inline-block h-8 w-14 shrink-0', className)}
       />
     );
   }
 
-  const isDark = resolvedTheme === "dark";
+  const isDark = resolvedTheme === 'dark';
 
   const handleThemeChange = (checked: boolean): void => {
-    setTheme(checked ? "dark" : "light");
+    setTheme(checked ? 'dark' : 'light');
   };
 
   const iconSize = cn(
-    "absolute shrink-0 transition-all duration-300",
-    "group-data-[size=sm]/switch:text-xs",
-    "group-data-[size=default]/switch:text-sm",
-    "group-data-[size=lg]/switch:text-base",
+    'absolute shrink-0 transition-all duration-300',
+    'group-data-[size=sm]/switch:text-xs',
+    'group-data-[size=default]/switch:text-sm',
+    'group-data-[size=lg]/switch:text-base',
   );
 
   return (
@@ -44,7 +44,7 @@ export default function ThemeSwitcher({ className }: ThemeSwitcherProps) {
       checked={isDark}
       onCheckedChange={handleThemeChange}
       aria-label="Change theme"
-      className={cn("cursor-pointer", className)}
+      className={cn('cursor-pointer', className)}
       thumbContent={
         <>
           <FontAwesomeIcon
@@ -52,11 +52,11 @@ export default function ThemeSwitcher({ className }: ThemeSwitcherProps) {
             aria-hidden="true"
             className={cn(
               iconSize,
-              "text-slate-800",
-              "rotate-0 scale-100 opacity-100",
-              "group-data-checked/switch:rotate-90",
-              "group-data-checked/switch:scale-0",
-              "group-data-checked/switch:opacity-0",
+              'text-slate-800',
+              'rotate-0 scale-100 opacity-100',
+              'group-data-checked/switch:rotate-90',
+              'group-data-checked/switch:scale-0',
+              'group-data-checked/switch:opacity-0',
             )}
           />
 
@@ -65,11 +65,11 @@ export default function ThemeSwitcher({ className }: ThemeSwitcherProps) {
             aria-hidden="true"
             className={cn(
               iconSize,
-              "text-amber-500",
-              "-rotate-90 scale-0 opacity-0",
-              "group-data-checked/switch:rotate-0",
-              "group-data-checked/switch:scale-100",
-              "group-data-checked/switch:opacity-100",
+              'text-amber-500',
+              '-rotate-90 scale-0 opacity-0',
+              'group-data-checked/switch:rotate-0',
+              'group-data-checked/switch:scale-100',
+              'group-data-checked/switch:opacity-100',
             )}
           />
         </>

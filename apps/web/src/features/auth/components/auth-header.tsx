@@ -1,5 +1,5 @@
-import { BrandLogo } from "@/components/common";
-import { ThemeSwitcher } from "@/components/theme";
+import { BrandLogo } from '@/components/common';
+import { ThemeSwitcher } from '@/components/theme';
 
 export default function AuthHeader() {
   return (

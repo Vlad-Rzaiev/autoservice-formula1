@@ -9,7 +9,7 @@
       rgb(0 0 0 / 50%) 45%,
       rgb(0 0 0 / 20%) 100%
     ),
-    url("/images/hero/hero-mobile.webp");
+    url('/images/hero/hero-mobile.webp');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -26,7 +26,7 @@
         rgb(0 0 0 / 45%) 50%,
         rgb(0 0 0 / 15%) 100%
       ),
-      url("/images/hero/hero-tablet.webp");
+      url('/images/hero/hero-tablet.webp');
   }
 }
 
@@ -41,7 +41,7 @@
         rgb(0 0 0 / 50%) 40%,
         rgb(0 0 0 / 10%) 75%
       ),
-      url("/images/hero/hero-desktop.webp");
+      url('/images/hero/hero-desktop.webp');
   }
 }
 

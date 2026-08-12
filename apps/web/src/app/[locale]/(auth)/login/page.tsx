@@ -1,17 +1,17 @@
-import { getTranslations } from "next-intl/server";
-import { DevelopmentPlaceholder, ButtonLink } from "@/components/common";
-import { routes } from "@/config";
+import { getTranslations } from 'next-intl/server';
+import { DevelopmentPlaceholder, ButtonLink } from '@/components/common';
+import { routes } from '@/config';
 
 export default async function LoginPage() {
-  const t = await getTranslations("auth");
+  const t = await getTranslations('auth');
 
   return (
     <>
       <DevelopmentPlaceholder
-        title={t("login.title")}
-        description={t("login.dev")}
+        title={t('login.title')}
+        description={t('login.dev')}
         linkHref={routes.marketing.home}
-        linkText={t("login.back-to-main")}
+        linkText={t('login.back-to-main')}
       />
 
       <div className="mt-8 flex items-center justify-center">
@@ -20,7 +20,7 @@ export default async function LoginPage() {
           variant="inline"
           className="hover:underline"
         >
-          {t("login.forgot-pwd")}
+          {t('login.forgot-pwd')}
         </ButtonLink>
       </div>
     </>

@@ -1,9 +1,9 @@
-import type { ReactNode } from "react";
-import { hasLocale, NextIntlClientProvider } from "next-intl";
-import { notFound } from "next/navigation";
-import { routing } from "@/i18n/routing";
-import { clientMessageModules, getClientMessages } from "@/messages";
-import { AuthFooter, AuthHeader, AuthShell } from "@/features/auth";
+import type { ReactNode } from 'react';
+import { hasLocale, NextIntlClientProvider } from 'next-intl';
+import { notFound } from 'next/navigation';
+import { routing } from '@/i18n/routing';
+import { clientMessageModules, getClientMessages } from '@/messages';
+import { AuthFooter, AuthHeader, AuthShell } from '@/features/auth';
 
 interface AuthLayoutProps {
   children: ReactNode;

@@ -1,8 +1,8 @@
-import { cache } from "react";
-import { notFound } from "next/navigation";
-import type { ServiceDto } from "@autoservice/contracts";
-import { getServiceBySlug } from "@/features/marketing/services";
-import { isApiNotFoundError } from "@/lib";
+import { cache } from 'react';
+import { notFound } from 'next/navigation';
+import type { ServiceDto } from '@autoservice/contracts';
+import { getServiceBySlug } from '@/features/marketing/services';
+import { isApiNotFoundError } from '@/lib';
 
 export const getServiceOr404 = cache(
   async (slug: string): Promise<ServiceDto> => {

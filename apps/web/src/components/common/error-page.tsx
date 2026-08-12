@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faCircleExclamation,
   faRotateRight,
-} from "@fortawesome/free-solid-svg-icons";
+} from '@fortawesome/free-solid-svg-icons';
 
-import { cn } from "@/lib";
+import { cn } from '@/lib';
 
 export interface ErrorPageProps {
   eyebrow: string;
@@ -30,7 +30,7 @@ export default function ErrorPage({
   homeLabel,
   homeHref,
   errorCode,
-  errorCodeLabel = "Error code",
+  errorCodeLabel = 'Error code',
   className,
 }: ErrorPageProps) {
   const hasRetryAction = Boolean(onRetry && retryLabel);
@@ -40,8 +40,8 @@ export default function ErrorPage({
   return (
     <main
       className={cn(
-        "relative flex min-h-dvh items-center justify-center overflow-hidden",
-        "bg-slate-950 px-6 py-12 text-slate-100",
+        'relative flex min-h-dvh items-center justify-center overflow-hidden',
+        'bg-slate-950 px-6 py-12 text-slate-100',
         className,
       )}
     >

@@ -1,9 +1,9 @@
-import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faInbox } from "@fortawesome/free-solid-svg-icons";
+import type { IconDefinition } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faInbox } from '@fortawesome/free-solid-svg-icons';
 
-import { Button } from "@/components/ui";
-import { StateShell } from "@/components/states";
+import { Button } from '@/components/ui';
+import { StateShell } from '@/components/states';
 
 export interface EmptyStateProps {
   title: string;

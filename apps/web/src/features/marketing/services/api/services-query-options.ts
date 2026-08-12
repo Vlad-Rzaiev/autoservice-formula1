@@ -1,17 +1,17 @@
-import { queryOptions } from "@tanstack/react-query";
-import { getServiceBySlug } from "./get-service-by-slug";
-import { getServices } from "./get-services";
+import { queryOptions } from '@tanstack/react-query';
+import { getServiceBySlug } from './get-service-by-slug';
+import { getServices } from './get-services';
 
 const servicesStaleTimeMs = 10 * 60 * 1000;
 
 export const servicesQueryKeys = {
-  all: ["services"] as const,
+  all: ['services'] as const,
 
-  lists: () => [...servicesQueryKeys.all, "list"] as const,
+  lists: () => [...servicesQueryKeys.all, 'list'] as const,
 
-  list: () => [...servicesQueryKeys.lists(), "all"] as const,
+  list: () => [...servicesQueryKeys.lists(), 'all'] as const,
 
-  details: () => [...servicesQueryKeys.all, "detail"] as const,
+  details: () => [...servicesQueryKeys.all, 'detail'] as const,
 
   detail: (serviceSlug: string) =>
     [...servicesQueryKeys.details(), serviceSlug] as const,

@@ -1,11 +1,11 @@
-import type { Metadata } from "next";
-import { notFound } from "next/navigation";
-import { isAppLocale } from "@/i18n/locale-config";
+import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
+import { isAppLocale } from '@/i18n/locale-config';
 import {
   getServiceOr404,
   ServiceDetails,
   createServiceMetadata,
-} from "@/features/marketing/services";
+} from '@/features/marketing/services';
 
 export interface ServicePageProps {
   params: Promise<{

@@ -1,17 +1,17 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faCalendarCheck,
   faPhoneVolume,
   faScrewdriverWrench,
-} from "@fortawesome/free-solid-svg-icons";
+} from '@fortawesome/free-solid-svg-icons';
 
-import { getTranslations } from "next-intl/server";
-import { cn } from "@/lib/utils";
-import { routes, siteConfig } from "@/config";
-import { Section, Container } from "@/components/layout";
-import { benefits, BenefitList } from "@/features/marketing/services";
-import { ButtonLink } from "@/components/common";
-import { buttonVariants } from "@/components/ui";
+import { getTranslations } from 'next-intl/server';
+import { cn } from '@/lib/utils';
+import { routes, siteConfig } from '@/config';
+import { Section, Container } from '@/components/layout';
+import { benefits, BenefitList } from '@/features/marketing/services';
+import { ButtonLink } from '@/components/common';
+import { buttonVariants } from '@/components/ui';
 
 interface ServicesHeroProps {
   servicesCount?: number;
@@ -20,7 +20,7 @@ interface ServicesHeroProps {
 export default async function ServicesHero({
   servicesCount,
 }: ServicesHeroProps) {
-  const t = await getTranslations("services.allServices.hero");
+  const t = await getTranslations('services.allServices.hero');
 
   return (
     <Section
@@ -66,7 +66,7 @@ export default async function ServicesHero({
                 className="shrink-0 text-sm"
               />
 
-              {t("eyebrow")}
+              {t('eyebrow')}
             </div>
 
             <h1
@@ -75,7 +75,7 @@ export default async function ServicesHero({
                 sm:text-5xl lg:text-6xl lg:leading-[1.08]
               "
             >
-              {t.rich("title", {
+              {t.rich('title', {
                 accent: (chunks) => (
                   <span className="text-red-600 dark:text-red-500">
                     {chunks}
@@ -90,18 +90,18 @@ export default async function ServicesHero({
                 sm:text-lg sm:leading-8
               "
             >
-              {t("description")}
+              {t('description')}
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <a
                 href={siteConfig.phone.href}
                 className={cn(
-                  buttonVariants({ variant: "ctaPrimary", size: "cta" }),
-                  "w-auto",
+                  buttonVariants({ variant: 'ctaPrimary', size: 'cta' }),
+                  'w-auto',
                 )}
               >
-                {t("call")}
+                {t('call')}
 
                 <FontAwesomeIcon
                   icon={faPhoneVolume}
@@ -126,13 +126,13 @@ export default async function ServicesHero({
                   className="shrink-0 text-base"
                 />
 
-                {t("booking")}
+                {t('booking')}
               </ButtonLink>
             </div>
 
-            {typeof servicesCount === "number" && servicesCount > 0 && (
+            {typeof servicesCount === 'number' && servicesCount > 0 && (
               <p className="mt-6 text-sm text-muted-foreground">
-                {t("services-count", {
+                {t('services-count', {
                   count: servicesCount,
                 })}
               </p>

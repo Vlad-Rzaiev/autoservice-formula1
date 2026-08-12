@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
-import { useQuery } from "@tanstack/react-query";
+import { useQuery } from '@tanstack/react-query';
 import {
   serviceBySlugQueryOptions,
   servicesQueryOptions,
-} from "./services-query-options";
+} from './services-query-options';
 
 import {
   selectActiveServices,
   selectFeaturedServices,
-} from "../model/service.selectors";
+} from '../model/service.selectors';
 
 export function useServices() {
   return useQuery({

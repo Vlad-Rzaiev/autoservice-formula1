@@ -1,6 +1,6 @@
-import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
-import type { AppLocale, ServiceDto } from "@autoservice/contracts";
+import type { Metadata } from 'next';
+import { getTranslations } from 'next-intl/server';
+import type { AppLocale, ServiceDto } from '@autoservice/contracts';
 
 interface CreateServiceMetadataParams {
   locale: AppLocale;
@@ -15,20 +15,20 @@ export async function createServiceMetadata({
 
   const translateMetadata = await getTranslations({
     locale,
-    namespace: "metadata",
+    namespace: 'metadata',
   });
 
   return {
-    title: `${translation.title} | ${translateMetadata("title")}`,
+    title: `${translation.title} | ${translateMetadata('title')}`,
     description: translation.description,
 
     openGraph: {
-      title: `${translation.title} | ${translateMetadata("title")}`,
+      title: `${translation.title} | ${translateMetadata('title')}`,
       description: translation.description,
     },
 
     twitter: {
-      title: `${translation.title} | ${translateMetadata("title")}`,
+      title: `${translation.title} | ${translateMetadata('title')}`,
       description: translation.description,
     },
   };

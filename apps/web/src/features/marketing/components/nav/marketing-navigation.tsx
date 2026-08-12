@@ -1,7 +1,7 @@
-import { Link } from "@/i18n/navigation";
-import { useTranslations } from "next-intl";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import { Link } from '@/i18n/navigation';
+import { useTranslations } from 'next-intl';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 import {
   navItems,
@@ -10,7 +10,7 @@ import {
   navigationListVariants,
   NavigationVariant,
   navigationVariants,
-} from "@/features/marketing";
+} from '@/features/marketing';
 
 export interface MarketingNavigationProps {
   variant?: NavigationVariant;
@@ -19,16 +19,16 @@ export interface MarketingNavigationProps {
 }
 
 export default function MarketingNavigation({
-  variant = "header",
+  variant = 'header',
   onNavigate,
   ariaLabel,
 }: MarketingNavigationProps) {
   const t = useTranslations();
 
   const defaultAriaLabel =
-    variant === "footer"
-      ? t("marketing.footer.label")
-      : t("mobile-menu.navigation.label");
+    variant === 'footer'
+      ? t('marketing.footer.label')
+      : t('mobile-menu.navigation.label');
 
   return (
     <nav
@@ -43,7 +43,7 @@ export default function MarketingNavigation({
               onClick={onNavigate}
               className={navigationLinkVariants({ variant })}
             >
-              {variant === "footer" && (
+              {variant === 'footer' && (
                 <span
                   aria-hidden="true"
                   className="
@@ -57,7 +57,7 @@ export default function MarketingNavigation({
                 />
               )}
 
-              {variant === "mobile" && (
+              {variant === 'mobile' && (
                 <span
                   aria-hidden="true"
                   className="
@@ -73,7 +73,7 @@ export default function MarketingNavigation({
                 />
               )}
 
-              {variant === "mobile" ? (
+              {variant === 'mobile' ? (
                 <span
                   className="
                     transition-transform duration-200
@@ -89,7 +89,7 @@ export default function MarketingNavigation({
                 t(item.translationKey)
               )}
 
-              {variant === "mobile" && (
+              {variant === 'mobile' && (
                 <FontAwesomeIcon
                   icon={faChevronRight}
                   aria-hidden="true"
@@ -106,7 +106,7 @@ export default function MarketingNavigation({
                 />
               )}
 
-              {variant === "header" && (
+              {variant === 'header' && (
                 <span
                   aria-hidden="true"
                   className="

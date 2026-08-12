@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { useTranslations } from "next-intl";
-import { LangSwitcher } from "@/components/locale";
-import { ThemeSwitcher } from "@/components/theme";
+import { useTranslations } from 'next-intl';
+import { LangSwitcher } from '@/components/locale';
+import { ThemeSwitcher } from '@/components/theme';
 
 export default function MobileMenuPreferences({}) {
   const t = useTranslations();
@@ -19,7 +19,7 @@ export default function MobileMenuPreferences({}) {
       <div className="flex flex-col gap-3">
         <div className="flex min-h-10 items-center justify-between gap-4">
           <p className="text-sm font-semibold text-foreground/70">
-            {t("mobile-menu.language")}
+            {t('mobile-menu.language')}
           </p>
 
           <LangSwitcher />
@@ -27,7 +27,7 @@ export default function MobileMenuPreferences({}) {
 
         <div className="flex min-h-10 items-center justify-between gap-4">
           <p className="text-sm font-semibold text-foreground/70">
-            {t("mobile-menu.theme")}
+            {t('mobile-menu.theme')}
           </p>
 
           <ThemeSwitcher />

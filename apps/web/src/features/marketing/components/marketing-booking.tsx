@@ -1,5 +1,5 @@
-import { useTranslations } from "next-intl";
-import { Section, Container, SectionTitle } from "@/components/layout";
+import { useTranslations } from 'next-intl';
+import { Section, Container, SectionTitle } from '@/components/layout';
 
 export default function MarketingBooking() {
   const t = useTranslations();
@@ -7,7 +7,7 @@ export default function MarketingBooking() {
   return (
     <Section id="booking">
       <Container>
-        <SectionTitle>{t("marketing.booking.title")}</SectionTitle>
+        <SectionTitle>{t('marketing.booking.title')}</SectionTitle>
       </Container>
     </Section>
   );

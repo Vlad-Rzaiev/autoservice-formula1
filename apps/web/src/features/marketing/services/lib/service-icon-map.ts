@@ -1,5 +1,5 @@
-import { ServiceIconKey } from "@autoservice/contracts";
-import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+import { ServiceIconKey } from '@autoservice/contracts';
+import type { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import {
   faBolt,
   faBoxOpen,
@@ -23,28 +23,28 @@ import {
   faWandMagicSparkles,
   faWind,
   faWrench,
-} from "@fortawesome/free-solid-svg-icons";
+} from '@fortawesome/free-solid-svg-icons';
 
 export const serviceIconMap = {
-  "scan-search": faMagnifyingGlass,
+  'scan-search': faMagnifyingGlass,
   settings: faGears,
-  "car-front": faCar,
-  "disc-3": faCompactDisc,
+  'car-front': faCar,
+  'disc-3': faCompactDisc,
   cog: faGear,
   zap: faBolt,
-  "circle-gauge": faGaugeHigh,
+  'circle-gauge': faGaugeHigh,
   droplets: faDroplet,
-  "circle-dot": faCircleDot,
+  'circle-dot': faCircleDot,
   route: faRoute,
-  "rotate-ccw": faRotateLeft,
+  'rotate-ccw': faRotateLeft,
   gauge: faGauge,
-  "air-vent": faFan,
+  'air-vent': faFan,
   thermometer: faTemperatureHalf,
   fuel: faGasPump,
   wind: faWind,
-  "battery-charging": faCarBattery,
-  "file-check-2": faClipboardCheck,
-  "package-search": faBoxOpen,
+  'battery-charging': faCarBattery,
+  'file-check-2': faClipboardCheck,
+  'package-search': faBoxOpen,
   wrench: faWrench,
   paintbrush: faPaintRoller,
   sparkles: faWandMagicSparkles,

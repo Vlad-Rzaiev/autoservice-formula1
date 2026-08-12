@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { useTranslations } from "next-intl";
-import { useServices, ServicesCatalog } from "@/features/marketing/services";
-import { SectionTitle } from "@/components/layout";
+import { useTranslations } from 'next-intl';
+import { useServices, ServicesCatalog } from '@/features/marketing/services';
+import { SectionTitle } from '@/components/layout';
 
 export default function ServicesCatalogContainer() {
   const t = useTranslations();
@@ -18,7 +18,7 @@ export default function ServicesCatalogContainer() {
   return (
     <>
       <SectionTitle className="sr-only">
-        {t("services.allServices.title")}
+        {t('services.allServices.title')}
       </SectionTitle>
 
       <ServicesCatalog

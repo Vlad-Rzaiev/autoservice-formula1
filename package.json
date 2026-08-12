@@ -17,10 +17,13 @@
     "start:api": "npm run start -w apps/api",
     "typecheck": "npm run build:contracts && npm run typecheck --workspaces --if-present",
     "lint": "npm run lint --workspaces --if-present",
-    "test": "npm run test --workspaces --if-present"
+    "test": "npm run test --workspaces --if-present",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "devDependencies": {
     "concurrently": "^10.0.4",
+    "prettier": "^3.9.6",
     "typescript-eslint": "^8.66.0"
   },
   "engines": {

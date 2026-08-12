@@ -1,6 +1,6 @@
-import type { ComponentPropsWithoutRef, ReactNode } from "react";
-import type { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
+import type { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import {
   Card,
@@ -8,8 +8,8 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui";
-import { cn } from "@/lib/utils";
+} from '@/components/ui';
+import { cn } from '@/lib/utils';
 
 export type IconCardProps = ComponentPropsWithoutRef<typeof Card> & {
   icon: IconProp;
@@ -30,7 +30,7 @@ export function IconCard({
 }: IconCardProps) {
   return (
     <Card
-      className={cn("h-full overflow-hidden border-border bg-card", className)}
+      className={cn('h-full overflow-hidden border-border bg-card', className)}
       {...cardProps}
     >
       <CardHeader>
@@ -43,7 +43,7 @@ export function IconCard({
           <FontAwesomeIcon
             icon={icon}
             aria-hidden="true"
-            className={cn("text-xl", iconClassName)}
+            className={cn('text-xl', iconClassName)}
           />
         </div>
 

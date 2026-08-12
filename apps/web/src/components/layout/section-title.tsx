@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 export interface SectionTitleProps {
   children?: React.ReactNode;
@@ -7,7 +7,7 @@ export interface SectionTitleProps {
 
 export default function SectionTitle({
   children,
-  className = "",
+  className = '',
 }: SectionTitleProps) {
   return (
     <div className={`flex flex-col items-center gap-4 pt-6 ${className}`}>

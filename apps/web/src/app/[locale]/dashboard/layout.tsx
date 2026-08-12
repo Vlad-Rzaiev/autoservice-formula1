@@ -1,8 +1,8 @@
-import React from "react";
-import { hasLocale, NextIntlClientProvider } from "next-intl";
-import { notFound } from "next/navigation";
-import { routing } from "@/i18n/routing";
-import { clientMessageModules, getClientMessages } from "@/messages";
+import React from 'react';
+import { hasLocale, NextIntlClientProvider } from 'next-intl';
+import { notFound } from 'next/navigation';
+import { routing } from '@/i18n/routing';
+import { clientMessageModules, getClientMessages } from '@/messages';
 
 export interface LayoutProps {
   children?: React.ReactNode;

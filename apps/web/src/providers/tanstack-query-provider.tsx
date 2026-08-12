@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import type { ReactNode } from "react";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import type { ReactNode } from 'react';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 interface TanStackQueryProviderProps {
   children: ReactNode;
@@ -23,7 +23,7 @@ function createQueryClient(): QueryClient {
 let browserQueryClient: QueryClient | undefined;
 
 function getQueryClient(): QueryClient {
-  const isServerEnvironment = typeof window === "undefined";
+  const isServerEnvironment = typeof window === 'undefined';
 
   if (isServerEnvironment) {
     return createQueryClient();

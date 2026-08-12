@@ -1,17 +1,17 @@
-import { z } from "zod";
+import { z } from 'zod';
 
-import { supportedLocales } from "../common/locale.js";
-import { serviceCategories, serviceIconKeys } from "./service.constants.js";
-import type { ServiceDto } from "./service.dto.js";
+import { supportedLocales } from '../common/locale.js';
+import { serviceCategories, serviceIconKeys } from './service.constants.js';
+import type { ServiceDto } from './service.dto.js';
 
 export const serviceSlugSchema = z
   .string()
   .trim()
-  .min(1, "Slug is required.")
-  .max(50, "Slug must contain no more than 50 characters.")
+  .min(1, 'Slug is required.')
+  .max(50, 'Slug must contain no more than 50 characters.')
   .regex(
     /^[a-z0-9]+(?:-[a-z0-9]+)*$/,
-    "Slug must contain only lowercase letters, numbers, and single hyphens.",
+    'Slug must contain only lowercase letters, numbers, and single hyphens.',
   );
 
 export const serviceTranslationDtoSchema = z.object({

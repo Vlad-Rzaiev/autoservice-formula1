@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import type { ReactNode } from "react";
-import { ThemeProvider } from "next-themes";
-import { TanStackQueryProvider } from "@/providers";
+import type { ReactNode } from 'react';
+import { ThemeProvider } from 'next-themes';
+import { TanStackQueryProvider } from '@/providers';
 
 export interface AppProvidersProps {
   children: ReactNode;
@@ -16,7 +16,7 @@ export default function AppProviders({ children }: AppProvidersProps) {
         defaultTheme="system"
         enableSystem
         storageKey="theme"
-        themes={["light", "dark"]}
+        themes={['light', 'dark']}
       >
         {children}
       </ThemeProvider>

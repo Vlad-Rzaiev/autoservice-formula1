@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import {
   createContext,
@@ -9,7 +9,7 @@ import {
   useContext,
   useMemo,
   useState,
-} from "react";
+} from 'react';
 
 interface MobileMenuContextValue {
   isOpen: boolean;
@@ -50,7 +50,7 @@ export function useMobileMenu(): MobileMenuContextValue {
   const contextValue = useContext(MobileMenuContext);
 
   if (!contextValue) {
-    throw new Error("useMobileMenu must be used inside MobileMenuProvider");
+    throw new Error('useMobileMenu must be used inside MobileMenuProvider');
   }
 
   return contextValue;

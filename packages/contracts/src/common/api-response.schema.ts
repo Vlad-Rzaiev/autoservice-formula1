@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { z } from 'zod';
 
 export function createApiResponseSchema<TDataSchema extends z.ZodType>(
   dataSchema: TDataSchema,

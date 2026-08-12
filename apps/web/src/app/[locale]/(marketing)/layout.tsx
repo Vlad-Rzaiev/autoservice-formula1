@@ -1,12 +1,12 @@
-import React from "react";
-import type { Metadata } from "next";
-import { notFound } from "next/navigation";
-import { hasLocale, NextIntlClientProvider } from "next-intl";
-import { routing } from "@/i18n/routing";
-import { getTranslations } from "next-intl/server";
-import { MobileMenuProvider } from "@/providers";
-import { MarketingHeader, MarketingFooter } from "@/features/marketing";
-import { clientMessageModules, getClientMessages } from "@/messages";
+import React from 'react';
+import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
+import { hasLocale, NextIntlClientProvider } from 'next-intl';
+import { routing } from '@/i18n/routing';
+import { getTranslations } from 'next-intl/server';
+import { MobileMenuProvider } from '@/providers';
+import { MarketingHeader, MarketingFooter } from '@/features/marketing';
+import { clientMessageModules, getClientMessages } from '@/messages';
 
 interface MarketingLayoutProps {
   children: React.ReactNode;
@@ -17,17 +17,17 @@ interface MarketingLayoutProps {
 
 export async function generateMetadata({
   params,
-}: Omit<MarketingLayoutProps, "children">): Promise<Metadata> {
+}: Omit<MarketingLayoutProps, 'children'>): Promise<Metadata> {
   const { locale } = await params;
 
   if (!hasLocale(routing.locales, locale)) {
     notFound();
   }
 
-  const t = await getTranslations({ locale, namespace: "metadata.og" });
+  const t = await getTranslations({ locale, namespace: 'metadata.og' });
 
-  const title = t("title");
-  const description = t("description");
+  const title = t('title');
+  const description = t('description');
 
   return {
     title,
@@ -36,16 +36,16 @@ export async function generateMetadata({
     alternates: {
       canonical: `/${locale}`,
       languages: {
-        uk: "/uk",
-        en: "/en",
-        pl: "/pl",
+        uk: '/uk',
+        en: '/en',
+        pl: '/pl',
       },
     },
 
     openGraph: {
-      type: "website",
-      siteName: "Formula 1",
-      locale: t("openGraphLocale"),
+      type: 'website',
+      siteName: 'Formula 1',
+      locale: t('openGraphLocale'),
       url: `/${locale}`,
       title,
       description,
@@ -54,14 +54,14 @@ export async function generateMetadata({
           url: `/${locale}/opengraph-image`,
           width: 1200,
           height: 630,
-          alt: "AutoService Formula 1",
-          type: "image/png",
+          alt: 'AutoService Formula 1',
+          type: 'image/png',
         },
       ],
     },
 
     twitter: {
-      card: "summary_large_image",
+      card: 'summary_large_image',
       title,
       description,
       images: [`/${locale}/opengraph-image`],

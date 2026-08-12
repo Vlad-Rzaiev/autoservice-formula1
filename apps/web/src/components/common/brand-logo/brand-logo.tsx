@@ -1,13 +1,13 @@
-import { useTranslations } from "next-intl";
+import { useTranslations } from 'next-intl';
 
-import { Link } from "@/i18n/navigation";
-import { cn } from "@/lib/utils";
+import { Link } from '@/i18n/navigation';
+import { cn } from '@/lib/utils';
 import {
   brandLogoContentVariants,
   brandLogoVariants,
   type BrandLogoVariant,
-} from "@/components/common";
-import { routes } from "@/config";
+} from '@/components/common';
+import { routes } from '@/config';
 
 export interface BrandLogoProps {
   variant?: BrandLogoVariant;
@@ -16,16 +16,16 @@ export interface BrandLogoProps {
 }
 
 export default function BrandLogo({
-  variant = "header",
+  variant = 'header',
   className,
   onNavigate,
 }: BrandLogoProps) {
-  const t = useTranslations("marketing.brand");
+  const t = useTranslations('marketing.brand');
 
   return (
     <Link
       href={routes.marketing.home}
-      aria-label={t("homeLabel")}
+      aria-label={t('homeLabel')}
       onClick={onNavigate}
       className={cn(brandLogoVariants({ variant }), className)}
     >

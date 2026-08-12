@@ -1,27 +1,27 @@
-import type { ButtonHTMLAttributes, ReactNode } from "react";
+import type { ButtonHTMLAttributes, ReactNode } from 'react';
 
-import { render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 
-import LangSwitcher from "./lang-switcher";
+import LangSwitcher from './lang-switcher';
 
 const navigationMock = vi.hoisted(() => ({
-  currentLocale: "uk",
-  pathname: "/services",
-  searchParams: new URLSearchParams("category=engine&page=2"),
+  currentLocale: 'uk',
+  pathname: '/services',
+  searchParams: new URLSearchParams('category=engine&page=2'),
   replace: vi.fn(),
 }));
 
-vi.mock("next-intl", () => ({
+vi.mock('next-intl', () => ({
   useLocale: () => navigationMock.currentLocale,
 }));
 
-vi.mock("next/navigation", () => ({
+vi.mock('next/navigation', () => ({
   useSearchParams: () => navigationMock.searchParams,
 }));
 
-vi.mock("@/i18n/navigation", () => ({
+vi.mock('@/i18n/navigation', () => ({
   usePathname: () => navigationMock.pathname,
 
   useRouter: () => ({
@@ -29,11 +29,11 @@ vi.mock("@/i18n/navigation", () => ({
   }),
 }));
 
-vi.mock("next/image", () => ({
+vi.mock('next/image', () => ({
   default: () => null,
 }));
 
-vi.mock("@/components/common", () => ({
+vi.mock('@/components/common', () => ({
   IconButton: ({
     children,
     ...props
@@ -42,96 +42,96 @@ vi.mock("@/components/common", () => ({
   }) => <button {...props}>{children}</button>,
 }));
 
-describe("LangSwitcher", () => {
+describe('LangSwitcher', () => {
   beforeEach(() => {
-    navigationMock.currentLocale = "uk";
-    navigationMock.pathname = "/services";
-    navigationMock.searchParams = new URLSearchParams("category=engine&page=2");
+    navigationMock.currentLocale = 'uk';
+    navigationMock.pathname = '/services';
+    navigationMock.searchParams = new URLSearchParams('category=engine&page=2');
     navigationMock.replace.mockReset();
   });
 
-  it("marks the current locale as pressed", () => {
+  it('marks the current locale as pressed', () => {
     render(<LangSwitcher />);
 
     expect(
-      screen.getByRole("button", {
-        name: "UA",
+      screen.getByRole('button', {
+        name: 'UA',
       }),
-    ).toHaveAttribute("aria-pressed", "true");
+    ).toHaveAttribute('aria-pressed', 'true');
 
     expect(
-      screen.getByRole("button", {
-        name: "PL",
+      screen.getByRole('button', {
+        name: 'PL',
       }),
-    ).toHaveAttribute("aria-pressed", "false");
+    ).toHaveAttribute('aria-pressed', 'false');
   });
 
-  it("does not navigate when the current locale is clicked", async () => {
+  it('does not navigate when the current locale is clicked', async () => {
     const user = userEvent.setup();
 
     render(<LangSwitcher />);
 
     await user.click(
-      screen.getByRole("button", {
-        name: "UA",
+      screen.getByRole('button', {
+        name: 'UA',
       }),
     );
 
     expect(navigationMock.replace).not.toHaveBeenCalled();
   });
 
-  it("switches to another locale", async () => {
+  it('switches to another locale', async () => {
     const user = userEvent.setup();
 
     render(<LangSwitcher />);
 
     await user.click(
-      screen.getByRole("button", {
-        name: "PL",
+      screen.getByRole('button', {
+        name: 'PL',
       }),
     );
 
     expect(navigationMock.replace).toHaveBeenCalledWith(
       {
-        pathname: "/services",
+        pathname: '/services',
         query: {
-          category: "engine",
-          page: "2",
+          category: 'engine',
+          page: '2',
         },
       },
       {
-        locale: "pl",
+        locale: 'pl',
         scroll: false,
       },
     );
   });
 
-  it("preserves query parameters when changing locale", async () => {
+  it('preserves query parameters when changing locale', async () => {
     const user = userEvent.setup();
 
     navigationMock.searchParams = new URLSearchParams(
-      "category=engine&page=2&sort=asc",
+      'category=engine&page=2&sort=asc',
     );
 
     render(<LangSwitcher />);
 
     await user.click(
-      screen.getByRole("button", {
-        name: "EN",
+      screen.getByRole('button', {
+        name: 'EN',
       }),
     );
 
     expect(navigationMock.replace).toHaveBeenCalledWith(
       {
-        pathname: "/services",
+        pathname: '/services',
         query: {
-          category: "engine",
-          page: "2",
-          sort: "asc",
+          category: 'engine',
+          page: '2',
+          sort: 'asc',
         },
       },
       {
-        locale: "en",
+        locale: 'en',
         scroll: false,
       },
     );

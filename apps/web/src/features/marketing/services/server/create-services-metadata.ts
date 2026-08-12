@@ -1,6 +1,6 @@
-import { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
-import { ServiceLocale } from "@autoservice/contracts";
+import { Metadata } from 'next';
+import { getTranslations } from 'next-intl/server';
+import { ServiceLocale } from '@autoservice/contracts';
 
 interface CreateServicesMetadataParams {
   locale: ServiceLocale;
@@ -12,23 +12,23 @@ export async function createServicesMetadata({
   const [translateServices, translateMetadata] = await Promise.all([
     getTranslations({
       locale,
-      namespace: "services",
+      namespace: 'services',
     }),
     getTranslations({
       locale,
-      namespace: "metadata",
+      namespace: 'metadata',
     }),
   ]);
 
   return {
-    title: `${translateServices("allServices.title")} | ${translateMetadata("title")}`,
+    title: `${translateServices('allServices.title')} | ${translateMetadata('title')}`,
 
     openGraph: {
-      title: `${translateServices("allServices.title")} | ${translateMetadata("title")}`,
+      title: `${translateServices('allServices.title')} | ${translateMetadata('title')}`,
     },
 
     twitter: {
-      title: `${translateServices("allServices.title")} | ${translateMetadata("title")}`,
+      title: `${translateServices('allServices.title')} | ${translateMetadata('title')}`,
     },
   };
 }

@@ -1,4 +1,4 @@
-import type { ServiceDto } from "@autoservice/contracts";
+import type { ServiceDto } from '@autoservice/contracts';
 
 function selectServicesBySortOrder(
   firstService: ServiceDto,
