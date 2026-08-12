@@ -6,7 +6,7 @@ import {
   createServiceController,
 } from './service.controller.js';
 import { validateParams } from '../../middleware/validate-params.js';
-import { validateBody } from '../../middleware/validateBody.js';
+import { validateBody } from '../../middleware/validate-body.js';
 import { createServiceSchema } from '@autoservice/contracts';
 import { getServiceBySlugParamsSchema } from '../../validation/services/service-params.schema.js';
 

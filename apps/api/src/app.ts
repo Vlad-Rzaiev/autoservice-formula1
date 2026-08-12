@@ -5,10 +5,12 @@ import createHttpError from 'http-errors';
 import { pinoHttp } from 'pino-http';
 import { logger } from './config/logger.js';
 
-import { notFoundHandler } from './middleware/notFoundHandler.js';
-import { errorHandler } from './middleware/errorHandler.js';
+import { notFoundHandler } from './middleware/not-found-handler.js';
+import { errorHandler } from './middleware/error-handler.js';
 
 import { isOriginAllowed } from './utils/is-origin-allowed.js';
+import { publicApiRateLimit } from './middleware/rate-limit.js';
+import healthRouter from './modules/health/health.routes.js';
 import servicesRouter from './modules/services/service.routes.js';
 
 export function createApp() {
@@ -61,6 +63,10 @@ export function createApp() {
   );
 
   app.use(express.json());
+
+  app.use('/api', publicApiRateLimit);
+
+  app.use('/health', healthRouter);
 
   app.use('/api/v1/services', servicesRouter);
 
