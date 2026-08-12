@@ -1,14 +1,14 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faArrowLeft,
   faMagnifyingGlass,
-} from "@fortawesome/free-solid-svg-icons";
-import { getTranslations } from "next-intl/server";
-import { ButtonLink } from "@/components/common";
-import { routes } from "@/config";
+} from '@fortawesome/free-solid-svg-icons';
+import { getTranslations } from 'next-intl/server';
+import { ButtonLink } from '@/components/common';
+import { routes } from '@/config';
 
 export default async function NotFound() {
-  const t = await getTranslations("services.servicePage");
+  const t = await getTranslations('services.servicePage');
 
   return (
     <div
@@ -48,7 +48,7 @@ export default async function NotFound() {
           text-foreground sm:text-3xl
         "
       >
-        {t("not-found-title")}
+        {t('not-found-title')}
       </h1>
 
       <p
@@ -57,7 +57,7 @@ export default async function NotFound() {
           text-muted-foreground
         "
       >
-        {t("not-found-description")}
+        {t('not-found-description')}
       </p>
 
       <ButtonLink href={routes.marketing.services}>
@@ -71,7 +71,7 @@ export default async function NotFound() {
           "
         />
 
-        {t("back-to-services")}
+        {t('back-to-services')}
       </ButtonLink>
     </div>
   );

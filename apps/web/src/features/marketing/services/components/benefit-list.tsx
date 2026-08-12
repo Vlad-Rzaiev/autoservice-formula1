@@ -1,6 +1,6 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import type { VariantProps } from "class-variance-authority";
-import { cn } from "@/lib";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import type { VariantProps } from 'class-variance-authority';
+import { cn } from '@/lib';
 import {
   BenefitItem,
   benefitFontAwesomeIconVariants,
@@ -8,20 +8,20 @@ import {
   benefitItemVariants,
   benefitListVariants,
   benefitTextVariants,
-} from "@/features/marketing/services";
+} from '@/features/marketing/services';
 
 type BenefitListVariantProps = VariantProps<typeof benefitListVariants>;
 
 export interface BenefitListProps extends BenefitListVariantProps {
   items: readonly BenefitItem[];
-  getLabel: (translationKey: BenefitItem["translationKey"]) => string;
+  getLabel: (translationKey: BenefitItem['translationKey']) => string;
   className?: string;
 }
 
 export default function BenefitList({
   items,
   getLabel,
-  variant = "default",
+  variant = 'default',
   className,
 }: BenefitListProps) {
   return (

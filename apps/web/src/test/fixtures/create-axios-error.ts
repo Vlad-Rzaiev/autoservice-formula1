@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 interface CreateAxiosErrorOptions {
   status?: number;
@@ -10,19 +10,19 @@ export function createAxiosError({
   data = {
     status: 404,
     success: false,
-    code: "SERVICE_NOT_FOUND",
-    message: "Service not found.",
+    code: 'SERVICE_NOT_FOUND',
+    message: 'Service not found.',
   },
 }: CreateAxiosErrorOptions = {}) {
   return new axios.AxiosError(
     `Request failed with status code ${status}`,
-    "ERR_BAD_REQUEST",
+    'ERR_BAD_REQUEST',
     undefined,
     undefined,
     {
       data,
       status,
-      statusText: "Request failed",
+      statusText: 'Request failed',
       headers: {},
       config: {
         headers: new axios.AxiosHeaders(),

@@ -1,37 +1,37 @@
 export const routes = {
   marketing: {
-    home: "/",
-    booking: "/booking",
-    services: "/services",
+    home: '/',
+    booking: '/booking',
+    services: '/services',
     service: (slug: string) => `/services/${encodeURIComponent(slug)}`,
   },
 
   auth: {
-    login: "/login",
-    forgotPassword: "/forgot-password",
-    register: "/register",
+    login: '/login',
+    forgotPassword: '/forgot-password',
+    register: '/register',
   },
 
   dashboard: {
-    home: "/dashboard",
+    home: '/dashboard',
 
     clients: {
-      list: "/dashboard/clients",
+      list: '/dashboard/clients',
       detail: (id: string) => `/dashboard/clients/${encodeURIComponent(id)}`,
     },
 
     cars: {
-      list: "/dashboard/cars",
+      list: '/dashboard/cars',
       detail: (id: string) => `/dashboard/cars/${encodeURIComponent(id)}`,
     },
 
     repairs: {
-      list: "/dashboard/repairs",
+      list: '/dashboard/repairs',
       detail: (id: string) => `/dashboard/repairs/${encodeURIComponent(id)}`,
     },
 
     appointments: {
-      list: "/dashboard/appointments",
+      list: '/dashboard/appointments',
       detail: (id: string) =>
         `/dashboard/appointments/${encodeURIComponent(id)}`,
     },

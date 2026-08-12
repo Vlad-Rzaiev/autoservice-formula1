@@ -1,8 +1,8 @@
-import { Metadata } from "next";
-import { routing } from "@/i18n/routing";
-import { hasLocale } from "next-intl";
-import { getTranslations, setRequestLocale } from "next-intl/server";
-import { HtmlLangSync } from "@/components/locale";
+import { Metadata } from 'next';
+import { routing } from '@/i18n/routing';
+import { hasLocale } from 'next-intl';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { HtmlLangSync } from '@/components/locale';
 
 interface LocaleLayoutProps {
   children: React.ReactNode;
@@ -29,12 +29,12 @@ export async function generateMetadata({
 
   const translateMetadata = await getTranslations({
     locale,
-    namespace: "metadata",
+    namespace: 'metadata',
   });
 
   return {
-    title: translateMetadata("title"),
-    description: translateMetadata("description"),
+    title: translateMetadata('title'),
+    description: translateMetadata('description'),
   };
 }
 

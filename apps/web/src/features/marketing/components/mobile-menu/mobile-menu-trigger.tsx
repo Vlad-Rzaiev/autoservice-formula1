@@ -1,8 +1,8 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBarsStaggered } from "@fortawesome/free-solid-svg-icons";
-import { useTranslations } from "next-intl";
-import { DrawerTrigger } from "@/components/ui";
-import { IconButton } from "@/components/common";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBarsStaggered } from '@fortawesome/free-solid-svg-icons';
+import { useTranslations } from 'next-intl';
+import { DrawerTrigger } from '@/components/ui';
+import { IconButton } from '@/components/common';
 
 interface MobileMenuTriggerProps {
   isOpen: boolean;
@@ -14,7 +14,7 @@ export default function MobileMenuTrigger({ isOpen }: MobileMenuTriggerProps) {
   return (
     <DrawerTrigger
       render={
-        <IconButton aria-label={t("mobile-menu.open")} aria-expanded={isOpen}>
+        <IconButton aria-label={t('mobile-menu.open')} aria-expanded={isOpen}>
           <FontAwesomeIcon
             icon={faBarsStaggered}
             aria-hidden="true"

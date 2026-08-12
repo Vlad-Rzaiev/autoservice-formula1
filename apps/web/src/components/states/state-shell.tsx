@@ -1,16 +1,16 @@
-import type { HTMLAttributes, ReactNode } from "react";
+import type { HTMLAttributes, ReactNode } from 'react';
 
-import { cn } from "@/lib/utils";
+import { cn } from '@/lib/utils';
 import {
   containerVariantClassNames,
   iconVariantClassNames,
-} from "@/components/states";
+} from '@/components/states';
 
-export type StateShellVariant = "default" | "error" | "loading";
+export type StateShellVariant = 'default' | 'error' | 'loading';
 
 export interface StateShellProps extends Omit<
   HTMLAttributes<HTMLDivElement>,
-  "title"
+  'title'
 > {
   icon: ReactNode;
   title: ReactNode;
@@ -29,7 +29,7 @@ export const StateShell = ({
   title,
   description,
   actions,
-  variant = "default",
+  variant = 'default',
   iconClassName,
   contentClassName,
   titleClassName,
@@ -41,8 +41,8 @@ export const StateShell = ({
   return (
     <div
       className={cn(
-        "my-10 flex min-h-52 flex-col items-center justify-center",
-        "rounded-2xl border px-6 py-10 text-center shadow-sm",
+        'my-10 flex min-h-52 flex-col items-center justify-center',
+        'rounded-2xl border px-6 py-10 text-center shadow-sm',
         containerVariantClassNames[variant],
         className,
       )}
@@ -51,7 +51,7 @@ export const StateShell = ({
       <div
         aria-hidden="true"
         className={cn(
-          "relative flex size-14 items-center justify-center rounded-2xl border",
+          'relative flex size-14 items-center justify-center rounded-2xl border',
           iconVariantClassNames[variant],
           iconClassName,
         )}
@@ -59,10 +59,10 @@ export const StateShell = ({
         {icon}
       </div>
 
-      <div className={cn("mt-4 max-w-lg", contentClassName)}>
+      <div className={cn('mt-4 max-w-lg', contentClassName)}>
         <p
           className={cn(
-            "text-base font-semibold text-foreground sm:text-lg",
+            'text-base font-semibold text-foreground sm:text-lg',
             titleClassName,
           )}
         >
@@ -72,7 +72,7 @@ export const StateShell = ({
         {description && (
           <p
             className={cn(
-              "mt-2 text-sm leading-6 text-muted-foreground",
+              'mt-2 text-sm leading-6 text-muted-foreground',
               descriptionClassName,
             )}
           >
@@ -81,7 +81,7 @@ export const StateShell = ({
         )}
       </div>
 
-      {actions && <div className={cn("mt-6", actionsClassName)}>{actions}</div>}
+      {actions && <div className={cn('mt-6', actionsClassName)}>{actions}</div>}
     </div>
   );
 };

@@ -1,86 +1,86 @@
-import { describe, expect, it } from "vitest";
-import { ServiceDto } from "./service.dto.js";
+import { describe, expect, it } from 'vitest';
+import { ServiceDto } from './service.dto.js';
 import {
   createServiceSchema,
   serviceDtoSchema,
   serviceSlugSchema,
-} from "./service.schemas.js";
+} from './service.schemas.js';
 
 const validServiceDto: ServiceDto = {
-  _id: "66a8f377ad1babc123456789",
-  slug: "engine-diagnostics",
-  category: "diagnostics",
-  iconKey: "scan-search",
+  _id: '66a8f377ad1babc123456789',
+  slug: 'engine-diagnostics',
+  category: 'diagnostics',
+  iconKey: 'scan-search',
   featured: true,
   sortOrder: 1,
   isActive: true,
   translations: {
     uk: {
-      title: "Діагностика двигуна",
-      description: "Комплексна діагностика двигуна.",
+      title: 'Діагностика двигуна',
+      description: 'Комплексна діагностика двигуна.',
     },
     en: {
-      title: "Engine diagnostics",
-      description: "Comprehensive engine diagnostics.",
+      title: 'Engine diagnostics',
+      description: 'Comprehensive engine diagnostics.',
     },
     pl: {
-      title: "Diagnostyka silnika",
-      description: "Kompleksowa diagnostyka silnika.",
+      title: 'Diagnostyka silnika',
+      description: 'Kompleksowa diagnostyka silnika.',
     },
   },
-  createdAt: "2026-08-10T10:00:00.000Z",
-  updatedAt: "2026-08-10T10:00:00.000Z",
+  createdAt: '2026-08-10T10:00:00.000Z',
+  updatedAt: '2026-08-10T10:00:00.000Z',
 };
 
 const validCreateServicePayload = {
-  slug: "engine-diagnostics",
-  category: "diagnostics",
-  iconKey: "scan-search",
+  slug: 'engine-diagnostics',
+  category: 'diagnostics',
+  iconKey: 'scan-search',
   featured: true,
   isActive: true,
   translations: {
     uk: {
-      title: "Діагностика двигуна",
-      description: "Комплексна діагностика двигуна.",
+      title: 'Діагностика двигуна',
+      description: 'Комплексна діагностика двигуна.',
     },
     en: {
-      title: "Engine diagnostics",
-      description: "Comprehensive engine diagnostics.",
+      title: 'Engine diagnostics',
+      description: 'Comprehensive engine diagnostics.',
     },
     pl: {
-      title: "Diagnostyka silnika",
-      description: "Kompleksowa diagnostyka silnika.",
+      title: 'Diagnostyka silnika',
+      description: 'Kompleksowa diagnostyka silnika.',
     },
   },
 };
 
-describe("serviceSlugSchema", () => {
-  it("accepts a valid slug", () => {
-    const result = serviceSlugSchema.safeParse("engine-diagnostics");
+describe('serviceSlugSchema', () => {
+  it('accepts a valid slug', () => {
+    const result = serviceSlugSchema.safeParse('engine-diagnostics');
 
     expect(result.success).toBe(true);
   });
 
-  it("rejects a slug with uppercase letters", () => {
-    const result = serviceSlugSchema.safeParse("Engine-Diagnostics");
+  it('rejects a slug with uppercase letters', () => {
+    const result = serviceSlugSchema.safeParse('Engine-Diagnostics');
 
     expect(result.success).toBe(false);
   });
 
-  it("rejects a slug containing spaces", () => {
-    const result = serviceSlugSchema.safeParse("engine diagnostics");
+  it('rejects a slug containing spaces', () => {
+    const result = serviceSlugSchema.safeParse('engine diagnostics');
 
     expect(result.success).toBe(false);
   });
 
-  it("rejects consecutive hyphens", () => {
-    const result = serviceSlugSchema.safeParse("engine--diagnostics");
+  it('rejects consecutive hyphens', () => {
+    const result = serviceSlugSchema.safeParse('engine--diagnostics');
 
     expect(result.success).toBe(false);
   });
 
-  it("rejects a slug longer than 50 characters", () => {
-    const invalidSlug = "a".repeat(51);
+  it('rejects a slug longer than 50 characters', () => {
+    const invalidSlug = 'a'.repeat(51);
 
     const result = serviceSlugSchema.safeParse(invalidSlug);
 
@@ -88,32 +88,32 @@ describe("serviceSlugSchema", () => {
   });
 });
 
-describe("serviceDtoSchema", () => {
-  it("accepts a valid service DTO", () => {
+describe('serviceDtoSchema', () => {
+  it('accepts a valid service DTO', () => {
     const result = serviceDtoSchema.safeParse(validServiceDto);
 
     expect(result.success).toBe(true);
   });
 
-  it("rejects an unsupported category", () => {
+  it('rejects an unsupported category', () => {
     const result = serviceDtoSchema.safeParse({
       ...validServiceDto,
-      category: "spaceship-repair",
+      category: 'spaceship-repair',
     });
 
     expect(result.success).toBe(false);
   });
 
-  it("rejects an unsupported icon key", () => {
+  it('rejects an unsupported icon key', () => {
     const result = serviceDtoSchema.safeParse({
       ...validServiceDto,
-      iconKey: "unknown-icon",
+      iconKey: 'unknown-icon',
     });
 
     expect(result.success).toBe(false);
   });
 
-  it("rejects zero sortOrder", () => {
+  it('rejects zero sortOrder', () => {
     const result = serviceDtoSchema.safeParse({
       ...validServiceDto,
       sortOrder: 0,
@@ -122,7 +122,7 @@ describe("serviceDtoSchema", () => {
     expect(result.success).toBe(false);
   });
 
-  it("rejects a negative sortOrder", () => {
+  it('rejects a negative sortOrder', () => {
     const result = serviceDtoSchema.safeParse({
       ...validServiceDto,
       sortOrder: -1,
@@ -131,7 +131,7 @@ describe("serviceDtoSchema", () => {
     expect(result.success).toBe(false);
   });
 
-  it("rejects a decimal sortOrder", () => {
+  it('rejects a decimal sortOrder', () => {
     const result = serviceDtoSchema.safeParse({
       ...validServiceDto,
       sortOrder: 1.5,
@@ -140,7 +140,7 @@ describe("serviceDtoSchema", () => {
     expect(result.success).toBe(false);
   });
 
-  it("rejects a service without Polish translation", () => {
+  it('rejects a service without Polish translation', () => {
     const result = serviceDtoSchema.safeParse({
       ...validServiceDto,
       translations: {
@@ -152,14 +152,14 @@ describe("serviceDtoSchema", () => {
     expect(result.success).toBe(false);
   });
 
-  it("rejects an empty translation title", () => {
+  it('rejects an empty translation title', () => {
     const result = serviceDtoSchema.safeParse({
       ...validServiceDto,
       translations: {
         ...validServiceDto.translations,
         uk: {
           ...validServiceDto.translations.uk,
-          title: "",
+          title: '',
         },
       },
     });
@@ -167,14 +167,14 @@ describe("serviceDtoSchema", () => {
     expect(result.success).toBe(false);
   });
 
-  it("rejects a translation title containing only whitespace", () => {
+  it('rejects a translation title containing only whitespace', () => {
     const result = serviceDtoSchema.safeParse({
       ...validServiceDto,
       translations: {
         ...validServiceDto.translations,
         uk: {
           ...validServiceDto.translations.uk,
-          title: "   ",
+          title: '   ',
         },
       },
     });
@@ -182,33 +182,33 @@ describe("serviceDtoSchema", () => {
     expect(result.success).toBe(false);
   });
 
-  it("rejects an invalid createdAt datetime", () => {
+  it('rejects an invalid createdAt datetime', () => {
     const result = serviceDtoSchema.safeParse({
       ...validServiceDto,
-      createdAt: "10.08.2026",
+      createdAt: '10.08.2026',
     });
 
     expect(result.success).toBe(false);
   });
 
-  it("rejects an invalid updatedAt datetime", () => {
+  it('rejects an invalid updatedAt datetime', () => {
     const result = serviceDtoSchema.safeParse({
       ...validServiceDto,
-      updatedAt: "invalid-date",
+      updatedAt: 'invalid-date',
     });
 
     expect(result.success).toBe(false);
   });
 });
 
-describe("createServiceSchema", () => {
-  it("accepts a valid create service payload", () => {
+describe('createServiceSchema', () => {
+  it('accepts a valid create service payload', () => {
     const result = createServiceSchema.safeParse(validCreateServicePayload);
 
     expect(result.success).toBe(true);
   });
 
-  it("sets featured to false when it is omitted", () => {
+  it('sets featured to false when it is omitted', () => {
     const { featured: _featured, ...payloadWithoutFeatured } =
       validCreateServicePayload;
 
@@ -223,7 +223,7 @@ describe("createServiceSchema", () => {
     expect(result.data.featured).toBe(false);
   });
 
-  it("sets isActive to true when it is omitted", () => {
+  it('sets isActive to true when it is omitted', () => {
     const { isActive: _isActive, ...payloadWithoutIsActive } =
       validCreateServicePayload;
 
@@ -238,7 +238,7 @@ describe("createServiceSchema", () => {
     expect(result.data.isActive).toBe(true);
   });
 
-  it("preserves explicitly provided boolean values", () => {
+  it('preserves explicitly provided boolean values', () => {
     const result = createServiceSchema.safeParse({
       ...validCreateServicePayload,
       featured: true,
@@ -255,34 +255,34 @@ describe("createServiceSchema", () => {
     expect(result.data.isActive).toBe(false);
   });
 
-  it("rejects an invalid slug", () => {
+  it('rejects an invalid slug', () => {
     const result = createServiceSchema.safeParse({
       ...validCreateServicePayload,
-      slug: "Engine Diagnostics",
+      slug: 'Engine Diagnostics',
     });
 
     expect(result.success).toBe(false);
   });
 
-  it("rejects an unsupported category", () => {
+  it('rejects an unsupported category', () => {
     const result = createServiceSchema.safeParse({
       ...validCreateServicePayload,
-      category: "spaceship-repair",
+      category: 'spaceship-repair',
     });
 
     expect(result.success).toBe(false);
   });
 
-  it("rejects an unsupported icon key", () => {
+  it('rejects an unsupported icon key', () => {
     const result = createServiceSchema.safeParse({
       ...validCreateServicePayload,
-      iconKey: "unknown-icon",
+      iconKey: 'unknown-icon',
     });
 
     expect(result.success).toBe(false);
   });
 
-  it("rejects a payload without Polish translation", () => {
+  it('rejects a payload without Polish translation', () => {
     const result = createServiceSchema.safeParse({
       ...validCreateServicePayload,
       translations: {
@@ -294,16 +294,16 @@ describe("createServiceSchema", () => {
     expect(result.success).toBe(false);
   });
 
-  it("rejects _id provided by the client", () => {
+  it('rejects _id provided by the client', () => {
     const result = createServiceSchema.safeParse({
       ...validCreateServicePayload,
-      _id: "client-provided-id",
+      _id: 'client-provided-id',
     });
 
     expect(result.success).toBe(false);
   });
 
-  it("rejects sortOrder provided by the client", () => {
+  it('rejects sortOrder provided by the client', () => {
     const result = createServiceSchema.safeParse({
       ...validCreateServicePayload,
       sortOrder: 999,
@@ -312,19 +312,19 @@ describe("createServiceSchema", () => {
     expect(result.success).toBe(false);
   });
 
-  it("rejects createdAt provided by the client", () => {
+  it('rejects createdAt provided by the client', () => {
     const result = createServiceSchema.safeParse({
       ...validCreateServicePayload,
-      createdAt: "2026-08-10T10:00:00.000Z",
+      createdAt: '2026-08-10T10:00:00.000Z',
     });
 
     expect(result.success).toBe(false);
   });
 
-  it("rejects updatedAt provided by the client", () => {
+  it('rejects updatedAt provided by the client', () => {
     const result = createServiceSchema.safeParse({
       ...validCreateServicePayload,
-      updatedAt: "2026-08-10T10:00:00.000Z",
+      updatedAt: '2026-08-10T10:00:00.000Z',
     });
 
     expect(result.success).toBe(false);

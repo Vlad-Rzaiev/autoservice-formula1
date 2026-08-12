@@ -1,20 +1,20 @@
-"use client";
+'use client';
 
-import { useLocale, useTranslations } from "next-intl";
-import { faScrewdriverWrench } from "@fortawesome/free-solid-svg-icons";
-import type { ServiceDto } from "@autoservice/contracts";
+import { useLocale, useTranslations } from 'next-intl';
+import { faScrewdriverWrench } from '@fortawesome/free-solid-svg-icons';
+import type { ServiceDto } from '@autoservice/contracts';
 import {
   defaultLocale,
   isAppLocale,
   type AppLocale,
-} from "@/i18n/locale-config";
-import { QueryState } from "@/components/states";
-import { CardGrid } from "@/components/common";
+} from '@/i18n/locale-config';
+import { QueryState } from '@/components/states';
+import { CardGrid } from '@/components/common';
 
-import type { useServices } from "../api/use-services";
-import ServiceCard from "./service-card";
+import type { useServices } from '../api/use-services';
+import ServiceCard from './service-card';
 
-type ServicesRefetch = ReturnType<typeof useServices>["refetch"];
+type ServicesRefetch = ReturnType<typeof useServices>['refetch'];
 
 export interface ServicesCatalogProps {
   services: ServiceDto[];
@@ -34,21 +34,21 @@ export default function ServicesCatalog({
   const locale = useLocale();
   const currentLocale: AppLocale = isAppLocale(locale) ? locale : defaultLocale;
 
-  const t = useTranslations("marketing");
+  const t = useTranslations('marketing');
 
   return (
     <QueryState
       isPending={isPending}
       isError={isError}
       isEmpty={services.length === 0}
-      loadingMessage={t("loading-state.loading-title")}
-      errorMessage={t("loading-state.error-title")}
-      errorDescription={t("loading-state.error-description")}
-      retryLabel={t("loading-state.retry")}
+      loadingMessage={t('loading-state.loading-title')}
+      errorMessage={t('loading-state.error-title')}
+      errorDescription={t('loading-state.error-description')}
+      retryLabel={t('loading-state.retry')}
       isRetrying={isRefetching}
       onRetry={() => void refetch()}
-      emptyMessage={t("loading-state.empty-title")}
-      emptyDescription={t("loading-state.empty-description")}
+      emptyMessage={t('loading-state.empty-title')}
+      emptyDescription={t('loading-state.empty-description')}
       emptyIcon={faScrewdriverWrench}
     >
       <CardGrid columns="three" gap="large">
@@ -62,7 +62,7 @@ export default function ServicesCatalog({
               icon={service.iconKey}
               title={serviceTranslation.title}
               description={serviceTranslation.description}
-              actionLabel={t("services.card.details")}
+              actionLabel={t('services.card.details')}
             />
           );
         })}

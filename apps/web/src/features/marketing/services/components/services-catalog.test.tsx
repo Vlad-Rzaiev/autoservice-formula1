@@ -1,16 +1,16 @@
-import type { ReactNode } from "react";
-import { render, screen } from "@testing-library/react";
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import type { ReactNode } from 'react';
+import { render, screen } from '@testing-library/react';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 
-import { createServiceFixture } from "@/test/fixtures/service.fixture";
+import { createServiceFixture } from '@/test/fixtures/service.fixture';
 
-import ServicesCatalog from "./services-catalog";
+import ServicesCatalog from './services-catalog';
 
 const localeMock = vi.hoisted(() => ({
-  currentLocale: "uk",
+  currentLocale: 'uk',
 }));
 
-vi.mock("next-intl", () => ({
+vi.mock('next-intl', () => ({
   useLocale: () => localeMock.currentLocale,
 
   useTranslations: () => {
@@ -18,11 +18,11 @@ vi.mock("next-intl", () => ({
   },
 }));
 
-vi.mock("@/components/states", () => ({
+vi.mock('@/components/states', () => ({
   QueryState: ({ children }: { children: React.ReactNode }) => children,
 }));
 
-vi.mock("./service-card", () => ({
+vi.mock('./service-card', () => ({
   default: ({ title, description }: { title: string; description: string }) => (
     <li>
       <h2>{title}</h2>
@@ -31,7 +31,7 @@ vi.mock("./service-card", () => ({
   ),
 }));
 
-vi.mock("@/components/common", () => ({
+vi.mock('@/components/common', () => ({
   CardGrid: ({ children }: { children: ReactNode }) => (
     <ul data-testid="card-grid">{children}</ul>
   ),
@@ -39,13 +39,13 @@ vi.mock("@/components/common", () => ({
 
 const refetch = vi.fn();
 
-describe("ServicesCatalog", () => {
+describe('ServicesCatalog', () => {
   beforeEach(() => {
-    localeMock.currentLocale = "uk";
+    localeMock.currentLocale = 'uk';
     refetch.mockReset();
   });
 
-  it("renders Ukrainian translation for uk locale", () => {
+  it('renders Ukrainian translation for uk locale', () => {
     const service = createServiceFixture();
 
     render(
@@ -58,13 +58,13 @@ describe("ServicesCatalog", () => {
       />,
     );
 
-    expect(screen.getByText("Діагностика")).toBeInTheDocument();
+    expect(screen.getByText('Діагностика')).toBeInTheDocument();
 
-    expect(screen.getByText("Опис діагностики")).toBeInTheDocument();
+    expect(screen.getByText('Опис діагностики')).toBeInTheDocument();
   });
 
-  it("renders Polish translation for pl locale", () => {
-    localeMock.currentLocale = "pl";
+  it('renders Polish translation for pl locale', () => {
+    localeMock.currentLocale = 'pl';
 
     const service = createServiceFixture();
 
@@ -78,13 +78,13 @@ describe("ServicesCatalog", () => {
       />,
     );
 
-    expect(screen.getByText("Diagnostyka")).toBeInTheDocument();
+    expect(screen.getByText('Diagnostyka')).toBeInTheDocument();
 
-    expect(screen.getByText("Opis diagnostyki")).toBeInTheDocument();
+    expect(screen.getByText('Opis diagnostyki')).toBeInTheDocument();
   });
 
-  it("renders English translation for en locale", () => {
-    localeMock.currentLocale = "en";
+  it('renders English translation for en locale', () => {
+    localeMock.currentLocale = 'en';
 
     const service = createServiceFixture();
 
@@ -98,13 +98,13 @@ describe("ServicesCatalog", () => {
       />,
     );
 
-    expect(screen.getByText("Diagnostics")).toBeInTheDocument();
+    expect(screen.getByText('Diagnostics')).toBeInTheDocument();
 
-    expect(screen.getByText("Diagnostics description")).toBeInTheDocument();
+    expect(screen.getByText('Diagnostics description')).toBeInTheDocument();
   });
 
-  it("falls back to the default locale for an unsupported locale", () => {
-    localeMock.currentLocale = "de";
+  it('falls back to the default locale for an unsupported locale', () => {
+    localeMock.currentLocale = 'de';
 
     const service = createServiceFixture();
 
@@ -118,6 +118,6 @@ describe("ServicesCatalog", () => {
       />,
     );
 
-    expect(screen.getByText("Diagnostyka")).toBeInTheDocument();
+    expect(screen.getByText('Diagnostyka')).toBeInTheDocument();
   });
 });

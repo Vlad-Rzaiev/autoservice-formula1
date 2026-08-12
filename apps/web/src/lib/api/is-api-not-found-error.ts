@@ -1,5 +1,5 @@
-import axios from "axios";
-import { apiErrorSchema } from "@autoservice/contracts";
+import axios from 'axios';
+import { apiErrorSchema } from '@autoservice/contracts';
 
 export function isApiNotFoundError(error: unknown): boolean {
   if (!axios.isAxiosError(error)) {
@@ -16,5 +16,5 @@ export function isApiNotFoundError(error: unknown): boolean {
     return false;
   }
 
-  return parsedApiError.data.code === "SERVICE_NOT_FOUND";
+  return parsedApiError.data.code === 'SERVICE_NOT_FOUND';
 }

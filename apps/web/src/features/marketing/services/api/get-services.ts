@@ -1,9 +1,9 @@
 import {
   servicesResponseSchema,
   type ServiceDto,
-} from "@autoservice/contracts";
+} from '@autoservice/contracts';
 
-import { apiClient } from "@/lib";
+import { apiClient } from '@/lib';
 
 interface GetServiceBySlugOptions {
   signal?: AbortSignal;
@@ -12,7 +12,7 @@ interface GetServiceBySlugOptions {
 export async function getServices(
   options: GetServiceBySlugOptions = {},
 ): Promise<ServiceDto[]> {
-  const response = await apiClient.get<unknown>("/services", {
+  const response = await apiClient.get<unknown>('/services', {
     signal: options.signal,
   });
 

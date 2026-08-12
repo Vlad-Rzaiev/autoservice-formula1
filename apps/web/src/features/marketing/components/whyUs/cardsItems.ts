@@ -1,10 +1,10 @@
-import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+import type { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import {
   faFileInvoice,
   faMagnifyingGlassChart,
   faScrewdriverWrench,
   faShieldHalved,
-} from "@fortawesome/free-solid-svg-icons";
+} from '@fortawesome/free-solid-svg-icons';
 
 export type WhyUsCardItem = {
   id: number;
@@ -16,26 +16,26 @@ export type WhyUsCardItem = {
 export const cardsItems = [
   {
     id: 1,
-    title: "marketing.why-us.cards.specialists.title",
-    description: "marketing.why-us.cards.specialists.description",
+    title: 'marketing.why-us.cards.specialists.title',
+    description: 'marketing.why-us.cards.specialists.description',
     icon: faScrewdriverWrench,
   },
   {
     id: 2,
-    title: "marketing.why-us.cards.diagnostics.title",
-    description: "marketing.why-us.cards.diagnostics.description",
+    title: 'marketing.why-us.cards.diagnostics.title',
+    description: 'marketing.why-us.cards.diagnostics.description',
     icon: faMagnifyingGlassChart,
   },
   {
     id: 3,
-    title: "marketing.why-us.cards.prices.title",
-    description: "marketing.why-us.cards.prices.description",
+    title: 'marketing.why-us.cards.prices.title',
+    description: 'marketing.why-us.cards.prices.description',
     icon: faFileInvoice,
   },
   {
     id: 4,
-    title: "marketing.why-us.cards.warranty.title",
-    description: "marketing.why-us.cards.warranty.description",
+    title: 'marketing.why-us.cards.warranty.title',
+    description: 'marketing.why-us.cards.warranty.description',
     icon: faShieldHalved,
   },
 ] as const satisfies readonly WhyUsCardItem[];

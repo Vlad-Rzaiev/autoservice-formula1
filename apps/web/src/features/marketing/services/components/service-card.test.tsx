@@ -1,11 +1,11 @@
-import type { ReactNode } from "react";
+import type { ReactNode } from 'react';
 
-import { render, screen } from "@testing-library/react";
-import { describe, expect, it, vi } from "vitest";
+import { render, screen } from '@testing-library/react';
+import { describe, expect, it, vi } from 'vitest';
 
-import ServiceCard from "./service-card";
+import ServiceCard from './service-card';
 
-vi.mock("@/i18n/navigation", () => ({
+vi.mock('@/i18n/navigation', () => ({
   Link: ({
     href,
     children,
@@ -20,7 +20,7 @@ vi.mock("@/i18n/navigation", () => ({
   ),
 }));
 
-vi.mock("@/components/common", () => ({
+vi.mock('@/components/common', () => ({
   IconCard: ({
     title,
     description,
@@ -38,8 +38,8 @@ vi.mock("@/components/common", () => ({
   ),
 }));
 
-describe("ServiceCard", () => {
-  it("renders the service title", () => {
+describe('ServiceCard', () => {
+  it('renders the service title', () => {
     render(
       <ServiceCard
         slug="engine-repair"
@@ -50,10 +50,10 @@ describe("ServiceCard", () => {
       />,
     );
 
-    expect(screen.getByText("Engine repair")).toBeInTheDocument();
+    expect(screen.getByText('Engine repair')).toBeInTheDocument();
   });
 
-  it("renders the service description", () => {
+  it('renders the service description', () => {
     render(
       <ServiceCard
         slug="engine-repair"
@@ -64,10 +64,10 @@ describe("ServiceCard", () => {
       />,
     );
 
-    expect(screen.getByText("Engine repair description")).toBeInTheDocument();
+    expect(screen.getByText('Engine repair description')).toBeInTheDocument();
   });
 
-  it("renders the action label", () => {
+  it('renders the action label', () => {
     render(
       <ServiceCard
         slug="engine-repair"
@@ -78,10 +78,10 @@ describe("ServiceCard", () => {
       />,
     );
 
-    expect(screen.getByText("Details")).toBeInTheDocument();
+    expect(screen.getByText('Details')).toBeInTheDocument();
   });
 
-  it("links to the service details page", () => {
+  it('links to the service details page', () => {
     render(
       <ServiceCard
         slug="engine-repair"
@@ -92,8 +92,8 @@ describe("ServiceCard", () => {
       />,
     );
 
-    const serviceLink = screen.getByRole("link");
+    const serviceLink = screen.getByRole('link');
 
-    expect(serviceLink).toHaveAttribute("href", "/services/engine-repair");
+    expect(serviceLink).toHaveAttribute('href', '/services/engine-repair');
   });
 });

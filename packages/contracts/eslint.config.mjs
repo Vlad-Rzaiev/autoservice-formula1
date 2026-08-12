@@ -1,14 +1,14 @@
-import pluginJs from "@eslint/js";
-import { defineConfig } from "eslint/config";
-import tseslint from "typescript-eslint";
+import pluginJs from '@eslint/js';
+import { defineConfig } from 'eslint/config';
+import tseslint from 'typescript-eslint';
 
 export default defineConfig([
   {
-    ignores: ["dist/**"],
+    ignores: ['dist/**'],
   },
 
   {
-    files: ["src/**/*.ts"],
+    files: ['src/**/*.ts'],
 
     extends: [pluginJs.configs.recommended, tseslint.configs.recommended],
 
@@ -19,18 +19,18 @@ export default defineConfig([
     },
 
     rules: {
-      semi: "error",
+      semi: 'error',
 
-      "no-unused-vars": "off",
-      "@typescript-eslint/no-unused-vars": [
-        "error",
+      'no-unused-vars': 'off',
+      '@typescript-eslint/no-unused-vars': [
+        'error',
         {
-          args: "none",
+          args: 'none',
           ignoreRestSiblings: true,
         },
       ],
 
-      "no-undef": "off",
+      'no-undef': 'off',
     },
   },
 ]);

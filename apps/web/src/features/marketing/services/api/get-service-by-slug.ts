@@ -1,6 +1,6 @@
-import { serviceResponseSchema, type ServiceDto } from "@autoservice/contracts";
+import { serviceResponseSchema, type ServiceDto } from '@autoservice/contracts';
 
-import { apiClient } from "@/lib";
+import { apiClient } from '@/lib';
 
 interface GetServiceBySlugOptions {
   signal?: AbortSignal;
@@ -13,7 +13,7 @@ export async function getServiceBySlug(
   const normalizedServiceId = serviceSlug.trim();
 
   if (!normalizedServiceId) {
-    throw new Error("Service slug is required!");
+    throw new Error('Service slug is required!');
   }
 
   const response = await apiClient.get<unknown>(

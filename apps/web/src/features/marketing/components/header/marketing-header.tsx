@@ -1,20 +1,20 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faPhoneVolume,
   faClock,
   faLocationDot,
   faRightToBracket,
   faCalendarCheck,
-} from "@fortawesome/free-solid-svg-icons";
-import { useTranslations } from "next-intl";
-import { routes, siteConfig } from "@/config";
+} from '@fortawesome/free-solid-svg-icons';
+import { useTranslations } from 'next-intl';
+import { routes, siteConfig } from '@/config';
 
-import { MarketingNavigation, MarketingMobileMenu } from "@/features/marketing";
-import { LangSwitcher } from "@/components/locale";
-import { ThemeSwitcher } from "@/components/theme";
-import { ButtonLink, IconButton, BrandLogo } from "@/components/common";
-import { cn } from "@/lib";
-import { buttonVariants } from "@/components/ui";
+import { MarketingNavigation, MarketingMobileMenu } from '@/features/marketing';
+import { LangSwitcher } from '@/components/locale';
+import { ThemeSwitcher } from '@/components/theme';
+import { ButtonLink, IconButton, BrandLogo } from '@/components/common';
+import { cn } from '@/lib';
+import { buttonVariants } from '@/components/ui';
 
 export default function MarketingHeader() {
   const t = useTranslations();
@@ -50,7 +50,7 @@ export default function MarketingHeader() {
             <a
               href={siteConfig.phone.href}
               className={cn(
-                buttonVariants({ variant: "inline", size: "inline" }),
+                buttonVariants({ variant: 'inline', size: 'inline' }),
               )}
             >
               <FontAwesomeIcon
@@ -67,14 +67,14 @@ export default function MarketingHeader() {
                 icon={faClock}
                 aria-hidden="true"
               />
-              {t("marketing.header.contacts.hours")}
+              {t('marketing.header.contacts.hours')}
             </span>
           </div>
 
           <div className="flex items-center gap-5">
             <a
               className={cn(
-                buttonVariants({ variant: "inline", size: "inline" }),
+                buttonVariants({ variant: 'inline', size: 'inline' }),
               )}
               href={siteConfig.address.googleMapsUrl}
               target="_blank"
@@ -98,7 +98,7 @@ export default function MarketingHeader() {
                 icon={faRightToBracket}
                 aria-hidden="true"
               />
-              {t("marketing.header.actions.account")}
+              {t('marketing.header.actions.account')}
             </ButtonLink>
           </div>
         </div>
@@ -128,7 +128,7 @@ export default function MarketingHeader() {
               icon={faCalendarCheck}
               aria-hidden="true"
             />
-            {t("marketing.header.actions.booking")}
+            {t('marketing.header.actions.booking')}
           </ButtonLink>
         </div>
 

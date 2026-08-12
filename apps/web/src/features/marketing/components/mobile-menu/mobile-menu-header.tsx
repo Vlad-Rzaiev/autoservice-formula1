@@ -1,8 +1,8 @@
-import { BrandLogo, IconButton } from "@/components/common";
-import { DrawerClose, DrawerHeader, DrawerTitle } from "@/components/ui";
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useTranslations } from "next-intl";
+import { BrandLogo, IconButton } from '@/components/common';
+import { DrawerClose, DrawerHeader, DrawerTitle } from '@/components/ui';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useTranslations } from 'next-intl';
 
 export default function MobileMenuHeader({}) {
   const t = useTranslations();
@@ -22,7 +22,7 @@ export default function MobileMenuHeader({}) {
 
       <DrawerClose
         render={
-          <IconButton aria-label={t("mobile-menu.close")}>
+          <IconButton aria-label={t('mobile-menu.close')}>
             <FontAwesomeIcon
               icon={faXmark}
               aria-hidden="true"

@@ -1,20 +1,20 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faCalendarCheck,
   faCircleCheck,
   faPhoneVolume,
-} from "@fortawesome/free-solid-svg-icons";
-import { useTranslations } from "next-intl";
+} from '@fortawesome/free-solid-svg-icons';
+import { useTranslations } from 'next-intl';
 
-import { cn } from "@/lib";
-import { routes, siteConfig } from "@/config";
-import { benefits, BenefitList } from "@/features/marketing/services";
-import { Section, Container } from "@/components/layout";
-import { ButtonLink } from "@/components/common";
-import { buttonVariants } from "@/components/ui";
+import { cn } from '@/lib';
+import { routes, siteConfig } from '@/config';
+import { benefits, BenefitList } from '@/features/marketing/services';
+import { Section, Container } from '@/components/layout';
+import { ButtonLink } from '@/components/common';
+import { buttonVariants } from '@/components/ui';
 
 export default function ServicesCta() {
-  const t = useTranslations("services.allServices.cta");
+  const t = useTranslations('services.allServices.cta');
 
   return (
     <Section noTopPadding>
@@ -65,7 +65,7 @@ export default function ServicesCta() {
                   className="shrink-0 text-sm"
                 />
 
-                {t("eyebrow")}
+                {t('eyebrow')}
               </div>
 
               <h2
@@ -74,7 +74,7 @@ export default function ServicesCta() {
                   sm:text-4xl
                 "
               >
-                {t("title")}
+                {t('title')}
               </h2>
 
               <p
@@ -83,7 +83,7 @@ export default function ServicesCta() {
                   text-neutral-300 sm:text-lg sm:leading-8
                 "
               >
-                {t("description")}
+                {t('description')}
               </p>
 
               <BenefitList
@@ -110,17 +110,17 @@ export default function ServicesCta() {
                   className="shrink-0 text-base"
                 />
 
-                {t("booking")}
+                {t('booking')}
               </ButtonLink>
 
               <a
                 href={siteConfig.phone.href}
                 className={cn(
                   buttonVariants({
-                    variant: "ctaOutline",
-                    size: "cta-lg",
+                    variant: 'ctaOutline',
+                    size: 'cta-lg',
                   }),
-                  "w-full sm:w-auto",
+                  'w-full sm:w-auto',
                 )}
               >
                 <FontAwesomeIcon
@@ -133,7 +133,7 @@ export default function ServicesCta() {
                   "
                 />
 
-                {t("call")}
+                {t('call')}
               </a>
             </div>
           </div>

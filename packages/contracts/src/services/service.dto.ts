@@ -1,5 +1,5 @@
-import type { ServiceLocale } from "../common/locale.js";
-import type { ServiceCategory, ServiceIconKey } from "./service.constants.js";
+import type { ServiceLocale } from '../common/locale.js';
+import type { ServiceCategory, ServiceIconKey } from './service.constants.js';
 
 export interface ServiceTranslationDto {
   title: string;

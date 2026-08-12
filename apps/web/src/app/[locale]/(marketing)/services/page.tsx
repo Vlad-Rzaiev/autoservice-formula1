@@ -1,11 +1,11 @@
-import type { Metadata } from "next";
+import type { Metadata } from 'next';
 import {
   dehydrate,
   HydrationBoundary,
   QueryClient,
-} from "@tanstack/react-query";
-import { notFound } from "next/navigation";
-import { isAppLocale } from "@/i18n/locale-config";
+} from '@tanstack/react-query';
+import { notFound } from 'next/navigation';
+import { isAppLocale } from '@/i18n/locale-config';
 
 import {
   servicesQueryOptions,
@@ -13,8 +13,8 @@ import {
   ServicesHero,
   ServicesCatalogContainer,
   ServicesCta,
-} from "@/features/marketing/services";
-import { Section, Container } from "@/components/layout";
+} from '@/features/marketing/services';
+import { Section, Container } from '@/components/layout';
 
 export interface ServicesPageProps {
   params: Promise<{

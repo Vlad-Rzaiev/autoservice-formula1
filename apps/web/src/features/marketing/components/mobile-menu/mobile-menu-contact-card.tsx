@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
-import { useTranslations } from "next-intl";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useTranslations } from 'next-intl';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faClock,
   faLocationDot,
   faPhoneVolume,
-} from "@fortawesome/free-solid-svg-icons";
-import { cn } from "@/lib";
-import { siteConfig } from "@/config";
-import { buttonVariants } from "@/components/ui";
+} from '@fortawesome/free-solid-svg-icons';
+import { cn } from '@/lib';
+import { siteConfig } from '@/config';
+import { buttonVariants } from '@/components/ui';
 
 export interface MobileMenuContactCardProps {
   onNavigate: () => void;
@@ -35,8 +35,8 @@ export default function MobileMenuContactCard({
         href={siteConfig.phone.href}
         className={cn(
           buttonVariants({
-            variant: "inline",
-            size: "inline",
+            variant: 'inline',
+            size: 'inline',
           }),
         )}
       >
@@ -64,7 +64,7 @@ export default function MobileMenuContactCard({
 
         <span className="flex min-w-0 flex-col">
           <span className="text-xs font-medium text-foreground/55">
-            {t("mobile-menu.call")}
+            {t('mobile-menu.call')}
           </span>
 
           <span
@@ -84,10 +84,10 @@ export default function MobileMenuContactCard({
         <p
           className={cn(
             buttonVariants({
-              variant: "inline",
-              size: "inline",
+              variant: 'inline',
+              size: 'inline',
             }),
-            "hover:bg-transparent hover:text-inherit",
+            'hover:bg-transparent hover:text-inherit',
           )}
         >
           <FontAwesomeIcon
@@ -96,7 +96,7 @@ export default function MobileMenuContactCard({
             className="mt-0.5 shrink-0 text-lg text-red-500"
           />
 
-          <span>{t("marketing.header.contacts.hours")}</span>
+          <span>{t('marketing.header.contacts.hours')}</span>
         </p>
 
         <a
@@ -106,8 +106,8 @@ export default function MobileMenuContactCard({
           onClick={onNavigate}
           className={cn(
             buttonVariants({
-              variant: "inline",
-              size: "inline",
+              variant: 'inline',
+              size: 'inline',
             }),
           )}
         >

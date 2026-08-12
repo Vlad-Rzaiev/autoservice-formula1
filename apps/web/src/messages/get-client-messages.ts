@@ -1,7 +1,7 @@
-import type { AbstractIntlMessages } from "next-intl";
-import { getMessages } from "next-intl/server";
+import type { AbstractIntlMessages } from 'next-intl';
+import { getMessages } from 'next-intl/server';
 
-import type { TranslationModule } from "@/messages";
+import type { TranslationModule } from '@/messages';
 
 export async function getClientMessages(
   moduleNames: readonly TranslationModule[],

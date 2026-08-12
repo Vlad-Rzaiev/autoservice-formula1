@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { useEffect } from "react";
-import { useMobileMenu } from "@/providers";
+import { useEffect } from 'react';
+import { useMobileMenu } from '@/providers';
 
-import { Drawer, DrawerContent } from "@/components/ui";
+import { Drawer, DrawerContent } from '@/components/ui';
 import {
   MobileMenuHeader,
   MobileMenuTrigger,
@@ -11,9 +11,9 @@ import {
   MobileMenuActions,
   MobileMenuPreferences,
   MarketingNavigation,
-} from "@/features/marketing";
+} from '@/features/marketing';
 
-const desktopBreakpointQuery = "(min-width: 1180px)";
+const desktopBreakpointQuery = '(min-width: 1180px)';
 
 export default function MarketingMobileMenu() {
   const { isOpen, setIsOpen, closeMenu } = useMobileMenu();
@@ -29,11 +29,11 @@ export default function MarketingMobileMenu() {
       }
     };
 
-    desktopMediaQuery.addEventListener("change", handleDesktopBreakpointChange);
+    desktopMediaQuery.addEventListener('change', handleDesktopBreakpointChange);
 
     return () => {
       desktopMediaQuery.removeEventListener(
-        "change",
+        'change',
         handleDesktopBreakpointChange,
       );
     };

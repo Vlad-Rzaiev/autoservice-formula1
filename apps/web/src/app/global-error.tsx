@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { useEffect } from "react";
+import { useEffect } from 'react';
 
-import { ErrorPage } from "@/components/common";
-import { routes } from "@/config";
+import { ErrorPage } from '@/components/common';
+import { routes } from '@/config';
 
 interface GlobalErrorProps {
   error: Error & {
@@ -14,7 +14,7 @@ interface GlobalErrorProps {
 
 export default function GlobalError({ error, reset }: GlobalErrorProps) {
   useEffect(() => {
-    console.error("Global application error:", error);
+    console.error('Global application error:', error);
   }, [error]);
 
   return (

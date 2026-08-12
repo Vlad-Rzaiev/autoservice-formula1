@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import type { ReactNode } from "react";
-import { Switch as SwitchPrimitive } from "@base-ui/react/switch";
+import type { ReactNode } from 'react';
+import { Switch as SwitchPrimitive } from '@base-ui/react/switch';
 
-import { cn } from "@/lib/utils";
+import { cn } from '@/lib/utils';
 
-type SwitchSize = "sm" | "default" | "lg";
+type SwitchSize = 'sm' | 'default' | 'lg';
 
 export type SwitchProps = SwitchPrimitive.Root.Props & {
   size?: SwitchSize;
@@ -14,7 +14,7 @@ export type SwitchProps = SwitchPrimitive.Root.Props & {
 
 function Switch({
   className,
-  size = "default",
+  size = 'default',
   thumbContent,
   ...props
 }: SwitchProps) {
@@ -23,24 +23,24 @@ function Switch({
       data-slot="switch"
       data-size={size}
       className={cn(
-        "peer group/switch relative inline-flex shrink-0 cursor-pointer items-center rounded-full border border-transparent p-0.5 outline-none transition-all",
-        "after:absolute after:-inset-x-3 after:-inset-y-2",
+        'peer group/switch relative inline-flex shrink-0 cursor-pointer items-center rounded-full border border-transparent p-0.5 outline-none transition-all',
+        'after:absolute after:-inset-x-3 after:-inset-y-2',
 
-        "focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50",
+        'focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50',
 
-        "aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20",
-        "dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40",
+        'aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20',
+        'dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40',
 
-        "data-[size=sm]:h-5 data-[size=sm]:w-9",
-        "data-[size=default]:h-6 data-[size=default]:w-11",
-        "data-[size=lg]:h-8 data-[size=lg]:w-14",
+        'data-[size=sm]:h-5 data-[size=sm]:w-9',
+        'data-[size=default]:h-6 data-[size=default]:w-11',
+        'data-[size=lg]:h-8 data-[size=lg]:w-14',
 
-        "data-checked:bg-slate-900",
-        "data-unchecked:bg-amber-400",
-        "dark:data-checked:bg-slate-700",
-        "dark:data-unchecked:bg-amber-500",
+        'data-checked:bg-slate-900',
+        'data-unchecked:bg-amber-400',
+        'dark:data-checked:bg-slate-700',
+        'dark:data-unchecked:bg-amber-500',
 
-        "data-disabled:cursor-not-allowed data-disabled:opacity-50",
+        'data-disabled:cursor-not-allowed data-disabled:opacity-50',
         className,
       )}
       {...props}
@@ -48,18 +48,18 @@ function Switch({
       <SwitchPrimitive.Thumb
         data-slot="switch-thumb"
         className={cn(
-          "pointer-events-none relative flex items-center justify-center rounded-full bg-white shadow-sm ring-0",
-          "transition-transform duration-300 ease-out",
+          'pointer-events-none relative flex items-center justify-center rounded-full bg-white shadow-sm ring-0',
+          'transition-transform duration-300 ease-out',
 
-          "group-data-[size=sm]/switch:size-4",
-          "group-data-[size=default]/switch:size-5",
-          "group-data-[size=lg]/switch:size-7",
+          'group-data-[size=sm]/switch:size-4',
+          'group-data-[size=default]/switch:size-5',
+          'group-data-[size=lg]/switch:size-7',
 
-          "data-unchecked:translate-x-0",
+          'data-unchecked:translate-x-0',
 
-          "group-data-[size=sm]/switch:data-checked:translate-x-4",
-          "group-data-[size=default]/switch:data-checked:translate-x-5",
-          "group-data-[size=lg]/switch:data-checked:translate-x-6",
+          'group-data-[size=sm]/switch:data-checked:translate-x-4',
+          'group-data-[size=default]/switch:data-checked:translate-x-5',
+          'group-data-[size=lg]/switch:data-checked:translate-x-6',
         )}
       >
         {thumbContent}

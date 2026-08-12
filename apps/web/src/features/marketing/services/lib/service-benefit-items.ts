@@ -1,11 +1,11 @@
-import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+import type { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import {
   faClipboardCheck,
   faMagnifyingGlassChart,
   faShieldHalved,
-} from "@fortawesome/free-solid-svg-icons";
+} from '@fortawesome/free-solid-svg-icons';
 
-export type BenefitTranslationKey = "diagnostics" | "approval" | "warranty";
+export type BenefitTranslationKey = 'diagnostics' | 'approval' | 'warranty';
 
 export interface BenefitItem {
   translationKey: BenefitTranslationKey;
@@ -14,15 +14,15 @@ export interface BenefitItem {
 
 export const benefits = [
   {
-    translationKey: "diagnostics",
+    translationKey: 'diagnostics',
     icon: faMagnifyingGlassChart,
   },
   {
-    translationKey: "approval",
+    translationKey: 'approval',
     icon: faClipboardCheck,
   },
   {
-    translationKey: "warranty",
+    translationKey: 'warranty',
     icon: faShieldHalved,
   },
 ] as const satisfies readonly BenefitItem[];

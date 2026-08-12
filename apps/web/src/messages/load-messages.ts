@@ -1,4 +1,4 @@
-import { translationModules } from "@/messages/modules";
+import { translationModules } from '@/messages/modules';
 
 type TranslationMessages = Record<string, unknown>;
 

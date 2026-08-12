@@ -1,15 +1,15 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faArrowUp,
   faRightToBracket,
   faUserPlus,
-} from "@fortawesome/free-solid-svg-icons";
-import { useTranslations } from "next-intl";
+} from '@fortawesome/free-solid-svg-icons';
+import { useTranslations } from 'next-intl';
 
-import { BrandLogo, ButtonLink } from "@/components/common";
-import { Container } from "@/components/layout";
-import { MarketingNavigation } from "@/features/marketing";
-import { routes } from "@/config";
+import { BrandLogo, ButtonLink } from '@/components/common';
+import { Container } from '@/components/layout';
+import { MarketingNavigation } from '@/features/marketing';
+import { routes } from '@/config';
 
 export default function MarketingFooter() {
   const t = useTranslations();
@@ -23,13 +23,13 @@ export default function MarketingFooter() {
             <BrandLogo variant="footer" />
 
             <p className="mt-4 max-w-sm text-sm leading-6 text-foreground/65 md:text-base">
-              {t("marketing.footer.description")}
+              {t('marketing.footer.description')}
             </p>
           </div>
 
           <div>
             <h2 className="text-sm font-semibold uppercase tracking-wider text-foreground">
-              {t("marketing.footer.navTitle")}
+              {t('marketing.footer.navTitle')}
             </h2>
 
             <MarketingNavigation variant="footer" />
@@ -37,7 +37,7 @@ export default function MarketingFooter() {
 
           <div>
             <h2 className="text-sm font-semibold uppercase tracking-wider text-foreground">
-              {t("marketing.footer.accountTitle")}
+              {t('marketing.footer.accountTitle')}
             </h2>
 
             <div className="mt-4 flex flex-col gap-3">
@@ -55,7 +55,7 @@ export default function MarketingFooter() {
                     group-hover:translate-x-0.5
                   "
                 />
-                {t("auth.login.loginBtn")}
+                {t('auth.login.loginBtn')}
               </ButtonLink>
 
               <ButtonLink href={routes.auth.register} fullWidth>
@@ -68,7 +68,7 @@ export default function MarketingFooter() {
                     group-hover:scale-110
                   "
                 />
-                {t("auth.reg.regBtn")}
+                {t('auth.reg.regBtn')}
               </ButtonLink>
             </div>
           </div>
@@ -82,11 +82,11 @@ export default function MarketingFooter() {
           "
         >
           <p className="text-sm text-foreground/55">
-            © {currentYear} F1 AutoService. {t("marketing.footer.copyright")}
+            © {currentYear} F1 AutoService. {t('marketing.footer.copyright')}
           </p>
 
           <ButtonLink href="#top" variant="subtle" size="compact">
-            {t("marketing.footer.backToTop")}
+            {t('marketing.footer.backToTop')}
 
             <FontAwesomeIcon
               icon={faArrowUp}

@@ -1,26 +1,26 @@
-import { StateShellVariant } from "@/components/states";
+import { StateShellVariant } from '@/components/states';
 
 export const containerVariantClassNames: Record<StateShellVariant, string> = {
-  default: ["border-dashed border-border", "bg-surface/50"].join(" "),
+  default: ['border-dashed border-border', 'bg-surface/50'].join(' '),
 
-  error: ["border-destructive/20", "bg-destructive/5"].join(" "),
+  error: ['border-destructive/20', 'bg-destructive/5'].join(' '),
 
-  loading: ["border-border", "bg-surface/60"].join(" "),
+  loading: ['border-border', 'bg-surface/60'].join(' '),
 };
 
 export const iconVariantClassNames: Record<StateShellVariant, string> = {
   default: [
-    "border-border",
-    "bg-background",
-    "text-muted-foreground",
-    "shadow-sm",
-  ].join(" "),
+    'border-border',
+    'bg-background',
+    'text-muted-foreground',
+    'shadow-sm',
+  ].join(' '),
 
   error: [
-    "border-destructive/20",
-    "bg-destructive/10",
-    "text-destructive",
-  ].join(" "),
+    'border-destructive/20',
+    'bg-destructive/10',
+    'text-destructive',
+  ].join(' '),
 
-  loading: ["border-red-500/20", "bg-red-500/10", "text-red-600"].join(" "),
+  loading: ['border-red-500/20', 'bg-red-500/10', 'text-red-600'].join(' '),
 };

@@ -1,7 +1,7 @@
-import { useTranslations } from "next-intl";
-import { cardsItems } from "@/features/marketing";
-import { Section, Container, SectionTitle } from "@/components/layout";
-import { IconCard, CardGrid } from "@/components/common";
+import { useTranslations } from 'next-intl';
+import { cardsItems } from '@/features/marketing';
+import { Section, Container, SectionTitle } from '@/components/layout';
+import { IconCard, CardGrid } from '@/components/common';
 
 export default function MarketingWhyUs() {
   const t = useTranslations();
@@ -10,7 +10,7 @@ export default function MarketingWhyUs() {
     <Section id="why-us">
       <Container>
         <SectionTitle className="mb-8 lg:mb-12">
-          {t("marketing.why-us.title")}
+          {t('marketing.why-us.title')}
         </SectionTitle>
 
         <CardGrid columns="four">

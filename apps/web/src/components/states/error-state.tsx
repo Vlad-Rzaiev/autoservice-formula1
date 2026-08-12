@@ -1,12 +1,12 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faCircleExclamation,
   faRotateRight,
-} from "@fortawesome/free-solid-svg-icons";
+} from '@fortawesome/free-solid-svg-icons';
 
-import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui";
-import { StateShell } from "@/components/states";
+import { cn } from '@/lib/utils';
+import { Button } from '@/components/ui';
+import { StateShell } from '@/components/states';
 
 export interface ErrorStateProps {
   title: string;
@@ -64,9 +64,9 @@ export default function ErrorState({
               icon={faRotateRight}
               aria-hidden="true"
               className={cn(
-                "shrink-0 text-base transition-transform duration-300",
-                !isRetrying && "group-hover:rotate-45",
-                isRetrying && "animate-spin",
+                'shrink-0 text-base transition-transform duration-300',
+                !isRetrying && 'group-hover:rotate-45',
+                isRetrying && 'animate-spin',
               )}
             />
 

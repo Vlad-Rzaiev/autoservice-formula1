@@ -1,5 +1,5 @@
-import { BrandLogo } from "@/components/common";
-import { LangSwitcher } from "@/components/locale";
+import { BrandLogo } from '@/components/common';
+import { LangSwitcher } from '@/components/locale';
 
 export default function AuthFooter() {
   return (
