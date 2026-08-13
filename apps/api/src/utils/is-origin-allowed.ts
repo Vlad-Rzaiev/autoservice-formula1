@@ -18,6 +18,10 @@ const isAllowedVercelPreviewOrigin = (origin: string): boolean => {
     return false;
   }
 
+  if (!env.VERCEL_PROJECT_NAME || !env.VERCEL_TEAM_SLUG) {
+    return false;
+  }
+
   const hostname = parsedOrigin.hostname.toLowerCase();
   const projectName = env.VERCEL_PROJECT_NAME.toLowerCase();
   const teamSlug = env.VERCEL_TEAM_SLUG.toLowerCase();

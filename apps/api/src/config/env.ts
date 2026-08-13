@@ -26,9 +26,9 @@ const envSchema = z.object({
         .filter(Boolean),
     ),
 
-  VERCEL_PROJECT_NAME: z.string().min(1, 'VERCEL_PROJECT_NAME is required'),
+  VERCEL_PROJECT_NAME: z.string().min(1).optional(),
 
-  VERCEL_TEAM_SLUG: z.string().min(1, 'VERCEL_TEAM_SLUG is required'),
+  VERCEL_TEAM_SLUG: z.string().min(1).optional(),
 });
 
 const parsedEnv = envSchema.safeParse(process.env);
