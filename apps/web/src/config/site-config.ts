@@ -1,4 +1,6 @@
 const address = 'ul. Jagiellońska 1, 85-005 Bydgoszcz';
+const googleMapsUrl =
+  'https://www.google.com/maps/search/?api=1&query=Jagiellońska+1+Bydgoszcz';
 
 export const siteConfig = {
   phone: {
@@ -7,8 +9,7 @@ export const siteConfig = {
   },
   address: {
     display: address,
-    googleMapsUrl:
-      'https://www.google.com/maps/search/?api=1&query=Jagiellońska+1+Bydgoszcz',
+    googleMapsUrl,
   },
   url: {
     development: 'http://localhost:3000',

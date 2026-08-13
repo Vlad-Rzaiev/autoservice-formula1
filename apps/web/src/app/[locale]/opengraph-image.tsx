@@ -54,8 +54,6 @@ export default async function OpenGraphImage({ params }: OpenGraphImageProps) {
     'base64',
   )}`;
 
-  console.log(heroImageSrc);
-
   return new ImageResponse(
     <div
       style={{
