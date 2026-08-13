@@ -217,6 +217,7 @@ This prevents frontend and backend API types from drifting apart.
 Make sure the following tools are installed before starting:
 
 - **Node.js >= 24.0.0 and < 25.0.0**
+- **Node.js version is defined in .node-version.**
 - **npm**
 - access to a MongoDB database for normal development
 
