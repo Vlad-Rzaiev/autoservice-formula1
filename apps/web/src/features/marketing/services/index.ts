@@ -31,8 +31,6 @@ export {
   benefitFontAwesomeIconVariants,
 } from './lib/benefit-list-variants';
 
-export { serviceIconMap, defaultServiceIcon } from './lib/service-icon-map';
-
 export {
   default as BenefitList,
   type BenefitListProps,

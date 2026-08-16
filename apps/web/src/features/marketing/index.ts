@@ -31,7 +31,7 @@ export { default as MarketingWhyUs } from './components/whyUs/marketing-whyUs';
 export { default as MarketingBooking } from './components/marketing-booking';
 export { default as MarketingCompletedWorks } from './components/marketing-completed-works';
 export { default as MarketingContacts } from './components/marketing-contacts';
-export { default as MarketingDiagnostics } from './components/marketing-diagnostics';
+export { default as MarketingDiagnostics } from './components/diagnostics/marketing-diagnostics';
 export { default as MarketingRepairProcess } from './components/marketing-repair-process';
 export { default as MarketingReviews } from './components/marketing-reviews';
 export { default as MarketingServices } from './components/marketing-services';

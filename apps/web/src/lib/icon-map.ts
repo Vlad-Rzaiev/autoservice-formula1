@@ -1,4 +1,4 @@
-import { ServiceIconKey } from '@autoservice/contracts';
+import { IconKey } from '@autoservice/contracts';
 import type { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import {
   faBolt,
@@ -23,9 +23,12 @@ import {
   faWandMagicSparkles,
   faWind,
   faWrench,
+  faPlug,
+  faTriangleExclamation,
+  faMagnifyingGlassChart,
 } from '@fortawesome/free-solid-svg-icons';
 
-export const serviceIconMap = {
+export const iconMap = {
   'scan-search': faMagnifyingGlass,
   settings: faGears,
   'car-front': faCar,
@@ -48,6 +51,9 @@ export const serviceIconMap = {
   wrench: faWrench,
   paintbrush: faPaintRoller,
   sparkles: faWandMagicSparkles,
-} as const satisfies Record<ServiceIconKey, IconDefinition>;
+  plug: faPlug,
+  'triangle-exclamation': faTriangleExclamation,
+  'magnifying-glass-chart': faMagnifyingGlassChart,
+} as const satisfies Record<IconKey, IconDefinition>;
 
-export const defaultServiceIcon: IconDefinition = faWrench;
+export const defaultIcon: IconDefinition = faWrench;

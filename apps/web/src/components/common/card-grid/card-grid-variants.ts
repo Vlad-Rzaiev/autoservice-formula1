@@ -4,6 +4,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 export const cardGridVariants = cva('grid grid-cols-1', {
   variants: {
     columns: {
+      one: 'grid-cols-1',
       two: 'sm:grid-cols-2',
       three: 'md:grid-cols-2 xl:grid-cols-3',
       four: 'sm:grid-cols-2 xl:grid-cols-4',

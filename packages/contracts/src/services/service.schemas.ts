@@ -1,8 +1,9 @@
 import { z } from 'zod';
 
 import { supportedLocales } from '../common/locale.js';
-import { serviceCategories, serviceIconKeys } from './service.constants.js';
+import { serviceCategories } from './service.constants.js';
 import type { ServiceDto } from './service.dto.js';
+import { iconKeys } from '../lib/constants.js';
 
 export const serviceSlugSchema = z
   .string()
@@ -23,7 +24,7 @@ export const serviceDtoSchema = z.object({
   _id: z.string().min(1),
   slug: serviceSlugSchema,
   category: z.enum(serviceCategories),
-  iconKey: z.enum(serviceIconKeys),
+  iconKey: z.enum(iconKeys),
   featured: z.boolean(),
   sortOrder: z.number().int().positive(),
   isActive: z.boolean(),

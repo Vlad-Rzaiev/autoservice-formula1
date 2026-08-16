@@ -58,7 +58,71 @@
   },
 
   "diagnostics": {
-    "title": "Professional Diagnostics"
+    "title": "Professional Diagnostics",
+    "description": "We accurately identify the cause of your vehicle's issue before starting the repair.",
+    "eyebrow": "Diagnostics",
+
+    "steps": {
+      "connection": {
+        "title": "Equipment Connection",
+        "description": "We connect professional diagnostic equipment to the vehicle."
+      },
+      "errors": {
+        "title": "Error Code Reading",
+        "description": "We check error codes and the condition of the vehicle's electronic systems."
+      },
+      "analysis": {
+        "title": "Parameter Analysis",
+        "description": "We analyze system parameters and identify the cause of the issue."
+      },
+      "recommendation": {
+        "title": "Recommendations",
+        "description": "We explain the issue and recommend the most suitable repair option."
+      }
+    },
+
+    "systems": {
+      "title": "What we check",
+      "description": "We check the vehicle's key electronic systems, read fault codes, and identify the cause of the problem.",
+      "items": {
+        "engine": "Engine",
+        "transmission": "Automatic / manual transmission",
+        "absEsp": "ABS / ESP",
+        "airbags": "Airbags",
+        "electronics": "Electronic systems",
+        "climate": "Climate control",
+        "driverAssist": "Driver assistance systems",
+        "fuelSystem": "Fuel system"
+      }
+    },
+
+    "benefits": {
+      "eyebrow": "Benefits",
+      "title": "Why start with diagnostics?",
+      "accuracy": {
+        "title": "Accuracy",
+        "description": "Accurate fault diagnosis — we identify the source of the problem, not just its symptoms."
+      },
+      "saving": {
+        "title": "Savings",
+        "description": "Save time and money — we help you avoid replacing perfectly working parts unnecessarily."
+      },
+      "equipment": {
+        "title": "Equipment",
+        "description": "Professional equipment — we use modern diagnostic tools and technology."
+      },
+      "result": {
+        "title": "Results",
+        "description": "Clear results — we explain what we found and what should be done next."
+      }
+    },
+
+    "cta": {
+      "title": "Not sure what exactly is wrong?",
+      "description": "Start with diagnostics.",
+      "booking": "Book an appointment",
+      "services": "View services"
+    }
   },
 
   "completed-works": {
