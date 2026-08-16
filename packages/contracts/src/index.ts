@@ -4,15 +4,9 @@ export { isSupportedLocale, supportedLocales } from './common/locale.js';
 
 export type { AppLocale, ServiceLocale } from './common/locale.js';
 
-export {
-  serviceCategories,
-  serviceIconKeys,
-} from './services/service.constants.js';
+export { serviceCategories } from './services/service.constants.js';
 
-export type {
-  ServiceCategory,
-  ServiceIconKey,
-} from './services/service.constants.js';
+export type { ServiceCategory } from './services/service.constants.js';
 
 export type {
   ServiceDto,
@@ -35,3 +29,5 @@ export {
   createServiceSchema,
   type CreateServiceInput,
 } from './services/service.schemas.js';
+
+export { iconKeys, type IconKey } from './lib/constants.js';

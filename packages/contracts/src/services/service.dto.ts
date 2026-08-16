@@ -1,5 +1,6 @@
 import type { ServiceLocale } from '../common/locale.js';
-import type { ServiceCategory, ServiceIconKey } from './service.constants.js';
+import { IconKey } from '../lib/constants.js';
+import type { ServiceCategory } from './service.constants.js';
 
 export interface ServiceTranslationDto {
   title: string;
@@ -10,7 +11,7 @@ export interface ServiceDto {
   _id: string;
   slug: string;
   category: ServiceCategory;
-  iconKey: ServiceIconKey;
+  iconKey: IconKey;
   featured: boolean;
   sortOrder: number;
   isActive: boolean;

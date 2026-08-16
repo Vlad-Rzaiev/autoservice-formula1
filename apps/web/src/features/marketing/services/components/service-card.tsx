@@ -1,14 +1,14 @@
 import { Link } from '@/i18n/navigation';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import { ServiceIconKey } from '@autoservice/contracts';
+import { IconKey } from '@autoservice/contracts';
 import { IconCard } from '@/components/common';
-import { defaultServiceIcon, serviceIconMap } from '../lib/service-icon-map';
+import { defaultIcon, iconMap } from '@/lib';
 import { routes } from '@/config';
 
 export interface ServiceCardProps {
   slug: string;
-  icon: ServiceIconKey;
+  icon: IconKey;
   title: string;
   description: string;
   actionLabel: string;
@@ -21,7 +21,7 @@ export default function ServiceCard({
   description,
   actionLabel,
 }: ServiceCardProps) {
-  const serviceIcon = serviceIconMap[icon] ?? defaultServiceIcon;
+  const serviceIcon = iconMap[icon] ?? defaultIcon;
 
   return (
     <li

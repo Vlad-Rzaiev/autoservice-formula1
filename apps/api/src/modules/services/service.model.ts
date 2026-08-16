@@ -1,10 +1,10 @@
 import { model, Schema, type Types } from 'mongoose';
 
 import {
+  iconKeys,
   serviceCategories,
-  serviceIconKeys,
+  type IconKey,
   type ServiceCategory,
-  type ServiceIconKey,
   type ServiceLocale,
 } from '@autoservice/contracts';
 
@@ -16,7 +16,7 @@ export interface ServiceTranslationPersistence {
 export interface ServicePersistence {
   slug: string;
   category: ServiceCategory;
-  iconKey: ServiceIconKey;
+  iconKey: IconKey;
   featured: boolean;
   sortOrder: number;
   isActive: boolean;
@@ -90,7 +90,7 @@ const serviceSchema = new Schema<ServiceDocumentData>(
     },
     iconKey: {
       type: String,
-      enum: serviceIconKeys,
+      enum: iconKeys,
       required: true,
       trim: true,
     },

@@ -15,6 +15,7 @@ export type IconCardProps = ComponentPropsWithoutRef<typeof Card> & {
   icon: IconProp;
   title: ReactNode;
   description: ReactNode;
+  steps?: string;
   footer?: ReactNode;
   iconClassName?: string;
 };
@@ -23,6 +24,7 @@ export function IconCard({
   icon,
   title,
   description,
+  steps,
   footer,
   className,
   iconClassName,
@@ -46,6 +48,12 @@ export function IconCard({
             className={cn('text-xl', iconClassName)}
           />
         </div>
+
+        {steps && (
+          <p className="text-xs font-bold uppercase tracking-wider text-red-500">
+            {steps}
+          </p>
+        )}
 
         <CardTitle className="text-xl font-bold">{title}</CardTitle>
 

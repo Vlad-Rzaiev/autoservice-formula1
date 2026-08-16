@@ -61,7 +61,71 @@
   },
 
   "diagnostics": {
-    "title": "Profesjonalna diagnostyka"
+    "title": "Profesjonalna diagnostyka",
+    "description": "Dokładnie ustalamy przyczynę usterki samochodu przed rozpoczęciem naprawy.",
+    "eyebrow": "Diagnostyka",
+
+    "steps": {
+      "connection": {
+        "title": "Podłączenie urządzenia",
+        "description": "Podłączamy profesjonalne urządzenie diagnostyczne do samochodu."
+      },
+      "errors": {
+        "title": "Odczyt błędów",
+        "description": "Sprawdzamy kody błędów oraz stan układów elektronicznych samochodu."
+      },
+      "analysis": {
+        "title": "Analiza parametrów",
+        "description": "Analizujemy parametry układów i ustalamy przyczynę usterki."
+      },
+      "recommendation": {
+        "title": "Zalecenia",
+        "description": "Wyjaśniamy problem i proponujemy optymalne rozwiązanie naprawcze."
+      }
+    },
+
+    "systems": {
+      "title": "Co sprawdzamy",
+      "description": "Sprawdzamy najważniejsze układy elektroniczne samochodu, odczytujemy błędy i ustalamy przyczynę usterki.",
+      "items": {
+        "engine": "Silnik",
+        "transmission": "Automatyczna / manualna skrzynia biegów",
+        "absEsp": "ABS / ESP",
+        "airbags": "Poduszki powietrzne",
+        "electronics": "Układy elektroniczne",
+        "climate": "Układ klimatyzacji",
+        "driverAssist": "Systemy wspomagania kierowcy",
+        "fuelSystem": "Układ paliwowy"
+      }
+    },
+
+    "benefits": {
+      "eyebrow": "Zalety",
+      "title": "Dlaczego warto zacząć od diagnostyki?",
+      "accuracy": {
+        "title": "Precyzja",
+        "description": "Dokładna przyczyna usterki — szukamy źródła problemu, a nie tylko jego objawów."
+      },
+      "saving": {
+        "title": "Oszczędność",
+        "description": "Oszczędność czasu i pieniędzy — pomagamy uniknąć wymiany sprawnych części na chybił trafił."
+      },
+      "equipment": {
+        "title": "Wyposażenie",
+        "description": "Profesjonalne wyposażenie — korzystamy z nowoczesnych narzędzi diagnostycznych."
+      },
+      "result": {
+        "title": "Wynik",
+        "description": "Jasny wynik — wyjaśniamy klientowi, co wykryliśmy i co należy zrobić dalej."
+      }
+    },
+
+    "cta": {
+      "title": "Nie wiesz, co dokładnie jest nie tak?",
+      "description": "Zacznij od diagnostyki.",
+      "booking": "Umów wizytę",
+      "services": "Zobacz usługi"
+    }
   },
 
   "completed-works": {
