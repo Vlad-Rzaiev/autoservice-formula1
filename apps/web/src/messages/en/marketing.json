@@ -126,7 +126,8 @@
   },
 
   "completed-works": {
-    "title": "Completed Repairs"
+    "title": "Completed Repairs",
+    "description": "Real repair cases — from diagnostics to results"
   },
 
   "specialists": {

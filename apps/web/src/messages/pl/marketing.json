@@ -129,7 +129,8 @@
   },
 
   "completed-works": {
-    "title": "Wykonane naprawy"
+    "title": "Wykonane naprawy",
+    "description": "Rzeczywiste przypadki napraw — od diagnostyki do rezultatu"
   },
 
   "specialists": {

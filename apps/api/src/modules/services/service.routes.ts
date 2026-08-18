@@ -13,11 +13,13 @@ import { getServiceBySlugParamsSchema } from '../../validation/services/service-
 const router = Router();
 
 router.get('/', ctrlWrapper(getServicesController));
+
 router.get(
   '/:serviceSlug',
   validateParams(getServiceBySlugParamsSchema),
   ctrlWrapper(getServiceBySlugController),
 );
+
 router.post(
   '/',
   validateBody(createServiceSchema),

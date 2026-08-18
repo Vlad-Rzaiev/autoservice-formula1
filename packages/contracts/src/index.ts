@@ -31,3 +31,27 @@ export {
 } from './services/service.schemas.js';
 
 export { iconKeys, type IconKey } from './lib/constants.js';
+
+export type {
+  CompletedWorkDto,
+  CompletedWorkTranslationDto,
+} from './completed-works/completed-works.dto.js';
+
+export {
+  completedWorksCategories,
+  completedWorksCategoriesSlug,
+  type CompletedWorksCategory,
+  type CompletedWorksCategorySlug,
+} from './completed-works/completed-works.constants.js';
+
+export {
+  completedWorkDtoSchema,
+  createCompletedWorkSchema,
+  getCompletedWorkByIdParamsSchema,
+  type CreateCompletedWorkInput,
+} from './completed-works/completed-works.schemas.js';
+
+export type {
+  CompletedWorksResponse,
+  CompletedWorkResponse,
+} from './completed-works/completed-works.responses.js';

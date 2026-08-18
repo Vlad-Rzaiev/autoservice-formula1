@@ -1,6 +1,6 @@
 import { useTranslations } from 'next-intl';
 import { cardsItems } from '@/features/marketing';
-import { Section, Container, SectionTitle } from '@/components/layout';
+import { Section, Container, SectionHeader } from '@/components/layout';
 import { IconCard, CardGrid } from '@/components/common';
 
 export default function MarketingWhyUs() {
@@ -9,9 +9,10 @@ export default function MarketingWhyUs() {
   return (
     <Section id="why-us">
       <Container>
-        <SectionTitle className="mb-8 lg:mb-12">
-          {t('marketing.why-us.title')}
-        </SectionTitle>
+        <SectionHeader
+          className="mb-8 lg:mb-12"
+          sectionTitle={t('marketing.why-us.title')}
+        />
 
         <CardGrid columns="four">
           {cardsItems.map((item) => (
