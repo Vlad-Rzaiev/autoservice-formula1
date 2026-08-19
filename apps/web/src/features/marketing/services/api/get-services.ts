@@ -5,12 +5,12 @@ import {
 
 import { apiClient } from '@/lib';
 
-interface GetServiceBySlugOptions {
+interface GetServicesOptions {
   signal?: AbortSignal;
 }
 
 export async function getServices(
-  options: GetServiceBySlugOptions = {},
+  options: GetServicesOptions = {},
 ): Promise<ServiceDto[]> {
   const response = await apiClient.get<unknown>('/services', {
     signal: options.signal,

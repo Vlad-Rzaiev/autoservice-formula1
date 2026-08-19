@@ -2,7 +2,7 @@ import { queryOptions } from '@tanstack/react-query';
 import { getServiceBySlug } from './get-service-by-slug';
 import { getServices } from './get-services';
 
-const servicesStaleTimeMs = 10 * 60 * 1000;
+import { STALE_TIME_MS } from '../../lib/constants';
 
 export const servicesQueryKeys = {
   all: ['services'] as const,
@@ -20,14 +20,14 @@ export const servicesQueryKeys = {
 export const servicesQueryOptions = queryOptions({
   queryKey: servicesQueryKeys.list(),
   queryFn: ({ signal }) => getServices({ signal }),
-  staleTime: servicesStaleTimeMs,
+  staleTime: STALE_TIME_MS,
 });
 
 export function serviceBySlugQueryOptions(serviceSlug: string) {
   return queryOptions({
     queryKey: servicesQueryKeys.detail(serviceSlug),
     queryFn: ({ signal }) => getServiceBySlug(serviceSlug, { signal }),
-    staleTime: servicesStaleTimeMs,
+    staleTime: STALE_TIME_MS,
     enabled: Boolean(serviceSlug),
   });
 }

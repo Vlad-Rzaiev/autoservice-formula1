@@ -55,3 +55,8 @@ export type {
   CompletedWorksResponse,
   CompletedWorkResponse,
 } from './completed-works/completed-works.responses.js';
+
+export {
+  completedWorksResponseSchema,
+  completedWorkResponseSchema,
+} from './completed-works/completed-works-response.schemas.js';

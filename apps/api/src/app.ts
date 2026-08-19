@@ -66,9 +66,9 @@ export function createApp() {
 
   app.use(express.json());
 
-  app.use('/api', publicApiRateLimit);
-
   app.use('/health', healthRouter);
+
+  app.use('/api', publicApiRateLimit);
 
   app.use('/api/v1/services', servicesRouter);
 

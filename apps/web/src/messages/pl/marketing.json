@@ -129,8 +129,23 @@
   },
 
   "completed-works": {
-    "title": "Wykonane naprawy",
-    "description": "Rzeczywiste przypadki napraw — od diagnostyki do rezultatu"
+    "title": "Wykonane prace",
+    "description": "Rzeczywiste przypadki napraw — od diagnostyki do efektu końcowego",
+
+    "actions": {
+      "retry": "Spróbuj ponownie",
+      "previous": "Poprzedni",
+      "goToSlide": "Przejdź do karty",
+      "next": "Następny"
+    },
+
+    "labels": {
+      "before": "Przed",
+      "after": "Po",
+      "diagnosis": "Diagnostyka",
+      "performedWork": "Wykonane prace",
+      "result": "Rezultat"
+    }
   },
 
   "specialists": {

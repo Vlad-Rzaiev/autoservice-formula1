@@ -126,8 +126,23 @@
   },
 
   "completed-works": {
-    "title": "Completed Repairs",
-    "description": "Real repair cases — from diagnostics to results"
+    "title": "Completed Work",
+    "description": "Real repair cases — from diagnostics to the final result",
+
+    "actions": {
+      "retry": "Try again",
+      "previous": "Previous",
+      "goToSlide": "Go to card",
+      "next": "Next"
+    },
+
+    "labels": {
+      "before": "Before",
+      "after": "After",
+      "diagnosis": "Diagnosis",
+      "performedWork": "Completed Work",
+      "result": "Result"
+    }
   },
 
   "specialists": {
