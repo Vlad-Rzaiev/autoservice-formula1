@@ -57,6 +57,15 @@
     "empty": "Obecnie nie ma dostępnych usług.",
     "card": {
       "details": "Więcej szczegółów"
+    },
+
+    "loading-state": {
+      "loading-title": "Proszę czekać",
+      "error-title": "Nie udało się załadować usług",
+      "error-description": "Sprawdź połączenie z internetem i spróbuj ponownie.",
+      "retry": "Spróbuj ponownie",
+      "empty-title": "Obecnie nie ma dostępnych usług",
+      "empty-description": "Aktualizujemy listę usług. Sprawdź tę stronę ponownie nieco później."
     }
   },
 
@@ -145,6 +154,15 @@
       "diagnosis": "Diagnostyka",
       "performedWork": "Wykonane prace",
       "result": "Rezultat"
+    },
+
+    "loading-state": {
+      "loading-title": "Proszę czekać",
+      "error-title": "Nie udało się załadować wykonanych prac",
+      "error-description": "Sprawdź połączenie z internetem i spróbuj ponownie.",
+      "retry": "Spróbuj ponownie",
+      "empty-title": "Obecnie nie ma dostępnych wykonanych prac",
+      "empty-description": "Aktualizujemy listę wykonanych prac. Sprawdź tę stronę ponownie nieco później."
     }
   },
 
@@ -180,14 +198,5 @@
     "accountTitle": "Moje konto",
     "copyright": "Wszelkie prawa zastrzeżone.",
     "backToTop": "Na początek"
-  },
-
-  "loading-state": {
-    "loading-title": "Proszę czekać",
-    "error-title": "Nie udało się załadować usług",
-    "error-description": "Sprawdź połączenie z internetem i spróbuj ponownie.",
-    "retry": "Spróbuj ponownie",
-    "empty-title": "Obecnie nie ma dostępnych usług",
-    "empty-description": "Aktualizujemy listę usług. Sprawdź tę stronę ponownie nieco później."
   }
 }

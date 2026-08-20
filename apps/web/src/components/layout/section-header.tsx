@@ -19,7 +19,12 @@ export default function SectionHeader({
   className,
 }: SectionHeaderProps) {
   return (
-    <div className={cn('flex flex-col items-center', className)}>
+    <div
+      className={cn(
+        'flex flex-col items-center mb-10 md:mb-12 lg:mb-14',
+        className,
+      )}
+    >
       {eyebrow && (
         <div
           className="

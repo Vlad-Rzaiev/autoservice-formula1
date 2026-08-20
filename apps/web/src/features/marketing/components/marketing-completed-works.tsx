@@ -16,25 +16,24 @@ export default function MarketingCompletedWorks() {
     refetch,
   } = useFeaturesCompletedWorks();
 
-  // const hasLoadedCompletedWorks =
-  // !isPending && !isError && completedWorks.length > 0;
-
   return (
-    <Section id="completed-works">
-      <Container>
-        <SectionHeader
-          sectionTitle={t('title')}
-          description={t('description')}
-        />
+    completedWorks.length > 0 && (
+      <Section id="completed-works">
+        <Container>
+          <SectionHeader
+            sectionTitle={t('title')}
+            description={t('description')}
+          />
 
-        <CompletedWorksCatalog
-          completedWorks={completedWorks}
-          isPending={isPending}
-          isError={isError}
-          isRefetching={isRefetching}
-          refetch={refetch}
-        />
-      </Container>
-    </Section>
+          <CompletedWorksCatalog
+            completedWorks={completedWorks}
+            isPending={isPending}
+            isError={isError}
+            isRefetching={isRefetching}
+            refetch={refetch}
+          />
+        </Container>
+      </Section>
+    )
   );
 }

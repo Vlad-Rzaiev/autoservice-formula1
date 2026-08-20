@@ -12,7 +12,6 @@ export default function MarketingDiagnostics() {
     <Section id="diagnostics">
       <Container>
         <SectionHeader
-          className="mb-10 md:mb-12 lg:mb-14"
           sectionTitle={t('title')}
           description={t('description')}
         />

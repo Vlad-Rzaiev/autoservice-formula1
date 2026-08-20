@@ -2,6 +2,10 @@
 
 import Image from 'next/image';
 import { useLocale, useTranslations } from 'next-intl';
+import {
+  completedWorksCategories,
+  type CompletedWorkDto,
+} from '@autoservice/contracts';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
@@ -11,12 +15,7 @@ import {
   type AppLocale,
 } from '@/i18n/locale-config';
 
-import { Card, CardContent } from '@/components/ui/card';
-
-import {
-  completedWorksCategories,
-  type CompletedWorkDto,
-} from '@autoservice/contracts';
+import { Card, CardContent } from '@/components/ui';
 
 interface CompletedWorkSlideProps {
   completedWork: CompletedWorkDto;
@@ -44,39 +43,39 @@ export default function CompletedWorkSlide({
   const afterImage = completedWork.images.after[0];
 
   return (
-    <Card className="overflow-hidden border-0 shadow-none">
+    <Card className="overflow-hidden border shadow-none p-0">
       <CardContent className="p-0">
-        <div className="grid gap-3 md:grid-cols-2">
-          <div className="relative aspect-video overflow-hidden rounded-xl">
-            <Image
-              src={beforeImage}
-              alt={`${carName} — ${t('labels.before')}`}
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, 50vw"
-            />
+        <div className="space-y-6 p-4 md:p-6">
+          <div className="grid gap-3 md:grid-cols-2">
+            <div className="relative aspect-video overflow-hidden rounded-xl border-6">
+              <Image
+                src={beforeImage}
+                alt={`${carName} — ${t('labels.before')}`}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
 
-            <span className="absolute left-4 top-4 rounded-md bg-black/70 px-3 py-1.5 text-xs font-semibold uppercase tracking-wider text-white">
-              {t('labels.before')}
-            </span>
+              <span className="absolute left-4 top-4 rounded-md bg-black/70 px-3 py-1.5 text-xs font-semibold uppercase tracking-wider text-white">
+                {t('labels.before')}
+              </span>
+            </div>
+
+            <div className="relative aspect-video overflow-hidden rounded-xl border-6">
+              <Image
+                src={afterImage}
+                alt={`${carName} — ${t('labels.after')}`}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+
+              <span className="absolute left-4 top-4 rounded-md bg-black/70 px-3 py-1.5 text-xs font-semibold uppercase tracking-wider text-white">
+                {t('labels.after')}
+              </span>
+            </div>
           </div>
 
-          <div className="relative aspect-video overflow-hidden rounded-xl">
-            <Image
-              src={afterImage}
-              alt={`${carName} — ${t('labels.after')}`}
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, 50vw"
-            />
-
-            <span className="absolute left-4 top-4 rounded-md bg-black/70 px-3 py-1.5 text-xs font-semibold uppercase tracking-wider text-white">
-              {t('labels.after')}
-            </span>
-          </div>
-        </div>
-
-        <div className="space-y-6 p-6 md:p-8">
           <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
             <h3 className="text-2xl font-bold tracking-tight">{carName}</h3>
 
@@ -105,8 +104,11 @@ export default function CompletedWorkSlide({
 
               <ul className="space-y-2">
                 {completedWorkTranslation.performedWork.map((workItem) => (
-                  <li key={workItem} className="flex gap-2 leading-6">
-                    <span className="mt-1.5 shrink-0 text-primary">
+                  <li
+                    key={workItem}
+                    className="flex gap-2 leading-6 items-center"
+                  >
+                    <span className="shrink-0 text-primary">
                       <FontAwesomeIcon icon={faCheck} />
                     </span>
 

@@ -33,15 +33,13 @@ export default function MarketingServices() {
           description={t('marketing.services.description')}
         />
 
-        <div className="mt-10 md:mt-12 lg:mt-14">
-          <ServicesCatalog
-            services={services}
-            isPending={isPending}
-            isError={isError}
-            isRefetching={isRefetching}
-            refetch={refetch}
-          />
-        </div>
+        <ServicesCatalog
+          services={services}
+          isPending={isPending}
+          isError={isError}
+          isRefetching={isRefetching}
+          refetch={refetch}
+        />
 
         {hasLoadedServices && (
           <div className="mt-10 flex justify-center md:mt-12">

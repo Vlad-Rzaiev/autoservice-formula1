@@ -9,10 +9,7 @@ export default function MarketingWhyUs() {
   return (
     <Section id="why-us">
       <Container>
-        <SectionHeader
-          className="mb-8 lg:mb-12"
-          sectionTitle={t('marketing.why-us.title')}
-        />
+        <SectionHeader sectionTitle={t('marketing.why-us.title')} />
 
         <CardGrid columns="four">
           {cardsItems.map((item) => (
