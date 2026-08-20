@@ -54,6 +54,15 @@
     "empty": "There are currently no services available.",
     "card": {
       "details": "More details"
+    },
+
+    "loading-state": {
+      "loading-title": "Please wait",
+      "error-title": "Failed to load services",
+      "error-description": "Check your internet connection and try again.",
+      "retry": "Try again",
+      "empty-title": "No services are currently available",
+      "empty-description": "We are updating our list of services. Please check this page again later."
     }
   },
 
@@ -126,7 +135,32 @@
   },
 
   "completed-works": {
-    "title": "Completed Repairs"
+    "title": "Completed Work",
+    "description": "Real repair cases — from diagnostics to the final result",
+
+    "actions": {
+      "retry": "Try again",
+      "previous": "Previous",
+      "goToSlide": "Go to card",
+      "next": "Next"
+    },
+
+    "labels": {
+      "before": "Before",
+      "after": "After",
+      "diagnosis": "Diagnosis",
+      "performedWork": "Completed Work",
+      "result": "Result"
+    },
+
+    "loading-state": {
+      "loading-title": "Please wait",
+      "error-title": "Failed to load completed works",
+      "error-description": "Check your internet connection and try again.",
+      "retry": "Try again",
+      "empty-title": "No completed works are currently available",
+      "empty-description": "We are updating our list of completed works. Please check this page again later."
+    }
   },
 
   "specialists": {
@@ -161,14 +195,5 @@
     "accountTitle": "Account",
     "copyright": "All rights reserved.",
     "backToTop": "Back to top"
-  },
-
-  "loading-state": {
-    "loading-title": "Please wait",
-    "error-title": "Failed to load services",
-    "error-description": "Check your internet connection and try again.",
-    "retry": "Try again",
-    "empty-title": "No services are currently available",
-    "empty-description": "We are updating our list of services. Please check this page again later."
   }
 }

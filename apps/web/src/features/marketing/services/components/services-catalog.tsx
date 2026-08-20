@@ -34,7 +34,7 @@ export default function ServicesCatalog({
   const locale = useLocale();
   const currentLocale: AppLocale = isAppLocale(locale) ? locale : defaultLocale;
 
-  const t = useTranslations('marketing');
+  const t = useTranslations('marketing.services');
 
   return (
     <QueryState
@@ -62,7 +62,7 @@ export default function ServicesCatalog({
               icon={service.iconKey}
               title={serviceTranslation.title}
               description={serviceTranslation.description}
-              actionLabel={t('services.card.details')}
+              actionLabel={t('card.details')}
             />
           );
         })}

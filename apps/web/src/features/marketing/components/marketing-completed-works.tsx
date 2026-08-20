@@ -1,14 +1,39 @@
+'use client';
+
 import { useTranslations } from 'next-intl';
-import { Section, Container, SectionTitle } from '@/components/layout';
+import { Section, Container, SectionHeader } from '@/components/layout';
+import { useFeaturesCompletedWorks } from '../completed-works/api/use-completed-works';
+import CompletedWorksCatalog from '../completed-works/components/completed-works-catalog';
 
 export default function MarketingCompletedWorks() {
-  const t = useTranslations();
+  const t = useTranslations('marketing.completed-works');
+
+  const {
+    data: completedWorks = [],
+    isPending,
+    isError,
+    isRefetching,
+    refetch,
+  } = useFeaturesCompletedWorks();
 
   return (
-    <Section id="completed-works">
-      <Container>
-        <SectionTitle>{t('marketing.completed-works.title')}</SectionTitle>
-      </Container>
-    </Section>
+    completedWorks.length > 0 && (
+      <Section id="completed-works">
+        <Container>
+          <SectionHeader
+            sectionTitle={t('title')}
+            description={t('description')}
+          />
+
+          <CompletedWorksCatalog
+            completedWorks={completedWorks}
+            isPending={isPending}
+            isError={isError}
+            isRefetching={isRefetching}
+            refetch={refetch}
+          />
+        </Container>
+      </Section>
+    )
   );
 }

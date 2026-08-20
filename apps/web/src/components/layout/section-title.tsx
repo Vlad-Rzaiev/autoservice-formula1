@@ -15,7 +15,7 @@ export default function SectionTitle({
         {children}
       </h2>
 
-      <span aria-hidden="true" className="h-1 w-16 rounded-full bg-red-600" />
+      <span aria-hidden="true" className="h-1 w-32 rounded-full bg-red-600" />
     </div>
   );
 }
