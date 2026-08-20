@@ -17,23 +17,21 @@ export default function MarketingCompletedWorks() {
   } = useFeaturesCompletedWorks();
 
   return (
-    completedWorks.length > 0 && (
-      <Section id="completed-works">
-        <Container>
-          <SectionHeader
-            sectionTitle={t('title')}
-            description={t('description')}
-          />
+    <Section id="completed-works">
+      <Container>
+        <SectionHeader
+          sectionTitle={t('title')}
+          description={t('description')}
+        />
 
-          <CompletedWorksCatalog
-            completedWorks={completedWorks}
-            isPending={isPending}
-            isError={isError}
-            isRefetching={isRefetching}
-            refetch={refetch}
-          />
-        </Container>
-      </Section>
-    )
+        <CompletedWorksCatalog
+          completedWorks={completedWorks}
+          isPending={isPending}
+          isError={isError}
+          isRefetching={isRefetching}
+          refetch={refetch}
+        />
+      </Container>
+    </Section>
   );
 }
