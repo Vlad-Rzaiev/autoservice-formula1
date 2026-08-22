@@ -142,6 +142,7 @@
       "retry": "Try again",
       "previous": "Previous",
       "goToSlide": "Go to card",
+      "goToImage": "Go to image",
       "next": "Next"
     },
 
@@ -150,7 +151,8 @@
       "after": "After",
       "diagnosis": "Diagnosis",
       "performedWork": "Completed Work",
-      "result": "Result"
+      "result": "Result",
+      "selectImage": "Select image"
     },
 
     "loading-state": {

@@ -145,15 +145,17 @@
       "retry": "Спробувати ще раз",
       "previous": "Попередній",
       "goToSlide": "Перейти до картки",
+      "goToImage": "Перейти до зображення",
       "next": "Наступний"
     },
 
     "labels": {
       "before": "До",
       "after": "Після",
-      "diagnosis": "Діагностика",
+      "diagnosis": "Виявлена несправність",
       "performedWork": "Виконані роботи",
-      "result": "Результат"
+      "result": "Результат",
+      "selectImage": "Вибрати зображення"
     },
 
     "loading-state": {
