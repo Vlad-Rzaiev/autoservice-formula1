@@ -67,7 +67,6 @@ const completedWorksCarSchema = new Schema(
       type: String,
       required: true,
       trim: true,
-      lowercase: true,
     },
     year: {
       type: Number,
