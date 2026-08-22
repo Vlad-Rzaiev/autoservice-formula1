@@ -145,15 +145,17 @@
       "retry": "Spróbuj ponownie",
       "previous": "Poprzedni",
       "goToSlide": "Przejdź do karty",
+      "goToImage": "Przejdź do zdjęcia",
       "next": "Następny"
     },
 
     "labels": {
       "before": "Przed",
       "after": "Po",
-      "diagnosis": "Diagnostyka",
+      "diagnosis": "Wykryta usterka",
       "performedWork": "Wykonane prace",
-      "result": "Rezultat"
+      "result": "Rezultat",
+      "selectImage": "Wybierz zdjęcie"
     },
 
     "loading-state": {

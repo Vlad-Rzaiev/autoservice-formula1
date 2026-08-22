@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import { useLocale, useTranslations } from 'next-intl';
 import {
   completedWorksCategories,
@@ -16,6 +15,7 @@ import {
 } from '@/i18n/locale-config';
 
 import { Card, CardContent } from '@/components/ui';
+import CompletedWorkImages from './completed-work-images';
 
 interface CompletedWorkSlideProps {
   completedWork: CompletedWorkDto;
@@ -39,41 +39,22 @@ export default function CompletedWorkSlide({
 
   const completedWorkTranslation = completedWork.translations[currentLocale];
 
-  const beforeImage = completedWork.images.before[0];
-  const afterImage = completedWork.images.after[0];
-
   return (
     <Card className="overflow-hidden border shadow-none p-0">
       <CardContent className="p-0">
         <div className="space-y-6 p-4 md:p-6">
           <div className="grid gap-3 md:grid-cols-2">
-            <div className="relative aspect-video overflow-hidden rounded-xl border-6">
-              <Image
-                src={beforeImage}
-                alt={`${carName} — ${t('labels.before')}`}
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
+            <CompletedWorkImages
+              images={completedWork.images.before}
+              alt={carName}
+              label={t('labels.before')}
+            />
 
-              <span className="absolute left-4 top-4 rounded-md bg-black/70 px-3 py-1.5 text-xs font-semibold uppercase tracking-wider text-white">
-                {t('labels.before')}
-              </span>
-            </div>
-
-            <div className="relative aspect-video overflow-hidden rounded-xl border-6">
-              <Image
-                src={afterImage}
-                alt={`${carName} — ${t('labels.after')}`}
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-
-              <span className="absolute left-4 top-4 rounded-md bg-black/70 px-3 py-1.5 text-xs font-semibold uppercase tracking-wider text-white">
-                {t('labels.after')}
-              </span>
-            </div>
+            <CompletedWorkImages
+              images={completedWork.images.after}
+              alt={carName}
+              label={t('labels.after')}
+            />
           </div>
 
           <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">

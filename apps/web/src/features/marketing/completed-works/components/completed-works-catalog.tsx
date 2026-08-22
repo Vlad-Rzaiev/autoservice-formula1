@@ -16,7 +16,7 @@ import {
   type CarouselApi,
 } from '@/components/ui/carousel';
 
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui';
 
 import { CompletedWorkDto } from '@autoservice/contracts';
 import { useCompletedWorks } from '../api/use-completed-works';
@@ -103,6 +103,7 @@ export default function CompletedWorksCatalog({
             size="icon"
             onClick={() => carouselApi?.scrollPrev()}
             aria-label={t('actions.previous')}
+            className="cursor-pointer"
           >
             <FontAwesomeIcon icon={faChevronLeft} />
           </Button>
@@ -130,6 +131,7 @@ export default function CompletedWorksCatalog({
             size="icon"
             onClick={() => carouselApi?.scrollNext()}
             aria-label={t('actions.next')}
+            className="cursor-pointer"
           >
             <FontAwesomeIcon icon={faChevronRight} />
           </Button>
