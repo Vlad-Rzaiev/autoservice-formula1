@@ -20,6 +20,12 @@ export function toServiceDto(
   return {
     _id: serviceLeanDocument._id.toString(),
     slug: serviceLeanDocument.slug,
+    specializationIds: serviceLeanDocument.specializationIds.map(
+      (specializationId) => specializationId.toString(),
+    ),
+    workDirectionIds: serviceLeanDocument.workDirectionIds.map(
+      (workDirectionId) => workDirectionId.toString(),
+    ),
     category: serviceLeanDocument.category,
     iconKey: serviceLeanDocument.iconKey,
     featured: serviceLeanDocument.featured,

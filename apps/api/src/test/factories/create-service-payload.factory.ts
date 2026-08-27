@@ -5,6 +5,12 @@ export function createServicePayloadFixture(
 ): CreateServiceInput {
   const defaultPayload: CreateServiceInput = {
     slug: 'diagnostics',
+    specializationIds: ['68a800000000000000000006'],
+    workDirectionIds: [
+      '68a810000000000000000001',
+      '68a81000000000000000000a',
+      '68a81000000000000000000b',
+    ],
     category: 'diagnostics',
     iconKey: 'scan-search',
     featured: true,

@@ -10,6 +10,8 @@ export interface ServiceTranslationDto {
 export interface ServiceDto {
   _id: string;
   slug: string;
+  specializationIds: string[];
+  workDirectionIds: string[];
   category: ServiceCategory;
   iconKey: IconKey;
   featured: boolean;

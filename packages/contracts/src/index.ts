@@ -60,3 +60,27 @@ export {
   completedWorksResponseSchema,
   completedWorkResponseSchema,
 } from './completed-works/completed-works-response.schemas.js';
+
+export type {
+  MechanicNameDto,
+  MechanicTranslationDto,
+  MechanicCertificateDto,
+  MechanicDto,
+} from './specialists/specialist.dto.js';
+
+export {
+  mechanicDtoSchema,
+  createMechanicSchema,
+  getMechanicByIdSchema,
+  type CreateMechanicInput,
+} from './specialists/specialist.schemas.js';
+
+export {
+  mechanicsResponseSchema,
+  mechanicResponseSchema,
+} from './specialists/specialist-response.schemas.js';
+
+export type {
+  MechanicsResponse,
+  MechanicResponse,
+} from './specialists/specialist.responses.js';

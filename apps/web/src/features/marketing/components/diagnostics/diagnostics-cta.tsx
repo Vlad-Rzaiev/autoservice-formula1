@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faArrowRight,
+  faAngleRight,
   faCalendarCheck,
 } from '@fortawesome/free-solid-svg-icons';
 import { useTranslations } from 'next-intl';
@@ -70,7 +70,7 @@ export default function DiagnosticsCta() {
             {t('cta.services')}
 
             <FontAwesomeIcon
-              icon={faArrowRight}
+              icon={faAngleRight}
               className="h-4 w-4"
               aria-hidden="true"
             />

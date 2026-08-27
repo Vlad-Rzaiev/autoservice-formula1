@@ -23,6 +23,8 @@ export const serviceTranslationDtoSchema = z.object({
 export const serviceDtoSchema = z.object({
   _id: z.string().min(1),
   slug: serviceSlugSchema,
+  specializationIds: z.array(z.string().min(1)),
+  workDirectionIds: z.array(z.string().min(1)),
   category: z.enum(serviceCategories),
   iconKey: z.enum(iconKeys),
   featured: z.boolean(),
