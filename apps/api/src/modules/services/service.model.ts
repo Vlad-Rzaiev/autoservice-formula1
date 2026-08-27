@@ -16,6 +16,8 @@ export interface ServiceTranslationPersistence {
 export interface ServicePersistence {
   slug: string;
   category: ServiceCategory;
+  specializationIds: Types.ObjectId[];
+  workDirectionIds: Types.ObjectId[];
   iconKey: IconKey;
   featured: boolean;
   sortOrder: number;
@@ -80,6 +82,14 @@ const serviceSchema = new Schema<ServiceDocumentData>(
       unique: true,
       trim: true,
       lowercase: true,
+    },
+    specializationIds: {
+      type: [Schema.Types.ObjectId],
+      ref: 'specializations',
+    },
+    workDirectionIds: {
+      type: [Schema.Types.ObjectId],
+      ref: 'work-directions',
     },
     category: {
       type: String,

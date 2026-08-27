@@ -166,7 +166,9 @@
   },
 
   "specialists": {
-    "title": "Our Specialists"
+    "title": "Our Team",
+    "description": "Your vehicle is serviced by specialized technicians",
+    "view-all": "View All Mechanics"
   },
 
   "repair-process": {

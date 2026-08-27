@@ -43,7 +43,7 @@ export default function MarketingServices() {
 
         {hasLoadedServices && (
           <div className="mt-10 flex justify-center md:mt-12">
-            <ButtonLink href={routes.marketing.services} variant="ctaOutline">
+            <ButtonLink href={routes.marketing.services} variant="iconSurface">
               {t('marketing.services.view-all')}
 
               <FontAwesomeIcon

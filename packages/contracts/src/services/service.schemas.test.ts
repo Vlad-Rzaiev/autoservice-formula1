@@ -9,6 +9,12 @@ import {
 const validServiceDto: ServiceDto = {
   _id: '66a8f377ad1babc123456789',
   slug: 'engine-diagnostics',
+  specializationIds: ['68a800000000000000000006'],
+  workDirectionIds: [
+    '68a810000000000000000001',
+    '68a81000000000000000000a',
+    '68a81000000000000000000b',
+  ],
   category: 'diagnostics',
   iconKey: 'scan-search',
   featured: true,
@@ -34,6 +40,12 @@ const validServiceDto: ServiceDto = {
 
 const validCreateServicePayload = {
   slug: 'engine-diagnostics',
+  specializationIds: ['68a800000000000000000006'],
+  workDirectionIds: [
+    '68a810000000000000000001',
+    '68a81000000000000000000a',
+    '68a81000000000000000000b',
+  ],
   category: 'diagnostics',
   iconKey: 'scan-search',
   featured: true,
@@ -198,6 +210,34 @@ describe('serviceDtoSchema', () => {
     });
 
     expect(result.success).toBe(false);
+  });
+
+  it('accepts service with empty specializationIds and workDirectionIds', () => {
+    const result = serviceDtoSchema.safeParse({
+      ...validServiceDto,
+      specializationIds: [],
+      workDirectionIds: [],
+    });
+
+    expect(result.success).toBe(true);
+  });
+
+  it('accepts service with empty workDirectionIds', () => {
+    const result = serviceDtoSchema.safeParse({
+      ...validServiceDto,
+      workDirectionIds: [],
+    });
+
+    expect(result.success).toBe(true);
+  });
+
+  it('accepts service with empty specializationIds', () => {
+    const result = serviceDtoSchema.safeParse({
+      ...validServiceDto,
+      specializationIds: [],
+    });
+
+    expect(result.success).toBe(true);
   });
 });
 

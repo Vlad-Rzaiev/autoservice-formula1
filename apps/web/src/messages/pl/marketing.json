@@ -169,7 +169,9 @@
   },
 
   "specialists": {
-    "title": "Nasi specjaliści"
+    "title": "Nasz Zespół",
+    "description": "Twój samochód jest obsługiwany przez wyspecjalizowanych mechaników",
+    "view-all": "Zobacz wszystkich mechaników"
   },
 
   "repair-process": {

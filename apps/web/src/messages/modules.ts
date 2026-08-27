@@ -7,12 +7,20 @@ export const translationModules = [
   'metadata',
   'mobile-menu',
   'services',
+  'specialists',
 ] as const;
 
 export type TranslationModule = (typeof translationModules)[number];
 
 export const clientMessageModules = {
-  marketing: ['auth', 'booking', 'marketing', 'mobile-menu', 'services'],
+  marketing: [
+    'auth',
+    'booking',
+    'marketing',
+    'mobile-menu',
+    'services',
+    'specialists',
+  ],
 
   auth: ['auth'],
 
