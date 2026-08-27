@@ -1,3 +1,4 @@
+import { Types } from 'mongoose';
 import type { ServiceDto } from '@autoservice/contracts';
 import request from 'supertest';
 import { describe, expect, it } from 'vitest';
@@ -248,6 +249,12 @@ describe('POST /api/v1/services', () => {
 
     expect(createdService).toMatchObject({
       ...createServicePayload,
+      specializationIds: createServicePayload.specializationIds.map(
+        (specializationId) => new Types.ObjectId(specializationId),
+      ),
+      workDirectionIds: createServicePayload.workDirectionIds.map(
+        (workDirectionId) => new Types.ObjectId(workDirectionId),
+      ),
       sortOrder: 1,
     });
 
