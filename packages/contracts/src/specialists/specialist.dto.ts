@@ -22,7 +22,7 @@ export interface MechanicDto {
   _id: string;
   name: Record<AppLocale, MechanicNameDto>;
   photo: {
-    url: string;
+    url: string | null;
   };
   specializationIds: string[];
   workDirectionIds: string[];

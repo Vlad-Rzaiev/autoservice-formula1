@@ -41,7 +41,7 @@ export const StateShell = ({
   return (
     <div
       className={cn(
-        'my-10 flex min-h-52 flex-col items-center justify-center',
+        'my-10 flex min-h-80 flex-col items-center justify-center',
         'rounded-2xl border px-6 py-10 text-center shadow-sm',
         containerVariantClassNames[variant],
         className,

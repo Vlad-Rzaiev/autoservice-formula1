@@ -22,7 +22,7 @@ export interface MechanicCertificatesPersistence {
 export interface MechanicPersistence {
   name: Record<AppLocale, MechanicNamePersistence>;
   photo: {
-    url: string;
+    url: string | null;
   };
   specializationIds: Types.ObjectId[];
   workDirectionIds: Types.ObjectId[];
@@ -157,6 +157,7 @@ const specialistSchema = new Schema<MechanicDocumentData>(
     photo: {
       url: {
         type: String,
+        default: null,
       },
     },
     specializationIds: {

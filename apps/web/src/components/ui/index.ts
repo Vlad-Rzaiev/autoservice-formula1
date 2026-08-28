@@ -25,3 +25,35 @@ export {
   DrawerTitle,
   DrawerDescription,
 } from './drawer';
+
+export { Skeleton } from './skeleton';
+
+export {
+  Avatar,
+  AvatarImage,
+  AvatarFallback,
+  AvatarGroup,
+  AvatarGroupCount,
+  AvatarBadge,
+} from './avatar';
+
+export { Badge, badgeVariants } from './badge';
+
+export {
+  type CarouselApi,
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselPrevious,
+  CarouselNext,
+  useCarousel,
+} from './carousel';
+
+export { Separator } from './separator';
+
+export {
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+  TooltipProvider,
+} from './tooltip';

@@ -3,6 +3,7 @@ import { routing } from '@/i18n/routing';
 import { hasLocale } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { HtmlLangSync } from '@/components/locale';
+import { TooltipProvider } from '@/components/ui';
 
 interface LocaleLayoutProps {
   children: React.ReactNode;
@@ -52,9 +53,9 @@ export default async function LocaleLayout({
   setRequestLocale(locale);
 
   return (
-    <>
+    <TooltipProvider>
       <HtmlLangSync locale={locale} />
       {children}
-    </>
+    </TooltipProvider>
   );
 }

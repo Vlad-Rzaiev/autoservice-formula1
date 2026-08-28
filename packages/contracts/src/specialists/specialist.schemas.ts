@@ -25,7 +25,7 @@ export const mechanicDtoSchema = z.object({
   _id: z.string().min(1),
   name: z.record(z.enum(supportedLocales), mechanicNameDtoSchema),
   photo: z.object({
-    url: z.string().min(1),
+    url: z.string().min(1).nullable(),
   }),
   specializationIds: z.array(z.string().min(1)),
   workDirectionIds: z.array(z.string().min(1)),
