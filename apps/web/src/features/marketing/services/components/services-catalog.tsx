@@ -13,6 +13,7 @@ import { CardGrid } from '@/components/common';
 
 import type { useServices } from '../api/use-services';
 import ServiceCard from './service-card';
+import ServicesCatalogSkeleton from './service-catalog-skeleton';
 
 type ServicesRefetch = ReturnType<typeof useServices>['refetch'];
 
@@ -41,6 +42,7 @@ export default function ServicesCatalog({
       isPending={isPending}
       isError={isError}
       isEmpty={services.length === 0}
+      loadingContent={<ServicesCatalogSkeleton />}
       loadingMessage={t('loading-state.loading-title')}
       errorMessage={t('loading-state.error-title')}
       errorDescription={t('loading-state.error-description')}

@@ -16,6 +16,7 @@ import {
 
 import { Card, CardContent } from '@/components/ui';
 import CompletedWorkImages from './completed-work-images';
+import { formatDate } from '@/lib';
 
 interface CompletedWorkSlideProps {
   completedWork: CompletedWorkDto;
@@ -106,7 +107,13 @@ export default function CompletedWorkSlide({
               {t('labels.result')}
             </p>
 
-            <p className="leading-7">{completedWorkTranslation.result}</p>
+            <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
+              <p className="leading-7">{completedWorkTranslation.result}</p>
+
+              <p className="text-sm text-muted-foreground text-right md:shrink-0 md:pl-6">
+                {formatDate(completedWork.updatedAt, currentLocale)}
+              </p>
+            </div>
           </div>
         </div>
       </CardContent>

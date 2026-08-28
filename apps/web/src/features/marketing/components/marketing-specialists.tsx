@@ -1,12 +1,26 @@
-import { getTranslations } from 'next-intl/server';
+'use client';
+
+import { useTranslations } from 'next-intl';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import { useFeaturesMechanics } from '../specialists/api/use-mechanics';
 import { Section, Container, SectionHeader } from '@/components/layout';
+import SpecialistsCatalog from '../specialists/components/specialists-catalog';
 import { ButtonLink } from '@/components/common';
 import { routes } from '@/config';
 
-export default async function MarketingSpecialists() {
-  const t = await getTranslations('marketing.specialists');
+export default function MarketingSpecialists() {
+  const t = useTranslations('marketing.specialists');
+
+  const {
+    data: mechanics = [],
+    isPending,
+    isError,
+    isRefetching,
+    refetch,
+  } = useFeaturesMechanics();
+
+  const hasLoadedMechanics = !isPending && !isError && mechanics.length > 0;
 
   return (
     <Section id="specialists">
@@ -14,20 +28,34 @@ export default async function MarketingSpecialists() {
         <SectionHeader
           sectionTitle={t('title')}
           description={t('description')}
+          subTitle={t('subTitle')}
         />
+
+        <SpecialistsCatalog
+          mechanics={mechanics}
+          isPending={isPending}
+          isError={isError}
+          isRefetching={isRefetching}
+          refetch={refetch}
+        />
+
+        {hasLoadedMechanics && (
+          <div className="mt-10 flex justify-center md:mt-12">
+            <ButtonLink
+              href={routes.marketing.specialists}
+              variant="iconSurface"
+            >
+              {t('view-all')}
+
+              <FontAwesomeIcon
+                icon={faAngleRight}
+                aria-hidden="true"
+                className="text-lg transition-transform duration-200 group-hover:translate-x-1"
+              />
+            </ButtonLink>
+          </div>
+        )}
       </Container>
-
-      <div className="flex justify-center">
-        <ButtonLink href={routes.marketing.specialists} variant="iconSurface">
-          {t('view-all')}
-
-          <FontAwesomeIcon
-            icon={faAngleRight}
-            aria-hidden="true"
-            className="text-lg transition-transform duration-200 group-hover:translate-x-1"
-          />
-        </ButtonLink>
-      </div>
     </Section>
   );
 }

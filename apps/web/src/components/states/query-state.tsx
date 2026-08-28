@@ -1,5 +1,5 @@
-import { ReactNode } from 'react';
-import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
+import type { ReactNode } from 'react';
+import type { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { faInbox } from '@fortawesome/free-solid-svg-icons';
 import { EmptyState, ErrorState, LoadingState } from '@/components/states';
 
@@ -10,6 +10,7 @@ export interface QueryStateProps {
 
   loadingMessage: string;
   loadingDescription?: string;
+  loadingContent?: ReactNode;
 
   errorMessage: string;
   errorDescription?: string;
@@ -36,6 +37,7 @@ export default function QueryState({
   isPending,
   isError,
   isEmpty = false,
+  loadingContent,
   loadingMessage,
   loadingDescription,
   errorMessage,
@@ -55,11 +57,13 @@ export default function QueryState({
 }: QueryStateProps) {
   if (isPending) {
     return (
-      <LoadingState
-        title={loadingMessage}
-        description={loadingDescription}
-        className={loadingClassName}
-      />
+      loadingContent ?? (
+        <LoadingState
+          title={loadingMessage}
+          description={loadingDescription}
+          className={loadingClassName}
+        />
+      )
     );
   }
 

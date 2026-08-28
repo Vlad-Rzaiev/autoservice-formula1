@@ -8,6 +8,7 @@ export interface SectionHeaderProps {
   description?: string;
   eyebrow?: string;
   eyebrowIcon?: IconProp;
+  subTitle?: string;
   className?: string;
 }
 
@@ -16,6 +17,7 @@ export default function SectionHeader({
   description,
   eyebrow,
   eyebrowIcon,
+  subTitle,
   className,
 }: SectionHeaderProps) {
   return (
@@ -51,6 +53,19 @@ export default function SectionHeader({
       {description && (
         <p className="mt-5 max-w-3xl text-center text-base leading-7 text-muted-foreground sm:text-lg sm:leading-8">
           {description}
+        </p>
+      )}
+
+      {subTitle && (
+        <p
+          className="
+            mt-3 max-w-4xl text-center
+            text-lg font-semibold leading-7
+            tracking-tight text-foreground/80
+            sm:text-xl sm:leading-8
+          "
+        >
+          {subTitle}
         </p>
       )}
     </div>

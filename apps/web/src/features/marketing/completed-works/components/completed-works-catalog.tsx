@@ -22,6 +22,7 @@ import { CompletedWorkDto } from '@autoservice/contracts';
 import { useCompletedWorks } from '../api/use-completed-works';
 import CompletedWorkSlide from './completed-work-slide';
 import { QueryState } from '@/components/states';
+import CompletedWorkSlideSkeleton from './completed-work-slide-skeleton';
 
 type CompletedWorksRefetch = ReturnType<typeof useCompletedWorks>['refetch'];
 
@@ -68,6 +69,7 @@ export default function CompletedWorksCatalog({
       isPending={isPending}
       isError={isError}
       isEmpty={completedWorks.length === 0}
+      loadingContent={<CompletedWorkSlideSkeleton />}
       loadingMessage={t('loading-state.loading-title')}
       errorMessage={t('loading-state.error-title')}
       errorDescription={t('loading-state.error-description')}
