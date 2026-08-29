@@ -7,6 +7,8 @@ import { createApp } from '../../app.js';
 import { ServiceCollection } from './service.model.js';
 import { createServiceFixture } from '../../test/factories/service.factory.js';
 import { createServicePayloadFixture } from '../../test/factories/create-service-payload.factory.js';
+import { SpecializationCollection } from '../specializations/specialization.model.js';
+import { WorkDirectionCollection } from '../work-directions/work-direction.model.js';
 
 describe('GET /api/v1/services', () => {
   it('returns an empty services response when no services exist', async () => {
@@ -207,6 +209,63 @@ describe('POST /api/v1/services', () => {
 
     const createServicePayload = createServicePayloadFixture();
 
+    await SpecializationCollection.create({
+      _id: '68a800000000000000000006',
+      slug: 'engine-diagnostics',
+      translations: {
+        uk: {
+          title: 'Діагностика двигуна',
+          description: 'Діагностика двигуна.',
+        },
+        en: {
+          title: 'Engine diagnostics',
+          description: 'Engine diagnostics.',
+        },
+        pl: {
+          title: 'Diagnostyka silnika',
+          description: 'Diagnostyka silnika.',
+        },
+      },
+      isActive: true,
+      sortOrder: 1,
+    });
+
+    await WorkDirectionCollection.insertMany([
+      {
+        _id: '68a810000000000000000001',
+        slug: 'engine-repair',
+        translations: {
+          uk: { title: 'Ремонт двигуна' },
+          en: { title: 'Engine repair' },
+          pl: { title: 'Naprawa silnika' },
+        },
+        isActive: true,
+        sortOrder: 1,
+      },
+      {
+        _id: '68a81000000000000000000a',
+        slug: 'computer-diagnostics',
+        translations: {
+          uk: { title: 'Комп’ютерна діагностика' },
+          en: { title: 'Computer diagnostics' },
+          pl: { title: 'Diagnostyka komputerowa' },
+        },
+        isActive: true,
+        sortOrder: 2,
+      },
+      {
+        _id: '68a81000000000000000000b',
+        slug: 'electrical-diagnostics',
+        translations: {
+          uk: { title: 'Діагностика електрики' },
+          en: { title: 'Electrical diagnostics' },
+          pl: { title: 'Diagnostyka elektryczna' },
+        },
+        isActive: true,
+        sortOrder: 3,
+      },
+    ]);
+
     const response = await request(app)
       .post('/api/v1/services')
       .send(createServicePayload)
@@ -219,12 +278,38 @@ describe('POST /api/v1/services', () => {
     });
 
     expect(response.body.data).toMatchObject({
-      ...createServicePayload,
+      slug: createServicePayload.slug,
+      category: createServicePayload.category,
+      iconKey: createServicePayload.iconKey,
+      featured: createServicePayload.featured,
+      isActive: createServicePayload.isActive,
       sortOrder: 1,
       _id: expect.any(String),
       createdAt: expect.any(String),
       updatedAt: expect.any(String),
     });
+
+    expect(response.body.data.specializationIds).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          _id: '68a800000000000000000006',
+        }),
+      ]),
+    );
+
+    expect(response.body.data.workDirectionIds).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          _id: '68a810000000000000000001',
+        }),
+        expect.objectContaining({
+          _id: '68a81000000000000000000a',
+        }),
+        expect.objectContaining({
+          _id: '68a81000000000000000000b',
+        }),
+      ]),
+    );
   });
 
   it('persists the created service in MongoDB', async () => {

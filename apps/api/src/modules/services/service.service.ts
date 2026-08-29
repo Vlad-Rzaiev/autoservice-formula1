@@ -42,8 +42,20 @@ export const createService = async (payload: CreateServiceInput) => {
     SERVICES_SORT_ORDER_COUNTER_KEY,
   );
 
-  return ServiceCollection.create({
+  const service = await ServiceCollection.create({
     ...payload,
     sortOrder: nextSortOrder,
   });
+
+  const createdService = await ServiceCollection.findById(service._id)
+    .populate<SpecializationLeanDocument[]>('specializationIds')
+    .populate<WorkDirectionLeanDocument[]>('workDirectionIds')
+    .lean<ServicesWithRelationsLeanDocument>()
+    .exec();
+
+  if (!createdService) {
+    throw new Error('Created service was not found.');
+  }
+
+  return createdService;
 };

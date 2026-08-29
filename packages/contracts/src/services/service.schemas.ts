@@ -38,15 +38,20 @@ export const serviceDtoSchema = z.object({
   updatedAt: z.string().datetime(),
 }) satisfies z.ZodType<ServiceDto>;
 
-export const createServiceSchema = z.object({
-  slug: serviceSlugSchema,
-  specializationIds: z.array(mongoObjectIdSchema),
-  workDirectionIds: z.array(mongoObjectIdSchema),
-  category: z.enum(serviceCategories),
-  iconKey: z.enum(iconKeys),
-  featured: z.boolean().default(false),
-  isActive: z.boolean().default(true),
-  translations: z.record(z.enum(supportedLocales), serviceTranslationDtoSchema),
-});
+export const createServiceSchema = z
+  .object({
+    slug: serviceSlugSchema,
+    specializationIds: z.array(mongoObjectIdSchema),
+    workDirectionIds: z.array(mongoObjectIdSchema),
+    category: z.enum(serviceCategories),
+    iconKey: z.enum(iconKeys),
+    featured: z.boolean().default(false),
+    isActive: z.boolean().default(true),
+    translations: z.record(
+      z.enum(supportedLocales),
+      serviceTranslationDtoSchema,
+    ),
+  })
+  .strict();
 
 export type CreateServiceInput = z.infer<typeof createServiceSchema>;
