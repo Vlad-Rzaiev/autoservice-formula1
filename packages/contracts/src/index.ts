@@ -104,3 +104,24 @@ export type {
   SpecializationsResponse,
   SpecializationResponse,
 } from './specializations/specialization.responses.js';
+
+export type {
+  WorkDirectionTranslationDto,
+  WorkDirectionDto,
+} from './work-directions/work-direction.dto.js';
+
+export {
+  workDirectionTranslationDtoSchema,
+  workDirectionDtoSchema,
+  getWorkDirectionByIdSchema,
+} from './work-directions/work-direction.schemas.js';
+
+export type {
+  WorkDirectionsResponse,
+  WorkDirectionResponse,
+} from './work-directions/work-direction.responses.js';
+
+export type {
+  workDirectionsResponseSchema,
+  workDirectionResponseSchema,
+} from './work-directions/work-direction-response.schemas.js';

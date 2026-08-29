@@ -16,6 +16,7 @@ import servicesRouter from './modules/services/service.routes.js';
 import completedWorksRouter from './modules/completed-works/completed-works.routes.js';
 import mechanicsRouter from './modules/specialists/specialist.routes.js';
 import specializationRouter from './modules/specializations/specialization.routes.js';
+import workDirectionRouter from './modules/work-directions/work-direction.routes.js';
 
 export function createApp() {
   const app = express();
@@ -79,6 +80,8 @@ export function createApp() {
   app.use('/api/v1/mechanics', mechanicsRouter);
 
   app.use('/api/v1/specializations', specializationRouter);
+
+  app.use('/api/v1/work-directions', workDirectionRouter);
 
   app.use(notFoundHandler);
   app.use(errorHandler);
