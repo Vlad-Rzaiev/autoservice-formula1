@@ -5,6 +5,7 @@ import { MechanicDto } from '@autoservice/contracts';
 import { CardGrid } from '@/components/common';
 import { QueryState } from '@/components/states';
 import SpecialistCard from './specialist-card';
+import SpecialistCatalogSkeleton from './specialist-catalog-skeleton';
 
 type MechanicsRefetch = ReturnType<typeof useMechanics>['refetch'];
 
@@ -30,6 +31,7 @@ export default function SpecialistsCatalog({
       isPending={isPending}
       isError={isError}
       isEmpty={mechanics.length === 0}
+      loadingContent={<SpecialistCatalogSkeleton />}
       loadingMessage={t('loading-state.loading-title')}
       errorMessage={t('loading-state.error-title')}
       errorDescription={t('loading-state.error-description')}
