@@ -84,3 +84,23 @@ export type {
   MechanicsResponse,
   MechanicResponse,
 } from './specialists/specialist.responses.js';
+
+export type {
+  SpecializationsDto,
+  SpecializationTranslationDto,
+} from './specializations/specialization.dto.js';
+
+export {
+  specializationDtoSchema,
+  getSpecializationByIdSchema,
+} from './specializations/specialization.schemas.js';
+
+export {
+  specializationsResponseSchema,
+  specializationResponseSchema,
+} from './specializations/specialization-response.schemas.js';
+
+export type {
+  SpecializationsResponse,
+  SpecializationResponse,
+} from './specializations/specialization.responses.js';
