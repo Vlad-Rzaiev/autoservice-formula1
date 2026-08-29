@@ -4,6 +4,9 @@ import { supportedLocales } from '../common/locale.js';
 import { serviceCategories } from './service.constants.js';
 import type { ServiceDto } from './service.dto.js';
 import { iconKeys } from '../lib/constants.js';
+import { specializationDtoSchema } from '../specializations/specialization.schemas.js';
+import { workDirectionDtoSchema } from '../work-directions/work-direction.schemas.js';
+import { mongoObjectIdSchema } from '../common/mongo.schemas.js';
 
 export const serviceSlugSchema = z
   .string()
@@ -23,8 +26,8 @@ export const serviceTranslationDtoSchema = z.object({
 export const serviceDtoSchema = z.object({
   _id: z.string().min(1),
   slug: serviceSlugSchema,
-  specializationIds: z.array(z.string().min(1)),
-  workDirectionIds: z.array(z.string().min(1)),
+  specializationIds: z.array(specializationDtoSchema),
+  workDirectionIds: z.array(workDirectionDtoSchema),
   category: z.enum(serviceCategories),
   iconKey: z.enum(iconKeys),
   featured: z.boolean(),
@@ -35,17 +38,20 @@ export const serviceDtoSchema = z.object({
   updatedAt: z.string().datetime(),
 }) satisfies z.ZodType<ServiceDto>;
 
-const createServiceBaseSchema = serviceDtoSchema.omit({
-  _id: true,
-  sortOrder: true,
-  createdAt: true,
-  updatedAt: true,
-});
-
-export const createServiceSchema = z.strictObject({
-  ...createServiceBaseSchema.shape,
-  featured: z.boolean().default(false),
-  isActive: z.boolean().default(true),
-});
+export const createServiceSchema = z
+  .object({
+    slug: serviceSlugSchema,
+    specializationIds: z.array(mongoObjectIdSchema),
+    workDirectionIds: z.array(mongoObjectIdSchema),
+    category: z.enum(serviceCategories),
+    iconKey: z.enum(iconKeys),
+    featured: z.boolean().default(false),
+    isActive: z.boolean().default(true),
+    translations: z.record(
+      z.enum(supportedLocales),
+      serviceTranslationDtoSchema,
+    ),
+  })
+  .strict();
 
 export type CreateServiceInput = z.infer<typeof createServiceSchema>;

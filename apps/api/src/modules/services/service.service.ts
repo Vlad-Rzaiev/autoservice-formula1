@@ -1,7 +1,13 @@
-import { ServiceCollection } from './service.model.js';
+import {
+  ServiceCollection,
+  ServicesWithRelationsLeanDocument,
+} from './service.model.js';
 import { CreateServiceInput } from '@autoservice/contracts';
 import { getNextCounterValue } from '../counters/counter.service.js';
 import { SERVICES_SORT_ORDER_COUNTER_KEY } from './service.constants.js';
+import { SpecializationLeanDocument } from '../specializations/specialization.model.js';
+import { WorkDirectionLeanDocument } from '../work-directions/work-direction.model.js';
+import { toServiceDto } from './service.mapper.js';
 
 export const getAllServices = async () => {
   const services = await ServiceCollection.find({
@@ -10,10 +16,12 @@ export const getAllServices = async () => {
     .sort({
       sortOrder: 1,
     })
-    .lean()
+    .populate<SpecializationLeanDocument[]>('specializationIds')
+    .populate<WorkDirectionLeanDocument[]>('workDirectionIds')
+    .lean<ServicesWithRelationsLeanDocument[]>()
     .exec();
 
-  return services;
+  return services.map(toServiceDto);
 };
 
 export const getServiceBySlug = async (serviceSlug: string) => {
@@ -21,10 +29,12 @@ export const getServiceBySlug = async (serviceSlug: string) => {
     slug: serviceSlug,
     isActive: true,
   })
-    .lean()
+    .populate<SpecializationLeanDocument[]>('specializationIds')
+    .populate<WorkDirectionLeanDocument[]>('workDirectionIds')
+    .lean<ServicesWithRelationsLeanDocument>()
     .exec();
 
-  return service;
+  return service ? toServiceDto(service) : null;
 };
 
 export const createService = async (payload: CreateServiceInput) => {
@@ -32,8 +42,20 @@ export const createService = async (payload: CreateServiceInput) => {
     SERVICES_SORT_ORDER_COUNTER_KEY,
   );
 
-  return ServiceCollection.create({
+  const service = await ServiceCollection.create({
     ...payload,
     sortOrder: nextSortOrder,
   });
+
+  const createdService = await ServiceCollection.findById(service._id)
+    .populate<SpecializationLeanDocument[]>('specializationIds')
+    .populate<WorkDirectionLeanDocument[]>('workDirectionIds')
+    .lean<ServicesWithRelationsLeanDocument>()
+    .exec();
+
+  if (!createdService) {
+    throw new Error('Created service was not found.');
+  }
+
+  return createdService;
 };

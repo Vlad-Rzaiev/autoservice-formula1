@@ -1,9 +1,11 @@
 import type { ServiceDto, ServiceTranslationDto } from '@autoservice/contracts';
 
 import type {
-  ServiceLeanDocument,
+  ServicesWithRelationsLeanDocument,
   ServiceTranslationPersistence,
 } from './service.model.js';
+import { toSpecializationDto } from '../specializations/specialization.mapper.js';
+import { toWorkDirectionDto } from '../work-directions/work-direction.mapper.js';
 
 function toServiceTranslationDto(
   translation: ServiceTranslationPersistence,
@@ -15,17 +17,15 @@ function toServiceTranslationDto(
 }
 
 export function toServiceDto(
-  serviceLeanDocument: ServiceLeanDocument,
+  serviceLeanDocument: ServicesWithRelationsLeanDocument,
 ): ServiceDto {
   return {
     _id: serviceLeanDocument._id.toString(),
     slug: serviceLeanDocument.slug,
-    specializationIds: serviceLeanDocument.specializationIds.map(
-      (specializationId) => specializationId.toString(),
-    ),
-    workDirectionIds: serviceLeanDocument.workDirectionIds.map(
-      (workDirectionId) => workDirectionId.toString(),
-    ),
+    specializationIds:
+      serviceLeanDocument.specializationIds.map(toSpecializationDto),
+    workDirectionIds:
+      serviceLeanDocument.workDirectionIds.map(toWorkDirectionDto),
     category: serviceLeanDocument.category,
     iconKey: serviceLeanDocument.iconKey,
     featured: serviceLeanDocument.featured,

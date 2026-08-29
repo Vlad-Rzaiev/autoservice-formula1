@@ -1,5 +1,7 @@
 import type { ServiceLocale } from '../common/locale.js';
 import { IconKey } from '../lib/constants.js';
+import { SpecializationDto } from '../specializations/specialization.dto.js';
+import { WorkDirectionDto } from '../work-directions/work-direction.dto.js';
 import type { ServiceCategory } from './service.constants.js';
 
 export interface ServiceTranslationDto {
@@ -10,8 +12,8 @@ export interface ServiceTranslationDto {
 export interface ServiceDto {
   _id: string;
   slug: string;
-  specializationIds: string[];
-  workDirectionIds: string[];
+  specializationIds: SpecializationDto[];
+  workDirectionIds: WorkDirectionDto[];
   category: ServiceCategory;
   iconKey: IconKey;
   featured: boolean;

@@ -22,13 +22,12 @@ interface GetServiceParams {
 
 export const getServicesController: RequestHandler = async (_req, res) => {
   const services = await getAllServices();
-  const serviceDtos = services.map(toServiceDto);
 
   const responseBody: ServicesResponse = {
     status: 200,
     success: true,
     message: 'Successfully found services.',
-    data: serviceDtos,
+    data: services,
   };
 
   res.status(responseBody.status).json(responseBody);
@@ -50,7 +49,7 @@ export const getServiceBySlugController: RequestHandler<
     status: 200,
     success: true,
     message: `Successfully found service with slug ${serviceSlug}.`,
-    data: toServiceDto(service),
+    data: service,
   };
 
   res.status(responseBody.status).json(responseBody);
