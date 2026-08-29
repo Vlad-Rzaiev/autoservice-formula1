@@ -1,4 +1,10 @@
-import { MechanicCollection } from './specialist.model.js';
+import { SpecializationLeanDocument } from '../specializations/specialization.model.js';
+import { WorkDirectionLeanDocument } from '../work-directions/work-direction.model.js';
+import { toMechanicDto } from './specialist.mapper.js';
+import {
+  MechanicCollection,
+  MechanicWithRelationsLeanDocument,
+} from './specialist.model.js';
 
 export const getAllMechanics = async () => {
   const mechanics = await MechanicCollection.find({
@@ -7,10 +13,12 @@ export const getAllMechanics = async () => {
     .sort({
       sortOrder: 1,
     })
-    .lean()
+    .populate<SpecializationLeanDocument[]>('specializations')
+    .populate<WorkDirectionLeanDocument[]>('workDirections')
+    .lean<MechanicWithRelationsLeanDocument[]>()
     .exec();
 
-  return mechanics;
+  return mechanics.map(toMechanicDto);
 };
 
 export const getMechanicById = async (id: string) => {
@@ -18,8 +26,10 @@ export const getMechanicById = async (id: string) => {
     _id: id,
     isActive: true,
   })
-    .lean()
+    .populate<SpecializationLeanDocument[]>('specializations')
+    .populate<WorkDirectionLeanDocument[]>('workDirections')
+    .lean<MechanicWithRelationsLeanDocument>()
     .exec();
 
-  return mechanic;
+  return mechanic ? toMechanicDto(mechanic) : null;
 };

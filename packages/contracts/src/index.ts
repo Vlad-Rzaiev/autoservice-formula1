@@ -86,7 +86,7 @@ export type {
 } from './specialists/specialist.responses.js';
 
 export type {
-  SpecializationsDto,
+  SpecializationDto,
   SpecializationTranslationDto,
 } from './specializations/specialization.dto.js';
 

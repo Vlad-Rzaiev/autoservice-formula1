@@ -1,4 +1,6 @@
 import { AppLocale } from '../common/locale.js';
+import { SpecializationDto } from '../specializations/specialization.dto.js';
+import { WorkDirectionDto } from '../work-directions/work-direction.dto.js';
 
 export interface MechanicNameDto {
   firstName: string;
@@ -24,8 +26,8 @@ export interface MechanicDto {
   photo: {
     url: string | null;
   };
-  specializationIds: string[];
-  workDirectionIds: string[];
+  specializations: SpecializationDto[];
+  workDirections: WorkDirectionDto[];
   translations: Record<AppLocale, MechanicTranslationDto>;
   experienceYears: number;
   certificates: MechanicCertificateDto[];

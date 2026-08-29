@@ -5,7 +5,7 @@ export interface SpecializationTranslationDto {
   description: string;
 }
 
-export interface SpecializationsDto {
+export interface SpecializationDto {
   _id: string;
   slug: string;
   translations: Record<AppLocale, SpecializationTranslationDto>;

@@ -2,6 +2,8 @@ import { z } from 'zod';
 import { supportedLocales } from '../common/locale.js';
 import { MechanicDto } from './specialist.dto.js';
 import { mongoObjectIdSchema } from '../common/mongo.schemas.js';
+import { specializationDtoSchema } from '../specializations/specialization.schemas.js';
+import { workDirectionDtoSchema } from '../work-directions/work-direction.schemas.js';
 
 const mechanicNameDtoSchema = z.object({
   firstName: z.string().trim().min(1),
@@ -27,8 +29,8 @@ export const mechanicDtoSchema = z.object({
   photo: z.object({
     url: z.string().min(1).nullable(),
   }),
-  specializationIds: z.array(z.string().min(1)),
-  workDirectionIds: z.array(z.string().min(1)),
+  specializations: z.array(specializationDtoSchema),
+  workDirections: z.array(workDirectionDtoSchema),
   translations: z.record(
     z.enum(supportedLocales),
     mechanicTranslationDtoSchema,

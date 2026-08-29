@@ -4,6 +4,9 @@ export const getAllWorkDirections = async () => {
   const workDirections = await WorkDirectionCollection.find({
     isActive: true,
   })
+    .sort({
+      sortOrder: 1,
+    })
     .lean()
     .exec();
 
