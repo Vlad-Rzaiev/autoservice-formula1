@@ -1,5 +1,5 @@
 import {
-  SpecializationsDto,
+  SpecializationDto,
   SpecializationTranslationDto,
 } from '@autoservice/contracts';
 import {
@@ -18,7 +18,7 @@ function toSpecializationTranslationDto(
 
 export function toSpecializationDto(
   specializationLeanDocument: SpecializationLeanDocument,
-): SpecializationsDto {
+): SpecializationDto {
   return {
     _id: specializationLeanDocument._id.toString(),
     slug: specializationLeanDocument.slug,

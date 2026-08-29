@@ -4,6 +4,9 @@ export const getAllSpecializations = async () => {
   const specializations = await SpecializationCollection.find({
     isActive: true,
   })
+    .sort({
+      sortOrder: 1,
+    })
     .lean()
     .exec();
 

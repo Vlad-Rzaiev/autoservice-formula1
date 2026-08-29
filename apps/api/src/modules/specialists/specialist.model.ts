@@ -1,5 +1,7 @@
 import { model, Schema, type Types } from 'mongoose';
 import type { AppLocale } from '@autoservice/contracts';
+import { SpecializationLeanDocument } from '../specializations/specialization.model.js';
+import { WorkDirectionLeanDocument } from '../work-directions/work-direction.model.js';
 
 export interface MechanicNamePersistence {
   firstName: string;
@@ -24,8 +26,8 @@ export interface MechanicPersistence {
   photo: {
     url: string | null;
   };
-  specializationIds: Types.ObjectId[];
-  workDirectionIds: Types.ObjectId[];
+  specializations: Types.ObjectId[];
+  workDirections: Types.ObjectId[];
   translations: Record<AppLocale, MechanicTranslationsPersistence>;
   experienceYears: number;
   certificates: MechanicCertificatesPersistence[];
@@ -43,6 +45,14 @@ export type MechanicDocumentData = MechanicPersistence & MechanicTimestamps;
 
 export type MechanicLeanDocument = MechanicDocumentData & {
   _id: Types.ObjectId;
+};
+
+export type MechanicWithRelationsLeanDocument = Omit<
+  MechanicLeanDocument,
+  'specializations' | 'workDirections'
+> & {
+  specializations: SpecializationLeanDocument[];
+  workDirections: WorkDirectionLeanDocument[];
 };
 
 const nameSchema = new Schema(
@@ -160,11 +170,11 @@ const specialistSchema = new Schema<MechanicDocumentData>(
         default: null,
       },
     },
-    specializationIds: {
+    specializations: {
       type: [Schema.Types.ObjectId],
       ref: 'specializations',
     },
-    workDirectionIds: {
+    workDirections: {
       type: [Schema.Types.ObjectId],
       ref: 'work-directions',
     },

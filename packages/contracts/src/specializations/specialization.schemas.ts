@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import { supportedLocales } from '../common/locale.js';
-import { SpecializationsDto } from './specialization.dto.js';
+import { SpecializationDto } from './specialization.dto.js';
 import { mongoObjectIdSchema } from '../common/mongo.schemas.js';
 
 export const specializationTranslationDtoSchema = z.object({
@@ -19,7 +19,7 @@ export const specializationDtoSchema = z.object({
   sortOrder: z.number().int().positive(),
   createdAt: z.string().datetime(),
   updatedAt: z.string().datetime(),
-}) satisfies z.ZodType<SpecializationsDto>;
+}) satisfies z.ZodType<SpecializationDto>;
 
 export const getSpecializationByIdSchema = z.object({
   specializationId: mongoObjectIdSchema,

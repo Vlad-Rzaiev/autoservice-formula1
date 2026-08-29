@@ -1,6 +1,6 @@
 import { ApiResponse } from '../common/api-response.js';
-import { SpecializationsDto } from './specialization.dto.js';
+import { SpecializationDto } from './specialization.dto.js';
 
-export type SpecializationsResponse = ApiResponse<SpecializationsDto[]>;
+export type SpecializationsResponse = ApiResponse<SpecializationDto[]>;
 
-export type SpecializationResponse = ApiResponse<SpecializationsDto>;
+export type SpecializationResponse = ApiResponse<SpecializationDto>;

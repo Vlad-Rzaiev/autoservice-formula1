@@ -9,8 +9,10 @@ import {
   MechanicNamePersistence,
   MechanicTranslationsPersistence,
   MechanicCertificatesPersistence,
-  MechanicLeanDocument,
+  MechanicWithRelationsLeanDocument,
 } from './specialist.model.js';
+import { toSpecializationDto } from '../specializations/specialization.mapper.js';
+import { toWorkDirectionDto } from '../work-directions/work-direction.mapper.js';
 
 function toMechanicNameDto(
   mechanicName: MechanicNamePersistence,
@@ -43,7 +45,7 @@ function toMechanicCertificateDto(
 }
 
 export function toMechanicDto(
-  mechanicLeanDocument: MechanicLeanDocument,
+  mechanicLeanDocument: MechanicWithRelationsLeanDocument,
 ): MechanicDto {
   return {
     _id: mechanicLeanDocument._id.toString(),
@@ -55,12 +57,9 @@ export function toMechanicDto(
     photo: {
       url: mechanicLeanDocument.photo.url,
     },
-    specializationIds: mechanicLeanDocument.specializationIds.map(
-      (specializationId) => specializationId.toString(),
-    ),
-    workDirectionIds: mechanicLeanDocument.workDirectionIds.map(
-      (workDirectionId) => workDirectionId.toString(),
-    ),
+    specializations:
+      mechanicLeanDocument.specializations.map(toSpecializationDto),
+    workDirections: mechanicLeanDocument.workDirections.map(toWorkDirectionDto),
     translations: {
       uk: toMechanicTranslationDto(mechanicLeanDocument.translations.uk),
       en: toMechanicTranslationDto(mechanicLeanDocument.translations.en),

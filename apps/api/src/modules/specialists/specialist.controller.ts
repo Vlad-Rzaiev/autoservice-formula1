@@ -1,6 +1,5 @@
 import { RequestHandler } from 'express';
 import { MechanicResponse, MechanicsResponse } from '@autoservice/contracts';
-import { toMechanicDto } from './specialist.mapper.js';
 import { getAllMechanics, getMechanicById } from './specialist.service.js';
 import createHttpError from 'http-errors';
 
@@ -10,13 +9,12 @@ interface GetMechanicParams {
 
 export const getMechanicsController: RequestHandler = async (_req, res) => {
   const mechanics = await getAllMechanics();
-  const mechanicsDtos = mechanics.map(toMechanicDto);
 
   const responseBody: MechanicsResponse = {
     status: 200,
     success: true,
     message: 'Successfully found mechanics.',
-    data: mechanicsDtos,
+    data: mechanics,
   };
 
   res.status(responseBody.status).json(responseBody);
@@ -38,7 +36,7 @@ export const getMechanicByIdController: RequestHandler<
     status: 200,
     success: true,
     message: `Successfully found mechanic with id ${mechanicId}.`,
-    data: toMechanicDto(mechanic),
+    data: mechanic,
   };
 
   res.status(responseBody.status).json(responseBody);
