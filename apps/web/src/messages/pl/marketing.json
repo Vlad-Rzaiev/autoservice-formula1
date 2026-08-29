@@ -181,6 +181,12 @@
       "retry": "Spróbuj ponownie",
       "empty-title": "Obecnie nie ma dostępnych mechaników",
       "empty-description": "Aktualizujemy listę mechaników. Sprawdź tę stronę ponownie nieco później."
+    },
+
+    "mechanic": {
+      "yearsOfExperience": "lat doświadczenia",
+      "certifications": "Certyfikaty",
+      "profile": "Profil"
     }
   },
 

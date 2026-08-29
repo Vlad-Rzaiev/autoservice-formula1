@@ -178,6 +178,12 @@
       "retry": "Try again",
       "empty-title": "No mechanics are currently available",
       "empty-description": "We are updating our list of mechanics. Please check this page again later."
+    },
+
+    "mechanic": {
+      "yearsOfExperience": "years of experience",
+      "certifications": "Certifications",
+      "profile": "Profile"
     }
   },
 
