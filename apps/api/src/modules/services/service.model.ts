@@ -7,6 +7,8 @@ import {
   type ServiceCategory,
   type ServiceLocale,
 } from '@autoservice/contracts';
+import { SpecializationLeanDocument } from '../specializations/specialization.model.js';
+import { WorkDirectionLeanDocument } from '../work-directions/work-direction.model.js';
 
 export interface ServiceTranslationPersistence {
   title: string;
@@ -34,6 +36,14 @@ export type ServiceDocumentData = ServicePersistence & ServiceTimestamps;
 
 export type ServiceLeanDocument = ServiceDocumentData & {
   _id: Types.ObjectId;
+};
+
+export type ServicesWithRelationsLeanDocument = Omit<
+  ServiceLeanDocument,
+  'specializationIds' | 'workDirectionIds'
+> & {
+  specializationIds: SpecializationLeanDocument[];
+  workDirectionIds: WorkDirectionLeanDocument[];
 };
 
 const serviceTranslationSchema = new Schema(
