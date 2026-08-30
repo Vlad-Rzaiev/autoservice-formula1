@@ -1,20 +1,46 @@
-import { getTranslations } from 'next-intl/server';
-import { DevelopmentPlaceholder } from '@/components/common';
+import type { Metadata } from 'next';
 import { Section, Container } from '@/components/layout';
-import { routes } from '@/config';
+import {
+  createSpecialistsMetadata,
+  mechanicsQueryOptions,
+  SpecialistsCatalogContainer,
+} from '@/features/marketing';
+import { isAppLocale } from '@/i18n/locale-config';
+import { notFound } from 'next/navigation';
+import {
+  dehydrate,
+  HydrationBoundary,
+  QueryClient,
+} from '@tanstack/react-query';
+
+export interface SpecialistsPageProps {
+  params: Promise<{
+    locale: string;
+  }>;
+}
+
+export async function generateMetadata({
+  params,
+}: SpecialistsPageProps): Promise<Metadata> {
+  const { locale } = await params;
+
+  if (!isAppLocale(locale)) {
+    notFound();
+  }
+
+  return createSpecialistsMetadata({ locale });
+}
 
 export default async function SpecialistsPage() {
-  const t = await getTranslations('specialists');
+  const queryClient = new QueryClient();
+  await queryClient.prefetchQuery(mechanicsQueryOptions);
 
   return (
     <Section>
       <Container>
-        <DevelopmentPlaceholder
-          title={t('title')}
-          description={t('dev')}
-          linkHref={routes.marketing.home}
-          linkText={t('back-to-main')}
-        />
+        <HydrationBoundary state={dehydrate(queryClient)}>
+          <SpecialistsCatalogContainer />
+        </HydrationBoundary>
       </Container>
     </Section>
   );
