@@ -1,6 +1,7 @@
 {
   "allServices": {
     "title": "Wszystkie usługi",
+
     "hero": {
       "eyebrow": "Usługi serwisu samochodowego",
       "title": "Kompleksowa <accent>obsługa techniczna</accent> i naprawa",
@@ -15,6 +16,7 @@
         "warranty": "Udzielamy gwarancji na wykonane prace"
       }
     },
+
     "cta": {
       "eyebrow": "Potrzebujesz pomocy mechanika?",
       "title": "Nie wiesz, jakiej usługi potrzebujesz?",
@@ -28,6 +30,7 @@
       }
     }
   },
+
   "servicePage": {
     "dev": "W trakcie tworzenia...",
     "title": "Strona usługi",
@@ -39,6 +42,61 @@
     "empty-description": "Aktualizujemy listę usług. Sprawdź tę stronę ponownie nieco później.",
     "not-found-title": "Nie znaleziono usługi",
     "not-found-description": "Usługa mogła zostać usunięta lub ten link nie jest już aktualny.",
-    "back-to-services": "Wróć do usług"
+    "back-to-services": "Wróć do usług",
+
+    "hero": {
+      "eyebrow": "Profesjonalny serwis samochodowy",
+      "booking": "Umów wizytę",
+      "call": "Zadzwoń do nas"
+    },
+
+    "directions": {
+      "title": "Zakres usług",
+      "description": "Wykonujemy prace w głównych obszarach związanych z daną usługą, uwzględniając stan techniczny samochodu."
+    },
+
+    "specialists": {
+      "title": "Specjaliści w swojej dziedzinie",
+      "description": "Twój samochód jest obsługiwany przez specjalistów posiadających odpowiednie doświadczenie."
+    },
+
+    "process": {
+      "title": "Jak wygląda obsługa",
+      "step1": {
+        "title": "Diagnostyka",
+        "description": "Sprawdzamy samochód i ustalamy przyczynę usterki lub zakres niezbędnych prac."
+      },
+
+      "step2": {
+        "title": "Zalecenia",
+        "description": "Wyjaśniamy wyniki kontroli i uzgadniamy dalszy zakres prac."
+      },
+
+      "step3": {
+        "title": "Wykonanie prac",
+        "description": "Wykonujemy uzgodnione prace przy użyciu odpowiedniego wyposażenia i wysokiej jakości części."
+      },
+
+      "step4": {
+        "title": "Kontrola końcowa",
+        "description": "Sprawdzamy efekt wykonanych prac przed przekazaniem samochodu klientowi."
+      }
+    },
+
+    "benefits": {
+      "title": "Dlaczego warto nas wybrać",
+      "diagnostics": "Dokładne wykrywanie usterek",
+      "specialists": "Specjaliści w swojej dziedzinie",
+      "equipment": "Nowoczesne wyposażenie diagnostyczne i serwisowe",
+      "transparency": "Zakres prac uzgadniamy przed ich wykonaniem"
+    },
+
+    "cta": {
+      "eyebrow": "Potrzebujesz serwisu?",
+      "title": "Umów serwis swojego samochodu",
+      "description": "Wyślij zgłoszenie lub zadzwoń do nas, aby ustalić dogodny termin wizyty.",
+      "booking": "Umów wizytę",
+      "call": "Zadzwoń"
+    }
   }
 }

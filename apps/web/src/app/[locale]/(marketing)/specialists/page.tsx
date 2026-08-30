@@ -7,7 +7,7 @@ export default async function SpecialistsPage() {
   const t = await getTranslations('specialists');
 
   return (
-    <Section noTopPadding>
+    <Section>
       <Container>
         <DevelopmentPlaceholder
           title={t('title')}
