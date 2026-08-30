@@ -38,6 +38,8 @@ export { default as MarketingServices } from './components/marketing-services';
 export { default as MarketingSpecialists } from './components/marketing-specialists';
 export { default as MarketingWarranty } from './components/marketing-warranty';
 export { default as SpecialistsCatalogContainer } from './specialists/components/specialists-catalog-container';
+export { default as SpecialistsHero } from './specialists/components/specialists-hero';
+export { default as ServiceCta } from './services/components/service-cta';
 
 export { createSpecialistsMetadata } from './specialists/server/create-specialists-metadata';
 

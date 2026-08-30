@@ -3,7 +3,9 @@ import { Section, Container } from '@/components/layout';
 import {
   createSpecialistsMetadata,
   mechanicsQueryOptions,
+  ServiceCta,
   SpecialistsCatalogContainer,
+  SpecialistsHero,
 } from '@/features/marketing';
 import { isAppLocale } from '@/i18n/locale-config';
 import { notFound } from 'next/navigation';
@@ -36,12 +38,18 @@ export default async function SpecialistsPage() {
   await queryClient.prefetchQuery(mechanicsQueryOptions);
 
   return (
-    <Section>
-      <Container>
-        <HydrationBoundary state={dehydrate(queryClient)}>
-          <SpecialistsCatalogContainer />
-        </HydrationBoundary>
-      </Container>
-    </Section>
+    <>
+      <SpecialistsHero />
+
+      <Section noTopPadding>
+        <Container>
+          <HydrationBoundary state={dehydrate(queryClient)}>
+            <SpecialistsCatalogContainer />
+          </HydrationBoundary>
+        </Container>
+      </Section>
+
+      <ServiceCta />
+    </>
   );
 }

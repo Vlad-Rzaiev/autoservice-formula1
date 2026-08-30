@@ -184,6 +184,24 @@
       "yearsOfExperience": "years of experience",
       "certifications": "Certifications",
       "profile": "Profile"
+    },
+
+    "hero": {
+      "eyebrow": "Our Team",
+      "title": "Professionals You Can Trust With Your Vehicle",
+      "description": "Experienced specialists in vehicle diagnostics, repair, and maintenance. Each member of our team has their own area of expertise and continuously develops their professional skills.",
+      "certificated": "Certified Specialists",
+      "experience": "Professional Experience",
+      "equipment": "Modern Equipment",
+      "specialization": "15+ Specializations",
+      "workDirection": "10+ Areas of Expertise",
+      "averageExperience": "8+ Years of Average Experience"
+    },
+
+    "cta": {
+      "title": "Not sure which specialist to contact?",
+      "description": "Describe the problem with your vehicle — we'll help determine the type of diagnostics you need and select the right specialist.",
+      "booking": "Book a Diagnostic Appointment"
     }
   },
 

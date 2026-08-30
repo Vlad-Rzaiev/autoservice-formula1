@@ -187,6 +187,23 @@
       "yearsOfExperience": "lat doświadczenia",
       "certifications": "Certyfikaty",
       "profile": "Profil"
+    },
+
+    "hero": {
+      "eyebrow": "Nasz zespół",
+      "title": "Profesjonaliści, którym możesz powierzyć swój samochód",
+      "description": "Doświadczeni specjaliści w zakresie diagnostyki, naprawy i obsługi technicznej samochodów. Każdy członek naszego zespołu ma swoją specjalizację i stale rozwija swoje umiejętności zawodowe.",
+      "certificated": "Certyfikowani specjaliści",
+      "experience": "Doświadczenie zawodowe",
+      "equipment": "Nowoczesne wyposażenie",
+      "specialization": "15+ specjalizacji",
+      "workDirection": "10+ obszarów pracy",
+      "averangeExperience": "8+ lat średniego doświadczenia"
+    },
+    "cta": {
+      "title": "Nie wiesz, do którego specjalisty się zgłosić?",
+      "description": "Opisz problem z samochodem — pomożemy określić potrzebny rodzaj diagnostyki i dobierzemy odpowiedniego specjalistę.",
+      "booking": "Umów się na diagnostykę"
     }
   },
 
