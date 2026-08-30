@@ -37,3 +37,12 @@ export { default as MarketingReviews } from './components/marketing-reviews';
 export { default as MarketingServices } from './components/marketing-services';
 export { default as MarketingSpecialists } from './components/marketing-specialists';
 export { default as MarketingWarranty } from './components/marketing-warranty';
+export { default as SpecialistsCatalogContainer } from './specialists/components/specialists-catalog-container';
+
+export { createSpecialistsMetadata } from './specialists/server/create-specialists-metadata';
+
+export {
+  mechanicsQueryKeys,
+  mechanicsQueryOptions,
+  mechanicByIdQueryOptions,
+} from './specialists/api/specialists-query-options';

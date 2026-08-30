@@ -4,7 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import {
   mechanicByIdQueryOptions,
   mechanicsQueryOptions,
-} from './mechanics-query-options';
+} from './specialists-query-options';
 import {
   selectActiveMechanics,
   selectFeaturedMechanics,
