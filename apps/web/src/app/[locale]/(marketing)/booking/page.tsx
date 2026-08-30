@@ -7,7 +7,7 @@ export default async function BookingPage() {
   const t = await getTranslations('booking');
 
   return (
-    <Section noTopPadding>
+    <Section>
       <Container>
         <DevelopmentPlaceholder
           title={t('title')}

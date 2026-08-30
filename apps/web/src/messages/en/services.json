@@ -1,6 +1,7 @@
 {
   "allServices": {
     "title": "All Services",
+
     "hero": {
       "eyebrow": "Auto Repair Services",
       "title": "Complete <accent>vehicle maintenance</accent> and repair",
@@ -15,6 +16,7 @@
         "warranty": "We provide a warranty on completed work"
       }
     },
+
     "cta": {
       "eyebrow": "Need help from a technician?",
       "title": "Not sure which service you need?",
@@ -39,6 +41,61 @@
     "empty-description": "We are updating our list of services. Please check this page again later.",
     "not-found-title": "Service not found",
     "not-found-description": "The service may have been removed or this link is no longer valid.",
-    "back-to-services": "Back to services"
+    "back-to-services": "Back to services",
+
+    "hero": {
+      "eyebrow": "Professional auto service",
+      "booking": "Book a service",
+      "call": "Call us"
+    },
+
+    "directions": {
+      "title": "What we do",
+      "description": "We provide services in the main areas related to this service, taking into account the technical condition of your vehicle."
+    },
+
+    "specialists": {
+      "title": "Specialized specialists",
+      "description": "Your vehicle is serviced by specialists with the appropriate expertise."
+    },
+
+    "process": {
+      "title": "How the service works",
+      "step1": {
+        "title": "Diagnostics",
+        "description": "We inspect the vehicle and determine the cause of the problem or the scope of the required work."
+      },
+
+      "step2": {
+        "title": "Recommendations",
+        "description": "We explain the inspection results and agree on the next steps."
+      },
+
+      "step3": {
+        "title": "Service work",
+        "description": "We carry out the agreed work using appropriate equipment and quality components."
+      },
+
+      "step4": {
+        "title": "Final check",
+        "description": "We verify the result of the completed work before returning the vehicle to the customer."
+      }
+    },
+
+    "benefits": {
+      "title": "Why choose us",
+      "diagnostics": "Accurate fault identification",
+      "specialists": "Specialized technicians",
+      "equipment": "Modern diagnostic and service equipment",
+      "transparency": "Work is agreed before it is performed"
+    },
+
+    "cta": {
+      "eyebrow": "Need a service?",
+      "title": "Book your vehicle service",
+      "description": "Send a request or call us to arrange a convenient time for your visit.",
+      "booking": "Book now",
+      "call": "Call us"
+    }
   }
 }

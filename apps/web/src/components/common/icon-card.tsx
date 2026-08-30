@@ -14,7 +14,7 @@ import { cn } from '@/lib/utils';
 export type IconCardProps = ComponentPropsWithoutRef<typeof Card> & {
   icon: IconProp;
   title: ReactNode;
-  description: ReactNode;
+  description?: ReactNode;
   steps?: string;
   footer?: ReactNode;
   iconClassName?: string;

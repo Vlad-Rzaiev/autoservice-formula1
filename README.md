@@ -15,7 +15,7 @@ The project is organized as an **npm workspaces monorepo** with separate fronten
 ### Currently implemented
 
 - multilingual public website
-- Ukrainian, English, and Polish locales
+- Polish, English, and Ukrainian locales
 - responsive marketing pages
 - reusable UI component architecture
 - light and dark themes
