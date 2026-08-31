@@ -15,14 +15,14 @@ export async function createMechanicsMetadata({
   });
 
   return {
-    title: `${translation('specialists.all-mechanics')} | ${translation('title')}`,
+    title: `${translation('mechanics.all-mechanics')} | ${translation('title')}`,
 
     openGraph: {
-      title: `${translation('specialists.all-mechanics')} | ${translation('title')}`,
+      title: `${translation('mechanics.all-mechanics')} | ${translation('title')}`,
     },
 
     twitter: {
-      title: `${translation('specialists.all-mechanics')} | ${translation('title')}`,
+      title: `${translation('mechanics.all-mechanics')} | ${translation('title')}`,
     },
   };
 }

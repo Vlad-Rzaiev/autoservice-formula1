@@ -42,6 +42,9 @@ export { default as MechanicsHero } from './mechanics/components/mechanics-hero'
 export { default as ServiceCta } from './services/components/service-cta';
 
 export { createMechanicsMetadata } from './mechanics/server/create-mechanics-metadata';
+export { createMechanicMetadata } from './mechanics/server/create-mechanic-metadata';
+
+export { getMechanicOr404 } from './mechanics/server/get-mechanic-or-404';
 
 export {
   mechanicsQueryKeys,
