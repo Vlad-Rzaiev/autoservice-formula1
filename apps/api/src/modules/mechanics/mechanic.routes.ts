@@ -5,7 +5,7 @@ import { ctrlWrapper } from '../../utils/ctrlWrapper.js';
 import {
   getMechanicByIdController,
   getMechanicsController,
-} from './specialist.controller.js';
+} from './mechanic.controller.js';
 
 const router = Router();
 

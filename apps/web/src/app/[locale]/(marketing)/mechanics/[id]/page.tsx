@@ -5,6 +5,8 @@ export interface MechanicPageProps {
   }>;
 }
 
+export async function createMetadata() {}
+
 export default async function MechanicPage({ params }: MechanicPageProps) {
   const { id } = await params;
 

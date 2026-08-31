@@ -1,6 +1,6 @@
 import { RequestHandler } from 'express';
 import { MechanicResponse, MechanicsResponse } from '@autoservice/contracts';
-import { getAllMechanics, getMechanicById } from './specialist.service.js';
+import { getAllMechanics, getMechanicById } from './mechanic.service.js';
 import createHttpError from 'http-errors';
 
 interface GetMechanicParams {

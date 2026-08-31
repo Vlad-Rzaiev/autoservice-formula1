@@ -1,10 +1,10 @@
 import { SpecializationLeanDocument } from '../specializations/specialization.model.js';
 import { WorkDirectionLeanDocument } from '../work-directions/work-direction.model.js';
-import { toMechanicDto } from './specialist.mapper.js';
+import { toMechanicDto } from './mechanic.mapper.js';
 import {
   MechanicCollection,
   MechanicWithRelationsLeanDocument,
-} from './specialist.model.js';
+} from './mechanic.model.js';
 
 export const getAllMechanics = async () => {
   const mechanics = await MechanicCollection.find({

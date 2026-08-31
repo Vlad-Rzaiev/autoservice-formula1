@@ -3,7 +3,7 @@ import { faAward, faUsers } from '@fortawesome/free-solid-svg-icons';
 import { Container, Section } from '@/components/layout';
 import { useTranslations } from 'next-intl';
 
-export default function SpecialistsHero() {
+export default function MechanicsHero() {
   const t = useTranslations('marketing.specialists.hero');
   return (
     <Section noTopPadding>

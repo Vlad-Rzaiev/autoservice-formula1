@@ -158,7 +158,7 @@ const certificatesSchema = new Schema(
   },
 );
 
-const specialistSchema = new Schema<MechanicDocumentData>(
+const mechanicSchema = new Schema<MechanicDocumentData>(
   {
     name: {
       type: nameTranslationsSchema,
@@ -214,5 +214,5 @@ const specialistSchema = new Schema<MechanicDocumentData>(
 
 export const MechanicCollection = model<MechanicDocumentData>(
   'mechanics',
-  specialistSchema,
+  mechanicSchema,
 );

@@ -35,16 +35,16 @@ export { default as MarketingDiagnostics } from './components/diagnostics/market
 export { default as MarketingRepairProcess } from './components/marketing-repair-process';
 export { default as MarketingReviews } from './components/marketing-reviews';
 export { default as MarketingServices } from './components/marketing-services';
-export { default as MarketingSpecialists } from './components/marketing-specialists';
+export { default as MarketingMechanics } from './components/marketing-mechanics';
 export { default as MarketingWarranty } from './components/marketing-warranty';
-export { default as SpecialistsCatalogContainer } from './specialists/components/specialists-catalog-container';
-export { default as SpecialistsHero } from './specialists/components/specialists-hero';
+export { default as MechanicsCatalogContainer } from './mechanics/components/mechanics-catalog-container';
+export { default as MechanicsHero } from './mechanics/components/mechanics-hero';
 export { default as ServiceCta } from './services/components/service-cta';
 
-export { createSpecialistsMetadata } from './specialists/server/create-specialists-metadata';
+export { createMechanicsMetadata } from './mechanics/server/create-mechanics-metadata';
 
 export {
   mechanicsQueryKeys,
   mechanicsQueryOptions,
   mechanicByIdQueryOptions,
-} from './specialists/api/specialists-query-options';
+} from './mechanics/api/mechanics-query-options';

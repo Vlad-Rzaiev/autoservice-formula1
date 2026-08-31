@@ -22,11 +22,11 @@ import {
 import { ButtonLink } from '@/components/common';
 import { routes } from '@/config';
 
-export interface SpecialistCardProps {
+export interface MechanicCardProps {
   mechanic: MechanicDto;
 }
 
-export default function SpecialistCard({ mechanic }: SpecialistCardProps) {
+export default function MechanicCard({ mechanic }: MechanicCardProps) {
   const t = useTranslations('marketing.specialists.mechanic');
   const locale = useLocale();
   const currentLocale: AppLocale = isAppLocale(locale) ? locale : defaultLocale;
@@ -101,7 +101,7 @@ export default function SpecialistCard({ mechanic }: SpecialistCardProps) {
 
       <CardFooter>
         <ButtonLink
-          href={routes.marketing.specialist(mechanic._id)}
+          href={routes.marketing.mechanic(mechanic._id)}
           variant="iconSurface"
           className="ml-auto"
         >

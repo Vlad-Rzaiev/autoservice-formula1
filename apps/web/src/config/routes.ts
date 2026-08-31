@@ -4,8 +4,8 @@ export const routes = {
     booking: '/booking',
     services: '/services',
     service: (slug: string) => `/services/${encodeURIComponent(slug)}`,
-    specialists: '/specialists',
-    specialist: (id: string) => `/specialists/${encodeURIComponent(id)}`,
+    mechanics: '/mechanics',
+    mechanic: (id: string) => `/mechanics/${encodeURIComponent(id)}`,
   },
 
   auth: {

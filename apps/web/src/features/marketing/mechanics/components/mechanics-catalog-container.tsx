@@ -2,10 +2,10 @@
 
 import { useTranslations } from 'next-intl';
 import { useMechanics } from '../api/use-mechanics';
-import SpecialistsCatalog from './specialists-catalog';
+import MechanicsCatalog from './mechanics-catalog';
 import { SectionTitle } from '@/components/layout';
 
-export default function SpecialistsCatalogContainer() {
+export default function MechanicsCatalogContainer() {
   const t = useTranslations('marketing.specialists');
 
   const {
@@ -20,7 +20,7 @@ export default function SpecialistsCatalogContainer() {
     <>
       <SectionTitle className="sr-only">{t('title')}</SectionTitle>
 
-      <SpecialistsCatalog
+      <MechanicsCatalog
         mechanics={mechanics}
         isPending={isPending}
         isError={isError}
