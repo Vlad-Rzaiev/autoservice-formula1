@@ -2,13 +2,13 @@ import { Metadata } from 'next';
 import { AppLocale } from '@autoservice/contracts';
 import { getTranslations } from 'next-intl/server';
 
-interface CreateSpecialistsMetadataParams {
+interface CreateMechanicsMetadataParams {
   locale: AppLocale;
 }
 
-export async function createSpecialistsMetadata({
+export async function createMechanicsMetadata({
   locale,
-}: CreateSpecialistsMetadataParams): Promise<Metadata> {
+}: CreateMechanicsMetadataParams): Promise<Metadata> {
   const translation = await getTranslations({
     locale,
     namespace: 'metadata',

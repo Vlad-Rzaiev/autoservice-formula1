@@ -14,7 +14,7 @@ import { publicApiRateLimit } from './middleware/rate-limit.js';
 import healthRouter from './modules/health/health.routes.js';
 import servicesRouter from './modules/services/service.routes.js';
 import completedWorksRouter from './modules/completed-works/completed-works.routes.js';
-import mechanicsRouter from './modules/specialists/specialist.routes.js';
+import mechanicsRouter from './modules/mechanics/mechanic.routes.js';
 import specializationRouter from './modules/specializations/specialization.routes.js';
 import workDirectionRouter from './modules/work-directions/work-direction.routes.js';
 

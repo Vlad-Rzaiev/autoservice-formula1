@@ -3,13 +3,13 @@
 import { useTranslations } from 'next-intl';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
-import { useFeaturesMechanics } from '../specialists/api/use-mechanics';
+import { useFeaturesMechanics } from '../mechanics/api/use-mechanics';
 import { Section, Container, SectionHeader } from '@/components/layout';
-import SpecialistsCatalog from '../specialists/components/specialists-catalog';
+import SpecialistsCatalog from '../mechanics/components/mechanics-catalog';
 import { ButtonLink } from '@/components/common';
 import { routes } from '@/config';
 
-export default function MarketingSpecialists() {
+export default function MarketingMechanics() {
   const t = useTranslations('marketing.specialists');
 
   const {
@@ -41,10 +41,7 @@ export default function MarketingSpecialists() {
 
         {hasLoadedMechanics && (
           <div className="mt-10 flex justify-center md:mt-12">
-            <ButtonLink
-              href={routes.marketing.specialists}
-              variant="iconSurface"
-            >
+            <ButtonLink href={routes.marketing.mechanics} variant="iconSurface">
               {t('view-all')}
 
               <FontAwesomeIcon

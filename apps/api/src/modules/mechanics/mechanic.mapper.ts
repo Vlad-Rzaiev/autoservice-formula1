@@ -10,7 +10,7 @@ import {
   MechanicTranslationsPersistence,
   MechanicCertificatesPersistence,
   MechanicWithRelationsLeanDocument,
-} from './specialist.model.js';
+} from './mechanic.model.js';
 import { toSpecializationDto } from '../specializations/specialization.mapper.js';
 import { toWorkDirectionDto } from '../work-directions/work-direction.mapper.js';
 

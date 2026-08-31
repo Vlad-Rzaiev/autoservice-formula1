@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import { supportedLocales } from '../common/locale.js';
-import { MechanicDto } from './specialist.dto.js';
+import { MechanicDto } from './mechanic.dto.js';
 import { mongoObjectIdSchema } from '../common/mongo.schemas.js';
 import { specializationDtoSchema } from '../specializations/specialization.schemas.js';
 import { workDirectionDtoSchema } from '../work-directions/work-direction.schemas.js';

@@ -1,14 +1,14 @@
 import { CardGrid } from '@/components/common';
 
-import SpecialistCardSkeleton from './specialist-card-skeleton';
+import MechanicCardSkeleton from './mechanic-card-skeleton';
 
 const SERVICE_SKELETON_COUNT = 3;
 
-export default function SpecialistCatalogSkeleton() {
+export default function MechanicCatalogSkeleton() {
   return (
     <CardGrid columns="three" gap="large">
       {Array.from({ length: SERVICE_SKELETON_COUNT }, (_, index) => (
-        <SpecialistCardSkeleton key={index} />
+        <MechanicCardSkeleton key={index} />
       ))}
     </CardGrid>
   );

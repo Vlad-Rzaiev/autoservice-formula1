@@ -6,7 +6,7 @@ import {
   Skeleton,
 } from '@/components/ui';
 
-export default function SpecialistCardSkeleton() {
+export default function MechanicCardSkeleton() {
   return (
     <Card className="overflow-hidden shadow-sm">
       <div className="px-4">

@@ -7,7 +7,7 @@ import {
   MarketingRepairProcess,
   MarketingReviews,
   MarketingServices,
-  MarketingSpecialists,
+  MarketingMechanics,
   MarketingWarranty,
   MarketingWhyUs,
 } from '@/features/marketing';
@@ -20,7 +20,7 @@ export default function MarketingHome() {
       <MarketingServices />
       <MarketingDiagnostics />
       <MarketingCompletedWorks />
-      <MarketingSpecialists />
+      <MarketingMechanics />
       <MarketingRepairProcess />
       <MarketingWarranty />
       <MarketingReviews />

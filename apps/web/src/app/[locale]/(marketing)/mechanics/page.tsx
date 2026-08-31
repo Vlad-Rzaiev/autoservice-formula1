@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
 import { Section, Container } from '@/components/layout';
 import {
-  createSpecialistsMetadata,
+  createMechanicsMetadata,
   mechanicsQueryOptions,
   ServiceCta,
-  SpecialistsCatalogContainer,
-  SpecialistsHero,
+  MechanicsCatalogContainer,
+  MechanicsHero,
 } from '@/features/marketing';
 import { isAppLocale } from '@/i18n/locale-config';
 import { notFound } from 'next/navigation';
@@ -30,7 +30,7 @@ export async function generateMetadata({
     notFound();
   }
 
-  return createSpecialistsMetadata({ locale });
+  return createMechanicsMetadata({ locale });
 }
 
 export default async function SpecialistsPage() {
@@ -39,12 +39,12 @@ export default async function SpecialistsPage() {
 
   return (
     <>
-      <SpecialistsHero />
+      <MechanicsHero />
 
       <Section noTopPadding>
         <Container>
           <HydrationBoundary state={dehydrate(queryClient)}>
-            <SpecialistsCatalogContainer />
+            <MechanicsCatalogContainer />
           </HydrationBoundary>
         </Container>
       </Section>

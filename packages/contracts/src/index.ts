@@ -66,24 +66,24 @@ export type {
   MechanicTranslationDto,
   MechanicCertificateDto,
   MechanicDto,
-} from './specialists/specialist.dto.js';
+} from './mechanics/mechanic.dto.js';
 
 export {
   mechanicDtoSchema,
   createMechanicSchema,
   getMechanicByIdSchema,
   type CreateMechanicInput,
-} from './specialists/specialist.schemas.js';
+} from './mechanics/mechanic.schemas.js';
 
 export {
   mechanicsResponseSchema,
   mechanicResponseSchema,
-} from './specialists/specialist-response.schemas.js';
+} from './mechanics/mechanic-response.schemas.js';
 
 export type {
   MechanicsResponse,
   MechanicResponse,
-} from './specialists/specialist.responses.js';
+} from './mechanics/mechanic.responses.js';
 
 export type {
   SpecializationDto,
