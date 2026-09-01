@@ -184,9 +184,11 @@
     },
 
     "mechanic": {
-      "yearsOfExperience": "років досвіду",
+      "yearsOfExperience": "{years, plural, one {# рік досвіду} few {# роки досвіду} many {# років досвіду} other {# років досвіду}}",
       "certifications": "Сертифікації",
-      "profile": "Профіль"
+      "profile": "Профіль",
+      "view-all": "Поветнутися до механіків",
+      "booking": "Записатися"
     },
 
     "hero": {

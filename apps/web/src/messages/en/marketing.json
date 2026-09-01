@@ -181,9 +181,11 @@
     },
 
     "mechanic": {
-      "yearsOfExperience": "years of experience",
+      "yearsOfExperience": "{years, plural, =1 {# year of experience} other {# years of experience}}",
       "certifications": "Certifications",
-      "profile": "Profile"
+      "profile": "Profile",
+      "view-all": "Back to mechanics",
+      "booking": "Book an Appointment"
     },
 
     "hero": {

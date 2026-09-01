@@ -16,12 +16,12 @@ export const getServiceOr404 = cache(
       const service = await getServiceBySlug(normalizedSlug);
 
       return service;
-    } catch (err: unknown) {
-      if (isApiNotFoundError(err)) {
+    } catch (error: unknown) {
+      if (isApiNotFoundError(error, 'SERVICE_NOT_FOUND')) {
         notFound();
       }
 
-      throw err;
+      throw error;
     }
   },
 );

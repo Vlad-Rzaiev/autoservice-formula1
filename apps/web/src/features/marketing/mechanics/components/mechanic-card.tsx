@@ -40,7 +40,7 @@ export default function MechanicCard({ mechanic }: MechanicCardProps) {
   return (
     <Card className="group overflow-hidden shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md">
       <div className="px-4">
-        <div className="relative aspect-4/3 overflow-hidden rounded-3xl border-4 border-success bg-muted">
+        <div className="relative aspect-4/3 overflow-hidden rounded-3xl border-2 border-success bg-muted">
           {mechanic.photo.url ? (
             <Image
               src={mechanic.photo.url}
@@ -74,7 +74,11 @@ export default function MechanicCard({ mechanic }: MechanicCardProps) {
             className="shrink-0 text-primary"
           />
 
-          <span>{`${mechanic.experienceYears} ${t('yearsOfExperience')}`}</span>
+          <span>
+            {t('yearsOfExperience', {
+              years: mechanic.experienceYears,
+            })}
+          </span>
         </div>
 
         {mechanic.certificates.length > 0 && (

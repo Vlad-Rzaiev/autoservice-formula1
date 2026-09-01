@@ -17,7 +17,7 @@ export const getMechanicOr404 = cache(
 
       return mechanic;
     } catch (error: unknown) {
-      if (isApiNotFoundError(error)) {
+      if (isApiNotFoundError(error, 'MECHANIC_NOT_FOUND')) {
         notFound();
       }
 

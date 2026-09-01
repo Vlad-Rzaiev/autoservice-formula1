@@ -184,9 +184,11 @@
     },
 
     "mechanic": {
-      "yearsOfExperience": "lat doświadczenia",
+      "yearsOfExperience": "{years, plural, one {# rok doświadczenia} few {# lata doświadczenia} many {# lat doświadczenia} other {# lat doświadczenia}}",
       "certifications": "Certyfikaty",
-      "profile": "Profil"
+      "profile": "Profil",
+      "view-all": "Wróć do mechaników",
+      "booking": "Umów wizytę"
     },
 
     "hero": {
