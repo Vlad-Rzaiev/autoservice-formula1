@@ -127,6 +127,7 @@ export type {
 } from './work-directions/work-direction-response.schemas.js';
 
 export {
+  apiErrorCodes,
   apiErrorCodeSchema,
   type ApiErrorCode,
-} from './common/api-error-code.schema.js';
+} from './common/api-error-codes.js';
