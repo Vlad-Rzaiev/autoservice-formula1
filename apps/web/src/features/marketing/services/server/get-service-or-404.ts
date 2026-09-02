@@ -1,7 +1,7 @@
 import { cache } from 'react';
 import { notFound } from 'next/navigation';
 import type { ServiceDto } from '@autoservice/contracts';
-import { getServiceBySlug } from '@/features/marketing/services';
+import { getServiceBySlug } from '../api/get-service-by-slug';
 import { isApiNotFoundError } from '@/lib';
 
 export const getServiceOr404 = cache(
@@ -16,12 +16,12 @@ export const getServiceOr404 = cache(
       const service = await getServiceBySlug(normalizedSlug);
 
       return service;
-    } catch (err: unknown) {
-      if (isApiNotFoundError(err)) {
+    } catch (error: unknown) {
+      if (isApiNotFoundError(error, 'SERVICE_NOT_FOUND')) {
         notFound();
       }
 
-      throw err;
+      throw error;
     }
   },
 );

@@ -184,9 +184,11 @@
     },
 
     "mechanic": {
-      "yearsOfExperience": "lat doświadczenia",
+      "yearsOfExperience": "{years, plural, one {# rok doświadczenia} few {# lata doświadczenia} many {# lat doświadczenia} other {# lat doświadczenia}}",
       "certifications": "Certyfikaty",
-      "profile": "Profil"
+      "profile": "Profil",
+      "view-all": "Wróć do mechaników",
+      "booking": "Umów wizytę"
     },
 
     "hero": {
@@ -198,7 +200,7 @@
       "equipment": "Nowoczesne wyposażenie",
       "specialization": "15+ specjalizacji",
       "workDirection": "10+ obszarów pracy",
-      "averangeExperience": "8+ lat średniego doświadczenia"
+      "averageExperience": "8+ lat średniego doświadczenia"
     },
     "cta": {
       "title": "Nie wiesz, do którego specjalisty się zgłosić?",

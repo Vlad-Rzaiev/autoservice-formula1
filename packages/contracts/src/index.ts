@@ -125,3 +125,9 @@ export type {
   workDirectionsResponseSchema,
   workDirectionResponseSchema,
 } from './work-directions/work-direction-response.schemas.js';
+
+export {
+  apiErrorCodes,
+  apiErrorCodeSchema,
+  type ApiErrorCode,
+} from './common/api-error-codes.js';

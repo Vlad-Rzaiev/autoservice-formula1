@@ -40,11 +40,21 @@ export { default as MarketingWarranty } from './components/marketing-warranty';
 export { default as MechanicsCatalogContainer } from './mechanics/components/mechanics-catalog-container';
 export { default as MechanicsHero } from './mechanics/components/mechanics-hero';
 export { default as ServiceCta } from './services/components/service-cta';
+export { default as MechanicContainer } from './mechanics/components/mechanic-container';
 
 export { createMechanicsMetadata } from './mechanics/server/create-mechanics-metadata';
+export { createMechanicMetadata } from './mechanics/server/create-mechanic-metadata';
+
+export { getMechanicOr404 } from './mechanics/server/get-mechanic-or-404';
 
 export {
   mechanicsQueryKeys,
   mechanicsQueryOptions,
   mechanicByIdQueryOptions,
 } from './mechanics/api/mechanics-query-options';
+
+export {
+  useMechanics,
+  useFeaturesMechanics,
+  useMechanicById,
+} from './mechanics/api/use-mechanics';

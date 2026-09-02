@@ -2,11 +2,12 @@ import axios from 'axios';
 import { describe, expect, it } from 'vitest';
 import { isApiNotFoundError } from './is-api-not-found-error';
 import { createAxiosError } from '../../test/fixtures/create-axios-error';
+import { apiErrorCodes } from '@autoservice/contracts';
 
 describe('isApiNotFoundError', () => {
   it('returns true for a SERVICE_NOT_FOUND API error with status 404', () => {
     const error = createAxiosError();
-    const result = isApiNotFoundError(error);
+    const result = isApiNotFoundError(error, apiErrorCodes.SERVICE_NOT_FOUND);
 
     expect(result).toBe(true);
   });
@@ -14,7 +15,7 @@ describe('isApiNotFoundError', () => {
   it('returns false for a non-Axios error', () => {
     const error = new Error('Something went wrong.');
 
-    const result = isApiNotFoundError(error);
+    const result = isApiNotFoundError(error, apiErrorCodes.SERVICE_NOT_FOUND);
 
     expect(result).toBe(false);
   });
@@ -30,7 +31,7 @@ describe('isApiNotFoundError', () => {
       },
     });
 
-    const result = isApiNotFoundError(error);
+    const result = isApiNotFoundError(error, apiErrorCodes.SERVICE_NOT_FOUND);
 
     expect(result).toBe(false);
   });
@@ -42,7 +43,7 @@ describe('isApiNotFoundError', () => {
       },
     });
 
-    const result = isApiNotFoundError(error);
+    const result = isApiNotFoundError(error, apiErrorCodes.SERVICE_NOT_FOUND);
 
     expect(result).toBe(false);
   });
@@ -57,7 +58,7 @@ describe('isApiNotFoundError', () => {
       },
     });
 
-    const result = isApiNotFoundError(error);
+    const result = isApiNotFoundError(error, apiErrorCodes.SERVICE_NOT_FOUND);
 
     expect(result).toBe(false);
   });
@@ -65,7 +66,7 @@ describe('isApiNotFoundError', () => {
   it('returns false when the Axios error has no response', () => {
     const error = new axios.AxiosError('Network Error', 'ERR_NETWORK');
 
-    const result = isApiNotFoundError(error);
+    const result = isApiNotFoundError(error, apiErrorCodes.SERVICE_NOT_FOUND);
 
     expect(result).toBe(false);
   });

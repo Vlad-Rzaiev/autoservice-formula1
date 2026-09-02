@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
+import { apiErrorCodes } from '@autoservice/contracts';
 import { createServiceFixture } from '@/test/fixtures/service.fixture';
-
 import { getServiceOr404 } from './get-service-or-404';
 
 const serviceMock = vi.hoisted(() => ({
@@ -12,7 +12,7 @@ const serviceMock = vi.hoisted(() => ({
   }),
 }));
 
-vi.mock('@/features/marketing/services', () => ({
+vi.mock('../api/get-service-by-slug', () => ({
   getServiceBySlug: serviceMock.getServiceBySlug,
 }));
 
@@ -72,7 +72,10 @@ describe('getServiceOr404', () => {
       'NEXT_NOT_FOUND',
     );
 
-    expect(serviceMock.isApiNotFoundError).toHaveBeenCalledWith(apiError);
+    expect(serviceMock.isApiNotFoundError).toHaveBeenCalledWith(
+      apiError,
+      apiErrorCodes.SERVICE_NOT_FOUND,
+    );
 
     expect(serviceMock.notFound).toHaveBeenCalledTimes(1);
   });
