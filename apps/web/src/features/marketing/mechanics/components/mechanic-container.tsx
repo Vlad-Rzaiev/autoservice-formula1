@@ -1,7 +1,7 @@
 'use client';
 
 import { faScrewdriverWrench } from '@fortawesome/free-solid-svg-icons';
-import { ServiceCta, useMechanicById } from '@/features/marketing';
+import { useMechanicById } from '@/features/marketing';
 import { defaultLocale, isAppLocale } from '@/i18n/locale-config';
 import { useLocale, useTranslations } from 'next-intl';
 import { QueryState } from '@/components/states';
@@ -11,6 +11,7 @@ import MechanicAbout from './mechanic-about';
 import MechanicSpecializations from './mechanic-specializations';
 import MechanicWorkDirections from './mechanic-work-directions';
 import MechanicCertificates from './mechanic-certificates';
+import { Cta } from '@/components/common';
 
 interface MechanicContainerProps {
   mechanicId: string;
@@ -74,7 +75,7 @@ export default function MechanicContainer({
 
           <MechanicCertificates certificates={mechanic.certificates} />
 
-          <ServiceCta />
+          <Cta />
         </>
       )}
     </QueryState>

@@ -6,7 +6,7 @@ import ServiceWorkDirections from './service-work-directions';
 import ServiceSpecializations from './service-specializations';
 import ServiceProcess from './service-process';
 import ServiceBenefits from './service-benefits';
-import ServiceCta from '@/features/marketing/services/components/service-cta';
+import { Cta } from '@/components/common';
 
 export interface ServiceDetailsProps {
   service: ServiceDto;
@@ -38,7 +38,7 @@ export default function ServiceDetails({ service }: ServiceDetailsProps) {
 
       <ServiceBenefits />
 
-      <ServiceCta />
+      <Cta />
     </>
   );
 }

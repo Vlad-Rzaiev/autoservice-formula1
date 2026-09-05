@@ -10,7 +10,7 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useTranslations } from 'next-intl';
 
-export default function ServiceCta() {
+export default function Cta() {
   const t = useTranslations('services.servicePage.cta');
   return (
     <Section>
