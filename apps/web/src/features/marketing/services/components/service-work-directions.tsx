@@ -2,7 +2,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import { defaultLocale, isAppLocale } from '@/i18n/locale-config';
 import { AppLocale, WorkDirectionDto } from '@autoservice/contracts';
 import { Container, Section, SectionHeader } from '@/components/layout';
-import { CardGrid, IconCard } from '@/components/common';
+import { CardGrid, IconItemCard } from '@/components/common';
 import { faScrewdriverWrench } from '@fortawesome/free-solid-svg-icons';
 
 export interface ServiceWorkDirectionsProps {
@@ -30,11 +30,9 @@ export default function ServiceWorkDirections({
             const translation = workDirection.translations[currentLocale];
 
             return (
-              <IconCard
-                key={workDirection._id}
-                icon={faScrewdriverWrench}
-                title={translation.title}
-              />
+              <IconItemCard key={workDirection._id} icon={faScrewdriverWrench}>
+                {translation.title}
+              </IconItemCard>
             );
           })}
         </CardGrid>

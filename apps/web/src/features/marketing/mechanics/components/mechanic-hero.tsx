@@ -1,8 +1,8 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faArrowLeft,
-  faChevronLeft,
-  faChevronRight,
+  faBriefcase,
+  faCalendarCheck,
 } from '@fortawesome/free-solid-svg-icons';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
@@ -36,7 +36,7 @@ export default function MechanicHero({
         <ButtonLink
           href={routes.marketing.mechanics}
           variant="link"
-          className="absolute -top-20 px-0 text-muted-foreground hover:text-foreground"
+          className="absolute -top-15 md:-top-17.5 lg:-top-20 px-0 text-muted-foreground hover:text-foreground"
         >
           <FontAwesomeIcon
             icon={faArrowLeft}
@@ -74,61 +74,39 @@ export default function MechanicHero({
               {fullName}
             </h1>
 
-            <p className="mt-5 max-w-3xl text-base leading-7 text-muted-foreground sm:text-lg sm:leading-8">
+            <p className="my-5 max-w-3xl text-base leading-7 text-muted-foreground sm:text-lg sm:leading-8">
               {description}
             </p>
 
-            <p>
-              {t('yearsOfExperience', {
-                years: experienceYears,
-              })}
-            </p>
+            <div className="flex gap-2 items-center">
+              <FontAwesomeIcon
+                icon={faBriefcase}
+                aria-hidden="true"
+                className="shrink-0 text-lg text-amber-400"
+              />
+
+              <p>
+                {t('yearsOfExperience', {
+                  years: experienceYears,
+                })}
+              </p>
+            </div>
           </div>
         </div>
 
         <div className="mt-10 flex justify-center">
           <ButtonLink
             href={routes.marketing.booking}
-            variant="destructive"
-            className="gap-2"
+            variant="ctaOutline"
+            className="gap-2 text-lg"
           >
-            <span className="flex items-center">
-              <FontAwesomeIcon
-                icon={faChevronRight}
-                aria-hidden="true"
-                className="animate-[arrow-right-outer_1.2s_ease-in-out_infinite]"
-              />
-              <FontAwesomeIcon
-                icon={faChevronRight}
-                aria-hidden="true"
-                className="-ml-1 animate-[arrow-right-middle_1.2s_ease-in-out_infinite]"
-              />
-              <FontAwesomeIcon
-                icon={faChevronRight}
-                aria-hidden="true"
-                className="-ml-1 animate-[arrow-right-inner_1.2s_ease-in-out_infinite]"
-              />
-            </span>
+            <FontAwesomeIcon
+              icon={faCalendarCheck}
+              aria-hidden="true"
+              className="shrink-0 text-lg"
+            />
 
-            <span>{t('booking')}</span>
-
-            <span className="flex items-center">
-              <FontAwesomeIcon
-                icon={faChevronLeft}
-                aria-hidden="true"
-                className="animate-[arrow-left-outer_1.2s_ease-in-out_infinite]"
-              />
-              <FontAwesomeIcon
-                icon={faChevronLeft}
-                aria-hidden="true"
-                className="-ml-1 animate-[arrow-left-middle_1.2s_ease-in-out_infinite]"
-              />
-              <FontAwesomeIcon
-                icon={faChevronLeft}
-                aria-hidden="true"
-                className="-ml-1 animate-[arrow-left-inner_1.2s_ease-in-out_infinite]"
-              />
-            </span>
+            {t('booking')}
           </ButtonLink>
         </div>
       </Container>
