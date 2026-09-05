@@ -30,3 +30,5 @@ export { IconCard, type IconCardProps } from './icon-card';
 export { default as PageLoader } from './page-loader';
 
 export { IconItemCard } from './icon-item-card';
+
+export { default as Cta } from './cta';

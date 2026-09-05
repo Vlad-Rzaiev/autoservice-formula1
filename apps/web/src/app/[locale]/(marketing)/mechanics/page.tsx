@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 import { Section, Container } from '@/components/layout';
+import { Cta } from '@/components/common';
 import {
   createMechanicsMetadata,
   mechanicsQueryOptions,
-  ServiceCta,
   MechanicsCatalogContainer,
   MechanicsHero,
 } from '@/features/marketing';
@@ -49,7 +49,7 @@ export default async function SpecialistsPage() {
         </Container>
       </Section>
 
-      <ServiceCta />
+      <Cta />
     </>
   );
 }
