@@ -28,7 +28,7 @@ export default async function ServiceHero({
   const serviceIcon = iconMap[icon] ?? defaultIcon;
 
   return (
-    <Section noTopPadding className="relative">
+    <Section className="relative">
       <div
         aria-hidden="true"
         className="
@@ -44,11 +44,11 @@ export default async function ServiceHero({
           rounded-full bg-red-600/5 blur-3xl
         "
       />
-      <Container className="relative pt-10">
+      <Container className="relative">
         <ButtonLink
           href={routes.marketing.services}
           variant="link"
-          className="absolute -top-2 px-0 text-muted-foreground hover:text-foreground"
+          className="absolute -top-15 px-0 text-muted-foreground hover:text-foreground"
         >
           <FontAwesomeIcon
             icon={faArrowLeft}

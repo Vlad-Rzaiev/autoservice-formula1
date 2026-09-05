@@ -185,7 +185,17 @@
       "certifications": "Certifications",
       "profile": "Profile",
       "view-all": "Back to mechanics",
-      "booking": "Book an Appointment"
+      "booking": "Book",
+      "about": "About specialist",
+      "experienceYears": "{years, plural, =1 {# year} other {# years}}",
+      "specializations": "{specializations, plural, =1 {# specialization} other {# specializations}}",
+      "workDirections": "{workDirections, plural, =1 {# work area} other {# work areas}}",
+      "specialization": "SPECIALIZATIONS",
+      "workDirection": "WORK DIRECTIONS",
+      "certificateTitle": "CERTIFICATES",
+      "issuedAt": "Issued",
+      "expiresAt": "Valid until",
+      "noExpiration": "No expiration"
     },
 
     "hero": {

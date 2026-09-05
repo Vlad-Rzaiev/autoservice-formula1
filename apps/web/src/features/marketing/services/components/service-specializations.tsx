@@ -2,7 +2,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { AppLocale, SpecializationDto } from '@autoservice/contracts';
 import { Container, Section, SectionHeader } from '@/components/layout';
-import { CardGrid, IconCard } from '@/components/common';
+import { CardGrid, IconItemCard } from '@/components/common';
 import { defaultLocale, isAppLocale } from '@/i18n/locale-config';
 
 export interface ServiceSpecializationsProps {
@@ -30,12 +30,13 @@ export default function ServiceSpecializations({
             const translation = specialization.translations[currentLocale];
 
             return (
-              <IconCard
+              <IconItemCard
                 key={specialization._id}
                 icon={faCheck}
-                title={translation.title}
                 description={translation.description}
-              />
+              >
+                {translation.title}
+              </IconItemCard>
             );
           })}
         </CardGrid>

@@ -28,3 +28,5 @@ export { default as ErrorPage, type ErrorPageProps } from './error-page';
 export { IconCard, type IconCardProps } from './icon-card';
 
 export { default as PageLoader } from './page-loader';
+
+export { IconItemCard } from './icon-item-card';

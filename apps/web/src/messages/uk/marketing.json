@@ -188,7 +188,17 @@
       "certifications": "Сертифікації",
       "profile": "Профіль",
       "view-all": "Поветнутися до механіків",
-      "booking": "Записатися"
+      "booking": "Записатися",
+      "about": "ПРО СПЕЦІАЛІСТА",
+      "experienceYears": "{years, plural, one {# рік} few {# роки} many {# років} other {# років}}",
+      "specializations": "{specializations, plural, one {# спеціалізація} few {# специалізації} many {# специалізацій} other {# специалізацій}}",
+      "workDirections": "{workDirections, plural, one {# напрямок роботи} few {# напрямки роботи} many {# напрямків роботи} other {# напрямків роботи}}",
+      "specialization": "СПЕЦІАЛІЗАЦІЇ",
+      "workDirection": "НАПРЯМКИ РОБІТ",
+      "certificateTitle": "СЕРТИФІКАТИ",
+      "issuedAt": "Виданий",
+      "expiresAt": "Дійсний до",
+      "noExpiration": "Без терміну дії"
     },
 
     "hero": {

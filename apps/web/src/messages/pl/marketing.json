@@ -188,7 +188,17 @@
       "certifications": "Certyfikaty",
       "profile": "Profil",
       "view-all": "Wróć do mechaników",
-      "booking": "Umów wizytę"
+      "booking": "Umów wizytę",
+      "about": "O specjaliście",
+      "experienceYears": "{years, plural, one {# rok} few {# lata} many {# lat} other {# lat}}",
+      "specializations": "{specializations, plural, one {# specjalizacja} few {# specjalizacje} many {# specjalizacji} other {# specjalizacji}}",
+      "workDirections": "{workDirections, plural, one {# obszar specjalizacji} few {# obszary specjalizacji} many {# obszarów specjalizacji} other {# obszarów specjalizacji}}",
+      "specialization": "SPECJALIZACJE",
+      "workDirection": "OBSZARY SPECJALIZACJI",
+      "certificateTitle": "CERTYFIKATY",
+      "issuedAt": "Wydany",
+      "expiresAt": "Ważny do",
+      "noExpiration": "Bezterminowy"
     },
 
     "hero": {

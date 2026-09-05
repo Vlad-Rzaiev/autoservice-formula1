@@ -1,12 +1,16 @@
 'use client';
 
 import { faScrewdriverWrench } from '@fortawesome/free-solid-svg-icons';
-import { useMechanicById } from '@/features/marketing';
-import { QueryState } from '@/components/states';
-import MechanicHero from './mechanic-hero';
-import MechanicPageSkeleton from './mechanic-page-skeleton';
-import { useLocale, useTranslations } from 'next-intl';
+import { ServiceCta, useMechanicById } from '@/features/marketing';
 import { defaultLocale, isAppLocale } from '@/i18n/locale-config';
+import { useLocale, useTranslations } from 'next-intl';
+import { QueryState } from '@/components/states';
+import MechanicPageSkeleton from './mechanic-page-skeleton';
+import MechanicHero from './mechanic-hero';
+import MechanicAbout from './mechanic-about';
+import MechanicSpecializations from './mechanic-specializations';
+import MechanicWorkDirections from './mechanic-work-directions';
+import MechanicCertificates from './mechanic-certificates';
 
 interface MechanicContainerProps {
   mechanicId: string;
@@ -49,12 +53,29 @@ export default function MechanicContainer({
       emptyIcon={faScrewdriverWrench}
     >
       {mechanic && (
-        <MechanicHero
-          photoUrl={mechanic.photo.url}
-          fullName={fullNameTranslate}
-          description={descriptionTranslate}
-          experienceYears={mechanic.experienceYears}
-        />
+        <>
+          <MechanicHero
+            photoUrl={mechanic.photo.url}
+            fullName={fullNameTranslate}
+            description={descriptionTranslate}
+            experienceYears={mechanic.experienceYears}
+          />
+
+          <MechanicAbout
+            description={descriptionTranslate}
+            experience={mechanic.experienceYears}
+            specializations={mechanic.specializations}
+            workDirections={mechanic.workDirections}
+          />
+
+          <MechanicSpecializations specializations={mechanic.specializations} />
+
+          <MechanicWorkDirections workDirections={mechanic.workDirections} />
+
+          <MechanicCertificates certificates={mechanic.certificates} />
+
+          <ServiceCta />
+        </>
       )}
     </QueryState>
   );
