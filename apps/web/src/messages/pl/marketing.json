@@ -220,7 +220,43 @@
   },
 
   "repair-process": {
-    "title": "Jak przebiega naprawa"
+    "eyebrow": "Jak przebiega naprawa",
+    "title": "Od rezerwacji do gotowego samochodu",
+    "description": "Przejrzysty proces na każdym etapie — od wstępnej diagnostyki po kontrolę jakości i wydanie samochodu.",
+    "steps": {
+      "booking": {
+        "title": "Rezerwacja online lub telefon",
+        "description": "Ustalamy dogodny termin wizyty i zbieramy podstawowe informacje o samochodzie oraz zgłaszanym problemie."
+      },
+      "acceptance": {
+        "title": "Przyjęcie samochodu",
+        "description": "Przyjmujemy samochód do serwisu i dokumentujemy jego stan w momencie przyjęcia."
+      },
+      "diagnostics": {
+        "title": "Wstępne oględziny i diagnostyka",
+        "description": "Sprawdzamy samochód, ustalamy przyczynę usterki oraz określamy niezbędny zakres prac."
+      },
+      "estimate": {
+        "title": "Przygotowanie i akceptacja wyceny",
+        "description": "Wyjaśniamy, co należy zrobić, oraz uzgadniamy koszt robocizny i części."
+      },
+      "repair": {
+        "title": "Wykonanie prac naprawczych",
+        "description": "Profesjonalnie wykonujemy uzgodnione prace zgodnie z technologią naprawy."
+      },
+      "qualityControl": {
+        "title": "Kontrola jakości",
+        "description": "Sprawdzamy efekt wykonanych prac i upewniamy się, że samochód jest gotowy do dalszej eksploatacji."
+      },
+      "delivery": {
+        "title": "Wydanie samochodu",
+        "description": "Wyjaśniamy, co zostało wykonane, przekazujemy samochód właścicielowi i zachowujemy historię naprawy."
+      }
+    },
+    "notice": {
+      "title": "Przejrzystość na każdym etapie",
+      "description": "Żadne dodatkowe prace nie są wykonywane bez zgody właściciela samochodu."
+    }
   },
 
   "warranty": {

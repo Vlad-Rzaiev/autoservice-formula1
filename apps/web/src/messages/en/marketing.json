@@ -218,7 +218,43 @@
   },
 
   "repair-process": {
-    "title": "How the Repair Process Works"
+    "eyebrow": "How the repair process works",
+    "title": "From booking to a ready-to-drive car",
+    "description": "A clear process at every stage — from the initial diagnostics to quality control and vehicle handover.",
+    "steps": {
+      "booking": {
+        "title": "Online booking or phone call",
+        "description": "We choose a convenient appointment time and clarify the basic information about your vehicle and the issue."
+      },
+      "acceptance": {
+        "title": "Vehicle check-in",
+        "description": "We accept the vehicle for service and document its condition at the time of arrival."
+      },
+      "diagnostics": {
+        "title": "Initial inspection and diagnostics",
+        "description": "We inspect the vehicle, identify the cause of the issue, and determine the required scope of work."
+      },
+      "estimate": {
+        "title": "Estimate preparation and approval",
+        "description": "We explain what needs to be done and agree on the cost of labor and parts."
+      },
+      "repair": {
+        "title": "Repair work",
+        "description": "We professionally carry out the approved repairs in accordance with the required repair procedures."
+      },
+      "qualityControl": {
+        "title": "Quality control",
+        "description": "We check the results of the completed work and make sure the vehicle is ready for safe operation."
+      },
+      "delivery": {
+        "title": "Vehicle handover",
+        "description": "We explain what was done, hand the vehicle back to its owner, and keep a record of the repair history."
+      }
+    },
+    "notice": {
+      "title": "Transparency at every stage",
+      "description": "No additional work is carried out without the vehicle owner's approval."
+    }
   },
 
   "warranty": {
