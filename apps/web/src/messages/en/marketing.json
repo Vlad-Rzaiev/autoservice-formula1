@@ -258,7 +258,46 @@
   },
 
   "warranty": {
-    "title": "Warranty and Standards"
+    "title": "Warranty and Standards",
+    "back-to-main": "Back to home",
+
+    "warranty": {
+      "eyebrow": "Warranty & Standards",
+      "title": "Transparent standards and accountability for the result",
+      "description": "We document key stages of the repair, agree on the work and cost before starting, and inspect the vehicle before handing it back to you.",
+      "guarantee": {
+        "title": "Warranty on completed work",
+        "description": "We stand behind the quality of our repairs and provide a warranty on completed work in accordance with our service terms.",
+        "link": "Warranty terms"
+      }
+    },
+
+    "standards": {
+      "priceApproval": {
+        "title": "Cost Approval",
+        "description": "Before starting any additional work, we agree on its scope and cost with the customer."
+      },
+      "defectDocumentation": {
+        "title": "Defect Documentation",
+        "description": "We document identified defects and the condition of parts so you understand the reason for the repair."
+      },
+      "approvedParts": {
+        "title": "Approved Parts",
+        "description": "We install parts according to the option and budget agreed with the customer."
+      },
+      "postRepairInspection": {
+        "title": "Post-Repair Inspection",
+        "description": "We inspect the completed work before returning the vehicle to the customer."
+      },
+      "serviceHistory": {
+        "title": "Service History",
+        "description": "We keep a record of completed repairs and vehicle maintenance."
+      },
+      "workWarranty": {
+        "title": "Work Warranty",
+        "description": "We provide a warranty for completed work in accordance with the applicable terms."
+      }
+    }
   },
 
   "reviews": {

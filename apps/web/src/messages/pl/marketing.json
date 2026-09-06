@@ -260,7 +260,46 @@
   },
 
   "warranty": {
-    "title": "Gwarancja i standardy"
+    "title": "Gwarancja i standardy",
+    "back-to-main": "Wróć na stronę główną",
+
+    "warranty": {
+      "eyebrow": "Gwarancja i standardy",
+      "title": "Przejrzyste zasady i odpowiedzialność za efekt",
+      "description": "Dokumentujemy kluczowe etapy naprawy, uzgadniamy zakres prac i koszty przed ich rozpoczęciem oraz kontrolujemy samochód przed jego wydaniem.",
+      "guarantee": {
+        "title": "Gwarancja na wykonane prace",
+        "description": "Odpowiadamy za jakość wykonanych napraw i udzielamy gwarancji zgodnie z warunkami serwisu.",
+        "link": "Szczegółowe warunki"
+      }
+    },
+
+    "standards": {
+      "priceApproval": {
+        "title": "Uzgodnienie kosztów",
+        "description": "Przed rozpoczęciem dodatkowych prac uzgadniamy z klientem ich zakres oraz koszt."
+      },
+      "defectDocumentation": {
+        "title": "Dokumentacja usterek",
+        "description": "Dokumentujemy wykryte usterki i stan części, aby klient wiedział, z czego wynika konieczność naprawy."
+      },
+      "approvedParts": {
+        "title": "Uzgodnione części",
+        "description": "Montujemy części zgodnie z uzgodnionym wariantem oraz budżetem."
+      },
+      "postRepairInspection": {
+        "title": "Kontrola po naprawie",
+        "description": "Sprawdzamy efekt wykonanych prac przed przekazaniem samochodu klientowi."
+      },
+      "serviceHistory": {
+        "title": "Historia serwisowa",
+        "description": "Zachowujemy informacje o wykonanych naprawach i obsłudze samochodu."
+      },
+      "workWarranty": {
+        "title": "Gwarancja na wykonane prace",
+        "description": "Udzielamy gwarancji na wykonane prace zgodnie z obowiązującymi warunkami."
+      }
+    }
   },
 
   "reviews": {

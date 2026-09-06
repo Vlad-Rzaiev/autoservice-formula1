@@ -18,6 +18,7 @@ export type IconCardProps = ComponentPropsWithoutRef<typeof Card> & {
   steps?: string;
   footer?: ReactNode;
   iconClassName?: string;
+  iconWrapperClassName?: string;
 };
 
 export function IconCard({
@@ -28,6 +29,7 @@ export function IconCard({
   footer,
   className,
   iconClassName,
+  iconWrapperClassName,
   ...cardProps
 }: IconCardProps) {
   return (
@@ -37,10 +39,10 @@ export function IconCard({
     >
       <CardHeader>
         <div
-          className="
-            mb-4 flex size-12 items-center justify-center
-            rounded-xl bg-red-500/10 text-red-500
-          "
+          className={cn(
+            'mb-4 flex size-12 items-center justify-center rounded-xl bg-red-500/10 text-red-500',
+            iconWrapperClassName,
+          )}
         >
           <FontAwesomeIcon
             icon={icon}

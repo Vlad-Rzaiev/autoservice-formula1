@@ -61,3 +61,4 @@ export {
 export { default as RepairProcessTimeline } from './repair-process/components/repair-process-timeline';
 export { default as RepairProcessStep } from './repair-process/components/repair-process-step';
 export { default as RepairProcessNotice } from './repair-process/components/repair-process-notice';
+export { default as WarrantyStandards } from './components/warranty/components/warranty-standards';
