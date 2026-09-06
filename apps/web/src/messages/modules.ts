@@ -8,6 +8,8 @@ export const translationModules = [
   'mobile-menu',
   'services',
   'specialists',
+  'warranty',
+  'contacts',
 ] as const;
 
 export type TranslationModule = (typeof translationModules)[number];
@@ -20,6 +22,8 @@ export const clientMessageModules = {
     'mobile-menu',
     'services',
     'specialists',
+    'warranty',
+    'contacts',
   ],
 
   auth: ['auth'],

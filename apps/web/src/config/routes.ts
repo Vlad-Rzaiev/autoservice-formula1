@@ -7,6 +7,7 @@ export const routes = {
     mechanics: '/mechanics',
     mechanic: (id: string) => `/mechanics/${encodeURIComponent(id)}`,
     warranty: '/warranty',
+    contacts: '/contacts',
   },
 
   auth: {

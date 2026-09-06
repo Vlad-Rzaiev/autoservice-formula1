@@ -1,25 +1,25 @@
-import React from 'react';
-import { getTranslations } from 'next-intl/server';
-import { Container, Section } from '@/components/layout';
-import { DevelopmentPlaceholder } from '@/components/common';
-import { routes } from '@/config';
+import { Cta } from '@/components/common';
+import {
+  WarrantyClaim,
+  WarrantyConditions,
+  WarrantyCoverage,
+  WarrantyExclusions,
+  WarrantyFaq,
+  WarrantyHero,
+  WarrantyPeriod,
+} from '@/features/marketing';
 
-export interface WarrantyPageProps {
-  children?: React.ReactNode;
-}
-
-export default async function WarrantyPage({}: WarrantyPageProps) {
-  const t = await getTranslations('marketing.warranty');
+export default function WarrantyPage() {
   return (
-    <Section>
-      <Container>
-        <DevelopmentPlaceholder
-          title={t('warranty.title')}
-          description={t('warranty.description')}
-          linkHref={routes.marketing.home}
-          linkText={t('back-to-main')}
-        />
-      </Container>
-    </Section>
+    <>
+      <WarrantyHero />
+      <WarrantyCoverage />
+      <WarrantyPeriod />
+      <WarrantyConditions />
+      <WarrantyExclusions />
+      <WarrantyClaim />
+      <WarrantyFaq />
+      <Cta />
+    </>
   );
 }

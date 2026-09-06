@@ -1,0 +1,119 @@
+{
+  "hero": {
+    "eyebrow": "Gwarancja",
+    "title": "Odpowiadamy za jakość wykonanych prac",
+    "description": "Przejrzyste warunki gwarancji na naprawy i obsługę serwisową samochodów.",
+    "trust": {
+      "approvedWork": "Uzgodniony zakres prac",
+      "documentedHistory": "Udokumentowana historia napraw",
+      "qualityControl": "Kontrola jakości",
+      "warranty": "Gwarancja na wykonane prace"
+    }
+  },
+
+  "coverage": {
+    "eyebrow": "Zakres gwarancji",
+    "title": "Gwarancja na wykonane przez nas prace",
+    "description": "Odpowiadamy za jakość wykonanych prac i przestrzegamy warunków naprawy uzgodnionych z klientem.",
+    "items": {
+      "work": {
+        "title": "Wykonane prace",
+        "description": "Gwarancja obejmuje prace wykonane przez naszych specjalistów zgodnie z obowiązującymi warunkami."
+      },
+      "parts": {
+        "title": "Zamontowane części",
+        "description": "Warunki gwarancji na zamontowane części zależą od producenta, dostawcy oraz konkretnej części."
+      },
+      "quality": {
+        "title": "Jakość naprawy",
+        "description": "Kontrolujemy efekt wykonanych prac przed przekazaniem samochodu klientowi."
+      },
+      "history": {
+        "title": "Udokumentowane naprawy",
+        "description": "Informacje o wykonanych pracach są zapisywane w historii serwisowej samochodu."
+      }
+    }
+  },
+
+  "period": {
+    "eyebrow": "Okres gwarancji",
+    "title": "Okres obowiązywania gwarancji",
+    "description": "Gwarancja obowiązuje przez określony czas lub do osiągnięcia określonego limitu przebiegu.",
+    "duration": {
+      "value": "1 miesięc",
+      "label": "na wykonane prace"
+    },
+    "mileage": {
+      "value": "100 km",
+      "label": "gwarantowanego przebiegu"
+    },
+    "note": "Gwarancja obowiązuje przez określony czas lub do osiągnięcia określonego limitu przebiegu — w zależności od tego, który warunek nastąpi wcześniej."
+  },
+
+  "conditions": {
+    "eyebrow": "Warunki gwarancji",
+    "title": "Kiedy obowiązuje gwarancja",
+    "description": "Aby zachować gwarancję, należy przestrzegać określonych warunków serwisowania i eksploatacji samochodu.",
+    "items": {
+      "completedByService": "Prace zostały wykonane w naszym serwisie samochodowym.",
+      "approvedParts": "Zastosowano uzgodnione części i materiały.",
+      "recommendations": "Przestrzegano zaleceń serwisu dotyczących eksploatacji samochodu.",
+      "serviceIntervals": "Przestrzegano zalecanych terminów przeglądów, jeśli jest to wymagane warunkami gwarancji.",
+      "proofOfWork": "Dostępne jest potwierdzenie wykonanych prac i obsługi serwisowej."
+    }
+  },
+
+  "exclusions": {
+    "eyebrow": "Wyłączenia",
+    "title": "Czego nie obejmuje gwarancja",
+    "description": "Gwarancja nie obejmuje usterek niezwiązanych z jakością wykonanych przez nas prac ani powstałych w wyniku nieprawidłowej eksploatacji pojazdu.",
+    "items": {
+      "normalWear": "Naturalnego zużycia części i materiałów eksploatacyjnych.",
+      "accidentDamage": "Uszkodzeń powstałych w wyniku kolizji, wypadku, działania czynników zewnętrznych lub uszkodzeń mechanicznych.",
+      "improperUse": "Usterek powstałych w wyniku nieprawidłowej eksploatacji samochodu.",
+      "externalRepair": "Skutków ingerencji lub napraw wykonanych w innym serwisie.",
+      "unrelatedFailure": "Usterek niezwiązanych z pracami wykonanymi przez nasz serwis."
+    }
+  },
+
+  "claim": {
+    "title": "Problem pojawił się po naprawie?",
+    "description": "Skontaktuj się z nami — przyjmiemy zgłoszenie i umówimy termin oględzin samochodu.",
+    "booking": "Umów oględziny",
+    "contacts": "Skontaktuj się z nami"
+  },
+
+  "faq": {
+    "eyebrow": "FAQ",
+    "title": "Najczęściej zadawane pytania",
+    "description": "Odpowiedzi na najczęstsze pytania dotyczące gwarancji.",
+    "questions": {
+      "scope": {
+        "question": "Jakie naprawy obejmuje gwarancja?",
+        "answer": "Gwarancja obejmuje prace wykonane przez nasz serwis samochodowy zgodnie z obowiązującymi warunkami gwarancji."
+      },
+      "period": {
+        "question": "Jak długo obowiązuje gwarancja?",
+        "answer": "Okres gwarancji zależy od rodzaju wykonanych prac oraz obowiązujących warunków serwisu."
+      },
+      "parts": {
+        "question": "Czy części są objęte gwarancją?",
+        "answer": "Warunki gwarancji na części mogą się różnić w zależności od producenta, dostawcy i konkretnej części."
+      },
+      "problem": {
+        "question": "Co zrobić, jeśli usterka powtórzy się po naprawie?",
+        "answer": "Skontaktuj się z nami i poinformuj o problemie. Umówimy oględziny samochodu i ustalimy dalsze działania."
+      },
+      "externalService": {
+        "question": "Czy gwarancja obowiązuje po naprawie w innym serwisie?",
+        "answer": "Warunki gwarancji mogą przewidywać ograniczenia w przypadku ingerencji lub naprawy samochodu w innym serwisie."
+      }
+    }
+  },
+
+  "cta": {
+    "title": "Potrzebujesz naprawy lub diagnostyki?",
+    "description": "Umów wizytę i powierz swój samochód naszym specjalistom.",
+    "button": "Umów serwis"
+  }
+}
