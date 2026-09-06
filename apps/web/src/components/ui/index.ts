@@ -57,3 +57,10 @@ export {
   TooltipContent,
   TooltipProvider,
 } from './tooltip';
+
+export {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from './accordion';

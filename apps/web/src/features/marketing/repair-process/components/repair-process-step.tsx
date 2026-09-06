@@ -36,8 +36,6 @@ export default function RepairProcessStep({
       `}
     >
       <div className="relative z-10 flex size-10 shrink-0 items-center justify-center rounded-full border border-border bg-background text-sm font-semibold md:col-start-2 md:size-14">
-        <span className="md:hidden">{number}</span>
-
         <FontAwesomeIcon icon={icon} className="size-5" aria-hidden="true" />
       </div>
 

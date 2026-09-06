@@ -1,6 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 import { Section, Container, SectionTitle } from '@/components/layout';
-import WarrantyStandards from './warranty/components/warranty-standards';
+import WarrantyStandards from '../warranty/components/warranty-standards';
 
 export default async function MarketingWarranty() {
   const t = await getTranslations('marketing.warranty');

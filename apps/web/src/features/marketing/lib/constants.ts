@@ -2,6 +2,7 @@ import {
   faCalendarCheck,
   faCamera,
   faCar,
+  faCircleCheck,
   faClipboardCheck,
   faFileInvoiceDollar,
   faFileLines,
@@ -89,4 +90,54 @@ export const warrantyStandards = [
     title: 'standards.workWarranty.title',
     description: 'standards.workWarranty.description',
   },
-];
+] as const;
+
+export const warrantyTrustItems = [
+  {
+    id: 1,
+    icon: faCircleCheck,
+    translationKey: 'trust.approvedWork',
+  },
+  {
+    id: 2,
+    icon: faFileLines,
+    translationKey: 'trust.documentedHistory',
+  },
+  {
+    id: 3,
+    icon: faClipboardCheck,
+    translationKey: 'trust.qualityControl',
+  },
+  {
+    id: 4,
+    icon: faShieldHalved,
+    translationKey: 'trust.warranty',
+  },
+] as const;
+
+export const warrantyCoverageItems = [
+  {
+    id: 'work',
+    icon: faScrewdriverWrench,
+    title: 'items.work.title',
+    description: 'items.work.description',
+  },
+  {
+    id: 'parts',
+    icon: faGears,
+    title: 'items.parts.title',
+    description: 'items.parts.description',
+  },
+  {
+    id: 'quality',
+    icon: faClipboardCheck,
+    title: 'items.quality.title',
+    description: 'items.quality.description',
+  },
+  {
+    id: 'history',
+    icon: faFileLines,
+    title: 'items.history.title',
+    description: 'items.history.description',
+  },
+] as const;

@@ -61,4 +61,13 @@ export {
 export { default as RepairProcessTimeline } from './repair-process/components/repair-process-timeline';
 export { default as RepairProcessStep } from './repair-process/components/repair-process-step';
 export { default as RepairProcessNotice } from './repair-process/components/repair-process-notice';
-export { default as WarrantyStandards } from './components/warranty/components/warranty-standards';
+export { default as WarrantyStandards } from './warranty/components/warranty-standards';
+
+export { default as WarrantyPeriod } from './warranty/components/warranty-period';
+export { default as WarrantyHero } from './warranty/components/warranty-hero';
+export { default as WarrantyFaq } from './warranty/components/warranty-faq';
+export { default as WarrantyExclusions } from './warranty/components/warranty-exclusions';
+export { default as WarrantyCoverage } from './warranty/components/warranty-coverage';
+export { default as WarrantyConditions } from './warranty/components/warranty-conditions';
+export { default as WarrantyClaim } from './warranty/components/warranty-claim';
+export { WarrantyPeriodValue } from './warranty/components/warranty-period-value';

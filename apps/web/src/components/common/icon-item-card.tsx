@@ -11,6 +11,7 @@ export type IconItemCardProps = ComponentPropsWithoutRef<typeof Card> & {
   children: ReactNode;
   description?: string;
   iconClassName?: string;
+  iconWrapperClassName?: string;
 };
 
 export function IconItemCard({
@@ -19,6 +20,7 @@ export function IconItemCard({
   iconClassName,
   description,
   className,
+  iconWrapperClassName,
   ...cardProps
 }: IconItemCardProps) {
   return (
@@ -29,7 +31,12 @@ export function IconItemCard({
       )}
       {...cardProps}
     >
-      <div className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-red-500/10 text-red-500">
+      <div
+        className={cn(
+          'flex size-9 shrink-0 items-center justify-center rounded-lg bg-red-500/10 text-red-500',
+          iconWrapperClassName,
+        )}
+      >
         <FontAwesomeIcon
           icon={icon}
           aria-hidden="true"
@@ -38,7 +45,7 @@ export function IconItemCard({
       </div>
 
       <span className="flex flex-col">
-        <span className="text-lg font-medium leading-8">{children}</span>
+        <span className="text-sm leading-6 text-foreground">{children}</span>
 
         {description && <span>{description}</span>}
       </span>

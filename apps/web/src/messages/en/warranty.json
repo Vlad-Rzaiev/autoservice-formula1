@@ -1,0 +1,119 @@
+{
+  "hero": {
+    "eyebrow": "Warranty",
+    "title": "We stand behind the quality of our work",
+    "description": "Transparent warranty terms for vehicle repairs and maintenance.",
+    "trust": {
+      "approvedWork": "Agreed work",
+      "documentedHistory": "Documented repair history",
+      "qualityControl": "Quality control",
+      "warranty": "Warranty on completed work"
+    }
+  },
+
+  "coverage": {
+    "eyebrow": "Warranty coverage",
+    "title": "Warranty on the work we perform",
+    "description": "We stand behind the quality of our work and follow the repair terms agreed with the customer.",
+    "items": {
+      "work": {
+        "title": "Completed work",
+        "description": "The warranty covers work performed by our specialists in accordance with the applicable terms."
+      },
+      "parts": {
+        "title": "Installed parts",
+        "description": "Warranty terms for installed parts depend on the manufacturer, supplier, and specific part."
+      },
+      "quality": {
+        "title": "Repair quality",
+        "description": "We inspect the completed work before returning the vehicle to the customer."
+      },
+      "history": {
+        "title": "Documented repairs",
+        "description": "Information about completed work is stored in the vehicle's service history."
+      }
+    }
+  },
+
+  "period": {
+    "eyebrow": "Warranty period",
+    "title": "Warranty coverage period",
+    "description": "The warranty is valid for the specified period or until the applicable mileage limit is reached.",
+    "duration": {
+      "value": "1 month",
+      "label": "on completed work"
+    },
+    "mileage": {
+      "value": "100 km",
+      "label": "warranty mileage"
+    },
+    "note": "The warranty is valid for the specified period or until the applicable mileage limit is reached, whichever comes first."
+  },
+
+  "conditions": {
+    "eyebrow": "Warranty conditions",
+    "title": "When the warranty applies",
+    "description": "To maintain warranty coverage, the applicable service and vehicle operating conditions must be followed.",
+    "items": {
+      "completedByService": "The work was performed by our auto service.",
+      "approvedParts": "Approved parts and materials were used.",
+      "recommendations": "The service's recommendations for vehicle operation were followed.",
+      "serviceIntervals": "The recommended maintenance intervals were followed where required by the warranty terms.",
+      "proofOfWork": "There is confirmation of the completed work and service."
+    }
+  },
+
+  "exclusions": {
+    "eyebrow": "Exclusions",
+    "title": "What is not covered by the warranty",
+    "description": "The warranty does not cover issues unrelated to the quality of our work or caused by improper vehicle use.",
+    "items": {
+      "normalWear": "Normal wear and tear of parts and consumables.",
+      "accidentDamage": "Damage caused by an accident, external impact, or mechanical damage.",
+      "improperUse": "Failures caused by improper use of the vehicle.",
+      "externalRepair": "Consequences of intervention or repairs performed by another service.",
+      "unrelatedFailure": "Failures unrelated to the work performed by our service."
+    }
+  },
+
+  "claim": {
+    "title": "Have you noticed a problem after the repair?",
+    "description": "Contact us — we will register your request and arrange a vehicle inspection.",
+    "booking": "Book an inspection",
+    "contacts": "Contact us"
+  },
+
+  "faq": {
+    "eyebrow": "FAQ",
+    "title": "Frequently asked questions",
+    "description": "Answers to the most common questions about our warranty.",
+    "questions": {
+      "scope": {
+        "question": "Which repairs are covered by the warranty?",
+        "answer": "The warranty covers work performed by our auto service in accordance with the applicable warranty terms."
+      },
+      "period": {
+        "question": "How long is the warranty valid?",
+        "answer": "The warranty period depends on the type of work performed and the applicable service terms."
+      },
+      "parts": {
+        "question": "Are parts covered by the warranty?",
+        "answer": "Warranty terms for parts may vary depending on the manufacturer, supplier, and specific part."
+      },
+      "problem": {
+        "question": "What should I do if the problem occurs again after the repair?",
+        "answer": "Contact us and tell us about the issue. We will arrange a vehicle inspection and determine the next steps."
+      },
+      "externalService": {
+        "question": "Does the warranty remain valid after repairs at another service?",
+        "answer": "Warranty terms may include restrictions if the vehicle has been repaired or modified by another service."
+      }
+    }
+  },
+
+  "cta": {
+    "title": "Need a repair or diagnostics?",
+    "description": "Book a service appointment and trust your vehicle to our specialists.",
+    "button": "Book a service"
+  }
+}
