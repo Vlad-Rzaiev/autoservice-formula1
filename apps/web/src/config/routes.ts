@@ -6,6 +6,7 @@ export const routes = {
     service: (slug: string) => `/services/${encodeURIComponent(slug)}`,
     mechanics: '/mechanics',
     mechanic: (id: string) => `/mechanics/${encodeURIComponent(id)}`,
+    warranty: '/warranty',
   },
 
   auth: {

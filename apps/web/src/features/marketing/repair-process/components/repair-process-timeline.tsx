@@ -1,51 +1,5 @@
-import {
-  faCalendarCheck,
-  faCar,
-  faClipboardCheck,
-  faFileInvoiceDollar,
-  faKey,
-  faMagnifyingGlass,
-  faScrewdriverWrench,
-} from '@fortawesome/free-solid-svg-icons';
+import { repairProcessSteps } from '@/features/marketing/lib';
 import RepairProcessStep from './repair-process-step';
-
-const steps = [
-  {
-    number: '01',
-    icon: faCalendarCheck,
-    translationKey: 'booking',
-  },
-  {
-    number: '02',
-    icon: faCar,
-    translationKey: 'acceptance',
-  },
-  {
-    number: '03',
-    icon: faMagnifyingGlass,
-    translationKey: 'diagnostics',
-  },
-  {
-    number: '04',
-    icon: faFileInvoiceDollar,
-    translationKey: 'estimate',
-  },
-  {
-    number: '05',
-    icon: faScrewdriverWrench,
-    translationKey: 'repair',
-  },
-  {
-    number: '06',
-    icon: faClipboardCheck,
-    translationKey: 'qualityControl',
-  },
-  {
-    number: '07',
-    icon: faKey,
-    translationKey: 'delivery',
-  },
-] as const;
 
 export default function RepairProcessTimeline() {
   return (
@@ -65,7 +19,7 @@ export default function RepairProcessTimeline() {
       />
 
       <ol className="relative space-y-10 md:space-y-0">
-        {steps.map((step, index) => (
+        {repairProcessSteps.map((step, index) => (
           <RepairProcessStep
             key={step.translationKey}
             number={step.number}

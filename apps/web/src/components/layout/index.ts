@@ -2,3 +2,4 @@ export { default as SectionTitle } from './section-title';
 export { default as Container } from './container';
 export { default as Section, type SectionProps } from './section';
 export { default as SectionHeader } from './section-header';
+export { default as Description } from './description';
