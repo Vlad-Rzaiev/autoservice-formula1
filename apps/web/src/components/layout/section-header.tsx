@@ -10,6 +10,7 @@ export interface SectionHeaderProps {
   eyebrowIcon?: IconProp;
   subTitle?: string;
   className?: string;
+  eyebrowClassName?: string;
 }
 
 export default function SectionHeader({
@@ -19,6 +20,7 @@ export default function SectionHeader({
   eyebrowIcon,
   subTitle,
   className,
+  eyebrowClassName,
 }: SectionHeaderProps) {
   return (
     <div
@@ -29,12 +31,10 @@ export default function SectionHeader({
     >
       {eyebrow && (
         <div
-          className="
-            inline-flex items-center gap-2 rounded-full
-            border border-red-500/20 bg-red-500/10
-            px-4 py-2 text-sm font-semibold text-red-600
-            dark:text-red-400
-        "
+          className={cn(
+            'inline-flex items-center gap-2 rounded-full border border-red-500/20 bg-red-500/10 px-4 py-2 text-sm font-semibold text-red-600 dark:text-red-400',
+            eyebrowClassName,
+          )}
         >
           {eyebrowIcon && (
             <FontAwesomeIcon

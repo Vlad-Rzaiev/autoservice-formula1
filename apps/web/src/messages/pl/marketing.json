@@ -311,7 +311,69 @@
   },
 
   "contacts": {
-    "title": "Kontakt"
+    "eyebrow": "Kontakt",
+    "title": "Odwiedź nasz serwis samochodowy",
+    "description": "Jesteśmy blisko i chętnie pomożemy w naprawie, diagnostyce oraz serwisowaniu Twojego samochodu.",
+
+    "address": {
+      "label": "Adres"
+    },
+
+    "phone": {
+      "label": "Telefon"
+    },
+
+    "email": {
+      "label": "E-mail"
+    },
+
+    "messengers": {
+      "title": "Napisz do nas"
+    },
+
+    "hours": {
+      "label": "Godziny otwarcia",
+      "closed": "Zamknięte",
+      "days": {
+        "monday": "Poniedziałek",
+        "tuesday": "Wtorek",
+        "wednesday": "Środa",
+        "thursday": "Czwartek",
+        "friday": "Piątek",
+        "saturday": "Sobota",
+        "sunday": "Niedziela"
+      }
+    },
+
+    "map": {
+      "route": "Wyznacz trasę"
+    },
+
+    "cta": {
+      "title": "Potrzebujesz naprawy lub diagnostyki?",
+      "description": "Skontaktuj się z nami lub umów wizytę w dogodnym dla Ciebie terminie.",
+      "booking": "Umów serwis",
+      "phone": "Zadzwoń do nas"
+    },
+
+    "directions": {
+      "eyebrow": "Jak do nas trafić",
+      "title": "Łatwy dojazd do naszego serwisu",
+      "steps": {
+        "first": {
+          "title": "Zjazd z głównej drogi",
+          "description": "Zjedź z głównej drogi w kierunku naszego serwisu."
+        },
+        "second": {
+          "title": "Skręt do serwisu",
+          "description": "Kieruj się oznaczeniami prowadzącymi na teren serwisu."
+        },
+        "third": {
+          "title": "Wjazd i parking",
+          "description": "Wjedź na teren serwisu i zaparkuj samochód przy budynku."
+        }
+      }
+    }
   },
 
   "footer": {

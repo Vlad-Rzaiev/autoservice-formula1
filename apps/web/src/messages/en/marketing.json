@@ -309,7 +309,69 @@
   },
 
   "contacts": {
-    "title": "Contact Us"
+    "eyebrow": "Contact us",
+    "title": "Visit our auto service",
+    "description": "We are nearby and ready to help with repairs, diagnostics and maintenance of your vehicle.",
+
+    "address": {
+      "label": "Address"
+    },
+
+    "phone": {
+      "label": "Phone"
+    },
+
+    "email": {
+      "label": "Email"
+    },
+
+    "messengers": {
+      "title": "Message us"
+    },
+
+    "hours": {
+      "label": "Opening hours",
+      "closed": "Closed",
+      "days": {
+        "monday": "Monday",
+        "tuesday": "Tuesday",
+        "wednesday": "Wednesday",
+        "thursday": "Thursday",
+        "friday": "Friday",
+        "saturday": "Saturday",
+        "sunday": "Sunday"
+      }
+    },
+
+    "map": {
+      "route": "Get directions"
+    },
+
+    "cta": {
+      "title": "Need a repair or diagnostics?",
+      "description": "Contact us or book a convenient time for your visit.",
+      "booking": "Book a service",
+      "phone": "Call us"
+    },
+
+    "directions": {
+      "eyebrow": "How to find us",
+      "title": "Easy access to our service",
+      "steps": {
+        "first": {
+          "title": "Turn off the main road",
+          "description": "Turn off the main road in the direction of our auto service."
+        },
+        "second": {
+          "title": "Turn towards the service",
+          "description": "Follow the signs towards the service premises."
+        },
+        "third": {
+          "title": "Entrance and parking",
+          "description": "Enter the premises and park your vehicle near the service."
+        }
+      }
+    }
   },
 
   "footer": {

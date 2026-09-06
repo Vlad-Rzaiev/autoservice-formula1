@@ -11,6 +11,10 @@ export const siteConfig = {
     display: address,
     googleMapsUrl,
   },
+  email: {
+    display: 'Autoservice F1',
+    href: 'mailto:autoservice-f1@gmail.com',
+  },
   url: {
     development: 'http://localhost:3000',
     production: 'https://autoservice-formula1.vercel.app',

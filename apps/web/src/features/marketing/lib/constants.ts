@@ -141,3 +141,41 @@ export const warrantyCoverageItems = [
     description: 'items.history.description',
   },
 ] as const;
+
+export const workingHours = [
+  {
+    day: 'monday',
+    open: '09:00',
+    close: '18:00',
+  },
+  {
+    day: 'tuesday',
+    open: '09:00',
+    close: '18:00',
+  },
+  {
+    day: 'wednesday',
+    open: '09:00',
+    close: '18:00',
+  },
+  {
+    day: 'thursday',
+    open: '09:00',
+    close: '18:00',
+  },
+  {
+    day: 'friday',
+    open: '09:00',
+    close: '18:00',
+  },
+  {
+    day: 'saturday',
+    open: '09:00',
+    close: '14:00',
+  },
+  {
+    day: 'sunday',
+    open: null,
+    close: null,
+  },
+];
