@@ -3,4 +3,7 @@ export {
   repairProcessSteps,
   warrantyStandards,
   warrantyTrustItems,
+  workingHours,
+  contactsLinks,
+  contactsDirections,
 } from './constants';

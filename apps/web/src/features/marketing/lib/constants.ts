@@ -12,6 +12,11 @@ import {
   faScrewdriverWrench,
   faShieldHalved,
 } from '@fortawesome/free-solid-svg-icons';
+import {
+  faWhatsapp,
+  faFacebookMessenger,
+  faTelegram,
+} from '@fortawesome/free-brands-svg-icons';
 
 export const STALE_TIME_MS = 10 * 60 * 1000;
 
@@ -139,5 +144,73 @@ export const warrantyCoverageItems = [
     icon: faFileLines,
     title: 'items.history.title',
     description: 'items.history.description',
+  },
+] as const;
+
+export const workingHours = [
+  {
+    day: 'monday',
+    open: '09:00',
+    close: '18:00',
+  },
+  {
+    day: 'tuesday',
+    open: '09:00',
+    close: '18:00',
+  },
+  {
+    day: 'wednesday',
+    open: '09:00',
+    close: '18:00',
+  },
+  {
+    day: 'thursday',
+    open: '09:00',
+    close: '18:00',
+  },
+  {
+    day: 'friday',
+    open: '09:00',
+    close: '18:00',
+  },
+  {
+    day: 'saturday',
+    open: '09:00',
+    close: '14:00',
+  },
+  {
+    day: 'sunday',
+    open: null,
+    close: null,
+  },
+] as const;
+
+export const contactsLinks = [
+  {
+    label: 'WhatsApp',
+    href: 'https://wa.me/48575570883',
+    icon: faWhatsapp,
+  },
+  {
+    label: 'Messenger',
+    href: 'https://m.me/your-page',
+    icon: faFacebookMessenger,
+  },
+  {
+    label: 'Telegram',
+    href: 'https://t.me/HAIPSENBERG',
+    icon: faTelegram,
+  },
+] as const;
+
+export const contactsDirections = [
+  {
+    key: 'first',
+  },
+  {
+    key: 'second',
+  },
+  {
+    key: 'third',
   },
 ] as const;
