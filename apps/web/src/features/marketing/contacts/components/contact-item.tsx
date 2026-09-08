@@ -10,7 +10,7 @@ interface ContactItemProps {
 
 function ContactItem({ icon, label, value, href }: ContactItemProps) {
   const content = (
-    <div className="flex gap-4">
+    <div className="flex gap-4 items-center">
       <div className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-muted">
         <FontAwesomeIcon icon={icon} />
       </div>

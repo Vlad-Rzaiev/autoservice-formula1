@@ -3,7 +3,6 @@ import { Section, Container, SectionHeader } from '@/components/layout';
 import { ContactsInfo } from '../contacts/components/contacts-info';
 import { ContactsMap } from '../contacts/components/contacts-map';
 import { Directions } from '../contacts/components/directions';
-import { ContactsCta } from '../contacts/components/contacts-cta';
 
 export default function MarketingContacts() {
   const t = useTranslations('marketing.contacts');
@@ -24,8 +23,6 @@ export default function MarketingContacts() {
         </div>
 
         <Directions />
-
-        <ContactsCta />
       </Container>
     </Section>
   );

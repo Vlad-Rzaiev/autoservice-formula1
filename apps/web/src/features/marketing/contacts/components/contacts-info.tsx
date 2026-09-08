@@ -8,6 +8,7 @@ import { ContactItem } from './contact-item';
 import { WorkingHours } from './working-hours';
 import { SocialLinks } from './social-links';
 import { siteConfig } from '@/config';
+import { ContactsCta } from './contacts-cta';
 
 function ContactsInfo() {
   const t = useTranslations('marketing.contacts');
@@ -15,30 +16,34 @@ function ContactsInfo() {
   return (
     <div className="rounded-2xl border bg-card p-6 lg:p-8">
       <div className="space-y-6">
-        <ContactItem
-          icon={faLocationDot}
-          label={t('address.label')}
-          value={siteConfig.address.display}
-          href={siteConfig.address.googleMapsUrl}
-        />
+        <div className="flex flex-wrap gap-4 items-center justify-between">
+          <ContactItem
+            icon={faLocationDot}
+            label={t('address.label')}
+            value={siteConfig.address.display}
+            href={siteConfig.address.googleMapsUrl}
+          />
 
-        <ContactItem
-          icon={faPhone}
-          label={t('phone.label')}
-          value={siteConfig.phone.display}
-          href={siteConfig.phone.href}
-        />
+          <ContactItem
+            icon={faPhone}
+            label={t('phone.label')}
+            value={siteConfig.phone.display}
+            href={siteConfig.phone.href}
+          />
+
+          <ContactItem
+            icon={faEnvelope}
+            label={t('email.label')}
+            value={siteConfig.email.display}
+            href={siteConfig.email.href}
+          />
+        </div>
 
         <WorkingHours />
 
-        <ContactItem
-          icon={faEnvelope}
-          label={t('email.label')}
-          value={siteConfig.email.display}
-          href={siteConfig.email.href}
-        />
-
         <SocialLinks />
+
+        <ContactsCta />
       </div>
     </div>
   );
