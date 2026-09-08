@@ -48,7 +48,7 @@
     "jsdom": "^30.0.1",
     "shadcn": "^4.17.0",
     "tailwindcss": "^4",
-    "typescript": "^5",
+    "typescript": "^7.0.2",
     "vitest": "^4.1.10"
   }
 }
