@@ -1,11 +1,19 @@
-import React from 'react';
+import { useTranslations } from 'next-intl';
+import { siteConfig } from '@/config';
 
-export interface ContactsMapProps {
-  children?: React.ReactNode;
-}
+function ContactsMap() {
+  const t = useTranslations('marketing.contacts.map');
 
-function ContactsMap({}: ContactsMapProps) {
-  return <div></div>;
+  return (
+    <div className="relative min-h-105 overflow-hidden rounded-2xl border">
+      <iframe
+        src={siteConfig.embedUrl}
+        title={t('title')}
+        loading="lazy"
+        className="absolute inset-0 size-full border-0"
+      />
+    </div>
+  );
 }
 
 export { ContactsMap };

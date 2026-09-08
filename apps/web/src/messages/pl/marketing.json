@@ -346,6 +346,7 @@
     },
 
     "map": {
+      "title": "Mapa lokalizacji serwisu samochodowego",
       "route": "Wyznacz trasę"
     },
 

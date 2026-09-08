@@ -12,6 +12,11 @@ import {
   faScrewdriverWrench,
   faShieldHalved,
 } from '@fortawesome/free-solid-svg-icons';
+import {
+  faWhatsapp,
+  faFacebookMessenger,
+  faTelegram,
+} from '@fortawesome/free-brands-svg-icons';
 
 export const STALE_TIME_MS = 10 * 60 * 1000;
 
@@ -178,4 +183,34 @@ export const workingHours = [
     open: null,
     close: null,
   },
-];
+] as const;
+
+export const contactsLinks = [
+  {
+    label: 'WhatsApp',
+    href: 'https://wa.me/48575570883',
+    icon: faWhatsapp,
+  },
+  {
+    label: 'Messenger',
+    href: 'https://m.me/your-page',
+    icon: faFacebookMessenger,
+  },
+  {
+    label: 'Telegram',
+    href: 'https://t.me/HAIPSENBERG',
+    icon: faTelegram,
+  },
+] as const;
+
+export const contactsDirections = [
+  {
+    key: 'first',
+  },
+  {
+    key: 'second',
+  },
+  {
+    key: 'third',
+  },
+] as const;

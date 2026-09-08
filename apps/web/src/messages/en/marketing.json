@@ -344,6 +344,7 @@
     },
 
     "map": {
+      "title": "Auto service location map",
       "route": "Get directions"
     },
 

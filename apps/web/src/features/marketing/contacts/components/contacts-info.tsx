@@ -7,7 +7,6 @@ import { useTranslations } from 'next-intl';
 import { ContactItem } from './contact-item';
 import { WorkingHours } from './working-hours';
 import { SocialLinks } from './social-links';
-import { ContactsCta } from './contacts-cta';
 import { siteConfig } from '@/config';
 
 function ContactsInfo() {
@@ -41,8 +40,6 @@ function ContactsInfo() {
 
         <SocialLinks />
       </div>
-
-      <ContactsCta />
     </div>
   );
 }

@@ -76,6 +76,6 @@ export { ContactsInfo } from './contacts/components/contacts-info';
 export { ContactItem } from './contacts/components/contact-item';
 export { WorkingHours } from './contacts/components/working-hours';
 export { SocialLinks } from './contacts/components/social-links';
-export { ContactsMap } from './contacts/components/contacts-map';
-export { ContactsCta } from './contacts/components/contacts-cta';
+export { ContactsMap } from './contacts/components/contacts-cta';
+export { ContactsCta } from './contacts/components/contacts-map';
 export { Directions } from './contacts/components/directions';
