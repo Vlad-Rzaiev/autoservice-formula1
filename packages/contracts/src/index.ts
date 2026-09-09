@@ -131,3 +131,23 @@ export {
   apiErrorCodeSchema,
   type ApiErrorCode,
 } from './common/api-error-codes.js';
+
+export {
+  userRoleSchema,
+  userGenderSchema,
+  phoneSchema,
+  userDtoSchema,
+} from './auth/user.schemas.js';
+
+export type { UserGender, UserPhone, User } from './auth/user.schemas.js';
+
+export {
+  registerRequestSchema,
+  loginRequestSchema,
+} from './auth/auth.schemas.js';
+
+export { RegisterRequest, LoginRequest } from './auth/auth.schemas.js';
+
+export { userGenderVariants, userRole } from './auth/user.constants.js';
+
+export type { UserGenderVariants, UserRole } from './auth/user.constants.js';
