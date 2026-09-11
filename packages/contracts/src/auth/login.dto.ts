@@ -1,4 +1,1 @@
-export interface LoginDto {
-  email: string;
-  password: string;
-}
+export type { LoginRequest as LoginDto } from './auth.schemas.js';

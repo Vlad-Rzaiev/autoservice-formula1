@@ -4,10 +4,10 @@ import {
 } from './service.model.js';
 import { CreateServiceInput } from '@autoservice/contracts';
 import { getNextCounterValue } from '../counters/counter.service.js';
-import { SERVICES_SORT_ORDER_COUNTER_KEY } from './service.constants.js';
 import { SpecializationLeanDocument } from '../specializations/specialization.model.js';
 import { WorkDirectionLeanDocument } from '../work-directions/work-direction.model.js';
 import { toServiceDto } from './service.mapper.js';
+import { SERVICES_SORT_ORDER_COUNTER_KEY } from '../counters/counter.constants.js';
 
 export const getAllServices = async () => {
   const services = await ServiceCollection.find({

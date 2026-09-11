@@ -1,6 +1,6 @@
 import { CounterCollection } from './counter.model.js';
 import { ServiceCollection } from '../services/service.model.js';
-import { SERVICES_SORT_ORDER_COUNTER_KEY } from '../services/service.constants.js';
+import { SERVICES_SORT_ORDER_COUNTER_KEY } from './counter.constants.js';
 
 interface LastServiceSortOrder {
   sortOrder: number;
