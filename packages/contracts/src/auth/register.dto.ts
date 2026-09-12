@@ -1,6 +1,1 @@
-export interface RegisterDto {
-  firstName: string;
-  lastName: string;
-  email: string;
-  password: string;
-}
+export type { RegisterRequest as RegisterDto } from './auth.schemas.js';

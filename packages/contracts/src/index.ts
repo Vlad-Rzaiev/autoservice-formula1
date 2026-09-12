@@ -139,11 +139,12 @@ export {
   userDtoSchema,
 } from './auth/user.schemas.js';
 
-export type { UserGender, UserPhone, User } from './auth/user.schemas.js';
+export type { UserPhone, User } from './auth/user.schemas.js';
 
 export {
   registerRequestSchema,
   loginRequestSchema,
+  passwordSchema,
 } from './auth/auth.schemas.js';
 
 export { RegisterRequest, LoginRequest } from './auth/auth.schemas.js';
@@ -151,3 +152,12 @@ export { RegisterRequest, LoginRequest } from './auth/auth.schemas.js';
 export { userGenderVariants, userRole } from './auth/user.constants.js';
 
 export type { UserGenderVariants, UserRole } from './auth/user.constants.js';
+
+export type { RegisterDto } from './auth/register.dto.js';
+export type { LoginDto } from './auth/login.dto.js';
+
+export { userResponseSchema } from './auth/user-response.schemas.js';
+export type { UserResponse } from './auth/user.response.js';
+
+export type { UserDto } from './auth/user.dto.js';
+export type { AuthDto } from './auth/auth.dto.js';

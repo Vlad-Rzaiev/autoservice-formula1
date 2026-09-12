@@ -12,6 +12,7 @@ import { isOriginAllowed } from './utils/is-origin-allowed.js';
 import { publicApiRateLimit } from './middleware/rate-limit.js';
 
 import healthRouter from './modules/health/health.routes.js';
+import authRouter from './modules/user/user.routes.js';
 import servicesRouter from './modules/services/service.routes.js';
 import completedWorksRouter from './modules/completed-works/completed-works.routes.js';
 import mechanicsRouter from './modules/mechanics/mechanic.routes.js';
@@ -72,6 +73,8 @@ export function createApp() {
   app.use('/health', healthRouter);
 
   app.use('/api', publicApiRateLimit);
+
+  app.use('/api/v1/auth', authRouter);
 
   app.use('/api/v1/services', servicesRouter);
 

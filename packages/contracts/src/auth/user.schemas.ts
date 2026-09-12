@@ -1,17 +1,9 @@
 import z from 'zod';
+import { userGenderVariants, userRole } from './user.constants.js';
 
-export const userRoleSchema = z.enum([
-  'owner',
-  'manager',
-  'mechanic',
-  'client',
-]);
+export const userRoleSchema = z.enum(userRole);
 
-export type UserRole = z.infer<typeof userRoleSchema>;
-
-export const userGenderSchema = z.enum(['male', 'female', 'other']).nullable();
-
-export type UserGender = z.infer<typeof userGenderSchema>;
+export const userGenderSchema = z.enum(userGenderVariants).nullable();
 
 export const phoneSchema = z
   .string()
@@ -23,19 +15,13 @@ export type UserPhone = z.infer<typeof phoneSchema>;
 export const userDtoSchema = z.object({
   _id: z.string().min(1),
   userId: z.string().min(1),
-
   firstName: z.string().min(3).max(15).trim().nullable(),
   lastName: z.string().min(3).max(15).trim().nullable(),
-
   photo: z.string().min(1).nullable(),
-
   gender: userGenderSchema,
-
   birthDate: z.iso.date().nullable(),
   phone: phoneSchema,
-
   email: z.email(),
-
   role: userRoleSchema,
 });
 

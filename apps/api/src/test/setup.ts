@@ -7,6 +7,8 @@ let mongoMemoryServer: MongoMemoryServer;
 process.env.NODE_ENV = 'test';
 process.env.PORT = '7777';
 
+process.env.JWT_ACCESS_SECRET = 'test-jwt-access-secret';
+
 process.env.MONGODB_USER = 'test-user';
 process.env.MONGODB_PASSWORD = 'test-password';
 process.env.MONGODB_URL = 'test.mongodb.local';

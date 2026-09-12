@@ -8,8 +8,8 @@ import {
 
 export interface UserPersistence {
   userId: string;
-  firstName: string;
-  lastName: string;
+  firstName: string | null;
+  lastName: string | null;
   photo: string | null;
   gender: UserGenderVariants | null;
   birthDate: string | null;
@@ -42,13 +42,13 @@ const userSchema = new Schema<UserDocumentData>(
     },
     firstName: {
       type: String,
-      required: true,
       trim: true,
+      default: null,
     },
     lastName: {
       type: String,
-      required: true,
       trim: true,
+      default: null,
     },
     photo: {
       type: String,
@@ -86,6 +86,7 @@ const userSchema = new Schema<UserDocumentData>(
       type: String,
       enum: userRole,
       required: true,
+      default: 'client',
     },
     isActive: {
       type: Boolean,
@@ -98,5 +99,11 @@ const userSchema = new Schema<UserDocumentData>(
     versionKey: false,
   },
 );
+
+userSchema.methods.toJSON = function () {
+  const obj = this.toObject();
+  delete obj.passwordHash;
+  return obj;
+};
 
 export const UserCollection = model<UserDocumentData>('users', userSchema);
