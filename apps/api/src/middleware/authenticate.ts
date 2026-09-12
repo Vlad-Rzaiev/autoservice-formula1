@@ -11,9 +11,9 @@ export const authenticate: RequestHandler = async (req, _res, next) => {
     return;
   }
 
-  const [scheme, token] = authorizationHeader.split(' ');
+  const [bearer, token] = authorizationHeader.split(' ');
 
-  if (scheme !== 'Bearer' || !token) {
+  if (bearer !== 'Bearer' || !token) {
     next(createHttpError(401, 'Invalid authorization header.'));
     return;
   }

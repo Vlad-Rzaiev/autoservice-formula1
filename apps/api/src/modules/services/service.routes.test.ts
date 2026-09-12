@@ -1,7 +1,9 @@
 import { Types } from 'mongoose';
 import type { ServiceDto } from '@autoservice/contracts';
+import bcrypt from 'bcrypt';
 import request from 'supertest';
 import { describe, expect, it } from 'vitest';
+import { UserCollection } from '../user/user.model.js';
 
 import { createApp } from '../../app.js';
 import { ServiceCollection } from './service.model.js';
@@ -9,6 +11,37 @@ import { createServiceFixture } from '../../test/factories/service.factory.js';
 import { createServicePayloadFixture } from '../../test/factories/create-service-payload.factory.js';
 import { SpecializationCollection } from '../specializations/specialization.model.js';
 import { WorkDirectionCollection } from '../work-directions/work-direction.model.js';
+
+const getOwnerAccessToken = async (): Promise<string> => {
+  const password = 'TestPassword123!';
+
+  await UserCollection.create({
+    userId: '1',
+    firstName: 'Vlad',
+    lastName: 'Rzaiev',
+    photo: null,
+    gender: null,
+    birthDate: null,
+    phone: null,
+    email: 'owner@test.com',
+    emailVerified: true,
+    passwordHash: await bcrypt.hash(password, 10),
+    role: 'owner',
+    isActive: true,
+  });
+
+  const app = createApp();
+
+  const response = await request(app)
+    .post('/api/v1/auth/login')
+    .send({
+      email: 'owner@test.com',
+      password,
+    })
+    .expect(200);
+
+  return response.body.data.accessToken;
+};
 
 describe('GET /api/v1/services', () => {
   it('returns an empty services response when no services exist', async () => {
@@ -206,6 +239,7 @@ describe('GET /api/v1/services/:serviceSlug', () => {
 describe('POST /api/v1/services', () => {
   it('creates a service', async () => {
     const app = createApp();
+    const accessToken = await getOwnerAccessToken();
 
     const createServicePayload = createServicePayloadFixture();
 
@@ -268,6 +302,7 @@ describe('POST /api/v1/services', () => {
 
     const response = await request(app)
       .post('/api/v1/services')
+      .set('Authorization', `Bearer ${accessToken}`)
       .send(createServicePayload)
       .expect(201);
 
@@ -314,11 +349,13 @@ describe('POST /api/v1/services', () => {
 
   it('persists the created service in MongoDB', async () => {
     const app = createApp();
+    const accessToken = await getOwnerAccessToken();
 
     const createServicePayload = createServicePayloadFixture();
 
     await request(app)
       .post('/api/v1/services')
+      .set('Authorization', `Bearer ${accessToken}`)
       .send(createServicePayload)
       .expect(201);
 
@@ -349,6 +386,7 @@ describe('POST /api/v1/services', () => {
 
   it('assigns consecutive sortOrder values', async () => {
     const app = createApp();
+    const accessToken = await getOwnerAccessToken();
 
     const firstServicePayload = createServicePayloadFixture({
       slug: 'first-service',
@@ -360,11 +398,13 @@ describe('POST /api/v1/services', () => {
 
     const firstResponse = await request(app)
       .post('/api/v1/services')
+      .set('Authorization', `Bearer ${accessToken}`)
       .send(firstServicePayload)
       .expect(201);
 
     const secondResponse = await request(app)
       .post('/api/v1/services')
+      .set('Authorization', `Bearer ${accessToken}`)
       .send(secondServicePayload)
       .expect(201);
 
@@ -374,6 +414,7 @@ describe('POST /api/v1/services', () => {
 
   it('returns 400 when slug is missing', async () => {
     const app = createApp();
+    const accessToken = await getOwnerAccessToken();
 
     const validServicePayload = createServicePayloadFixture();
 
@@ -381,6 +422,7 @@ describe('POST /api/v1/services', () => {
 
     const response = await request(app)
       .post('/api/v1/services')
+      .set('Authorization', `Bearer ${accessToken}`)
       .send(payloadWithoutSlug)
       .expect(400);
 
@@ -396,6 +438,7 @@ describe('POST /api/v1/services', () => {
 
   it('returns 400 when slug format is invalid', async () => {
     const app = createApp();
+    const accessToken = await getOwnerAccessToken();
 
     const invalidServicePayload = createServicePayloadFixture({
       slug: 'Invalid Slug!',
@@ -403,6 +446,7 @@ describe('POST /api/v1/services', () => {
 
     const response = await request(app)
       .post('/api/v1/services')
+      .set('Authorization', `Bearer ${accessToken}`)
       .send(invalidServicePayload)
       .expect(400);
 
@@ -425,16 +469,19 @@ describe('POST /api/v1/services', () => {
 
   it('returns 409 when slug already exists', async () => {
     const app = createApp();
+    const accessToken = await getOwnerAccessToken();
 
     const createServicePayload = createServicePayloadFixture();
 
     await request(app)
       .post('/api/v1/services')
+      .set('Authorization', `Bearer ${accessToken}`)
       .send(createServicePayload)
       .expect(201);
 
     const duplicateResponse = await request(app)
       .post('/api/v1/services')
+      .set('Authorization', `Bearer ${accessToken}`)
       .send(createServicePayload)
       .expect(409);
 

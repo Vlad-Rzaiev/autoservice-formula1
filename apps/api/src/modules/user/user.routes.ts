@@ -7,9 +7,10 @@ import { validateBody } from '../../middleware/validate-body.js';
 import { ctrlWrapper } from '../../utils/ctrlWrapper.js';
 import {
   loginUserController,
+  logoutUserController,
+  refreshTokenController,
   registerUserController,
 } from './user.controller.js';
-import { authenticate } from '../../middleware/authenticate.js';
 
 const router = Router();
 
@@ -25,14 +26,8 @@ router.post(
   ctrlWrapper(loginUserController),
 );
 
-router.get('/me', authenticate, (req, res) => {
-  res.status(200).json({
-    status: 200,
-    success: true,
-    data: {
-      user: req.user,
-    },
-  });
-});
+router.post('/refresh', ctrlWrapper(refreshTokenController));
+
+router.post('/logout', ctrlWrapper(logoutUserController));
 
 export default router;
