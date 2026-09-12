@@ -1,16 +1,25 @@
-import { model, Schema } from 'mongoose';
+import { model, Schema, type Types } from 'mongoose';
 
-const sessionSchema = new Schema(
+export interface SessionPersistence {
+  userId: Types.ObjectId;
+  accessTokenHash: string;
+  refreshTokenHash: string;
+  accessTokenValidUntil: Date;
+  refreshTokenValidUntil: Date;
+}
+
+const sessionSchema = new Schema<SessionPersistence>(
   {
     userId: {
       type: Schema.Types.ObjectId,
       ref: 'users',
+      required: true,
     },
-    accessToken: {
+    accessTokenHash: {
       type: String,
       required: true,
     },
-    refreshToken: {
+    refreshTokenHash: {
       type: String,
       required: true,
     },
@@ -29,4 +38,7 @@ const sessionSchema = new Schema(
   },
 );
 
-export const SessionCollection = model('sessions', sessionSchema);
+export const SessionCollection = model<SessionPersistence>(
+  'sessions',
+  sessionSchema,
+);

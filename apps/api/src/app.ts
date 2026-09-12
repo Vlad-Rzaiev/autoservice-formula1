@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
+import cookieParser from 'cookie-parser';
 import createHttpError from 'http-errors';
 import { pinoHttp } from 'pino-http';
 import { logger } from './config/logger.js';
@@ -69,6 +70,7 @@ export function createApp() {
   );
 
   app.use(express.json());
+  app.use(cookieParser());
 
   app.use('/health', healthRouter);
 

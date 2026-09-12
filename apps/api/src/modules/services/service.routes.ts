@@ -9,6 +9,8 @@ import { validateParams } from '../../middleware/validate-params.js';
 import { validateBody } from '../../middleware/validate-body.js';
 import { createServiceSchema } from '@autoservice/contracts';
 import { getServiceBySlugParamsSchema } from '../../validation/services/service-params.schema.js';
+import { authenticate } from '../../middleware/authenticate.js';
+import { authorize } from '../../middleware/authorize.js';
 
 const router = Router();
 
@@ -22,6 +24,8 @@ router.get(
 
 router.post(
   '/',
+  authenticate,
+  authorize('owner', 'manager'),
   validateBody(createServiceSchema),
   ctrlWrapper(createServiceController),
 );
