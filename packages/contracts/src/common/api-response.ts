@@ -5,6 +5,12 @@ export interface ApiSuccess<TData> {
   data: TData;
 }
 
+export interface ApiSuccessWithoutData {
+  status: number;
+  success: true;
+  message: string;
+}
+
 export interface ApiError {
   status: number;
   success: false;
@@ -14,4 +20,5 @@ export interface ApiError {
   requestId?: string;
 }
 
-export type ApiResponse<TData> = ApiSuccess<TData> | ApiError;
+export type ApiResponse<TData> =
+  ApiSuccess<TData> | ApiSuccessWithoutData | ApiError;

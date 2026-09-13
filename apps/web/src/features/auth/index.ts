@@ -4,3 +4,12 @@ export {
   default as AuthShell,
   type AuthShellProps,
 } from './components/auth-shell';
+
+export {
+  loginUser,
+  logoutUser,
+  refreshAccessToken,
+  registerUser,
+  requestPasswordReset,
+  resetPassword,
+} from './api/auth-api';

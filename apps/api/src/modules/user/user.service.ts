@@ -12,6 +12,12 @@ import { USERS_ID_COUNTER_KEY } from '../counters/counter.constants.js';
 import { SALT_ROUNDS } from './user.constants.js';
 import { ONE_DAY, TEN_MINUTES } from '../sessions/session.constants.js';
 
+export const getUserByEmail = async (email: string) => {
+  const user = UserCollection.findOne({ email }).lean().exec();
+
+  return user;
+};
+
 export const createUser = async (payload: RegisterDto) => {
   const passwordHash = await bcrypt.hash(payload.password, SALT_ROUNDS);
 

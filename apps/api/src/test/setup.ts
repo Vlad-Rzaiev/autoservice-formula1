@@ -15,6 +15,7 @@ process.env.MONGODB_URL = 'test.mongodb.local';
 process.env.MONGODB_DB = 'autoservice-test';
 
 process.env.CORS_ORIGINS = 'http://localhost:3000';
+process.env.FRONTEND_URL = 'http://localhost:3000';
 
 process.env.VERCEL_PROJECT_NAME = 'autoservice-formula1';
 process.env.VERCEL_TEAM_SLUG = 'test-team';

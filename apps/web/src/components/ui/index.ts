@@ -64,3 +64,20 @@ export {
   AccordionTrigger,
   AccordionContent,
 } from './accordion';
+
+export { Input } from './input';
+
+export {
+  Field,
+  FieldLabel,
+  FieldDescription,
+  FieldError,
+  FieldGroup,
+  FieldLegend,
+  FieldSeparator,
+  FieldSet,
+  FieldContent,
+  FieldTitle,
+} from './field';
+
+export { Label } from './label';
