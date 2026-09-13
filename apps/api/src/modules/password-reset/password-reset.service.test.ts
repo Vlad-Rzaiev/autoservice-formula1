@@ -39,6 +39,7 @@ describe('requestPasswordReset', () => {
 
     const token = await requestPasswordReset({
       email: 'client@test.com',
+      locale: 'uk',
     });
 
     expect(token).toEqual(expect.any(String));
@@ -79,6 +80,7 @@ describe('requestPasswordReset', () => {
 
     const newToken = await requestPasswordReset({
       email: 'client@test.com',
+      locale: 'uk',
     });
 
     const resetTokens = await PasswordResetTokenCollection.find({
@@ -92,6 +94,7 @@ describe('requestPasswordReset', () => {
   it('does nothing when the user does not exist', async () => {
     const token = await requestPasswordReset({
       email: 'unknown@test.com',
+      locale: 'uk',
     });
 
     expect(token).toBeUndefined();
@@ -288,36 +291,56 @@ describe('requestPasswordReset', () => {
     ).toBe(true);
   });
 
-  it('sends a password reset email to the user', async () => {
-    const passwordHash = await bcrypt.hash('TestPassword123!', 10);
+  it.each([
+    {
+      locale: 'uk',
+      resetPasswordUrl: 'http://localhost:3000/uk/reset-password',
+      subject: 'Скидання пароля — AutoService Formula 1',
+    },
+    {
+      locale: 'en',
+      resetPasswordUrl: 'http://localhost:3000/en/reset-password',
+      subject: 'Password reset — AutoService Formula 1',
+    },
+    {
+      locale: 'pl',
+      resetPasswordUrl: 'http://localhost:3000/pl/reset-password',
+      subject: 'Resetowanie hasła — AutoService Formula 1',
+    },
+  ] as const)(
+    'sends a password reset email in $locale locale',
+    async ({ locale, resetPasswordUrl, subject }) => {
+      const passwordHash = await bcrypt.hash('TestPassword123!', 10);
 
-    await UserCollection.create({
-      userId: '1',
-      firstName: 'Vlad',
-      lastName: 'Rzaiev',
-      photo: null,
-      gender: null,
-      birthDate: null,
-      phone: null,
-      email: 'client@test.com',
-      emailVerified: true,
-      passwordHash,
-      role: 'client',
-      isActive: true,
-    });
+      await UserCollection.create({
+        userId: '1',
+        firstName: 'Vlad',
+        lastName: 'Rzaiev',
+        photo: null,
+        gender: null,
+        birthDate: null,
+        phone: null,
+        email: 'client@test.com',
+        emailVerified: true,
+        passwordHash,
+        role: 'client',
+        isActive: true,
+      });
 
-    const token = await requestPasswordReset({
-      email: 'client@test.com',
-    });
+      const token = await requestPasswordReset({
+        email: 'client@test.com',
+        locale,
+      });
 
-    expect(sendMail).toHaveBeenCalledOnce();
+      expect(sendMail).toHaveBeenCalledOnce();
 
-    expect(sendMail).toHaveBeenCalledWith({
-      to: 'client@test.com',
-      subject: 'Reset your AutoService Formula 1 password',
-      text: expect.stringContaining(
-        `http://localhost:3000/uk/reset-password?token=${token}`,
-      ),
-    });
-  });
+      expect(sendMail).toHaveBeenCalledWith(
+        expect.objectContaining({
+          to: 'client@test.com',
+          subject,
+          text: expect.stringContaining(`${resetPasswordUrl}?token=${token}`),
+        }),
+      );
+    },
+  );
 });
