@@ -1,7 +1,3 @@
-import nodemailer, { type Transporter } from 'nodemailer';
-
-import { SMTP } from '../config/smtp.constants.js';
-
 interface SendMailParams {
   to: string;
   subject: string;
@@ -9,78 +5,9 @@ interface SendMailParams {
   html?: string;
 }
 
-interface SmtpConfig {
-  host: string;
-  port: number;
-  user: string;
-  password: string;
-  from: string;
+interface BrevoSendEmailResponse {
+  messageId: string;
 }
-
-interface MailTransport {
-  transporter: Transporter;
-  from: string;
-}
-
-let mailTransport: MailTransport | null = null;
-
-const getSmtpConfig = (): SmtpConfig => {
-  const smtpHost = process.env[SMTP.HOST];
-  const smtpPortValue = process.env[SMTP.PORT];
-  const smtpUser = process.env[SMTP.USER];
-  const smtpPassword = process.env[SMTP.PASSWORD];
-  const smtpFrom = process.env[SMTP.FROM];
-
-  const smtpPort = Number(smtpPortValue);
-
-  if (
-    !smtpHost ||
-    !smtpPortValue ||
-    !Number.isInteger(smtpPort) ||
-    smtpPort <= 0 ||
-    !smtpUser ||
-    !smtpPassword ||
-    !smtpFrom
-  ) {
-    throw new Error('SMTP configuration is incomplete.');
-  }
-
-  return {
-    host: smtpHost,
-    port: smtpPort,
-    user: smtpUser,
-    password: smtpPassword,
-    from: smtpFrom,
-  };
-};
-
-const getMailTransport = (): MailTransport => {
-  if (mailTransport) {
-    return mailTransport;
-  }
-
-  const smtpConfig = getSmtpConfig();
-
-  const transporter = nodemailer.createTransport({
-    host: smtpConfig.host,
-    port: smtpConfig.port,
-    secure: smtpConfig.port === 465,
-    connectionTimeout: 10_000,
-    greetingTimeout: 10_000,
-    socketTimeout: 10_000,
-    auth: {
-      user: smtpConfig.user,
-      pass: smtpConfig.password,
-    },
-  });
-
-  mailTransport = {
-    transporter,
-    from: smtpConfig.from,
-  };
-
-  return mailTransport;
-};
 
 export const sendMail = async ({
   to,
@@ -88,13 +15,38 @@ export const sendMail = async ({
   text,
   html,
 }: SendMailParams): Promise<void> => {
-  const { transporter, from } = getMailTransport();
+  const brevoApiKey = process.env.BREVO_API_KEY;
+  const brevoFrom = process.env.BREVO_FROM;
 
-  await transporter.sendMail({
-    from,
-    to,
-    subject,
-    text,
-    html,
+  if (!brevoApiKey || !brevoFrom) {
+    throw new Error('Brevo API configuration is incomplete.');
+  }
+
+  const response = await fetch('https://api.brevo.com/v3/smtp/email', {
+    method: 'POST',
+    headers: {
+      accept: 'application/json',
+      'api-key': brevoApiKey,
+      'content-type': 'application/json',
+    },
+    body: JSON.stringify({
+      sender: { email: brevoFrom },
+      to: [{ email: to }],
+      subject,
+      textContent: text,
+      ...(html ? { htmlContent: html } : {}),
+    }),
   });
+
+  if (!response.ok) {
+    const errorBody = await response.text();
+    throw new Error(
+      `Brevo API request failed with status ${response.status}: ${errorBody}`,
+    );
+  }
+
+  const result = (await response.json()) as BrevoSendEmailResponse;
+  if (!result.messageId) {
+    throw new Error('Brevo API returned an invalid response.');
+  }
 };
