@@ -65,6 +65,9 @@ const getMailTransport = (): MailTransport => {
     host: smtpConfig.host,
     port: smtpConfig.port,
     secure: smtpConfig.port === 465,
+    connectionTimeout: 10_000,
+    greetingTimeout: 10_000,
+    socketTimeout: 10_000,
     auth: {
       user: smtpConfig.user,
       pass: smtpConfig.password,
