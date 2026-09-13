@@ -35,6 +35,9 @@ export const sendMail = async ({
       subject,
       textContent: text,
       ...(html ? { htmlContent: html } : {}),
+      params: {
+        trackClicks: false,
+      },
     }),
   });
 
