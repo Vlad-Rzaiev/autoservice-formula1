@@ -36,7 +36,9 @@ export const requestPasswordReset = async ({
     validUntil: new Date(Date.now() + PASSWORD_RESET_TOKEN_VALIDITY),
   });
 
+  console.log('PASSWORD RESET: before send email');
   await sendPasswordResetEmail(user.email, token, locale);
+  console.log('PASSWORD RESET: after send email');
 
   return token;
 };
