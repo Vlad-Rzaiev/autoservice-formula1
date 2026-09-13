@@ -1,9 +1,3 @@
-const brevoApiKey = process.env.BREVO_API_KEY;
-const brevoFrom = process.env.BREVO_FROM;
-if (!brevoApiKey || !brevoFrom) {
-  throw new Error('Brevo API configuration is incomplete.');
-}
-
 interface SendMailParams {
   to: string;
   subject: string;
@@ -21,6 +15,13 @@ export const sendMail = async ({
   text,
   html,
 }: SendMailParams): Promise<void> => {
+  const brevoApiKey = process.env.BREVO_API_KEY;
+  const brevoFrom = process.env.BREVO_FROM;
+
+  if (!brevoApiKey || !brevoFrom) {
+    throw new Error('Brevo API configuration is incomplete.');
+  }
+
   const response = await fetch('https://api.brevo.com/v3/smtp/email', {
     method: 'POST',
     headers: {
