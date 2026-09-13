@@ -15,6 +15,8 @@ import {
   Input,
 } from '@/components/ui';
 import { requestPasswordReset } from '@/features/auth';
+import { ButtonLink } from '@/components/common';
+import { routes } from '@/config';
 
 export default function ForgotPasswordPage() {
   const t = useTranslations('auth.forgot-pwd');
@@ -56,6 +58,12 @@ export default function ForgotPasswordPage() {
             <CardTitle>{t('success-title')}</CardTitle>
             <CardDescription>{t('success-description')}</CardDescription>
           </CardHeader>
+
+          <CardContent>
+            <ButtonLink href={routes.auth.login} variant="ctaOutline">
+              {t('go-login-btn')}
+            </ButtonLink>
+          </CardContent>
         </Card>
       </div>
     );
