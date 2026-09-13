@@ -16,6 +16,7 @@ const passwordResetEmailContent: Record<
     button: string;
     expiration: string;
     ignore: string;
+    link: string;
   }
 > = {
   uk: {
@@ -27,6 +28,7 @@ const passwordResetEmailContent: Record<
     expiration: 'Посилання дійсне протягом 15 хвилин.',
     ignore:
       'Якщо ви не запитували скидання пароля, просто проігноруйте цей лист.',
+    link: 'Якщо кнопка не працює, перейдіть за посиланням нижче:',
   },
 
   en: {
@@ -38,6 +40,7 @@ const passwordResetEmailContent: Record<
     expiration: 'This link is valid for 15 minutes.',
     ignore:
       'If you did not request a password reset, you can safely ignore this email.',
+    link: 'If the button does not work, use the link below:',
   },
 
   pl: {
@@ -49,6 +52,7 @@ const passwordResetEmailContent: Record<
     expiration: 'Ten link jest ważny przez 15 minut.',
     ignore:
       'Jeśli nie prosiłeś o zresetowanie hasła, możesz bezpiecznie zignorować tę wiadomość.',
+    link: 'Jeśli przycisk nie działa, skorzystaj z poniższego linku:',
   },
 };
 
@@ -158,6 +162,36 @@ export const sendPasswordResetEmail = async (
                         </td>
                       </tr>
                     </table>
+
+                    <p
+                      style="
+                        margin: 24px 0 8px;
+                        font-size: 14px;
+                        line-height: 20px;
+                        color: #71717a;
+                      "
+                    >
+                      ${content.link}
+                    </p>
+
+                    <p
+                      style="
+                        margin: 0;
+                        font-size: 13px;
+                        line-height: 20px;
+                        word-break: break-all;
+                      "
+                    >
+                      <a
+                        href="${resetUrl}"
+                        style="
+                          color: #dc2626;
+                          text-decoration: none;
+                        "
+                      >
+                        ${resetUrl}
+                      </a>
+                    </p>
 
                     <p
                       style="
