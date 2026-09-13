@@ -6,3 +6,5 @@ export {
 export { MobileMenuProvider, useMobileMenu } from './mobile-menu-provider';
 
 export { default as TanStackQueryProvider } from './tanstack-query-provider';
+
+export { default as AuthProvider, useAuth } from './auth-provider';

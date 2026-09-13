@@ -1,4 +1,5 @@
 import z from 'zod';
+import { supportedLocales } from '../common/locale.js';
 
 export const passwordSchema = z
   .string()
@@ -17,12 +18,22 @@ export const registerRequestSchema = z.object({
   email: z.email(),
   password: passwordSchema,
 });
-
 export type RegisterRequest = z.infer<typeof registerRequestSchema>;
 
 export const loginRequestSchema = z.object({
   email: z.email(),
   password: z.string().min(1),
 });
-
 export type LoginRequest = z.infer<typeof loginRequestSchema>;
+
+export const resetEmailRequestSchema = z.object({
+  email: z.email(),
+  locale: z.enum(supportedLocales),
+});
+export type ResetEmailRequest = z.infer<typeof resetEmailRequestSchema>;
+
+export const resetPasswordRequestSchema = z.object({
+  token: z.string().min(1),
+  password: passwordSchema,
+});
+export type ResetPasswordRequest = z.infer<typeof resetPasswordRequestSchema>;

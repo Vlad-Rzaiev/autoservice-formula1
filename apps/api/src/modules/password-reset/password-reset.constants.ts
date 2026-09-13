@@ -1,0 +1,1 @@
+export const PASSWORD_RESET_TOKEN_VALIDITY = 15 * 60 * 1000;

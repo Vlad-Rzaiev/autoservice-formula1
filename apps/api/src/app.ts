@@ -14,6 +14,7 @@ import { publicApiRateLimit } from './middleware/rate-limit.js';
 
 import healthRouter from './modules/health/health.routes.js';
 import authRouter from './modules/user/user.routes.js';
+import resetPasswordRouter from './modules/password-reset/password-reset.routes.js';
 import servicesRouter from './modules/services/service.routes.js';
 import completedWorksRouter from './modules/completed-works/completed-works.routes.js';
 import mechanicsRouter from './modules/mechanics/mechanic.routes.js';
@@ -77,6 +78,7 @@ export function createApp() {
   app.use('/api', publicApiRateLimit);
 
   app.use('/api/v1/auth', authRouter);
+  app.use('/api/v1/auth', resetPasswordRouter);
 
   app.use('/api/v1/services', servicesRouter);
 

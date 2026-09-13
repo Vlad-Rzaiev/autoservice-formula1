@@ -1,4 +1,8 @@
-export type { ApiResponse, ApiSuccess } from './common/api-response.js';
+export type {
+  ApiResponse,
+  ApiSuccess,
+  ApiSuccessWithoutData,
+} from './common/api-response.js';
 
 export { isSupportedLocale, supportedLocales } from './common/locale.js';
 
@@ -145,9 +149,16 @@ export {
   registerRequestSchema,
   loginRequestSchema,
   passwordSchema,
+  resetEmailRequestSchema,
+  resetPasswordRequestSchema,
 } from './auth/auth.schemas.js';
 
-export { RegisterRequest, LoginRequest } from './auth/auth.schemas.js';
+export type {
+  RegisterRequest,
+  LoginRequest,
+  ResetEmailRequest,
+  ResetPasswordRequest,
+} from './auth/auth.schemas.js';
 
 export { userGenderVariants, userRole } from './auth/user.constants.js';
 
