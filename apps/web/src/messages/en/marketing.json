@@ -19,7 +19,9 @@
 
   "hero": {
     "title": "<accent>Professional</accent> vehicle repairs of <accent>any</accent> complexity",
-    "description": "Comprehensive diagnostics, maintenance, and <accent>repairs</accent> with a transparent estimate, approval at every stage, and a <accent>warranty</accent> on all completed work."
+    "description": "Comprehensive diagnostics, maintenance, and <accent>repairs</accent> with a transparent estimate, approval at every stage, and a <accent>warranty</accent> on all completed work.",
+    "regBtn": "Register",
+    "loginBtn": "Log In"
   },
 
   "why-us": {
@@ -382,6 +384,8 @@
     "label": "Footer navigation",
     "accountTitle": "Account",
     "copyright": "All rights reserved.",
-    "backToTop": "Back to top"
+    "backToTop": "Back to top",
+    "regBtn": "Register",
+    "loginBtn": "Log In"
   }
 }

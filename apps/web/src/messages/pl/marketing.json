@@ -22,7 +22,9 @@
 
   "hero": {
     "title": "<accent>Profesjonalna</accent> naprawa samochodów o <accent>każdym</accent> stopniu złożoności",
-    "description": "Kompleksowa diagnostyka, obsługa techniczna i <accent>naprawa</accent> z przejrzystym kosztorysem, akceptacją każdego etapu oraz <accent>gwarancją</accent> na wykonane prace."
+    "description": "Kompleksowa diagnostyka, obsługa techniczna i <accent>naprawa</accent> z przejrzystym kosztorysem, akceptacją każdego etapu oraz <accent>gwarancją</accent> na wykonane prace.",
+    "regBtn": "Zarejestruj się",
+    "loginBtn": "Zaloguj się"
   },
 
   "why-us": {
@@ -384,6 +386,8 @@
     "label": "Nawigacja w stopce",
     "accountTitle": "Moje konto",
     "copyright": "Wszelkie prawa zastrzeżone.",
-    "backToTop": "Na początek"
+    "backToTop": "Na początek",
+    "regBtn": "Zarejestruj się",
+    "loginBtn": "Zaloguj się"
   }
 }

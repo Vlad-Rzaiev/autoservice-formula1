@@ -5,7 +5,6 @@ export default function AuthHeader() {
   return (
     <header
       className="
-        fixed inset-x-0 top-0 z-50
         flex gap-4 items-center justify-center py-4
         border-b border-black/5
         bg-background/90

@@ -59,7 +59,7 @@ export default function ForgotPasswordPage() {
             <CardDescription>{t('success-description')}</CardDescription>
           </CardHeader>
 
-          <CardContent>
+          <CardContent className="flex justify-center">
             <ButtonLink href={routes.auth.login} variant="ctaOutline">
               {t('go-login-btn')}
             </ButtonLink>

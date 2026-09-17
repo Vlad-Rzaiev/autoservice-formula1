@@ -12,4 +12,5 @@ export {
   registerUser,
   requestPasswordReset,
   resetPassword,
+  getCurrentUser,
 } from './api/auth-api';

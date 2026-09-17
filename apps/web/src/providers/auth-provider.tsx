@@ -22,6 +22,7 @@ import {
   logoutUser,
   refreshAccessToken,
   registerUser,
+  getCurrentUser,
 } from '@/features/auth';
 
 interface AuthContextValue {
@@ -81,11 +82,10 @@ export default function AuthProvider({ children }: AuthProviderProps) {
 
       try {
         const nextAccessToken = await refreshAccessToken();
+        const currentUser = await getCurrentUser(nextAccessToken);
 
         setAccessToken(nextAccessToken);
-
-        // User data will be populated when add the authenticated
-        // user endpoint.
+        setUser(currentUser);
       } catch {
         setUser(null);
         setAccessToken(null);

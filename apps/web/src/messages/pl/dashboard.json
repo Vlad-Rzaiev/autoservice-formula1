@@ -1,5 +1,17 @@
 {
   "title": "Strona Dashboard",
   "dev": "W trakcie tworzenia...",
-  "back-to-main": "Wróć na stronę główną"
+  "back-to-main": "Wróć na stronę główną",
+
+  "profile": {
+    "title": "Strona Clienta",
+    "dev": "W trakcie tworzenia...",
+    "back-to-main": "Wróć na stronę główną"
+  },
+
+  "settings": {
+    "title": "Strona ustawień",
+    "dev": "W trakcie tworzenia...",
+    "back-to-main": "Wróć na stronę główną"
+  }
 }
