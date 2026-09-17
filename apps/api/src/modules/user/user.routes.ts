@@ -6,11 +6,13 @@ import {
 import { validateBody } from '../../middleware/validate-body.js';
 import { ctrlWrapper } from '../../utils/ctrlWrapper.js';
 import {
+  getCurrentUserController,
   loginUserController,
   logoutUserController,
   refreshTokenController,
   registerUserController,
 } from './user.controller.js';
+import { authenticate } from '../../middleware/authenticate.js';
 
 const router = Router();
 
@@ -25,6 +27,8 @@ router.post(
   validateBody(loginRequestSchema),
   ctrlWrapper(loginUserController),
 );
+
+router.get('/me', authenticate, ctrlWrapper(getCurrentUserController));
 
 router.post('/refresh', ctrlWrapper(refreshTokenController));
 

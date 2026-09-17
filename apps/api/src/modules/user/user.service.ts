@@ -12,8 +12,14 @@ import { USERS_ID_COUNTER_KEY } from '../counters/counter.constants.js';
 import { SALT_ROUNDS } from './user.constants.js';
 import { ONE_DAY, TEN_MINUTES } from '../sessions/session.constants.js';
 
+export const getUserById = async (userId: string) => {
+  const user = await UserCollection.findOne({ userId }).lean().exec();
+
+  return user;
+};
+
 export const getUserByEmail = async (email: string) => {
-  const user = UserCollection.findOne({ email }).lean().exec();
+  const user = await UserCollection.findOne({ email }).lean().exec();
 
   return user;
 };

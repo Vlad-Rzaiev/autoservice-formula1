@@ -9,6 +9,7 @@ import type {
 } from '@autoservice/contracts';
 import {
   createUser,
+  getUserById,
   loginUser,
   logoutUser,
   refreshSession,
@@ -19,6 +20,7 @@ import {
   REFRESH_TOKEN_COOKIE_NAME,
   SESSION_ID_COOKIE_NAME,
 } from '../sessions/session.constants.js';
+import createHttpError from 'http-errors';
 
 export const registerUserController: RequestHandler<
   ParamsDictionary,
@@ -107,4 +109,28 @@ export const logoutUserController: RequestHandler = async (req, res) => {
       success: true,
       message: 'User successfully logged out.',
     });
+};
+
+export const getCurrentUserController: RequestHandler<
+  ParamsDictionary,
+  ApiSuccess<UserDto>
+> = async (req, res) => {
+  if (!req.user) {
+    throw createHttpError(401, 'Authentication required.');
+  }
+
+  const user = await getUserById(req.user.userId);
+
+  if (!user || !user.isActive) {
+    throw createHttpError(401, 'User is not available.');
+  }
+
+  const userDto = toUserDto(user);
+
+  res.status(200).json({
+    status: 200,
+    success: true,
+    message: 'Current user successfully retrieved.',
+    data: userDto,
+  });
 };
