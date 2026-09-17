@@ -1,9 +1,12 @@
 'use client';
 
 import { FormEvent, useState } from 'react';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
+import { useRouter } from 'next/navigation';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { defaultLocale, isAppLocale } from '@/i18n/locale-config';
+import { useAuth } from '@/providers';
 
 import {
   Button,
@@ -20,10 +23,13 @@ import {
 } from '@/components/ui';
 import { ButtonLink } from '@/components/common';
 import { routes } from '@/config';
-import { loginUser } from '@/features/auth';
 
 export default function LoginPage() {
   const t = useTranslations('auth.login');
+  const locale = useLocale();
+  const currentLocale = isAppLocale(locale) ? locale : defaultLocale;
+  const router = useRouter();
+  const { login } = useAuth();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -61,12 +67,12 @@ export default function LoginPage() {
     try {
       setIsSubmitting(true);
 
-      await loginUser({
+      await login({
         email: email.trim(),
         password,
       });
 
-      // Redirect після успішної авторизації
+      router.replace(`/${currentLocale}${routes.dashboard.home}`);
     } catch {
       setError(t('error'));
     } finally {
@@ -92,6 +98,7 @@ export default function LoginPage() {
                   id="email"
                   name="email"
                   type="email"
+                  required
                   autoComplete="email"
                   placeholder={t('email-placeholder')}
                   value={email}
@@ -111,6 +118,7 @@ export default function LoginPage() {
                     id="password"
                     name="password"
                     type={showPassword ? 'text' : 'password'}
+                    required
                     autoComplete="current-password"
                     placeholder={t('password-placeholder')}
                     value={password}

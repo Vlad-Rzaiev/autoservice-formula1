@@ -6,6 +6,7 @@ import type {
   RegisterDto,
   ResetEmailRequest,
   ResetPasswordRequest,
+  User,
 } from '@autoservice/contracts';
 
 import { apiClient } from '@/lib/api/api-client';
@@ -26,6 +27,16 @@ export const loginUser = async (payload: LoginDto): Promise<AuthDto> => {
     '/auth/login',
     payload,
   );
+
+  return data.data;
+};
+
+export const getCurrentUser = async (accessToken: string): Promise<User> => {
+  const { data } = await authApiClient.get<ApiSuccess<User>>('/auth/me', {
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+  });
 
   return data.data;
 };

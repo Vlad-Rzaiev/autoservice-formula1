@@ -6,7 +6,7 @@ import styles from './hero.module.css';
 import { routes } from '@/config';
 
 export default function MarketingHero() {
-  const t = useTranslations();
+  const t = useTranslations('marketing.hero');
 
   return (
     <section className={cn(styles.hero, 'text-white pt-20 lg:pt-30')}>
@@ -20,14 +20,14 @@ export default function MarketingHero() {
             md:px-6 md:py-5 md:text-5xl
             lg:text-6xl"
         >
-          {t.rich('marketing.hero.title', {
+          {t.rich('title', {
             accent: (textChunks) => (
               <span className="text-red-600">{textChunks}</span>
             ),
           })}
         </h1>
         <p className="mt-6 max-w-xl rounded-xl border border-white/10 bg-black/15 px-4 py-3 text-base font-medium leading-7 text-white shadow-lg backdrop-blur-[3px] md:text-lg md:leading-8">
-          {t.rich('marketing.hero.description', {
+          {t.rich('description', {
             accent: (textChunks) => (
               <span className="font-semibold text-red-500">{textChunks}</span>
             ),
@@ -41,7 +41,7 @@ export default function MarketingHero() {
             fullWidth
             className="sm:w-auto"
           >
-            {t('auth.reg.regBtn')}
+            {t('regBtn')}
           </ButtonLink>
 
           <ButtonLink
@@ -50,7 +50,7 @@ export default function MarketingHero() {
             fullWidth
             className="sm:w-auto"
           >
-            {t('auth.login.loginBtn')}
+            {t('loginBtn')}
           </ButtonLink>
         </div>
       </Container>

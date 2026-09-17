@@ -1,5 +1,17 @@
 {
   "title": "Dashboard Page",
   "dev": "In Development...",
-  "back-to-main": "Back to home"
+  "back-to-main": "Back to home",
+
+  "profile": {
+    "title": "Profile Page",
+    "dev": "In Development...",
+    "back-to-main": "Back to home"
+  },
+
+  "settings": {
+    "title": "Settings Page",
+    "dev": "In Development...",
+    "back-to-main": "Back to home"
+  }
 }

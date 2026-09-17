@@ -19,6 +19,10 @@ export const routes = {
   dashboard: {
     home: '/dashboard',
 
+    profile: '/dashboard/profile',
+
+    settings: '/dashboard/settings',
+
     clients: {
       list: '/dashboard/clients',
       detail: (id: string) => `/dashboard/clients/${encodeURIComponent(id)}`,
