@@ -41,6 +41,14 @@ export const getCurrentUser = async (accessToken: string): Promise<User> => {
   return data.data;
 };
 
+export const verifyEmail = async (token: string): Promise<void> => {
+  await authApiClient.get<ApiSuccess<null>>('/auth/verify-email', {
+    params: {
+      token,
+    },
+  });
+};
+
 export const refreshAccessToken = async (): Promise<string> => {
   const { data } =
     await authApiClient.post<ApiSuccess<{ accessToken: string }>>(

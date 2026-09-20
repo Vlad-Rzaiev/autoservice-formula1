@@ -14,6 +14,7 @@ export const routes = {
     login: '/login',
     forgotPassword: '/forgot-password',
     register: '/register',
+    verifyEmail: '/verify-email',
   },
 
   dashboard: {

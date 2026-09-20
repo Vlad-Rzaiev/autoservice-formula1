@@ -1,0 +1,2 @@
+export const VERIFICATION_TOKEN_BYTES = 32;
+export const VERIFICATION_TOKEN_TTL = 60 * 60 * 1000;

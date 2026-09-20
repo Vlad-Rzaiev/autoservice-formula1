@@ -18,6 +18,7 @@ import {
   FieldLabel,
   Input,
 } from '@/components/ui';
+import { Container, Section } from '@/components/layout';
 import { resetPassword } from '@/features/auth';
 import { ButtonLink } from '@/components/common';
 import { routes } from '@/config';
@@ -107,125 +108,131 @@ export default function ResetPasswordPage() {
 
   if (isSuccess) {
     return (
-      <div className="flex w-full flex-col items-center justify-center gap-8 px-4 py-12">
-        <Card className="w-full max-w-md">
-          <CardHeader>
-            <CardTitle>{t('success-title')}</CardTitle>
-            <CardDescription>{t('success-description')}</CardDescription>
-          </CardHeader>
-        </Card>
+      <Section className="w-full">
+        <Container className="flex flex-col items-center justify-center gap-8">
+          <Card className="w-full max-w-md">
+            <CardHeader>
+              <CardTitle>{t('success-title')}</CardTitle>
+              <CardDescription>{t('success-description')}</CardDescription>
+            </CardHeader>
+          </Card>
 
-        <ButtonLink href={routes.auth.login} variant="ctaOutline">
-          {t('go-login-btn')}
-        </ButtonLink>
-      </div>
+          <ButtonLink href={routes.auth.login} variant="ctaOutline">
+            {t('go-login-btn')}
+          </ButtonLink>
+        </Container>
+      </Section>
     );
   }
 
   return (
-    <div className="flex w-full items-center justify-center px-4 py-12">
-      <Card className="w-full max-w-md">
-        <CardHeader>
-          <CardTitle>{t('title')}</CardTitle>
-          <CardDescription>{t('description')}</CardDescription>
-        </CardHeader>
+    <Section className="w-full">
+      <Container className="flex items-center justify-center">
+        <Card className="w-full max-w-md">
+          <CardHeader>
+            <CardTitle>{t('title')}</CardTitle>
+            <CardDescription>{t('description')}</CardDescription>
+          </CardHeader>
 
-        <CardContent>
-          <form onSubmit={handleSubmit} noValidate>
-            <FieldGroup>
-              <Field data-invalid={Boolean(passwordError)}>
-                <FieldLabel htmlFor="password">{t('password')}</FieldLabel>
+          <CardContent>
+            <form onSubmit={handleSubmit} noValidate>
+              <FieldGroup>
+                <Field data-invalid={Boolean(passwordError)}>
+                  <FieldLabel htmlFor="password">{t('password')}</FieldLabel>
 
-                <div className="relative">
-                  <Input
-                    id="password"
-                    name="password"
-                    type={showPassword ? 'text' : 'password'}
-                    autoComplete="new-password"
-                    value={password}
-                    onChange={(event) => setPassword(event.target.value)}
-                    aria-invalid={Boolean(passwordError)}
-                    disabled={isSubmitting}
-                    className="pr-10"
-                  />
-
-                  <button
-                    type="button"
-                    onClick={() => setShowPassword((current) => !current)}
-                    aria-label={
-                      showPassword ? t('hide-password') : t('show-password')
-                    }
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
-                    disabled={isSubmitting}
-                  >
-                    <FontAwesomeIcon
-                      icon={showPassword ? faEyeSlash : faEye}
-                      aria-hidden="true"
+                  <div className="relative">
+                    <Input
+                      id="password"
+                      name="password"
+                      type={showPassword ? 'text' : 'password'}
+                      autoComplete="new-password"
+                      value={password}
+                      onChange={(event) => setPassword(event.target.value)}
+                      aria-invalid={Boolean(passwordError)}
+                      disabled={isSubmitting}
+                      className="pr-10"
                     />
-                  </button>
-                </div>
 
-                {passwordError && <FieldError>{passwordError}</FieldError>}
-              </Field>
+                    <button
+                      type="button"
+                      onClick={() => setShowPassword((current) => !current)}
+                      aria-label={
+                        showPassword ? t('hide-password') : t('show-password')
+                      }
+                      className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                      disabled={isSubmitting}
+                    >
+                      <FontAwesomeIcon
+                        icon={showPassword ? faEyeSlash : faEye}
+                        aria-hidden="true"
+                      />
+                    </button>
+                  </div>
 
-              <Field data-invalid={Boolean(confirmPasswordError)}>
-                <FieldLabel htmlFor="confirm-password">
-                  {t('confirm-password')}
-                </FieldLabel>
+                  {passwordError && <FieldError>{passwordError}</FieldError>}
+                </Field>
 
-                <div className="relative">
-                  <Input
-                    id="confirm-password"
-                    name="confirmPassword"
-                    type={showConfirmPassword ? 'text' : 'password'}
-                    autoComplete="new-password"
-                    value={confirmPassword}
-                    onChange={(event) => setConfirmPassword(event.target.value)}
-                    aria-invalid={Boolean(confirmPasswordError)}
-                    disabled={isSubmitting}
-                    className="pr-10"
-                  />
+                <Field data-invalid={Boolean(confirmPasswordError)}>
+                  <FieldLabel htmlFor="confirm-password">
+                    {t('confirm-password')}
+                  </FieldLabel>
 
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setShowConfirmPassword((current) => !current)
-                    }
-                    aria-label={
-                      showConfirmPassword
-                        ? t('hide-password')
-                        : t('show-password')
-                    }
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
-                    disabled={isSubmitting}
-                  >
-                    <FontAwesomeIcon
-                      icon={showConfirmPassword ? faEyeSlash : faEye}
-                      aria-hidden="true"
+                  <div className="relative">
+                    <Input
+                      id="confirm-password"
+                      name="confirmPassword"
+                      type={showConfirmPassword ? 'text' : 'password'}
+                      autoComplete="new-password"
+                      value={confirmPassword}
+                      onChange={(event) =>
+                        setConfirmPassword(event.target.value)
+                      }
+                      aria-invalid={Boolean(confirmPasswordError)}
+                      disabled={isSubmitting}
+                      className="pr-10"
                     />
-                  </button>
-                </div>
 
-                {confirmPasswordError && (
-                  <FieldError>{confirmPasswordError}</FieldError>
-                )}
-              </Field>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setShowConfirmPassword((current) => !current)
+                      }
+                      aria-label={
+                        showConfirmPassword
+                          ? t('hide-password')
+                          : t('show-password')
+                      }
+                      className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                      disabled={isSubmitting}
+                    >
+                      <FontAwesomeIcon
+                        icon={showConfirmPassword ? faEyeSlash : faEye}
+                        aria-hidden="true"
+                      />
+                    </button>
+                  </div>
 
-              {error && <FieldError>{error}</FieldError>}
+                  {confirmPasswordError && (
+                    <FieldError>{confirmPasswordError}</FieldError>
+                  )}
+                </Field>
 
-              <Button
-                type="submit"
-                size="lg"
-                fullWidth
-                disabled={isSubmitting || !token}
-                className="cursor-pointer"
-              >
-                {isSubmitting ? t('submitting') : t('submit')}
-              </Button>
-            </FieldGroup>
-          </form>
-        </CardContent>
-      </Card>
-    </div>
+                {error && <FieldError>{error}</FieldError>}
+
+                <Button
+                  type="submit"
+                  size="lg"
+                  fullWidth
+                  disabled={isSubmitting || !token}
+                  className="cursor-pointer"
+                >
+                  {isSubmitting ? t('submitting') : t('submit')}
+                </Button>
+              </FieldGroup>
+            </form>
+          </CardContent>
+        </Card>
+      </Container>
+    </Section>
   );
 }

@@ -22,6 +22,7 @@ import {
   FieldLabel,
   Input,
 } from '@/components/ui';
+import { Container, Section } from '@/components/layout';
 import { ButtonLink } from '@/components/common';
 import { routes } from '@/config';
 
@@ -90,107 +91,109 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="flex w-full items-center justify-center px-4 py-12">
-      <Card className="w-full max-w-md">
-        <CardHeader>
-          <CardTitle>{t('title')}</CardTitle>
-          <CardDescription>{t('description')}</CardDescription>
-        </CardHeader>
+    <Section className="w-full">
+      <Container className="flex items-center justify-center">
+        <Card className="w-full max-w-md">
+          <CardHeader>
+            <CardTitle>{t('title')}</CardTitle>
+            <CardDescription>{t('description')}</CardDescription>
+          </CardHeader>
 
-        <CardContent>
-          <form onSubmit={handleSubmit} noValidate>
-            <FieldGroup>
-              <Field data-invalid={Boolean(emailError)}>
-                <FieldLabel htmlFor="email">{t('email')}</FieldLabel>
+          <CardContent>
+            <form onSubmit={handleSubmit} noValidate>
+              <FieldGroup>
+                <Field data-invalid={Boolean(emailError)}>
+                  <FieldLabel htmlFor="email">{t('email')}</FieldLabel>
 
-                <Input
-                  id="email"
-                  name="email"
-                  type="email"
-                  required
-                  autoComplete="email"
-                  placeholder={t('email-placeholder')}
-                  value={email}
-                  onChange={(event) => setEmail(event.target.value)}
-                  aria-invalid={Boolean(emailError)}
-                  disabled={isSubmitting}
-                />
-
-                {emailError && <FieldError>{emailError}</FieldError>}
-              </Field>
-
-              <Field data-invalid={Boolean(passwordError)}>
-                <FieldLabel htmlFor="password">{t('password')}</FieldLabel>
-
-                <div className="relative">
                   <Input
-                    id="password"
-                    name="password"
-                    type={showPassword ? 'text' : 'password'}
+                    id="email"
+                    name="email"
+                    type="email"
                     required
-                    autoComplete="current-password"
-                    placeholder={t('password-placeholder')}
-                    value={password}
-                    onChange={(event) => setPassword(event.target.value)}
-                    aria-invalid={Boolean(passwordError)}
+                    autoComplete="email"
+                    placeholder={t('email-placeholder')}
+                    value={email}
+                    onChange={(event) => setEmail(event.target.value)}
+                    aria-invalid={Boolean(emailError)}
                     disabled={isSubmitting}
-                    className="pr-10"
                   />
 
-                  <button
-                    type="button"
-                    onClick={() => setShowPassword((current) => !current)}
-                    aria-label={
-                      showPassword ? t('hide-password') : t('show-password')
-                    }
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
-                    disabled={isSubmitting}
-                  >
-                    <FontAwesomeIcon
-                      icon={showPassword ? faEyeSlash : faEye}
-                      aria-hidden="true"
+                  {emailError && <FieldError>{emailError}</FieldError>}
+                </Field>
+
+                <Field data-invalid={Boolean(passwordError)}>
+                  <FieldLabel htmlFor="password">{t('password')}</FieldLabel>
+
+                  <div className="relative">
+                    <Input
+                      id="password"
+                      name="password"
+                      type={showPassword ? 'text' : 'password'}
+                      required
+                      autoComplete="current-password"
+                      placeholder={t('password-placeholder')}
+                      value={password}
+                      onChange={(event) => setPassword(event.target.value)}
+                      aria-invalid={Boolean(passwordError)}
+                      disabled={isSubmitting}
+                      className="pr-10"
                     />
-                  </button>
+
+                    <button
+                      type="button"
+                      onClick={() => setShowPassword((current) => !current)}
+                      aria-label={
+                        showPassword ? t('hide-password') : t('show-password')
+                      }
+                      className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                      disabled={isSubmitting}
+                    >
+                      <FontAwesomeIcon
+                        icon={showPassword ? faEyeSlash : faEye}
+                        aria-hidden="true"
+                      />
+                    </button>
+                  </div>
+
+                  {passwordError && <FieldError>{passwordError}</FieldError>}
+                </Field>
+
+                {error && <FieldError>{error}</FieldError>}
+
+                <Button
+                  type="submit"
+                  size="lg"
+                  fullWidth
+                  disabled={isSubmitting}
+                  className="cursor-pointer"
+                >
+                  {isSubmitting ? t('submitting') : t('submit')}
+                </Button>
+
+                <div className="flex justify-center">
+                  <ButtonLink
+                    href={routes.auth.forgotPassword}
+                    variant="inline"
+                    className="hover:underline"
+                  >
+                    {t('forgot-pwd')}
+                  </ButtonLink>
                 </div>
 
-                {passwordError && <FieldError>{passwordError}</FieldError>}
-              </Field>
-
-              {error && <FieldError>{error}</FieldError>}
-
-              <Button
-                type="submit"
-                size="lg"
-                fullWidth
-                disabled={isSubmitting}
-                className="cursor-pointer"
-              >
-                {isSubmitting ? t('submitting') : t('submit')}
-              </Button>
-
-              <div className="flex justify-center">
-                <ButtonLink
-                  href={routes.auth.forgotPassword}
-                  variant="inline"
-                  className="hover:underline"
-                >
-                  {t('forgot-pwd')}
-                </ButtonLink>
-              </div>
-
-              <div className="flex justify-center">
-                <ButtonLink
-                  href={routes.auth.register}
-                  variant="inline"
-                  className="hover:underline"
-                >
-                  {t('register')}
-                </ButtonLink>
-              </div>
-            </FieldGroup>
-          </form>
-        </CardContent>
-      </Card>
-    </div>
+                <div className="flex justify-center">
+                  <ButtonLink
+                    href={routes.auth.register}
+                    variant="inline"
+                    className="hover:underline"
+                  >
+                    {t('register')}
+                  </ButtonLink>
+                </div>
+              </FieldGroup>
+            </form>
+          </CardContent>
+        </Card>
+      </Container>
+    </Section>
   );
 }

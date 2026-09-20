@@ -13,6 +13,7 @@ export {
   requestPasswordReset,
   resetPassword,
   getCurrentUser,
+  verifyEmail,
 } from './api/auth-api';
 
 export { AuthGuard } from './components/auth-guard';
