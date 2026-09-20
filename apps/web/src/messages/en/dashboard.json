@@ -13,5 +13,9 @@
     "title": "Settings Page",
     "dev": "In Development...",
     "back-to-main": "Back to home"
+  },
+
+  "logout": {
+    "logoutBtn": "Logout"
   }
 }

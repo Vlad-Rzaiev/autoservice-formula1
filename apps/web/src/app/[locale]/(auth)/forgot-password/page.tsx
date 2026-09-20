@@ -52,7 +52,7 @@ export default function ForgotPasswordPage() {
 
   if (isSuccess) {
     return (
-      <div className="flex min-h-[calc(100vh-73px)] items-center justify-center px-4 py-12">
+      <div className="flex w-full items-center justify-center px-4 py-12">
         <Card className="w-full max-w-lg">
           <CardHeader>
             <CardTitle>{t('success-title')}</CardTitle>
@@ -70,7 +70,7 @@ export default function ForgotPasswordPage() {
   }
 
   return (
-    <div className="flex min-h-[calc(100vh-73px)] items-center justify-center px-4 py-12">
+    <div className="flex w-full items-center justify-center px-4 py-12">
       <Card className="w-full max-w-lg">
         <CardHeader>
           <CardTitle>{t('title')}</CardTitle>

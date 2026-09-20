@@ -107,7 +107,7 @@ export default function ResetPasswordPage() {
 
   if (isSuccess) {
     return (
-      <div className="flex min-h-[calc(100vh-73px)] flex-col items-center justify-center gap-8 px-4 py-12">
+      <div className="flex w-full flex-col items-center justify-center gap-8 px-4 py-12">
         <Card className="w-full max-w-md">
           <CardHeader>
             <CardTitle>{t('success-title')}</CardTitle>
@@ -123,7 +123,7 @@ export default function ResetPasswordPage() {
   }
 
   return (
-    <div className="flex min-h-[calc(100vh-73px)] items-center justify-center px-4 py-12">
+    <div className="flex w-full items-center justify-center px-4 py-12">
       <Card className="w-full max-w-md">
         <CardHeader>
           <CardTitle>{t('title')}</CardTitle>

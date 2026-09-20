@@ -25,9 +25,11 @@ export default async function AuthLayout({
   const messages = await getClientMessages(clientMessageModules.auth);
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>
-      <div>
+      <div className="flex min-h-screen w-full flex-col">
         <AuthHeader />
+
         <AuthShell>{children}</AuthShell>
+
         <AuthFooter />
       </div>
     </NextIntlClientProvider>

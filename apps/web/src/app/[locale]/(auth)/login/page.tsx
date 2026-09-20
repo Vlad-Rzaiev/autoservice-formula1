@@ -1,12 +1,13 @@
 'use client';
 
-import { FormEvent, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { defaultLocale, isAppLocale } from '@/i18n/locale-config';
 import { useAuth } from '@/providers';
+import { toast } from 'sonner';
 
 import {
   Button,
@@ -25,6 +26,8 @@ import { ButtonLink } from '@/components/common';
 import { routes } from '@/config';
 
 export default function LoginPage() {
+  const searchParams = useSearchParams();
+  const authMessage = searchParams.get('message');
   const t = useTranslations('auth.login');
   const locale = useLocale();
   const currentLocale = isAppLocale(locale) ? locale : defaultLocale;
@@ -40,6 +43,12 @@ export default function LoginPage() {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+
+  useEffect(() => {
+    if (authMessage === 'auth-required') {
+      toast.info(t('error-login'));
+    }
+  }, [authMessage, t]);
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -81,7 +90,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="flex min-h-[calc(100vh-73px)] items-center justify-center px-4 py-12">
+    <div className="flex w-full items-center justify-center px-4 py-12">
       <Card className="w-full max-w-md">
         <CardHeader>
           <CardTitle>{t('title')}</CardTitle>
