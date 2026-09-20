@@ -73,6 +73,7 @@ describe('authenticate middleware', () => {
         lastName: 'Rzaiev',
         email: 'auth-test@example.com',
         password,
+        locale: 'en',
       })
       .expect(201);
 

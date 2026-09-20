@@ -379,6 +379,7 @@ describe('POST /api/v1/auth/register', () => {
         lastName: 'Rzaiev',
         email: 'new@example.com',
         password: 'TestPassword123!',
+        locale: 'en',
       })
       .expect(201);
 
@@ -409,6 +410,7 @@ describe('POST /api/v1/auth/register', () => {
         lastName: 'Rzaiev',
         email: 'existing@example.com',
         password: 'TestPassword123!',
+        locale: 'en',
       })
       .expect(201);
 
@@ -419,6 +421,7 @@ describe('POST /api/v1/auth/register', () => {
         lastName: 'User',
         email: 'existing@example.com',
         password: 'AnotherPassword123!',
+        locale: 'en',
       })
       .expect(409);
 
