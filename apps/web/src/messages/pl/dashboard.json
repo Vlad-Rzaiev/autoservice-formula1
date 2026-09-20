@@ -13,5 +13,9 @@
     "title": "Strona ustawień",
     "dev": "W trakcie tworzenia...",
     "back-to-main": "Wróć na stronę główną"
+  },
+
+  "logout": {
+    "logoutBtn": "Wyloguj się"
   }
 }

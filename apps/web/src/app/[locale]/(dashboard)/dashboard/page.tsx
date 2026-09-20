@@ -1,6 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 import { Section, Container } from '@/components/layout';
 import { DevelopmentPlaceholder } from '@/components/common';
+import { LogoutButton } from '@/features/auth';
 import { routes } from '@/config';
 
 export default async function DashboardPage() {
@@ -15,6 +16,8 @@ export default async function DashboardPage() {
           linkHref={routes.marketing.home}
           linkText={t('back-to-main')}
         />
+
+        <LogoutButton />
       </Container>
     </Section>
   );

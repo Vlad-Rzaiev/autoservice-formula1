@@ -5,5 +5,7 @@ export interface AuthShellProps {
 }
 
 export default function AuthShell({ children }: AuthShellProps) {
-  return <main>{children}</main>;
+  return (
+    <main className="flex flex-1 items-center justify-center">{children}</main>
+  );
 }

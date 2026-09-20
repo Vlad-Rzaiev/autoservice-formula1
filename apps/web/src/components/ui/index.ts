@@ -81,3 +81,5 @@ export {
 } from './field';
 
 export { Label } from './label';
+
+export { Toaster } from './sonner';
