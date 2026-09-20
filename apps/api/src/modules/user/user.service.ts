@@ -11,6 +11,8 @@ import { generateRefreshToken, hashToken } from '../../utils/token.js';
 import { USERS_ID_COUNTER_KEY } from '../counters/counter.constants.js';
 import { SALT_ROUNDS } from './user.constants.js';
 import { ONE_DAY, TEN_MINUTES } from '../sessions/session.constants.js';
+import { createEmailVerificationToken } from '../email-verifications/email-verification.service.js';
+import { sendEmailVerificationEmail } from '../email-verifications/email-verification.mail.js';
 
 export const getUserById = async (userId: string) => {
   const user = await UserCollection.findOne({ userId }).lean().exec();
@@ -30,10 +32,22 @@ export const createUser = async (payload: RegisterDto) => {
   const userId = String(await getNextCounterValue(USERS_ID_COUNTER_KEY));
 
   const user = await UserCollection.create({
-    ...payload,
+    firstName: payload.firstName,
+    lastName: payload.lastName,
+    email: payload.email,
     userId,
     passwordHash,
   });
+
+  const verificationToken = await createEmailVerificationToken(
+    user._id.toString(),
+  );
+
+  await sendEmailVerificationEmail(
+    user.email,
+    verificationToken,
+    payload.locale,
+  );
 
   return user;
 };

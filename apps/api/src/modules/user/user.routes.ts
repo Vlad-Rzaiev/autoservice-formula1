@@ -12,6 +12,7 @@ import {
   refreshTokenController,
   registerUserController,
 } from './user.controller.js';
+import { verifyEmailController } from '../email-verifications/email-verification.controller.js';
 import { authenticate } from '../../middleware/authenticate.js';
 
 const router = Router();
@@ -27,6 +28,8 @@ router.post(
   validateBody(loginRequestSchema),
   ctrlWrapper(loginUserController),
 );
+
+router.get('/verify-email', ctrlWrapper(verifyEmailController));
 
 router.get('/me', authenticate, ctrlWrapper(getCurrentUserController));
 

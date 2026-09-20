@@ -17,6 +17,7 @@ export const registerRequestSchema = z.object({
   lastName: z.string().min(3).max(15).trim().nullable().default(null),
   email: z.email(),
   password: passwordSchema,
+  locale: z.enum(supportedLocales),
 });
 export type RegisterRequest = z.infer<typeof registerRequestSchema>;
 

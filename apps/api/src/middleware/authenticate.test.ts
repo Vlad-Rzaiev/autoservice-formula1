@@ -1,7 +1,10 @@
 import request from 'supertest';
-import { describe, expect, it } from 'vitest';
-
+import { describe, expect, it, vi } from 'vitest';
 import { createApp } from '../app.js';
+
+vi.mock('../modules/email-verifications/email-verification.mail.js', () => ({
+  sendEmailVerificationEmail: vi.fn().mockResolvedValue(undefined),
+}));
 
 describe('authenticate middleware', () => {
   it('returns 401 when the authorization header is missing', async () => {
@@ -73,6 +76,7 @@ describe('authenticate middleware', () => {
         lastName: 'Rzaiev',
         email: 'auth-test@example.com',
         password,
+        locale: 'en',
       })
       .expect(201);
 
