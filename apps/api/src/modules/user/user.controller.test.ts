@@ -1,11 +1,15 @@
 import bcrypt from 'bcrypt';
 import request from 'supertest';
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 
 import { createApp } from '../../app.js';
 import { UserCollection } from './user.model.js';
 import { SessionCollection } from '../sessions/session.model.js';
 import { hashToken } from '../../utils/token.js';
+
+vi.mock('../email-verifications/email-verification.mail.js', () => ({
+  sendEmailVerificationEmail: vi.fn().mockResolvedValue(undefined),
+}));
 
 describe('POST /api/v1/auth/login', () => {
   it('logs in a user, creates a session and sets auth cookies', async () => {
