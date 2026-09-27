@@ -14,6 +14,7 @@ export {
   resetPassword,
   getCurrentUser,
   verifyEmail,
+  resendVerificationEmail,
 } from './api/auth-api';
 
 export { AuthGuard } from './components/auth-guard';
@@ -21,3 +22,5 @@ export { AuthGuard } from './components/auth-guard';
 export { default as LogoutButton } from './components/logout-button';
 
 export { EmailVerificationDialog } from './components/email-verification-dialog';
+
+export { RESEND_COOLDOWN_SECONDS } from './constants';

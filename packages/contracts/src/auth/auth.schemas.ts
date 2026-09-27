@@ -38,3 +38,11 @@ export const resetPasswordRequestSchema = z.object({
   password: passwordSchema,
 });
 export type ResetPasswordRequest = z.infer<typeof resetPasswordRequestSchema>;
+
+export const resendVerificationEmailRequestSchema = z.object({
+  locale: z.enum(supportedLocales),
+});
+
+export type ResendVerificationEmailRequest = z.infer<
+  typeof resendVerificationEmailRequestSchema
+>;

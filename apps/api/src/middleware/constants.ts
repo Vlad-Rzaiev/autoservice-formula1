@@ -1,0 +1,4 @@
+export const RATE_LIMIT_WINDOW_MS = 15 * 60 * 1000;
+export const PUBLIC_API_RATE_LIMIT = 300;
+export const AUTH_RATE_LIMIT = 10;
+export const EMAIL_VERIFICATION_RESEND_RATE_LIMIT = 3;

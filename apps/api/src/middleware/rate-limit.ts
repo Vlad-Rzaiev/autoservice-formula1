@@ -3,10 +3,12 @@ import {
   type RateLimitExceededEventHandler,
 } from 'express-rate-limit';
 import createHttpError from 'http-errors';
-
-const RATE_LIMIT_WINDOW_MS = 15 * 60 * 1000;
-const PUBLIC_API_RATE_LIMIT = 300;
-const AUTH_RATE_LIMIT = 10;
+import {
+  AUTH_RATE_LIMIT,
+  EMAIL_VERIFICATION_RESEND_RATE_LIMIT,
+  PUBLIC_API_RATE_LIMIT,
+  RATE_LIMIT_WINDOW_MS,
+} from './constants.js';
 
 const rateLimitErrorHandler: RateLimitExceededEventHandler = (
   _req,
@@ -35,5 +37,14 @@ export const authRateLimit = rateLimit({
   standardHeaders: 'draft-8',
   legacyHeaders: false,
   identifier: 'auth',
+  handler: rateLimitErrorHandler,
+});
+
+export const emailVerificationResendRateLimit = rateLimit({
+  windowMs: RATE_LIMIT_WINDOW_MS,
+  limit: EMAIL_VERIFICATION_RESEND_RATE_LIMIT,
+  standardHeaders: 'draft-8',
+  legacyHeaders: false,
+  identifier: 'email-verification-resend',
   handler: rateLimitErrorHandler,
 });

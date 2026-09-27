@@ -22,6 +22,12 @@
   "email-verification-dialog": {
     "title": "Potwierdź swój adres email",
     "description": "Na Twój adres email została wysłana wiadomość z linkiem weryfikacyjnym. Kliknij link w wiadomości, aby potwierdzić swoje konto.",
-    "resend-button": "Wyślij ponownie wiadomość"
+    "resend-button": "Wyślij ponownie wiadomość",
+    "resending": "Trwa wysyłanie email...",
+    "resend-error": "Nie udało się ponownie wysłać wiadomości weryfikacyjnej. Spróbuj ponownie.",
+    "resend-success": "Wiadomość weryfikacyjna została wysłana ponownie.",
+    "resend-countdown-minutes": "Wyślij ponownie za {minutes} min {seconds} s",
+    "resend-countdown-seconds": "Wyślij ponownie za {seconds} s",
+    "resend-rate-limit": "Zbyt często prosisz o ponowne wysłanie wiadomości. Spróbuj ponownie później."
   }
 }

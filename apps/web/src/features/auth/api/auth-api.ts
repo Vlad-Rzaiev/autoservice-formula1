@@ -1,6 +1,7 @@
 import type {
   ApiSuccess,
   ApiSuccessWithoutData,
+  AppLocale,
   AuthDto,
   LoginDto,
   RegisterDto,
@@ -47,6 +48,21 @@ export const verifyEmail = async (token: string): Promise<void> => {
       token,
     },
   });
+};
+
+export const resendVerificationEmail = async (
+  accessToken: string,
+  locale: AppLocale,
+): Promise<void> => {
+  await authApiClient.post<ApiSuccessWithoutData>(
+    '/auth/resend-verification-email',
+    { locale },
+    {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    },
+  );
 };
 
 export const refreshAccessToken = async (): Promise<string> => {

@@ -6,6 +6,8 @@ import {
 import { EmailVerificationCollection } from './email-verification.model.js';
 import createHttpError from 'http-errors';
 import { UserCollection } from '../user/user.model.js';
+import { sendEmailVerificationEmail } from './email-verification.mail.js';
+import { AppLocale } from '@autoservice/contracts';
 
 const generateVerificationToken = () => {
   return crypto.randomBytes(VERIFICATION_TOKEN_BYTES).toString('hex');
@@ -77,4 +79,25 @@ export const verifyUserEmail = async (token: string) => {
   await verification.deleteOne();
 
   return user;
+};
+
+export const resendEmailVerification = async (
+  userId: string,
+  locale: AppLocale,
+) => {
+  const user = await UserCollection.findOne({ userId }).exec();
+
+  if (!user || !user.isActive) {
+    throw createHttpError(400, 'User is not available.');
+  }
+
+  if (user.emailVerified) {
+    throw createHttpError(400, 'Email is already verified.');
+  }
+
+  const verificationToken = await createEmailVerificationToken(
+    user._id.toString(),
+  );
+
+  await sendEmailVerificationEmail(user.email, verificationToken, locale);
 };

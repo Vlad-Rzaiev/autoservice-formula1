@@ -67,6 +67,7 @@ export function createApp() {
       },
 
       credentials: true,
+      exposedHeaders: ['Retry-After'],
     }),
   );
 
