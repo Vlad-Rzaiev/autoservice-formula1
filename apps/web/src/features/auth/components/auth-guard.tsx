@@ -14,15 +14,15 @@ function AuthGuard({ children }: AuthGuardProps) {
   const locale = useLocale();
   const currentLocale = isAppLocale(locale) ? locale : defaultLocale;
 
-  const { isAuthenticated, isLoading } = useAuth();
+  const { isAuthenticated, isLoading, isLoggingOut } = useAuth();
 
   useEffect(() => {
-    if (!isLoading && !isAuthenticated) {
+    if (!isLoading && !isAuthenticated && !isLoggingOut) {
       window.location.replace(
         `/${currentLocale}${routes.auth.login}?message=auth-required`,
       );
     }
-  }, [isAuthenticated, isLoading, currentLocale]);
+  }, [isAuthenticated, isLoading, isLoggingOut, currentLocale]);
 
   if (isLoading || !isAuthenticated) {
     return null;

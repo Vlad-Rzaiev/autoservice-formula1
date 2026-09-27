@@ -17,5 +17,11 @@
 
   "logout": {
     "logoutBtn": "Logout"
+  },
+
+  "email-verification-dialog": {
+    "title": "Verify your email address",
+    "description": "A verification email has been sent to your email address. Please follow the link in the email to verify your account.",
+    "resend-button": "Resend verification email"
   }
 }

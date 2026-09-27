@@ -22,6 +22,7 @@ export const userDtoSchema = z.object({
   birthDate: z.iso.date().nullable(),
   phone: phoneSchema,
   email: z.email(),
+  emailVerified: z.boolean(),
   role: userRoleSchema,
 });
 

@@ -1,6 +1,6 @@
 'use client';
 
-import { FormEvent, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
@@ -23,15 +23,17 @@ import {
   Input,
 } from '@/components/ui';
 import { Container, Section } from '@/components/layout';
-import { ButtonLink } from '@/components/common';
+import { ButtonLink, ButtonLoader } from '@/components/common';
 import { routes } from '@/config';
 
 export default function LoginPage() {
   const searchParams = useSearchParams();
   const authMessage = searchParams.get('message');
+
   const t = useTranslations('auth.login');
   const locale = useLocale();
   const currentLocale = isAppLocale(locale) ? locale : defaultLocale;
+
   const router = useRouter();
   const { login } = useAuth();
 
@@ -51,9 +53,7 @@ export default function LoginPage() {
     }
   }, [authMessage, t]);
 
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
+  const handleSubmit = async () => {
     setEmailError(null);
     setPasswordError(null);
     setError(null);
@@ -100,97 +100,106 @@ export default function LoginPage() {
           </CardHeader>
 
           <CardContent>
-            <form onSubmit={handleSubmit} noValidate>
-              <FieldGroup>
-                <Field data-invalid={Boolean(emailError)}>
-                  <FieldLabel htmlFor="email">{t('email')}</FieldLabel>
+            <FieldGroup>
+              <Field data-invalid={Boolean(emailError)}>
+                <FieldLabel htmlFor="email">{t('email')}</FieldLabel>
 
+                <Input
+                  id="email"
+                  name="email"
+                  type="email"
+                  required
+                  autoComplete="email"
+                  placeholder={t('email-placeholder')}
+                  value={email}
+                  onChange={(event) => setEmail(event.target.value)}
+                  aria-invalid={Boolean(emailError)}
+                  disabled={isSubmitting}
+                />
+
+                {emailError && <FieldError>{emailError}</FieldError>}
+              </Field>
+
+              <Field data-invalid={Boolean(passwordError)}>
+                <FieldLabel htmlFor="password">{t('password')}</FieldLabel>
+
+                <div className="relative">
                   <Input
-                    id="email"
-                    name="email"
-                    type="email"
+                    id="password"
+                    name="password"
+                    type={showPassword ? 'text' : 'password'}
                     required
-                    autoComplete="email"
-                    placeholder={t('email-placeholder')}
-                    value={email}
-                    onChange={(event) => setEmail(event.target.value)}
-                    aria-invalid={Boolean(emailError)}
+                    autoComplete="current-password"
+                    placeholder={t('password-placeholder')}
+                    value={password}
+                    onChange={(event) => setPassword(event.target.value)}
+                    onKeyDown={(event) => {
+                      if (event.key === 'Enter') {
+                        event.preventDefault();
+                        void handleSubmit();
+                      }
+                    }}
+                    aria-invalid={Boolean(passwordError)}
                     disabled={isSubmitting}
+                    className="pr-10"
                   />
 
-                  {emailError && <FieldError>{emailError}</FieldError>}
-                </Field>
-
-                <Field data-invalid={Boolean(passwordError)}>
-                  <FieldLabel htmlFor="password">{t('password')}</FieldLabel>
-
-                  <div className="relative">
-                    <Input
-                      id="password"
-                      name="password"
-                      type={showPassword ? 'text' : 'password'}
-                      required
-                      autoComplete="current-password"
-                      placeholder={t('password-placeholder')}
-                      value={password}
-                      onChange={(event) => setPassword(event.target.value)}
-                      aria-invalid={Boolean(passwordError)}
-                      disabled={isSubmitting}
-                      className="pr-10"
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword((current) => !current)}
+                    aria-label={
+                      showPassword ? t('hide-password') : t('show-password')
+                    }
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                    disabled={isSubmitting}
+                  >
+                    <FontAwesomeIcon
+                      icon={showPassword ? faEyeSlash : faEye}
+                      aria-hidden="true"
                     />
+                  </button>
+                </div>
 
-                    <button
-                      type="button"
-                      onClick={() => setShowPassword((current) => !current)}
-                      aria-label={
-                        showPassword ? t('hide-password') : t('show-password')
-                      }
-                      className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
-                      disabled={isSubmitting}
-                    >
-                      <FontAwesomeIcon
-                        icon={showPassword ? faEyeSlash : faEye}
-                        aria-hidden="true"
-                      />
-                    </button>
-                  </div>
+                {passwordError && <FieldError>{passwordError}</FieldError>}
+              </Field>
 
-                  {passwordError && <FieldError>{passwordError}</FieldError>}
-                </Field>
+              {error && <FieldError>{error}</FieldError>}
 
-                {error && <FieldError>{error}</FieldError>}
+              <Button
+                type="button"
+                size="lg"
+                fullWidth
+                disabled={isSubmitting}
+                onClick={() => void handleSubmit()}
+                className="cursor-pointer"
+              >
+                {isSubmitting ? (
+                  <ButtonLoader>{t('submitting')}</ButtonLoader>
+                ) : (
+                  t('submit')
+                )}
+              </Button>
 
-                <Button
-                  type="submit"
-                  size="lg"
-                  fullWidth
-                  disabled={isSubmitting}
-                  className="cursor-pointer"
+              <div className="flex justify-center">
+                <ButtonLink
+                  href={routes.auth.forgotPassword}
+                  variant="inline"
+                  className="hover:underline"
                 >
-                  {isSubmitting ? t('submitting') : t('submit')}
-                </Button>
+                  {t('forgot-pwd')}
+                </ButtonLink>
+              </div>
 
-                <div className="flex justify-center">
-                  <ButtonLink
-                    href={routes.auth.forgotPassword}
-                    variant="inline"
-                    className="hover:underline"
-                  >
-                    {t('forgot-pwd')}
-                  </ButtonLink>
-                </div>
-
-                <div className="flex justify-center">
-                  <ButtonLink
-                    href={routes.auth.register}
-                    variant="inline"
-                    className="hover:underline"
-                  >
-                    {t('register')}
-                  </ButtonLink>
-                </div>
-              </FieldGroup>
-            </form>
+              <div className="flex justify-center">
+                <ButtonLink
+                  href={routes.auth.register}
+                  variant="inline"
+                  className="hover:underline"
+                >
+                  {t('register')}
+                </ButtonLink>
+              </div>
+            </FieldGroup>
           </CardContent>
         </Card>
       </Container>

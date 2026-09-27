@@ -17,5 +17,11 @@
 
   "logout": {
     "logoutBtn": "Wyloguj się"
+  },
+
+  "email-verification-dialog": {
+    "title": "Potwierdź swój adres email",
+    "description": "Na Twój adres email została wysłana wiadomość z linkiem weryfikacyjnym. Kliknij link w wiadomości, aby potwierdzić swoje konto.",
+    "resend-button": "Wyślij ponownie wiadomość"
   }
 }

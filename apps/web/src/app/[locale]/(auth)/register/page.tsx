@@ -19,7 +19,7 @@ import {
   Input,
 } from '@/components/ui';
 import { Container, Section } from '@/components/layout';
-import { ButtonLink } from '@/components/common';
+import { ButtonLink, ButtonLoader } from '@/components/common';
 import { routes } from '@/config';
 import { registerUser } from '@/features/auth';
 import { defaultLocale, isAppLocale } from '@/i18n/locale-config';
@@ -272,7 +272,11 @@ export default function RegisterPage() {
                   disabled={isSubmitting}
                   className="cursor-pointer"
                 >
-                  {isSubmitting ? t('submitting') : t('submit')}
+                  {isSubmitting ? (
+                    <ButtonLoader>{t('submitting')}</ButtonLoader>
+                  ) : (
+                    t('submit')
+                  )}
                 </Button>
 
                 <div className="flex justify-center">

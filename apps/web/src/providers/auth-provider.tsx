@@ -30,6 +30,7 @@ interface AuthContextValue {
   accessToken: string | null;
   isAuthenticated: boolean;
   isLoading: boolean;
+  isLoggingOut: boolean;
   login: (payload: LoginDto) => Promise<void>;
   register: (payload: RegisterDto) => Promise<void>;
   logout: () => Promise<void>;
@@ -54,6 +55,7 @@ export default function AuthProvider({ children }: AuthProviderProps) {
   const [user, setUser] = useState<UserDto | null>(null);
   const [accessToken, setAccessToken] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [isLoggingOut, setIsLoggingOut] = useState(false);
 
   const login = useCallback(async (payload: LoginDto) => {
     const auth = await loginUser(payload);
@@ -68,6 +70,8 @@ export default function AuthProvider({ children }: AuthProviderProps) {
   }, []);
 
   const logout = useCallback(async () => {
+    setIsLoggingOut(true);
+
     try {
       await logoutUser();
     } finally {
@@ -101,11 +105,12 @@ export default function AuthProvider({ children }: AuthProviderProps) {
       accessToken,
       isAuthenticated: Boolean(accessToken),
       isLoading,
+      isLoggingOut,
       login,
       register,
       logout,
     }),
-    [user, accessToken, isLoading, login, register, logout],
+    [user, accessToken, isLoading, isLoggingOut, login, register, logout],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

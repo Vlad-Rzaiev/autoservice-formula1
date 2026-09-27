@@ -19,3 +19,5 @@ export {
 export { AuthGuard } from './components/auth-guard';
 
 export { default as LogoutButton } from './components/logout-button';
+
+export { EmailVerificationDialog } from './components/email-verification-dialog';
