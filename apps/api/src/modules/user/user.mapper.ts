@@ -12,6 +12,7 @@ export const toUserDto = (userLeanDocument: UserLeanDocument): User => {
     birthDate: userLeanDocument.birthDate,
     phone: userLeanDocument.phone,
     email: userLeanDocument.email,
+    emailVerified: userLeanDocument.emailVerified,
     role: userLeanDocument.role,
   };
 };

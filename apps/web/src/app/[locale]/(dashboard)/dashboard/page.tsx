@@ -1,11 +1,11 @@
-import { getTranslations } from 'next-intl/server';
+import { useTranslations } from 'next-intl';
 import { Section, Container } from '@/components/layout';
 import { DevelopmentPlaceholder } from '@/components/common';
 import { LogoutButton } from '@/features/auth';
 import { routes } from '@/config';
 
-export default async function DashboardPage() {
-  const t = await getTranslations('dashboard');
+export default function DashboardPage() {
+  const t = useTranslations('dashboard');
 
   return (
     <Section>

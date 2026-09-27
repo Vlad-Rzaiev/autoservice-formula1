@@ -151,6 +151,7 @@ export {
   passwordSchema,
   resetEmailRequestSchema,
   resetPasswordRequestSchema,
+  resendVerificationEmailRequestSchema,
 } from './auth/auth.schemas.js';
 
 export type {
@@ -158,6 +159,7 @@ export type {
   LoginRequest,
   ResetEmailRequest,
   ResetPasswordRequest,
+  ResendVerificationEmailRequest,
 } from './auth/auth.schemas.js';
 
 export { userGenderVariants, userRole } from './auth/user.constants.js';

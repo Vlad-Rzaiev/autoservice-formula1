@@ -61,6 +61,11 @@ export default function VerifyEmailPage() {
                 className="shrink-0 text-2xl"
               />
             }
+            actions={
+              <ButtonLink href={routes.auth.login} variant="ctaOutline">
+                {t('go-login-btn')}
+              </ButtonLink>
+            }
           />
         </Container>
       </Section>

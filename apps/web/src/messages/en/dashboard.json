@@ -17,5 +17,17 @@
 
   "logout": {
     "logoutBtn": "Logout"
+  },
+
+  "email-verification-dialog": {
+    "title": "Verify your email address",
+    "description": "A verification email has been sent to your email address. Please follow the link in the email to verify your account.",
+    "resend-button": "Resend verification email",
+    "resending": "Sending...",
+    "resend-error": "We couldn't resend the verification email. Please try again.",
+    "resend-success": "The verification email has been resent.",
+    "resend-countdown-minutes": "Resend in {minutes} min {seconds} sec",
+    "resend-countdown-seconds": "Resend in {seconds} sec",
+    "resend-rate-limit": "You've requested too many emails. Please try again later."
   }
 }

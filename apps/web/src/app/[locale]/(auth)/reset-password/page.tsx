@@ -20,7 +20,7 @@ import {
 } from '@/components/ui';
 import { Container, Section } from '@/components/layout';
 import { resetPassword } from '@/features/auth';
-import { ButtonLink } from '@/components/common';
+import { ButtonLink, ButtonLoader } from '@/components/common';
 import { routes } from '@/config';
 
 export default function ResetPasswordPage() {
@@ -226,7 +226,11 @@ export default function ResetPasswordPage() {
                   disabled={isSubmitting || !token}
                   className="cursor-pointer"
                 >
-                  {isSubmitting ? t('submitting') : t('submit')}
+                  {isSubmitting ? (
+                    <ButtonLoader>{t('submitting')}</ButtonLoader>
+                  ) : (
+                    t('submit')
+                  )}
                 </Button>
               </FieldGroup>
             </form>

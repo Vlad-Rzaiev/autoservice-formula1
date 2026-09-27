@@ -32,3 +32,5 @@ export { default as PageLoader } from './page-loader';
 export { IconItemCard } from './icon-item-card';
 
 export { default as Cta } from './cta';
+
+export { ButtonLoader } from './buttons/button-loader';

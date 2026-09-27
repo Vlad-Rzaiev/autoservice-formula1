@@ -16,7 +16,7 @@ import {
 } from '@/components/ui';
 import { Container, Section } from '@/components/layout';
 import { requestPasswordReset } from '@/features/auth';
-import { ButtonLink } from '@/components/common';
+import { ButtonLink, ButtonLoader } from '@/components/common';
 import { routes } from '@/config';
 
 export default function ForgotPasswordPage() {
@@ -106,7 +106,11 @@ export default function ForgotPasswordPage() {
                   disabled={isSubmitting}
                   className="cursor-pointer"
                 >
-                  {isSubmitting ? t('submitting') : t('submit')}
+                  {isSubmitting ? (
+                    <ButtonLoader>{t('submitting')}</ButtonLoader>
+                  ) : (
+                    t('submit')
+                  )}
                 </Button>
               </FieldGroup>
             </form>
