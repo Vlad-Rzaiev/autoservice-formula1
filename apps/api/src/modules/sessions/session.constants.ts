@@ -7,7 +7,10 @@ export const SESSION_ID_COOKIE_NAME = 'sessionId';
 export const AUTH_COOKIE_OPTIONS = {
   httpOnly: true,
   secure: process.env.NODE_ENV === 'production',
-  sameSite: 'none' as const,
+  sameSite:
+    process.env.NODE_ENV === 'production'
+      ? ('none' as const)
+      : ('lax' as const),
   maxAge: ONE_DAY,
   path: '/api/v1/auth',
 };

@@ -4,7 +4,6 @@ import { hasLocale } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { HtmlLangSync } from '@/components/locale';
 import { TooltipProvider } from '@/components/ui';
-import { AppProviders } from '@/providers';
 
 interface LocaleLayoutProps {
   children: React.ReactNode;
@@ -57,7 +56,7 @@ export default async function LocaleLayout({
     <TooltipProvider>
       <HtmlLangSync locale={locale} />
 
-      <AppProviders>{children}</AppProviders>
+      {children}
     </TooltipProvider>
   );
 }

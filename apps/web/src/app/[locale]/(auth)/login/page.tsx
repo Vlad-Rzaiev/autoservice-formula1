@@ -49,7 +49,9 @@ export default function LoginPage() {
 
   useEffect(() => {
     if (authMessage === 'auth-required') {
-      toast.info(t('error-login'));
+      toast.info(t('error-login'), {
+        id: 'auth-required',
+      });
     }
   }, [authMessage, t]);
 
