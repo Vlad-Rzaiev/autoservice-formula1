@@ -29,5 +29,19 @@
     "resend-countdown-minutes": "Resend in {minutes} min {seconds} sec",
     "resend-countdown-seconds": "Resend in {seconds} sec",
     "resend-rate-limit": "You've requested too many emails. Please try again later."
+  },
+
+  "navigation": {
+    "title": "Navigation",
+    "dashboard": "Dashboard",
+    "clients": "Clients",
+    "profile": "Profile",
+    "settings": "Settings"
+  },
+
+  "header": {
+    "title": "Dashboard",
+    "subtitle": "Manage your AutoService account",
+    "openMenu": "Open menu"
   }
 }

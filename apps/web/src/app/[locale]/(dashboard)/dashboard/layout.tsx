@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import { clientMessageModules, getClientMessages } from '@/messages';
 import { AuthGuard, EmailVerificationDialog } from '@/features/auth';
+import { DashboardShell } from '@/features/dashboard';
 
 export interface DashboardLayoutProps {
   children?: React.ReactNode;
@@ -28,7 +29,8 @@ export default async function DashboardLayout({
     <NextIntlClientProvider locale={locale} messages={messages}>
       <AuthGuard>
         <EmailVerificationDialog />
-        <main>{children}</main>
+
+        <DashboardShell>{children}</DashboardShell>
       </AuthGuard>
     </NextIntlClientProvider>
   );

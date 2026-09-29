@@ -29,5 +29,19 @@
     "resend-countdown-minutes": "Надіслати повторно через {minutes} хв {seconds} с",
     "resend-countdown-seconds": "Надіслати повторно через {seconds} с",
     "resend-rate-limit": "Ви надто часто запитуєте повторну відправку. Спробуйте ще раз пізніше."
+  },
+
+  "navigation": {
+    "title": "Навігація",
+    "dashboard": "Дашборд",
+    "clients": "Клієнти",
+    "profile": "Профіль",
+    "settings": "Налаштування"
+  },
+
+  "header": {
+    "title": "Особистий кабінет",
+    "subtitle": "Керуйте своїм AutoService",
+    "openMenu": "Відкрити меню"
   }
 }

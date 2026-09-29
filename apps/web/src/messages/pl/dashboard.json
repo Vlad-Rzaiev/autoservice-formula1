@@ -29,5 +29,19 @@
     "resend-countdown-minutes": "Wyślij ponownie za {minutes} min {seconds} s",
     "resend-countdown-seconds": "Wyślij ponownie za {seconds} s",
     "resend-rate-limit": "Zbyt często prosisz o ponowne wysłanie wiadomości. Spróbuj ponownie później."
+  },
+
+  "navigation": {
+    "title": "Nawigacja",
+    "dashboard": "Panel",
+    "clients": "Klienci",
+    "profile": "Profil",
+    "settings": "Ustawienia"
+  },
+
+  "header": {
+    "title": "Panel użytkownika",
+    "subtitle": "Zarządzaj swoim kontem AutoService",
+    "openMenu": "Otwórz menu"
   }
 }
