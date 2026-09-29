@@ -1,5 +1,3 @@
-import { useTranslations } from 'next-intl';
-
 import { Link } from '@/i18n/navigation';
 import { cn } from '@/lib/utils';
 import {
@@ -20,12 +18,10 @@ export default function BrandLogo({
   className,
   onNavigate,
 }: BrandLogoProps) {
-  const t = useTranslations('marketing.brand');
-
   return (
     <Link
       href={routes.marketing.home}
-      aria-label={t('homeLabel')}
+      aria-label="Formula 1 — home page"
       onClick={onNavigate}
       className={cn(brandLogoVariants({ variant }), className)}
     >

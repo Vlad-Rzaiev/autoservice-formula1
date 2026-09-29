@@ -54,7 +54,7 @@ export default function MobileMenuActions({
           variant="subtle"
           size="compact"
         >
-          {t('auth.reg.regBtn')}
+          {t('mobile-menu.regBtn')}
         </ButtonLink>
       </div>
     </div>
