@@ -5,5 +5,5 @@ export interface LayoutProps {
 }
 
 export default function ClientsLayout({ children }: LayoutProps) {
-  return <main>{children}</main>;
+  return children;
 }

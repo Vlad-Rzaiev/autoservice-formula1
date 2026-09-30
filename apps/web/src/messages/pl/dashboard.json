@@ -1,7 +1,14 @@
 {
-  "title": "Strona Dashboard",
-  "dev": "W trakcie tworzenia...",
-  "back-to-main": "Wróć na stronę główną",
+  "home": {
+    "title": "Witaj, {name}!",
+    "description": "Zarządzaj swoim samochodem i obsługą serwisową w jednym miejscu.",
+    "stats": {
+      "cars": "Samochody",
+      "appointments": "Wizyty serwisowe",
+      "repairs": "Naprawy",
+      "completed": "Zakończone prace"
+    }
+  },
 
   "profile": {
     "title": "Strona Clienta",
