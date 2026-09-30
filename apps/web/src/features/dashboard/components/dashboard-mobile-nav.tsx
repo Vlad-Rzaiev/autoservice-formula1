@@ -22,12 +22,12 @@ export default function DashboardMobileNav() {
         aria-label={t('openMenu')}
         aria-expanded={open}
         onClick={() => setOpen(true)}
+        className="navigation:hidden"
       >
         <FontAwesomeIcon
           icon={faBarsStaggered}
           aria-hidden="true"
           className="
-            navigation:hidden
             relative text-lg
             transition-transform duration-200
             group-hover:scale-110
