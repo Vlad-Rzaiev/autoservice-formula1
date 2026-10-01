@@ -174,3 +174,20 @@ export type { UserResponse } from './auth/user.response.js';
 
 export type { UserDto } from './auth/user.dto.js';
 export type { AuthDto } from './auth/auth.dto.js';
+
+export {
+  clientDtoSchema,
+  clientListQuerySchema,
+  clientListPaginationSchema,
+  clientListResponseDataSchema,
+} from './clients/client.schemas.js';
+
+export type {
+  ClientDto,
+  ClientListQuery,
+  ClientListPagination,
+  ClientListResponseData,
+} from './clients/client.schemas.js';
+
+export { clientListResponseSchema } from './clients/client-response.schemas.js';
+export type { ClientListResponse } from './clients/client.responses.js';
