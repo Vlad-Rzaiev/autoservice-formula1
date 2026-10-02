@@ -299,10 +299,12 @@
   },
 
   "reviews": {
+    "dev": "In Development...",
     "title": "Customer Reviews"
   },
 
   "booking": {
+    "dev": "In Development...",
     "title": "Book a Service Appointment"
   },
 

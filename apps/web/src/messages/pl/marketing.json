@@ -301,10 +301,12 @@
   },
 
   "reviews": {
+    "dev": "W trakcie tworzenia...",
     "title": "Opinie klientów"
   },
 
   "booking": {
+    "dev": "W trakcie tworzenia...",
     "title": "Umów wizytę w serwisie"
   },
 

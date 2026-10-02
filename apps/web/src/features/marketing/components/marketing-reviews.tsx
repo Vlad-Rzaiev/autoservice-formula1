@@ -8,6 +8,10 @@ export default async function MarketingReviews() {
     <Section id="reviews">
       <Container>
         <SectionTitle>{t('marketing.reviews.title')}</SectionTitle>
+
+        <div className="flex justify-center items-center mt-8">
+          <h2 className="text-4xl">{t('marketing.reviews.dev')}</h2>
+        </div>
       </Container>
     </Section>
   );
