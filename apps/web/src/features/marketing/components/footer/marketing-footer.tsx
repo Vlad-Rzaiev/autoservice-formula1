@@ -99,6 +99,13 @@ export default function MarketingFooter() {
             />
           </ButtonLink>
         </div>
+
+        <p className="text-xs text-muted-foreground">
+          Created by{' '}
+          <span className="font-medium text-foreground transition-colors hover:text-primary">
+            Vlad Rzaiev
+          </span>
+        </p>
       </Container>
     </footer>
   );
