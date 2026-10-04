@@ -191,3 +191,36 @@ export type {
 
 export { clientListResponseSchema } from './clients/client-response.schemas.js';
 export type { ClientListResponse } from './clients/client.responses.js';
+
+export {
+  bodyTypeSchema,
+  fuelTypeSchema,
+  transmissionSchema,
+  carDtoSchema,
+  carsListQuerySchema,
+  carListPaginationSchema,
+  carListResponseDataSchema,
+  createCarSchema,
+  updateCarSchema,
+} from './cars/car.schemas.js';
+
+export type {
+  CarDto,
+  BodyType,
+  FuelType,
+  Transmission,
+  CarsListQuery,
+  CarListPagination,
+  CarListResponseData,
+  CreateCarInput,
+  UpdateCarInput,
+} from './cars/car.schemas.js';
+
+export {
+  carsListResponseSchema,
+  carResponseSchema,
+} from './cars/car-response.schemas.js';
+
+export type { CarsListResponse, CarResponse } from './cars/car.responses.js';
+
+export { mongoObjectIdSchema } from './common/mongo.schemas.js';

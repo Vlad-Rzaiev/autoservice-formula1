@@ -19,6 +19,7 @@ import servicesRouter from './modules/services/service.routes.js';
 import completedWorksRouter from './modules/completed-works/completed-works.routes.js';
 import mechanicsRouter from './modules/mechanics/mechanic.routes.js';
 import clientsRouter from './modules/clients/clients.routes.js';
+import carsRouter from './modules/cars/car.routes.js';
 import specializationRouter from './modules/specializations/specialization.routes.js';
 import workDirectionRouter from './modules/work-directions/work-direction.routes.js';
 
@@ -88,6 +89,7 @@ export function createApp() {
 
   app.use('/api/v1/mechanics', mechanicsRouter);
   app.use('/api/v1/clients', clientsRouter);
+  app.use('/api/v1/cars', carsRouter);
 
   app.use('/api/v1/specializations', specializationRouter);
 
