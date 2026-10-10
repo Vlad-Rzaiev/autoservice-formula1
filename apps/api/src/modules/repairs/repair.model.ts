@@ -105,7 +105,8 @@ const repairSchema = new Schema<RepairDocumentData>(
       type: Number,
       min: 0,
       validate: {
-        validator: Number.isInteger,
+        validator: (value: number | null) =>
+          value === null || Number.isInteger(value),
         message: 'Mileage must be an integer.',
       },
       default: null,

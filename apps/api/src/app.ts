@@ -22,6 +22,7 @@ import clientsRouter from './modules/clients/clients.routes.js';
 import carsRouter from './modules/cars/car.routes.js';
 import repairsRouter from './modules/repairs/repair.routes.js';
 import repairItemRouter from './modules/repairs/repair-item.routes.js';
+import appointmentsRouter from './modules/appointments/appointment.routes.js';
 import specializationRouter from './modules/specializations/specialization.routes.js';
 import workDirectionRouter from './modules/work-directions/work-direction.routes.js';
 
@@ -94,6 +95,7 @@ export function createApp() {
   app.use('/api/v1/cars', carsRouter);
   app.use('/api/v1/repairs', repairsRouter);
   app.use('/api/v1/repairs', repairItemRouter);
+  app.use('/api/v1/appointments', appointmentsRouter);
 
   app.use('/api/v1/specializations', specializationRouter);
 

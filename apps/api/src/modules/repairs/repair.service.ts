@@ -12,10 +12,7 @@ import { UserCollection } from '../user/user.model.js';
 import { CarCollection } from '../cars/car.model.js';
 import { ServiceCollection } from '../services/service.model.js';
 import { RepairItemCollection } from './repair-item.model.js';
-
-const escapeRegex = (value: string): string => {
-  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-};
+import { escapeRegex } from '../../utils/escape-regex.js';
 
 export const getRepairs = async (
   query: RepairsListQuery,

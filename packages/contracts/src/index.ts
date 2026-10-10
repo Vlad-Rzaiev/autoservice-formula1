@@ -280,3 +280,28 @@ export type {
   RepairItemResponse,
   RepairItemsListResponse,
 } from './repairs/repair.responses.js';
+
+export {
+  appointmentStatusSchema,
+  appointmentDtoSchema,
+  createAppointmentSchema,
+  updateAppointmentSchema,
+  appointmentsListQuerySchema,
+} from './appointment/appointment.schemas.js';
+
+export type {
+  AppointmentStatus,
+  AppointmentDto,
+  CreateAppointmentInput,
+  UpdateAppointmentInput,
+  AppointmentsListQuery,
+} from './appointment/appointment.schemas.js';
+
+export type {
+  AppointmentResponse,
+  AppointmentListResponse,
+} from './appointment/appointment.responses.js';
+
+export { appointmentListResponseDataSchema } from './appointment/appointment-response.schemas.js';
+
+export { AppointmentListResponseData } from './appointment/appointment-response.schemas.js';

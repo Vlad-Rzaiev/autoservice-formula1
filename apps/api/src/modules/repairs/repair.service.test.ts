@@ -1892,6 +1892,7 @@ describe('requestApprovalRepair', () => {
       quantity: 1,
       unitPrice: 150,
       totalPrice: 150,
+      source: 'client',
     });
 
     const result = await requestApprovalRepairService(repair._id.toString(), {
@@ -1932,6 +1933,7 @@ describe('requestApprovalRepair', () => {
       quantity: 1,
       unitPrice: 200,
       totalPrice: 200,
+      source: 'service',
     });
 
     const result = await requestApprovalRepairService(repair._id.toString(), {
@@ -1969,6 +1971,7 @@ describe('requestApprovalRepair', () => {
       quantity: 1,
       unitPrice: 100,
       totalPrice: 100,
+      source: 'client',
     });
 
     const result = await requestApprovalRepairService(repair._id.toString(), {
@@ -2012,6 +2015,7 @@ describe('requestApprovalRepair', () => {
       quantity: 1,
       unitPrice: 100,
       totalPrice: 100,
+      source: 'service',
     });
 
     await expect(
@@ -2052,6 +2056,7 @@ describe('requestApprovalRepair', () => {
       quantity: 1,
       unitPrice: 50,
       totalPrice: 50,
+      source: 'client',
     });
 
     await expect(
@@ -2091,6 +2096,7 @@ describe('requestApprovalRepair', () => {
       quantity: 1,
       unitPrice: 100,
       totalPrice: 100,
+      source: 'service',
     });
 
     await expect(
