@@ -7,6 +7,14 @@
       "appointments": "Wizyty serwisowe",
       "repairs": "Naprawy",
       "completed": "Zakończone prace"
+    },
+
+    "loading-state": {
+      "loading-title": "Ładowanie statystyk",
+      "loading-description": "Pobieramy dane Twojego panelu.",
+      "error-title": "Nie udało się załadować statystyk",
+      "error-description": "Sprawdź połączenie i spróbuj ponownie.",
+      "retry": "Spróbuj ponownie"
     }
   },
 

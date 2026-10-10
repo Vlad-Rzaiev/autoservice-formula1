@@ -7,6 +7,14 @@
       "appointments": "Service appointments",
       "repairs": "Repairs",
       "completed": "Completed jobs"
+    },
+
+    "loading-state": {
+      "loading-title": "Loading dashboard statistics",
+      "loading-description": "Fetching your dashboard data.",
+      "error-title": "Couldn't load dashboard statistics",
+      "error-description": "Check your connection and try again.",
+      "retry": "Try again"
     }
   },
 
