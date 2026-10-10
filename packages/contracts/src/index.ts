@@ -224,3 +224,84 @@ export {
 export type { CarsListResponse, CarResponse } from './cars/car.responses.js';
 
 export { mongoObjectIdSchema } from './common/mongo.schemas.js';
+
+export {
+  repairStatusSchema,
+  repairPhotosSchema,
+  repairDtoSchema,
+  createRepairSchema,
+  updateRepairSchema,
+  repairsListQuerySchema,
+  repairApprovalSchema,
+  approveRepairSchema,
+} from './repairs/repair.schemas.js';
+
+export type {
+  RepairStatus,
+  RepairPhotosDto,
+  RepairDto,
+  CreateRepairInput,
+  UpdateRepairInput,
+  RepairsListQuery,
+  RepairApprovalDto,
+  ApproveRepairInput,
+} from './repairs/repair.schemas.js';
+
+export {
+  repairItemTypeSchema,
+  repairItemDtoSchema,
+  createRepairItemSchema,
+  updateRepairItemSchema,
+  repairItemSourceSchema,
+} from './repairs/repair-item.schemas.js';
+
+export type {
+  RepairItemType,
+  RepairItemDto,
+  CreateRepairItemInput,
+  UpdateRepairItemInput,
+  RepairItemSource,
+} from './repairs/repair-item.schemas.js';
+
+export {
+  repairListResponseDataSchema,
+  repairResponseSchema,
+  repairsListResponseSchema,
+  repairItemResponseSchema,
+  repairItemsListResponseDataSchema,
+  repairItemsListResponseSchema,
+} from './repairs/repair-response.schemas.js';
+
+export type { RepairListResponseData } from './repairs/repair-response.schemas.js';
+
+export type {
+  RepairResponse,
+  RepairsListResponse,
+  RepairItemResponse,
+  RepairItemsListResponse,
+} from './repairs/repair.responses.js';
+
+export {
+  appointmentStatusSchema,
+  appointmentDtoSchema,
+  createAppointmentSchema,
+  updateAppointmentSchema,
+  appointmentsListQuerySchema,
+} from './appointment/appointment.schemas.js';
+
+export type {
+  AppointmentStatus,
+  AppointmentDto,
+  CreateAppointmentInput,
+  UpdateAppointmentInput,
+  AppointmentsListQuery,
+} from './appointment/appointment.schemas.js';
+
+export type {
+  AppointmentResponse,
+  AppointmentListResponse,
+} from './appointment/appointment.responses.js';
+
+export { appointmentListResponseDataSchema } from './appointment/appointment-response.schemas.js';
+
+export { AppointmentListResponseData } from './appointment/appointment-response.schemas.js';
