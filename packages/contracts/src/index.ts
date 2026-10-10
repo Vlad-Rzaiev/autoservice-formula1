@@ -305,3 +305,9 @@ export type {
 export { appointmentListResponseDataSchema } from './appointment/appointment-response.schemas.js';
 
 export { AppointmentListResponseData } from './appointment/appointment-response.schemas.js';
+
+export { dashboardSummarySchema } from './dashboard/dashboard-summary.schemas.js';
+
+export type { DashboardSummaryDto } from './dashboard/dashboard-summary.schemas.js';
+
+export { dashboardSummaryResponseSchema } from './dashboard/dashboard-summary-response.schemas.js';

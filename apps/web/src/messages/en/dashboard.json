@@ -7,6 +7,27 @@
       "appointments": "Service appointments",
       "repairs": "Repairs",
       "completed": "Completed jobs"
+    },
+
+    "loading-state": {
+      "loading-title": "Loading dashboard statistics",
+      "loading-description": "Fetching your dashboard data.",
+      "error-title": "Couldn't load dashboard statistics",
+      "error-description": "Check your connection and try again.",
+      "retry": "Try again"
+    },
+
+    "quick-actions": {
+      "title": "Quick actions",
+      "description": "Go directly to a dashboard section.",
+      "cars": "Vehicles",
+      "cars-description": "View vehicles",
+      "appointments": "Appointments",
+      "appointments-description": "View service appointments",
+      "repairs": "Repairs",
+      "repairs-description": "View repair jobs",
+      "clients": "Clients",
+      "clients-description": "View the client list"
     }
   },
 

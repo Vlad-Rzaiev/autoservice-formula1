@@ -7,6 +7,27 @@
       "appointments": "Wizyty serwisowe",
       "repairs": "Naprawy",
       "completed": "Zakończone prace"
+    },
+
+    "loading-state": {
+      "loading-title": "Ładowanie statystyk",
+      "loading-description": "Pobieramy dane Twojego panelu.",
+      "error-title": "Nie udało się załadować statystyk",
+      "error-description": "Sprawdź połączenie i spróbuj ponownie.",
+      "retry": "Spróbuj ponownie"
+    },
+
+    "quick-actions": {
+      "title": "Szybkie akcje",
+      "description": "Przejdź bezpośrednio do wybranej sekcji panelu.",
+      "cars": "Samochody",
+      "cars-description": "Zobacz samochody",
+      "appointments": "Wizyty",
+      "appointments-description": "Zobacz wizyty serwisowe",
+      "repairs": "Naprawy",
+      "repairs-description": "Zobacz naprawy",
+      "clients": "Klienci",
+      "clients-description": "Zobacz listę klientów"
     }
   },
 

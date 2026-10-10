@@ -7,6 +7,27 @@
       "appointments": "Записи на сервіс",
       "repairs": "Ремонти",
       "completed": "Завершені роботи"
+    },
+
+    "loading-state": {
+      "loading-title": "Завантажуємо статистику",
+      "loading-description": "Отримуємо дані вашого кабінету.",
+      "error-title": "Не вдалося завантажити статистику",
+      "error-description": "Перевірте з'єднання та спробуйте ще раз.",
+      "retry": "Спробувати ще раз"
+    },
+
+    "quick-actions": {
+      "title": "Швидкі дії",
+      "description": "Перейдіть до потрібного розділу кабінету.",
+      "cars": "Автомобілі",
+      "cars-description": "Переглянути автомобілі",
+      "appointments": "Записи",
+      "appointments-description": "Переглянути записи на обслуговування",
+      "repairs": "Ремонти",
+      "repairs-description": "Переглянути ремонтні роботи",
+      "clients": "Клієнти",
+      "clients-description": "Переглянути список клієнтів"
     }
   },
 
