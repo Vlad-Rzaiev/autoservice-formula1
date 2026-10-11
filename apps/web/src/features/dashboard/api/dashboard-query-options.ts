@@ -21,11 +21,7 @@ export function dashboardSummaryQueryOptions(
 ) {
   return queryOptions({
     queryKey: dashboardQueryKeys.summary(userId, role),
-    queryFn: ({ signal }) =>
-      getDashboardSummary({
-        accessToken: accessToken!,
-        signal,
-      }),
+    queryFn: ({ signal }) => getDashboardSummary({ signal }),
     staleTime: 30_000,
     enabled: Boolean(userId && role && accessToken),
     retry: false,

@@ -6,7 +6,6 @@ import {
   DashboardOverview,
   useDashboardSummary,
 } from '@/features/dashboard';
-import {} from '@/features/dashboard';
 
 export default function DashboardPage() {
   const { user } = useAuth();
@@ -15,8 +14,7 @@ export default function DashboardPage() {
 
   const displayName =
     [user?.firstName, user?.lastName].filter(Boolean).join(' ') ||
-    `user ${user?.userId}` ||
-    '';
+    (user ? `User  ${user.userId}` : '');
 
   return (
     <>

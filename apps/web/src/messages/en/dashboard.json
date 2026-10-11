@@ -64,6 +64,9 @@
     "dashboard": "Dashboard",
     "clients": "Clients",
     "profile": "Profile",
+    "cars": "Cars",
+    "repairs": "Repairs",
+    "appointments": "Appointments",
     "settings": "Settings"
   },
 
@@ -71,5 +74,13 @@
     "title": "Dashboard",
     "subtitle": "Manage your AutoService account",
     "openMenu": "Open menu"
+  },
+
+  "user-roles": {
+    "you-are": "You are logged in as:",
+    "owner": "Owner",
+    "manager": "Manager",
+    "mechanic": "Mechanic",
+    "client": "Client"
   }
 }

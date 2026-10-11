@@ -64,6 +64,9 @@
     "dashboard": "Panel",
     "clients": "Klienci",
     "profile": "Profil",
+    "cars": "Samochody",
+    "repairs": "Naprawy",
+    "appointments": "Wizyty",
     "settings": "Ustawienia"
   },
 
@@ -71,5 +74,13 @@
     "title": "Panel użytkownika",
     "subtitle": "Zarządzaj swoim kontem AutoService",
     "openMenu": "Otwórz menu"
+  },
+
+  "user-roles": {
+    "you-are": "Zalogowano jako:",
+    "owner": "Właściciel",
+    "manager": "Menedżer",
+    "mechanic": "Mechanik",
+    "client": "Klient"
   }
 }

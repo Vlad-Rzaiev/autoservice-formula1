@@ -64,6 +64,9 @@
     "dashboard": "Дашборд",
     "clients": "Клієнти",
     "profile": "Профіль",
+    "cars": "Автомобілі",
+    "repairs": "Ремонти",
+    "appointments": "Записи",
     "settings": "Налаштування"
   },
 
@@ -71,5 +74,13 @@
     "title": "Особистий кабінет",
     "subtitle": "Керуйте своїм AutoService",
     "openMenu": "Відкрити меню"
+  },
+
+  "user-roles": {
+    "you-are": "Ви увійшли як:",
+    "owner": "Власник",
+    "manager": "Менеджер",
+    "mechanic": "Механік",
+    "client": "Клієнт"
   }
 }

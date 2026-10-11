@@ -10,7 +10,7 @@ export default async function AllClientsPage() {
     <Section>
       <Container>
         <DevelopmentPlaceholder
-          title={t('title')}
+          title={'Appointments'}
           description={t('dev')}
           linkHref={routes.marketing.home}
           linkText={t('back-to-main')}

@@ -99,7 +99,6 @@ export function createApp() {
   app.use('/api/v1/repairs', repairsRouter);
   app.use('/api/v1/repairs', repairItemRouter);
   app.use('/api/v1/appointments', appointmentsRouter);
-  app.use('/api/v1/appointments', appointmentsRouter);
   app.use('/api/v1/dashboard', dashboardSummaryRouter);
 
   app.use('/api/v1/specializations', specializationRouter);

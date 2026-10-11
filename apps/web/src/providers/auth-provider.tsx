@@ -25,6 +25,12 @@ import {
   getCurrentUser,
 } from '@/features/auth';
 
+import {
+  configureAuthSession,
+  setStoredAccessToken,
+  subscribeToAccessToken,
+} from '@/lib/api/access-token-store';
+
 interface AuthContextValue {
   user: UserDto | null;
   accessToken: string | null;
@@ -49,6 +55,7 @@ function applyAuthResult(
 ) {
   setUser(auth.user);
   setAccessToken(auth.accessToken);
+  setStoredAccessToken(auth.accessToken);
 }
 
 export default function AuthProvider({ children }: AuthProviderProps) {
@@ -77,10 +84,22 @@ export default function AuthProvider({ children }: AuthProviderProps) {
     } finally {
       setUser(null);
       setAccessToken(null);
+      setStoredAccessToken(null);
+      setIsLoggingOut(false);
     }
   }, []);
 
   useEffect(() => {
+    const unsubscribe = subscribeToAccessToken(setAccessToken);
+
+    const unregister = configureAuthSession({
+      refreshAccessToken,
+      onRefreshFailure: () => {
+        setUser(null);
+        setAccessToken(null);
+      },
+    });
+
     void (async () => {
       setIsLoading(true);
 
@@ -88,15 +107,20 @@ export default function AuthProvider({ children }: AuthProviderProps) {
         const nextAccessToken = await refreshAccessToken();
         const currentUser = await getCurrentUser(nextAccessToken);
 
-        setAccessToken(nextAccessToken);
         setUser(currentUser);
+        setStoredAccessToken(nextAccessToken);
       } catch {
         setUser(null);
-        setAccessToken(null);
+        setStoredAccessToken(null);
       } finally {
         setIsLoading(false);
       }
     })();
+
+    return () => {
+      unsubscribe();
+      unregister();
+    };
   }, []);
 
   const value = useMemo<AuthContextValue>(

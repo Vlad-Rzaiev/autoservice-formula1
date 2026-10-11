@@ -1,12 +1,18 @@
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { UserDto } from '@autoservice/contracts';
+import type { UserDto } from '@autoservice/contracts';
 import { Container, Section } from '@/components/layout';
 import { Card, CardContent } from '@/components/ui';
 import { dashboardQuickActions } from '../config/dashboard-quick-actions';
 
-export default function DashboardQuickActions({ user }: UserDto) {
+interface DashboardQuickActionsProps {
+  user: UserDto | null;
+}
+
+export default function DashboardQuickActions({
+  user,
+}: DashboardQuickActionsProps) {
   const t = useTranslations('dashboard.home.quick-actions');
 
   if (!user) {
