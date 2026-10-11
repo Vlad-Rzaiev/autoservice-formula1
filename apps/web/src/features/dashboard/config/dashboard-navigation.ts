@@ -4,6 +4,7 @@ import {
   faCar,
   faGaugeHigh,
   faGear,
+  faPlus,
   faScrewdriverWrench,
   faUser,
   faUsers,
@@ -16,6 +17,7 @@ export interface DashboardNavItem {
   labelKey: string;
   icon: IconDefinition;
   roles: UserRole[];
+  children?: DashboardNavItem[];
 }
 
 export const dashboardNavigation: DashboardNavItem[] = [
@@ -48,17 +50,33 @@ export const dashboardNavigation: DashboardNavItem[] = [
     labelKey: 'cars',
     icon: faCar,
     roles: ['owner', 'manager', 'mechanic', 'client'],
-  },
-  {
-    href: routes.dashboard.repairs.list,
-    labelKey: 'repairs',
-    icon: faScrewdriverWrench,
-    roles: ['owner', 'manager', 'mechanic', 'client'],
+    children: [
+      {
+        href: routes.dashboard.cars.create,
+        labelKey: 'create-car',
+        icon: faPlus,
+        roles: ['owner', 'manager', 'client'],
+      },
+    ],
   },
   {
     href: routes.dashboard.appointments.list,
     labelKey: 'appointments',
     icon: faCalendarCheck,
+    roles: ['owner', 'manager', 'mechanic', 'client'],
+    children: [
+      {
+        href: routes.dashboard.appointments.create,
+        labelKey: 'create-appointment',
+        icon: faPlus,
+        roles: ['owner', 'manager', 'client'],
+      },
+    ],
+  },
+  {
+    href: routes.dashboard.repairs.list,
+    labelKey: 'repairs',
+    icon: faScrewdriverWrench,
     roles: ['owner', 'manager', 'mechanic', 'client'],
   },
 ];

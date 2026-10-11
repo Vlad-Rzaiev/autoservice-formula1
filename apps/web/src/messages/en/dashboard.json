@@ -28,7 +28,11 @@
       "repairs": "Repairs",
       "repairs-description": "View repair jobs",
       "clients": "Clients",
-      "clients-description": "View the client list"
+      "clients-description": "View the client list",
+      "create-car": "Add a car",
+      "create-car-description": "Register a vehicle in your account",
+      "create-appointment": "Create appointment",
+      "create-appointment-description": "Schedule a service visit"
     },
 
     "recent-activity": {
@@ -94,8 +98,10 @@
     "clients": "Clients",
     "profile": "Profile",
     "cars": "Cars",
+    "create-car": "Add car",
     "repairs": "Repairs",
     "appointments": "Appointments",
+    "create-appointment": "Create appointment",
     "settings": "Settings"
   },
 
@@ -116,5 +122,70 @@
   "footer": {
     "rights": "All rights reserved.",
     "created-by": "Created by "
+  },
+
+  "cars": {
+    "title": "Create car",
+    "description": "Add a vehicle to AutoService.",
+    "create": {
+      "owner": "Vehicle owner",
+      "select-owner": "Select a client",
+      "loading-clients": "Loading clients…",
+      "clients-error": "Failed to load clients.",
+      "basic-info": "Basic information",
+      "brand": "Make",
+      "model": "Model",
+      "year": "Year of manufacture",
+      "vin": "VIN",
+      "license-plate": "License plate",
+      "mileage": "Mileage, km",
+      "specifications": "Specifications",
+      "generation": "Generation",
+      "engine": "Engine",
+      "color": "Color",
+      "country": "Country of registration",
+      "body-type": "Body type",
+      "fuel-type": "Fuel type",
+      "transmission": "Transmission",
+      "registration-date": "Registration date",
+      "notes": "Notes",
+      "select-option": "Select an option",
+      "submit": "Create vehicle",
+      "submitting": "Creating…",
+      "cancel": "Cancel",
+      "invalid-form": "Please check that all fields are filled in correctly.",
+      "submit-error": "Failed to create the vehicle. Please try again.",
+      "body-types": {
+        "sedan": "Sedan",
+        "wagon": "Station wagon",
+        "hatchback": "Hatchback",
+        "coupe": "Coupe",
+        "convertible": "Convertible",
+        "suv": "SUV",
+        "crossover": "Crossover",
+        "minivan": "Minivan",
+        "van": "Van",
+        "pickup": "Pickup truck",
+        "other": "Other"
+      },
+      "fuel-types": {
+        "petrol": "Petrol",
+        "diesel": "Diesel",
+        "hybrid": "Hybrid",
+        "plug_in_hybrid": "Plug-in hybrid",
+        "electric": "Electric",
+        "lpg": "LPG",
+        "cng": "CNG",
+        "hydrogen": "Hydrogen",
+        "other": "Other"
+      },
+      "transmissions": {
+        "manual": "Manual",
+        "automatic": "Automatic",
+        "semi_automatic": "Semi-automatic",
+        "cvt": "CVT",
+        "other": "Other"
+      }
+    }
   }
 }

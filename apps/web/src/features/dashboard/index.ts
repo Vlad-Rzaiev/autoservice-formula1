@@ -19,3 +19,5 @@ export { default as DashboardQuickActions } from './components/dashboard-quick-a
 export { default as DashboardRecentActivity } from './components/dashboard-recent-activity';
 
 export { useDashboardActivity } from './api/use-dashboard-activity';
+
+export { default as CreateCarForm } from './cars/components/create-car-form';
