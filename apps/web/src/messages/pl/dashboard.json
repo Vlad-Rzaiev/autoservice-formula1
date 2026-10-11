@@ -27,7 +27,39 @@
       "repairs": "Naprawy",
       "repairs-description": "Zobacz naprawy",
       "clients": "Klienci",
-      "clients-description": "Zobacz listę klientów"
+      "clients-description": "Zobacz listę klientów",
+      "create-car": "Dodaj samochód",
+      "create-car-description": "Dodaj pojazd do swojego konta",
+      "create-appointment": "Utwórz wizytę",
+      "create-appointment-description": "Zaplanuj wizytę w serwisie"
+    },
+
+    "recent-activity": {
+      "title": "Ostatnia aktywność",
+      "description": "Najnowsze wizyty i naprawy w jednym miejscu.",
+      "appointments": "Ostatnie wizyty",
+      "repairs": "Ostatnie naprawy",
+      "view-all": "Zobacz wszystkie",
+      "empty-appointments": "Brak wizyt.",
+      "empty-repairs": "Brak napraw.",
+      "loading": "Ładowanie ostatniej aktywności",
+      "loading-description": "Pobieramy ostatnie wizyty i naprawy.",
+      "error": "Nie udało się załadować ostatniej aktywności",
+      "error-description": "Sprawdź połączenie internetowe i spróbuj ponownie.",
+      "retry": "Spróbuj ponownie",
+      "date": "Data",
+      "created-at": "Utworzono: {date}",
+      "status": {
+        "pending": "Oczekuje na potwierdzenie",
+        "confirmed": "Potwierdzona",
+        "in_progress": "W trakcie",
+        "completed": "Zakończona",
+        "cancelled": "Anulowana",
+        "no_show": "Klient nie pojawił się",
+        "accepted": "Przyjęta do realizacji",
+        "waiting_parts": "Oczekiwanie na części",
+        "awaiting_approval": "Oczekuje na zatwierdzenie"
+      }
     }
   },
 
@@ -64,6 +96,11 @@
     "dashboard": "Panel",
     "clients": "Klienci",
     "profile": "Profil",
+    "cars": "Samochody",
+    "create-car": "Dodaj samochód",
+    "repairs": "Naprawy",
+    "appointments": "Wizyty",
+    "create-appointment": "Utwórz wizytę",
     "settings": "Ustawienia"
   },
 
@@ -71,5 +108,83 @@
     "title": "Panel użytkownika",
     "subtitle": "Zarządzaj swoim kontem AutoService",
     "openMenu": "Otwórz menu"
+  },
+
+  "user-roles": {
+    "you-are": "Zalogowano jako:",
+    "owner": "Właściciel",
+    "manager": "Menedżer",
+    "mechanic": "Mechanik",
+    "client": "Klient"
+  },
+
+  "footer": {
+    "rights": "Wszelkie prawa zastrzeżone.",
+    "created-by": "Created by "
+  },
+
+  "cars": {
+    "title": "Dodaj pojazd",
+    "description": "Dodaj pojazd do AutoService.",
+    "create": {
+      "owner": "Właściciel pojazdu",
+      "select-owner": "Wybierz klienta",
+      "loading-clients": "Ładowanie klientów…",
+      "clients-error": "Nie udało się załadować klientów.",
+      "basic-info": "Podstawowe informacje",
+      "brand": "Marka",
+      "model": "Model",
+      "year": "Rok produkcji",
+      "vin": "VIN",
+      "license-plate": "Numer rejestracyjny",
+      "mileage": "Przebieg, km",
+      "specifications": "Dane techniczne",
+      "generation": "Generacja",
+      "engine": "Silnik",
+      "color": "Kolor",
+      "country": "Kraj rejestracji",
+      "body-type": "Typ nadwozia",
+      "fuel-type": "Rodzaj paliwa",
+      "transmission": "Skrzynia biegów",
+      "registration-date": "Data rejestracji",
+      "notes": "Uwagi",
+      "select-option": "Wybierz opcję",
+      "submit": "Dodaj pojazd",
+      "submitting": "Dodawanie…",
+      "cancel": "Anuluj",
+      "invalid-form": "Sprawdź, czy wszystkie pola zostały poprawnie wypełnione.",
+      "submit-error": "Nie udało się dodać pojazdu. Spróbuj ponownie.",
+      "body-types": {
+        "sedan": "Sedan",
+        "wagon": "Kombi",
+        "hatchback": "Hatchback",
+        "coupe": "Coupe",
+        "convertible": "Kabriolet",
+        "suv": "SUV",
+        "crossover": "Crossover",
+        "minivan": "Minivan",
+        "van": "Furgon",
+        "pickup": "Pickup",
+        "other": "Inne"
+      },
+      "fuel-types": {
+        "petrol": "Benzyna",
+        "diesel": "Diesel",
+        "hybrid": "Hybryda",
+        "plug_in_hybrid": "Hybryda plug-in",
+        "electric": "Elektryczny",
+        "lpg": "LPG",
+        "cng": "CNG",
+        "hydrogen": "Wodór",
+        "other": "Inne"
+      },
+      "transmissions": {
+        "manual": "Manualna",
+        "automatic": "Automatyczna",
+        "semi_automatic": "Półautomatyczna",
+        "cvt": "Bezstopniowa (CVT)",
+        "other": "Inna"
+      }
+    }
   }
 }

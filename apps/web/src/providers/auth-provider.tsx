@@ -9,6 +9,7 @@ import {
   useState,
   type ReactNode,
 } from 'react';
+import { useQueryClient } from '@tanstack/react-query';
 
 import type {
   AuthDto,
@@ -24,6 +25,12 @@ import {
   registerUser,
   getCurrentUser,
 } from '@/features/auth';
+
+import {
+  configureAuthSession,
+  setStoredAccessToken,
+  subscribeToAccessToken,
+} from '@/lib/api/access-token-store';
 
 interface AuthContextValue {
   user: UserDto | null;
@@ -49,9 +56,12 @@ function applyAuthResult(
 ) {
   setUser(auth.user);
   setAccessToken(auth.accessToken);
+  setStoredAccessToken(auth.accessToken);
 }
 
 export default function AuthProvider({ children }: AuthProviderProps) {
+  const queryClient = useQueryClient();
+
   const [user, setUser] = useState<UserDto | null>(null);
   const [accessToken, setAccessToken] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -77,10 +87,27 @@ export default function AuthProvider({ children }: AuthProviderProps) {
     } finally {
       setUser(null);
       setAccessToken(null);
+      setStoredAccessToken(null);
+
+      await queryClient.cancelQueries();
+      queryClient.clear();
+
+      setIsLoggingOut(false);
     }
-  }, []);
+  }, [queryClient]);
 
   useEffect(() => {
+    const unsubscribe = subscribeToAccessToken(setAccessToken);
+
+    const unregister = configureAuthSession({
+      refreshAccessToken,
+      onRefreshFailure: () => {
+        setUser(null);
+        setAccessToken(null);
+        setStoredAccessToken(null);
+      },
+    });
+
     void (async () => {
       setIsLoading(true);
 
@@ -88,15 +115,20 @@ export default function AuthProvider({ children }: AuthProviderProps) {
         const nextAccessToken = await refreshAccessToken();
         const currentUser = await getCurrentUser(nextAccessToken);
 
-        setAccessToken(nextAccessToken);
         setUser(currentUser);
+        setStoredAccessToken(nextAccessToken);
       } catch {
         setUser(null);
-        setAccessToken(null);
+        setStoredAccessToken(null);
       } finally {
         setIsLoading(false);
       }
     })();
+
+    return () => {
+      unsubscribe();
+      unregister();
+    };
   }, []);
 
   const value = useMemo<AuthContextValue>(

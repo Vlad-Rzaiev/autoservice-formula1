@@ -1,4 +1,7 @@
+'use client';
+
 import { Link } from '@/i18n/navigation';
+import { useAuth } from '@/providers';
 import { cn } from '@/lib/utils';
 import {
   brandLogoContentVariants,
@@ -18,11 +21,15 @@ export default function BrandLogo({
   className,
   onNavigate,
 }: BrandLogoProps) {
+  const { isAuthenticated, isLoading } = useAuth();
+
+  const href = isAuthenticated ? routes.dashboard.home : routes.marketing.home;
+
   return (
     <Link
-      href={routes.marketing.home}
+      href={href}
       aria-label="Formula 1 — home page"
-      onClick={onNavigate}
+      onClick={isLoading ? undefined : onNavigate}
       className={cn(brandLogoVariants({ variant }), className)}
     >
       <span

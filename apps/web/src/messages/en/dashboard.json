@@ -2,6 +2,7 @@
   "home": {
     "title": "Welcome, {name}!",
     "description": "Manage your vehicle and service maintenance in one place.",
+
     "stats": {
       "cars": "Cars",
       "appointments": "Service appointments",
@@ -27,7 +28,39 @@
       "repairs": "Repairs",
       "repairs-description": "View repair jobs",
       "clients": "Clients",
-      "clients-description": "View the client list"
+      "clients-description": "View the client list",
+      "create-car": "Add a car",
+      "create-car-description": "Register a vehicle in your account",
+      "create-appointment": "Create appointment",
+      "create-appointment-description": "Schedule a service visit"
+    },
+
+    "recent-activity": {
+      "title": "Recent activity",
+      "description": "Your latest appointments and repairs at a glance.",
+      "appointments": "Recent appointments",
+      "repairs": "Recent repairs",
+      "view-all": "View all",
+      "empty-appointments": "No appointments yet.",
+      "empty-repairs": "No repairs yet.",
+      "loading": "Loading recent activity",
+      "loading-description": "Fetching your latest appointments and repairs.",
+      "error": "Couldn't load recent activity",
+      "error-description": "Check your connection and try again.",
+      "retry": "Try again",
+      "date": "Date",
+      "created-at": "Created {date}",
+      "status": {
+        "pending": "Pending",
+        "confirmed": "Confirmed",
+        "in_progress": "In progress",
+        "completed": "Completed",
+        "cancelled": "Cancelled",
+        "no_show": "No-show",
+        "accepted": "Accepted",
+        "waiting_parts": "Waiting for parts",
+        "awaiting_approval": "Awaiting approval"
+      }
     }
   },
 
@@ -64,6 +97,11 @@
     "dashboard": "Dashboard",
     "clients": "Clients",
     "profile": "Profile",
+    "cars": "Cars",
+    "create-car": "Add car",
+    "repairs": "Repairs",
+    "appointments": "Appointments",
+    "create-appointment": "Create appointment",
     "settings": "Settings"
   },
 
@@ -71,5 +109,83 @@
     "title": "Dashboard",
     "subtitle": "Manage your AutoService account",
     "openMenu": "Open menu"
+  },
+
+  "user-roles": {
+    "you-are": "You are logged in as:",
+    "owner": "Owner",
+    "manager": "Manager",
+    "mechanic": "Mechanic",
+    "client": "Client"
+  },
+
+  "footer": {
+    "rights": "All rights reserved.",
+    "created-by": "Created by "
+  },
+
+  "cars": {
+    "title": "Create car",
+    "description": "Add a vehicle to AutoService.",
+    "create": {
+      "owner": "Vehicle owner",
+      "select-owner": "Select a client",
+      "loading-clients": "Loading clients…",
+      "clients-error": "Failed to load clients.",
+      "basic-info": "Basic information",
+      "brand": "Make",
+      "model": "Model",
+      "year": "Year of manufacture",
+      "vin": "VIN",
+      "license-plate": "License plate",
+      "mileage": "Mileage, km",
+      "specifications": "Specifications",
+      "generation": "Generation",
+      "engine": "Engine",
+      "color": "Color",
+      "country": "Country of registration",
+      "body-type": "Body type",
+      "fuel-type": "Fuel type",
+      "transmission": "Transmission",
+      "registration-date": "Registration date",
+      "notes": "Notes",
+      "select-option": "Select an option",
+      "submit": "Create vehicle",
+      "submitting": "Creating…",
+      "cancel": "Cancel",
+      "invalid-form": "Please check that all fields are filled in correctly.",
+      "submit-error": "Failed to create the vehicle. Please try again.",
+      "body-types": {
+        "sedan": "Sedan",
+        "wagon": "Station wagon",
+        "hatchback": "Hatchback",
+        "coupe": "Coupe",
+        "convertible": "Convertible",
+        "suv": "SUV",
+        "crossover": "Crossover",
+        "minivan": "Minivan",
+        "van": "Van",
+        "pickup": "Pickup truck",
+        "other": "Other"
+      },
+      "fuel-types": {
+        "petrol": "Petrol",
+        "diesel": "Diesel",
+        "hybrid": "Hybrid",
+        "plug_in_hybrid": "Plug-in hybrid",
+        "electric": "Electric",
+        "lpg": "LPG",
+        "cng": "CNG",
+        "hydrogen": "Hydrogen",
+        "other": "Other"
+      },
+      "transmissions": {
+        "manual": "Manual",
+        "automatic": "Automatic",
+        "semi_automatic": "Semi-automatic",
+        "cvt": "CVT",
+        "other": "Other"
+      }
+    }
   }
 }

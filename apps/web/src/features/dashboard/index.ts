@@ -15,3 +15,9 @@ export { useDashboardSummary } from './api/use-dashboard-summary';
 export { default as DashboardStatsSkeleton } from './components/dashboard-stats-skeleton';
 export { default as DashboardOverview } from './components/dashboard-overview';
 export { default as DashboardQuickActions } from './components/dashboard-quick-actions';
+
+export { default as DashboardRecentActivity } from './components/dashboard-recent-activity';
+
+export { useDashboardActivity } from './api/use-dashboard-activity';
+
+export { default as CreateCarForm } from './cars/components/create-car-form';

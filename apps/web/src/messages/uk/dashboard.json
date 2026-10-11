@@ -27,7 +27,39 @@
       "repairs": "Ремонти",
       "repairs-description": "Переглянути ремонтні роботи",
       "clients": "Клієнти",
-      "clients-description": "Переглянути список клієнтів"
+      "clients-description": "Переглянути список клієнтів",
+      "create-car": "Додати автомобіль",
+      "create-car-description": "Додайте автомобіль до свого кабінету",
+      "create-appointment": "Створити запис",
+      "create-appointment-description": "Заплануйте візит до сервісу"
+    },
+
+    "recent-activity": {
+      "title": "Остання активність",
+      "description": "Останні записи та ремонти у вашому кабінеті.",
+      "appointments": "Останні записи",
+      "repairs": "Останні ремонти",
+      "view-all": "Переглянути всі",
+      "empty-appointments": "Записів поки немає.",
+      "empty-repairs": "Ремонтів поки немає.",
+      "loading": "Завантаження останньої активності",
+      "loading-description": "Завантажуємо останні записи та ремонти.",
+      "error": "Не вдалося завантажити останню активність",
+      "error-description": "Перевір підключення до інтернету та спробуй ще раз.",
+      "retry": "Спробувати ще раз",
+      "date": "Дата",
+      "created-at": "Створено: {date}",
+      "status": {
+        "pending": "Очікує підтвердження",
+        "confirmed": "Підтверджено",
+        "in_progress": "У роботі",
+        "completed": "Завершено",
+        "cancelled": "Скасовано",
+        "no_show": "Клієнт не з'явився",
+        "accepted": "Прийнято в роботу",
+        "waiting_parts": "Очікування запчастин",
+        "awaiting_approval": "Очікує погодження"
+      }
     }
   },
 
@@ -64,6 +96,11 @@
     "dashboard": "Дашборд",
     "clients": "Клієнти",
     "profile": "Профіль",
+    "cars": "Автомобілі",
+    "create-car": "Додати автомобіль",
+    "repairs": "Ремонти",
+    "appointments": "Записи",
+    "create-appointment": "Створити запис",
     "settings": "Налаштування"
   },
 
@@ -71,5 +108,83 @@
     "title": "Особистий кабінет",
     "subtitle": "Керуйте своїм AutoService",
     "openMenu": "Відкрити меню"
+  },
+
+  "user-roles": {
+    "you-are": "Ви увійшли як:",
+    "owner": "Власник",
+    "manager": "Менеджер",
+    "mechanic": "Механік",
+    "client": "Клієнт"
+  },
+
+  "footer": {
+    "rights": "Усі права захищені.",
+    "created-by": "Created by "
+  },
+
+  "cars": {
+    "title": "Створити автомобіль",
+    "description": "Додайте автомобіль до AutoService.",
+    "create": {
+      "owner": "Власник автомобіля",
+      "select-owner": "Оберіть клієнта",
+      "loading-clients": "Завантаження клієнтів…",
+      "clients-error": "Не вдалося завантажити клієнтів.",
+      "basic-info": "Основна інформація",
+      "brand": "Марка",
+      "model": "Модель",
+      "year": "Рік випуску",
+      "vin": "VIN",
+      "license-plate": "Номерний знак",
+      "mileage": "Пробіг, км",
+      "specifications": "Характеристики",
+      "generation": "Покоління",
+      "engine": "Двигун",
+      "color": "Колір",
+      "country": "Країна реєстрації",
+      "body-type": "Тип кузова",
+      "fuel-type": "Тип пального",
+      "transmission": "Коробка передач",
+      "registration-date": "Дата реєстрації",
+      "notes": "Примітки",
+      "select-option": "Оберіть значення",
+      "submit": "Створити автомобіль",
+      "submitting": "Створення…",
+      "cancel": "Скасувати",
+      "invalid-form": "Перевірте правильність заповнення полів.",
+      "submit-error": "Не вдалося створити автомобіль. Спробуйте ще раз.",
+      "body-types": {
+        "sedan": "Седан",
+        "wagon": "Універсал",
+        "hatchback": "Хетчбек",
+        "coupe": "Купе",
+        "convertible": "Кабріолет",
+        "suv": "Позашляховик",
+        "crossover": "Кросовер",
+        "minivan": "Мінівен",
+        "van": "Фургон",
+        "pickup": "Пікап",
+        "other": "Інше"
+      },
+      "fuel-types": {
+        "petrol": "Бензин",
+        "diesel": "Дизель",
+        "hybrid": "Гібрид",
+        "plug_in_hybrid": "Плагін-гібрид",
+        "electric": "Електро",
+        "lpg": "LPG",
+        "cng": "CNG",
+        "hydrogen": "Водень",
+        "other": "Інше"
+      },
+      "transmissions": {
+        "manual": "Механічна",
+        "automatic": "Автоматична",
+        "semi_automatic": "Напівавтоматична",
+        "cvt": "Варіатор (CVT)",
+        "other": "Інша"
+      }
+    }
   }
 }

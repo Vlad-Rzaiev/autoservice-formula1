@@ -2,7 +2,8 @@
 
 import type { ReactNode } from 'react';
 import DashboardSidebar from './dashboard-sidebar';
-import DashboardHeader from '@/features/dashboard/components/dashboard-header';
+import DashboardHeader from './dashboard-header';
+import DashboardFooter from './dashboard-footer';
 
 export interface DashboardShellProps {
   children: ReactNode;
@@ -19,6 +20,8 @@ export default function DashboardShell({ children }: DashboardShellProps) {
         <DashboardHeader />
 
         <main className="min-h-[calc(100dvh-4.5rem)]">{children}</main>
+
+        <DashboardFooter />
       </div>
     </div>
   );

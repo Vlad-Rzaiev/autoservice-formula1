@@ -1,10 +1,18 @@
 'use client';
 
+import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faChevronDown,
+  faChevronRight,
+} from '@fortawesome/free-solid-svg-icons';
 import { useTranslations } from 'next-intl';
 import { useAuth } from '@/providers';
 import { Link, usePathname } from '@/i18n/navigation';
-import { dashboardNavigation } from '../config/dashboard-navigation';
+import {
+  dashboardNavigation,
+  type DashboardNavItem,
+} from '../config/dashboard-navigation';
 import { BrandLogo } from '@/components/common';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui';
 import { LogoutButton } from '@/features/auth';
@@ -20,16 +28,52 @@ export default function DashboardSidebar({
   onNavigate,
 }: DashboardSidebarProps) {
   const t = useTranslations('dashboard');
+
   const { user } = useAuth();
   const pathname = usePathname();
+
+  const [manuallyExpandedItems, setManuallyExpandedItems] = useState<string[]>(
+    [],
+  );
+
+  const activeParentItems = dashboardNavigation
+    .filter((item) =>
+      item.children?.some(
+        (child) =>
+          pathname === child.href || pathname.startsWith(`${child.href}/`),
+      ),
+    )
+    .map((item) => item.href);
+
+  const expandedItems = [
+    ...new Set([...manuallyExpandedItems, ...activeParentItems]),
+  ];
 
   if (!user) {
     return null;
   }
 
-  const visibleNavigation = dashboardNavigation.filter((item) =>
-    item.roles.includes(user.role),
-  );
+  const toggleExpanded = (href: string) => {
+    if (activeParentItems.includes(href)) {
+      return;
+    }
+
+    setManuallyExpandedItems((current) =>
+      current.includes(href)
+        ? current.filter((item) => item !== href)
+        : [...current, href],
+    );
+  };
+
+  const filterNavigation = (items: DashboardNavItem[]): DashboardNavItem[] =>
+    items
+      .filter((item) => item.roles.includes(user.role))
+      .map((item) => ({
+        ...item,
+        children: item.children ? filterNavigation(item.children) : undefined,
+      }));
+
+  const visibleNavigation = filterNavigation(dashboardNavigation);
 
   const initials = getUserInitials(user.firstName, user.lastName, user.email);
 
@@ -53,19 +97,87 @@ export default function DashboardSidebar({
         <ul className="space-y-1">
           {visibleNavigation.map((item) => (
             <li key={item.href}>
-              <Link
-                href={item.href}
-                onClick={onNavigate}
-                className={`flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors ${
-                  isNavigationItemActive(item.href)
-                    ? 'bg-primary text-primary-foreground'
-                    : 'text-muted-foreground hover:bg-muted hover:text-foreground'
-                }`}
-              >
-                <FontAwesomeIcon icon={item.icon} className="size-4 shrink-0" />
+              <div className="flex items-center gap-1">
+                <Link
+                  href={item.href}
+                  onClick={onNavigate}
+                  aria-current={pathname === item.href ? 'page' : undefined}
+                  className={`flex h-11 min-w-0 flex-1 items-center gap-3 rounded-lg px-3 text-sm font-medium transition-colors ${
+                    isNavigationItemActive(item.href)
+                      ? 'bg-primary text-primary-foreground'
+                      : 'text-muted-foreground hover:bg-muted hover:text-foreground'
+                  }`}
+                >
+                  <FontAwesomeIcon
+                    icon={item.icon}
+                    className="size-4 shrink-0"
+                    aria-hidden="true"
+                  />
 
-                <span>{t(`navigation.${item.labelKey}`)}</span>
-              </Link>
+                  <span className="truncate">
+                    {t(`navigation.${item.labelKey}`)}
+                  </span>
+                </Link>
+
+                {item.children && item.children.length > 0 && (
+                  <button
+                    type="button"
+                    onClick={() => toggleExpanded(item.href)}
+                    aria-expanded={expandedItems.includes(item.href)}
+                    aria-label={
+                      expandedItems.includes(item.href)
+                        ? `Collapse ${t(`navigation.${item.labelKey}`)}`
+                        : `Expand ${t(`navigation.${item.labelKey}`)}`
+                    }
+                    className="flex size-9 shrink-0 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring cursor-pointer"
+                  >
+                    <FontAwesomeIcon
+                      icon={
+                        expandedItems.includes(item.href)
+                          ? faChevronDown
+                          : faChevronRight
+                      }
+                      className="size-3"
+                      aria-hidden="true"
+                    />
+                  </button>
+                )}
+              </div>
+
+              {item.children &&
+                item.children.length > 0 &&
+                expandedItems.includes(item.href) && (
+                  <ul className="ml-5 mt-1 space-y-1 border-l border-border pl-3">
+                    {item.children.map((child) => {
+                      const isChildActive = pathname === child.href;
+
+                      return (
+                        <li key={child.href}>
+                          <Link
+                            href={child.href}
+                            onClick={onNavigate}
+                            aria-current={isChildActive ? 'page' : undefined}
+                            className={`flex min-h-10 items-center gap-3 rounded-lg px-3 py-2 text-sm transition-colors ${
+                              isChildActive
+                                ? 'bg-primary font-medium text-primary-foreground'
+                                : 'text-muted-foreground hover:bg-muted hover:text-foreground'
+                            }`}
+                          >
+                            <FontAwesomeIcon
+                              icon={child.icon}
+                              className="size-3.5 shrink-0"
+                              aria-hidden="true"
+                            />
+
+                            <span className="truncate">
+                              {t(`navigation.${child.labelKey}`)}
+                            </span>
+                          </Link>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                )}
             </li>
           ))}
         </ul>

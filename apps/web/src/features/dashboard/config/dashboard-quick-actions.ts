@@ -1,6 +1,7 @@
 import {
   faCalendarCheck,
   faCar,
+  faPlus,
   faScrewdriverWrench,
   faUsers,
 } from '@fortawesome/free-solid-svg-icons';
@@ -17,6 +18,20 @@ export interface DashboardQuickAction {
 }
 
 export const dashboardQuickActions: DashboardQuickAction[] = [
+  {
+    href: routes.dashboard.cars.create,
+    labelKey: 'create-car',
+    descriptionKey: 'create-car-description',
+    icon: faPlus,
+    roles: ['client', 'manager', 'owner'],
+  },
+  {
+    href: routes.dashboard.appointments.create,
+    labelKey: 'create-appointment',
+    descriptionKey: 'create-appointment-description',
+    icon: faPlus,
+    roles: ['client', 'manager', 'owner'],
+  },
   {
     href: routes.dashboard.cars.list,
     labelKey: 'cars',

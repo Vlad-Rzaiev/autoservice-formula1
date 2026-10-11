@@ -31,18 +31,20 @@ export const routes = {
 
     cars: {
       list: '/dashboard/cars',
+      create: '/dashboard/cars/new',
       detail: (id: string) => `/dashboard/cars/${encodeURIComponent(id)}`,
+    },
+
+    appointments: {
+      list: '/dashboard/appointments',
+      create: '/dashboard/appointments/new',
+      detail: (id: string) =>
+        `/dashboard/appointments/${encodeURIComponent(id)}`,
     },
 
     repairs: {
       list: '/dashboard/repairs',
       detail: (id: string) => `/dashboard/repairs/${encodeURIComponent(id)}`,
-    },
-
-    appointments: {
-      list: '/dashboard/appointments',
-      detail: (id: string) =>
-        `/dashboard/appointments/${encodeURIComponent(id)}`,
     },
   },
 } as const;
