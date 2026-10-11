@@ -9,6 +9,7 @@ import {
   useState,
   type ReactNode,
 } from 'react';
+import { useQueryClient } from '@tanstack/react-query';
 
 import type {
   AuthDto,
@@ -59,6 +60,8 @@ function applyAuthResult(
 }
 
 export default function AuthProvider({ children }: AuthProviderProps) {
+  const queryClient = useQueryClient();
+
   const [user, setUser] = useState<UserDto | null>(null);
   const [accessToken, setAccessToken] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -85,9 +88,13 @@ export default function AuthProvider({ children }: AuthProviderProps) {
       setUser(null);
       setAccessToken(null);
       setStoredAccessToken(null);
+
+      await queryClient.cancelQueries();
+      queryClient.clear();
+
       setIsLoggingOut(false);
     }
-  }, []);
+  }, [queryClient]);
 
   useEffect(() => {
     const unsubscribe = subscribeToAccessToken(setAccessToken);
@@ -97,6 +104,7 @@ export default function AuthProvider({ children }: AuthProviderProps) {
       onRefreshFailure: () => {
         setUser(null);
         setAccessToken(null);
+        setStoredAccessToken(null);
       },
     });
 

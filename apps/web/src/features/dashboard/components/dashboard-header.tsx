@@ -24,7 +24,7 @@ export default function DashboardHeader() {
   const userRole = user.role;
 
   return (
-    <header className="flex h-18 items-center justify-between border-b bg-background/95 px-4 backdrop-blur supports-backdrop-filter:bg-background/80 navigation:px-6">
+    <header className="fixed inset-x-0 top-0 navigation:left-72 z-50 flex h-18 items-center justify-between border-b bg-background/95 px-4 backdrop-blur supports-backdrop-filter:bg-background/80 navigation:px-6">
       <div className="flex items-center gap-3">
         <DashboardMobileNav />
 
@@ -38,7 +38,9 @@ export default function DashboardHeader() {
 
       <div className="navigation:block text-sm font-medium text-center">
         <p>{t('user-roles.you-are')}</p>
-        <p className="text-success">{t(`user-roles.${userRole}`)}</p>
+        <p className="text-success font-bold italic">
+          {t(`user-roles.${userRole}`)}
+        </p>
       </div>
 
       <div className="flex items-center gap-3">

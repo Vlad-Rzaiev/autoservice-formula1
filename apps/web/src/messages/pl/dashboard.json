@@ -28,6 +28,34 @@
       "repairs-description": "Zobacz naprawy",
       "clients": "Klienci",
       "clients-description": "Zobacz listę klientów"
+    },
+
+    "recent-activity": {
+      "title": "Ostatnia aktywność",
+      "description": "Najnowsze wizyty i naprawy w jednym miejscu.",
+      "appointments": "Ostatnie wizyty",
+      "repairs": "Ostatnie naprawy",
+      "view-all": "Zobacz wszystkie",
+      "empty-appointments": "Brak wizyt.",
+      "empty-repairs": "Brak napraw.",
+      "loading": "Ładowanie ostatniej aktywności",
+      "loading-description": "Pobieramy ostatnie wizyty i naprawy.",
+      "error": "Nie udało się załadować ostatniej aktywności",
+      "error-description": "Sprawdź połączenie internetowe i spróbuj ponownie.",
+      "retry": "Spróbuj ponownie",
+      "date": "Data",
+      "created-at": "Utworzono: {date}",
+      "status": {
+        "pending": "Oczekuje na potwierdzenie",
+        "confirmed": "Potwierdzona",
+        "in_progress": "W trakcie",
+        "completed": "Zakończona",
+        "cancelled": "Anulowana",
+        "no_show": "Klient nie pojawił się",
+        "accepted": "Przyjęta do realizacji",
+        "waiting_parts": "Oczekiwanie na części",
+        "awaiting_approval": "Oczekuje na zatwierdzenie"
+      }
     }
   },
 
@@ -82,5 +110,10 @@
     "manager": "Menedżer",
     "mechanic": "Mechanik",
     "client": "Klient"
+  },
+
+  "footer": {
+    "rights": "Wszelkie prawa zastrzeżone.",
+    "created-by": "Created by "
   }
 }

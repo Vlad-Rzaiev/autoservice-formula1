@@ -17,8 +17,11 @@ export default function LogoutButton() {
   const { logout } = useAuth();
 
   const handleLogout = async (): Promise<void> => {
-    await logout();
-    router.replace(`/${currentLocale}${routes.auth.login}`);
+    try {
+      await logout();
+    } finally {
+      router.replace(`/${currentLocale}${routes.auth.login}`);
+    }
   };
 
   return (

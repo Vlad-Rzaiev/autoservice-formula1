@@ -2,9 +2,10 @@
 
 import { useAuth } from '@/providers';
 import {
+  useDashboardSummary,
   DashboardQuickActions,
   DashboardOverview,
-  useDashboardSummary,
+  DashboardRecentActivity,
 } from '@/features/dashboard';
 
 export default function DashboardPage() {
@@ -28,6 +29,8 @@ export default function DashboardPage() {
       />
 
       <DashboardQuickActions user={user} />
+
+      <DashboardRecentActivity />
     </>
   );
 }

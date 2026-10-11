@@ -2,6 +2,7 @@
   "home": {
     "title": "Welcome, {name}!",
     "description": "Manage your vehicle and service maintenance in one place.",
+
     "stats": {
       "cars": "Cars",
       "appointments": "Service appointments",
@@ -28,6 +29,34 @@
       "repairs-description": "View repair jobs",
       "clients": "Clients",
       "clients-description": "View the client list"
+    },
+
+    "recent-activity": {
+      "title": "Recent activity",
+      "description": "Your latest appointments and repairs at a glance.",
+      "appointments": "Recent appointments",
+      "repairs": "Recent repairs",
+      "view-all": "View all",
+      "empty-appointments": "No appointments yet.",
+      "empty-repairs": "No repairs yet.",
+      "loading": "Loading recent activity",
+      "loading-description": "Fetching your latest appointments and repairs.",
+      "error": "Couldn't load recent activity",
+      "error-description": "Check your connection and try again.",
+      "retry": "Try again",
+      "date": "Date",
+      "created-at": "Created {date}",
+      "status": {
+        "pending": "Pending",
+        "confirmed": "Confirmed",
+        "in_progress": "In progress",
+        "completed": "Completed",
+        "cancelled": "Cancelled",
+        "no_show": "No-show",
+        "accepted": "Accepted",
+        "waiting_parts": "Waiting for parts",
+        "awaiting_approval": "Awaiting approval"
+      }
     }
   },
 
@@ -82,5 +111,10 @@
     "manager": "Manager",
     "mechanic": "Mechanic",
     "client": "Client"
+  },
+
+  "footer": {
+    "rights": "All rights reserved.",
+    "created-by": "Created by "
   }
 }
