@@ -96,3 +96,27 @@ export {
   DialogTitle,
   DialogTrigger,
 } from './dialog';
+
+export {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectScrollDownButton,
+  SelectScrollUpButton,
+  SelectSeparator,
+  SelectTrigger,
+  SelectValue,
+} from './select';
+
+export { Calendar, CalendarDayButton } from './calendar';
+
+export {
+  Popover,
+  PopoverContent,
+  PopoverDescription,
+  PopoverHeader,
+  PopoverTitle,
+  PopoverTrigger,
+} from './popover';

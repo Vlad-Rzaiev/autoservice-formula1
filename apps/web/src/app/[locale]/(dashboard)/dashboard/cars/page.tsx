@@ -3,7 +3,7 @@ import { Section, Container } from '@/components/layout';
 import { DevelopmentPlaceholder } from '@/components/common';
 import { routes } from '@/config';
 
-export default async function AllClientsPage() {
+export default async function AllCarsPage() {
   const t = await getTranslations('dashboard.settings');
 
   return (

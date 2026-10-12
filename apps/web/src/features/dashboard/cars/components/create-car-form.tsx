@@ -3,6 +3,12 @@
 import { useState, type FormEvent } from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useLocale, useTranslations } from 'next-intl';
+import { format } from 'date-fns';
+import { uk } from 'date-fns/locale/uk';
+import { pl } from 'date-fns/locale/pl';
+import { enUS } from 'date-fns/locale/en-US';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCalendarDays } from '@fortawesome/free-solid-svg-icons';
 import {
   bodyTypeSchema,
   createCarSchema,
@@ -18,6 +24,15 @@ import {
   FieldLabel,
   FieldDescription,
   FieldError,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+  Calendar,
 } from '@/components/ui';
 import { routes } from '@/config/routes';
 import { useRouter } from '@/i18n/navigation';
@@ -47,6 +62,24 @@ const initialValues = {
 
 type FormValues = typeof initialValues;
 
+function parseDateInput(value: string): Date | undefined {
+  if (!value) return undefined;
+
+  const [year, month, day] = value.split('-').map(Number);
+
+  if (!year || !month || !day) return undefined;
+
+  return new Date(year, month - 1, day);
+}
+
+function formatDateInput(date: Date): string {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+
+  return `${year}-${month}-${day}`;
+}
+
 export default function CreateCarForm() {
   const t = useTranslations('dashboard.cars.create');
   const locale = useLocale();
@@ -56,6 +89,9 @@ export default function CreateCarForm() {
 
   const [values, setValues] = useState<FormValues>(initialValues);
   const [validationError, setValidationError] = useState('');
+  const [isCalendarOpen, setIsCalendarOpen] = useState(false);
+
+  const calendarLocale = locale === 'uk' ? uk : locale === 'pl' ? pl : enUS;
 
   const canChooseOwner = user?.role === 'owner' || user?.role === 'manager';
 
@@ -129,27 +165,40 @@ export default function CreateCarForm() {
             <Field>
               <FieldLabel htmlFor="ownerId">{t('owner')}</FieldLabel>
 
-              <select
-                id="ownerId"
+              <Select
                 name="ownerId"
-                className="border-input bg-background h-10 w-full rounded-md border px-3 text-sm"
-                value={values.ownerId}
-                onChange={(event) => updateField('ownerId', event.target.value)}
-                required
+                value={values.ownerId || null}
+                onValueChange={(value) => updateField('ownerId', value ?? '')}
                 disabled={clientsQuery.isPending || clientsQuery.isError}
+                required
               >
-                <option value="">{t('select-owner')}</option>
+                <SelectTrigger id="ownerId" className="w-full">
+                  <SelectValue placeholder={t('select-owner')}>
+                    {clientsQuery.data?.items
+                      .filter(
+                        (client: ClientDto) => client._id === values.ownerId,
+                      )
+                      .map(
+                        (client: ClientDto) =>
+                          [client.firstName, client.lastName]
+                            .filter(Boolean)
+                            .join(' ') || client.email,
+                      )}
+                  </SelectValue>
+                </SelectTrigger>
 
-                {clientsQuery.data?.items.map((client: ClientDto) => (
-                  <option key={client._id} value={client._id}>
-                    {[client.firstName, client.lastName]
-                      .filter(Boolean)
-                      .join(' ') || client.email}
-                    {' — '}
-                    {client.email}
-                  </option>
-                ))}
-              </select>
+                <SelectContent>
+                  {clientsQuery.data?.items.map((client: ClientDto) => (
+                    <SelectItem key={client._id} value={client._id}>
+                      {[client.firstName, client.lastName]
+                        .filter(Boolean)
+                        .join(' ') || client.email}
+                      {' — '}
+                      {client.email}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
 
               {clientsQuery.isPending && (
                 <FieldDescription>{t('loading-clients')}</FieldDescription>
@@ -305,80 +354,154 @@ export default function CreateCarForm() {
 
               <Field>
                 <FieldLabel htmlFor="bodyType">{t('body-type')}</FieldLabel>
-                <select
-                  id="bodyType"
+
+                <Select
                   name="bodyType"
-                  className="border-input bg-background h-10 w-full rounded-md border px-3 text-sm"
-                  value={values.bodyType}
-                  onChange={(event) =>
-                    updateField('bodyType', event.target.value)
+                  value={values.bodyType || null}
+                  onValueChange={(value) =>
+                    updateField('bodyType', value ?? '')
                   }
                 >
-                  <option value="">{t('select-option')}</option>
-                  {bodyTypeSchema.options.map((value) => (
-                    <option key={value} value={value}>
-                      {t(`body-types.${value}`)}
-                    </option>
-                  ))}
-                </select>
+                  <SelectTrigger id="bodyType" className="w-full">
+                    <SelectValue placeholder={t('select-option')}>
+                      {values.bodyType
+                        ? t(`body-types.${values.bodyType}`)
+                        : undefined}
+                    </SelectValue>
+                  </SelectTrigger>
+
+                  <SelectContent>
+                    {bodyTypeSchema.options.map((value) => (
+                      <SelectItem
+                        key={value}
+                        value={value}
+                        label={t(`body-types.${value}`)}
+                      >
+                        {t(`body-types.${value}`)}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
               </Field>
 
               <Field>
                 <FieldLabel htmlFor="fuelType">{t('fuel-type')}</FieldLabel>
-                <select
-                  id="fuelType"
+
+                <Select
                   name="fuelType"
-                  className="border-input bg-background h-10 w-full rounded-md border px-3 text-sm"
-                  value={values.fuelType}
-                  onChange={(event) =>
-                    updateField('fuelType', event.target.value)
+                  value={values.fuelType || null}
+                  onValueChange={(value) =>
+                    updateField('fuelType', value ?? '')
                   }
                 >
-                  <option value="">{t('select-option')}</option>
-                  {fuelTypeSchema.options.map((value) => (
-                    <option key={value} value={value}>
-                      {t(`fuel-types.${value}`)}
-                    </option>
-                  ))}
-                </select>
+                  <SelectTrigger id="fuelType" className="w-full">
+                    <SelectValue placeholder={t('select-option')}>
+                      {values.fuelType
+                        ? t(`fuel-types.${values.fuelType}`)
+                        : undefined}
+                    </SelectValue>
+                  </SelectTrigger>
+
+                  <SelectContent>
+                    {fuelTypeSchema.options.map((value) => (
+                      <SelectItem
+                        key={value}
+                        value={value}
+                        label={t(`fuel-types.${value}`)}
+                      >
+                        {t(`fuel-types.${value}`)}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
               </Field>
 
               <Field>
                 <FieldLabel htmlFor="transmission">
                   {t('transmission')}
                 </FieldLabel>
-                <select
-                  id="transmission"
+
+                <Select
                   name="transmission"
-                  className="border-input bg-background h-10 w-full rounded-md border px-3 text-sm"
-                  value={values.transmission}
-                  onChange={(event) =>
-                    updateField('transmission', event.target.value)
+                  value={values.transmission || null}
+                  onValueChange={(value) =>
+                    updateField('transmission', value ?? '')
                   }
                 >
-                  <option value="">{t('select-option')}</option>
-                  {transmissionSchema.options.map((value) => (
-                    <option key={value} value={value}>
-                      {t(`transmissions.${value}`)}
-                    </option>
-                  ))}
-                </select>
+                  <SelectTrigger id="transmission" className="w-full">
+                    <SelectValue placeholder={t('select-option')}>
+                      {values.transmission
+                        ? t(`transmissions.${values.transmission}`)
+                        : undefined}
+                    </SelectValue>
+                  </SelectTrigger>
+
+                  <SelectContent>
+                    {transmissionSchema.options.map((value) => (
+                      <SelectItem
+                        key={value}
+                        value={value}
+                        label={t(`transmissions.${value}`)}
+                      >
+                        {t(`transmissions.${value}`)}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
               </Field>
 
               <Field>
                 <FieldLabel htmlFor="registrationDate">
                   {t('registration-date')}
                 </FieldLabel>
-                <Input
-                  id="registrationDate"
-                  name="registrationDate"
-                  type="date"
-                  lang={locale}
-                  value={values.registrationDate}
-                  onChange={(event) =>
-                    updateField('registrationDate', event.target.value)
-                  }
-                />
+
+                <Popover open={isCalendarOpen} onOpenChange={setIsCalendarOpen}>
+                  <PopoverTrigger
+                    render={
+                      <Button
+                        id="registrationDate"
+                        type="button"
+                        variant="outline"
+                        className="w-full justify-start text-left font-normal"
+                        aria-label={t('registration-date')}
+                      />
+                    }
+                  >
+                    <FontAwesomeIcon
+                      icon={faCalendarDays}
+                      className="size-4 text-muted-foreground"
+                    />
+
+                    {values.registrationDate ? (
+                      format(parseDateInput(values.registrationDate)!, 'PP', {
+                        locale: calendarLocale,
+                      })
+                    ) : (
+                      <span className="text-muted-foreground">
+                        {t('select-date')}
+                      </span>
+                    )}
+                  </PopoverTrigger>
+
+                  <PopoverContent align="start" className="w-auto p-0">
+                    <Calendar
+                      mode="single"
+                      locale={calendarLocale}
+                      selected={parseDateInput(values.registrationDate)}
+                      onSelect={(date) => {
+                        updateField(
+                          'registrationDate',
+                          date ? formatDateInput(date) : '',
+                        );
+
+                        if (date) {
+                          setIsCalendarOpen(false);
+                        }
+                      }}
+                      defaultMonth={parseDateInput(values.registrationDate)}
+                    />
+                  </PopoverContent>
+                </Popover>
               </Field>
             </div>
 
