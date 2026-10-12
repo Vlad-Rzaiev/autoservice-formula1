@@ -146,6 +146,7 @@
       "body-type": "Тип кузова",
       "fuel-type": "Тип пального",
       "transmission": "Коробка передач",
+      "select-date": "Оберіть дату",
       "registration-date": "Дата реєстрації",
       "notes": "Примітки",
       "select-option": "Оберіть значення",

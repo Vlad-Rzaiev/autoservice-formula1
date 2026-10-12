@@ -147,6 +147,7 @@
       "body-type": "Body type",
       "fuel-type": "Fuel type",
       "transmission": "Transmission",
+      "select-date": "Select date",
       "registration-date": "Registration date",
       "notes": "Notes",
       "select-option": "Select an option",
