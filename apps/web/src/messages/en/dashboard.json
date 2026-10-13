@@ -187,6 +187,37 @@
         "cvt": "CVT",
         "other": "Other"
       }
+    },
+
+    "list": {
+      "title": "Vehicles",
+      "description": "Browse vehicles and view their details.",
+      "search-placeholder": "Search by make, model, VIN, or license plate...",
+      "columns": {
+        "car": "Vehicle",
+        "year": "Year",
+        "license-plate": "License plate",
+        "vin": "VIN",
+        "mileage": "Mileage"
+      },
+      "unknown-license-plate": "Not specified",
+      "unknown-mileage": "Not specified",
+      "mileage-unit": "km",
+      "loading-title": "Loading vehicles",
+      "loading-description": "Retrieving the vehicle list.",
+      "error-title": "Failed to load vehicles",
+      "error-description": "Check your connection and try again.",
+      "retry": "Try again",
+      "empty-title": "No vehicles yet",
+      "empty-description": "Vehicles will appear here once they are added.",
+      "no-results-title": "No vehicles found",
+      "no-results-description": "Try changing your search query.",
+      "pagination": {
+        "showing": "Showing {from}–{to} of {total}",
+        "previous": "Previous",
+        "next": "Next",
+        "page": "Page {page} of {totalPages}"
+      }
     }
   }
 }

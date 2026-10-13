@@ -186,6 +186,37 @@
         "cvt": "Bezstopniowa (CVT)",
         "other": "Inna"
       }
+    },
+
+    "list": {
+      "title": "Samochody",
+      "description": "Przeglądaj samochody i sprawdzaj ich dane.",
+      "search-placeholder": "Szukaj według marki, modelu, numeru VIN lub numeru rejestracyjnego...",
+      "columns": {
+        "car": "Samochód",
+        "year": "Rok",
+        "license-plate": "Numer rejestracyjny",
+        "vin": "VIN",
+        "mileage": "Przebieg"
+      },
+      "unknown-license-plate": "Nie podano",
+      "unknown-mileage": "Nie podano",
+      "mileage-unit": "km",
+      "loading-title": "Ładowanie samochodów",
+      "loading-description": "Pobieramy listę samochodów.",
+      "error-title": "Nie udało się pobrać samochodów",
+      "error-description": "Sprawdź połączenie i spróbuj ponownie.",
+      "retry": "Spróbuj ponownie",
+      "empty-title": "Brak samochodów",
+      "empty-description": "Dodane samochody będą wyświetlane w tym miejscu.",
+      "no-results-title": "Nie znaleziono samochodów",
+      "no-results-description": "Spróbuj zmienić wyszukiwaną frazę.",
+      "pagination": {
+        "showing": "Wyświetlono {from}–{to} z {total}",
+        "previous": "Poprzednia",
+        "next": "Następna",
+        "page": "Strona {page} z {totalPages}"
+      }
     }
   }
 }

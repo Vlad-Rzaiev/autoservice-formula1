@@ -1,3 +1,4 @@
+import { Types } from 'mongoose';
 import createHttpError from 'http-errors';
 import type {
   CarsListQuery,
@@ -7,6 +8,7 @@ import type {
 } from '@autoservice/contracts';
 import { CarCollection, type CarLeanDocument } from './car.model.js';
 import { UserCollection } from '../user/user.model.js';
+import { RepairCollection } from '../repairs/repair.model.js';
 
 const escapeRegex = (value: string): string => {
   return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -31,6 +33,7 @@ export const getCars = async (
   const skip = (page - 1) * limit;
 
   let resolvedOwnerId = ownerId;
+  let assignedCarIds: Types.ObjectId[] | undefined;
 
   if (currentUser.role === 'client') {
     const owner = await UserCollection.findOne({
@@ -46,6 +49,24 @@ export const getCars = async (
     }
 
     resolvedOwnerId = owner._id.toString();
+  }
+
+  if (currentUser.role === 'mechanic') {
+    const mechanic = await UserCollection.findOne({
+      userId: currentUser.userId,
+      role: 'mechanic',
+    })
+      .select('_id')
+      .lean()
+      .exec();
+
+    if (!mechanic) {
+      throw createHttpError(404, 'User not found.');
+    }
+
+    assignedCarIds = await RepairCollection.distinct('carId', {
+      assignedMechanicId: mechanic._id,
+    });
   }
 
   const escapedSearch = search ? escapeRegex(search) : undefined;
@@ -65,6 +86,7 @@ export const getCars = async (
   const filter = {
     isActive: true,
     ...(resolvedOwnerId ? { ownerId: resolvedOwnerId } : {}),
+    ...(assignedCarIds !== undefined ? { _id: { $in: assignedCarIds } } : {}),
     ...searchFilter,
   };
 

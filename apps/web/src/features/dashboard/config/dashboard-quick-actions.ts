@@ -19,20 +19,6 @@ export interface DashboardQuickAction {
 
 export const dashboardQuickActions: DashboardQuickAction[] = [
   {
-    href: routes.dashboard.cars.create,
-    labelKey: 'create-car',
-    descriptionKey: 'create-car-description',
-    icon: faPlus,
-    roles: ['client', 'manager', 'owner'],
-  },
-  {
-    href: routes.dashboard.appointments.create,
-    labelKey: 'create-appointment',
-    descriptionKey: 'create-appointment-description',
-    icon: faPlus,
-    roles: ['client', 'manager', 'owner'],
-  },
-  {
     href: routes.dashboard.cars.list,
     labelKey: 'cars',
     descriptionKey: 'cars-description',
@@ -40,11 +26,25 @@ export const dashboardQuickActions: DashboardQuickAction[] = [
     roles: ['owner', 'manager', 'client'],
   },
   {
+    href: routes.dashboard.cars.create,
+    labelKey: 'create-car',
+    descriptionKey: 'create-car-description',
+    icon: faPlus,
+    roles: ['client', 'manager', 'owner'],
+  },
+  {
     href: routes.dashboard.appointments.list,
     labelKey: 'appointments',
     descriptionKey: 'appointments-description',
     icon: faCalendarCheck,
     roles: ['owner', 'manager', 'client'],
+  },
+  {
+    href: routes.dashboard.appointments.create,
+    labelKey: 'create-appointment',
+    descriptionKey: 'create-appointment-description',
+    icon: faPlus,
+    roles: ['client', 'manager', 'owner'],
   },
   {
     href: routes.dashboard.repairs.list,
