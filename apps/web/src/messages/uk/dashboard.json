@@ -186,6 +186,37 @@
         "cvt": "Варіатор (CVT)",
         "other": "Інша"
       }
+    },
+
+    "list": {
+      "title": "Автомобілі",
+      "description": "Переглядайте автомобілі та їхні характеристики.",
+      "search-placeholder": "Пошук за маркою, моделлю, VIN або номерним знаком...",
+      "columns": {
+        "car": "Автомобіль",
+        "year": "Рік",
+        "license-plate": "Номерний знак",
+        "vin": "VIN",
+        "mileage": "Пробіг"
+      },
+      "unknown-license-plate": "Не вказано",
+      "unknown-mileage": "Не вказано",
+      "mileage-unit": "км",
+      "loading-title": "Завантажуємо автомобілі",
+      "loading-description": "Отримуємо список автомобілів.",
+      "error-title": "Не вдалося завантажити автомобілі",
+      "error-description": "Перевірте з'єднання та спробуйте ще раз.",
+      "retry": "Спробувати ще раз",
+      "empty-title": "Автомобілів поки немає",
+      "empty-description": "Коли автомобілі з'являться, вони будуть відображатися тут.",
+      "no-results-title": "Автомобілів не знайдено",
+      "no-results-description": "Спробуйте змінити пошуковий запит.",
+      "pagination": {
+        "showing": "Показано {from}–{to} із {total}",
+        "previous": "Попередня",
+        "next": "Наступна",
+        "page": "Сторінка {page} із {totalPages}"
+      }
     }
   }
 }

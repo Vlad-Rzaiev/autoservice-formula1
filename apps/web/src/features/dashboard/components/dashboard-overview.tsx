@@ -31,7 +31,7 @@ export default function DashboardOverview({
   const t = useTranslations('dashboard.home');
 
   return (
-    <Section>
+    <Section className="mt-4">
       <Container>
         <div className="space-y-2">
           <h1 className="text-3xl font-bold tracking-tight">
