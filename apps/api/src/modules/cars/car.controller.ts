@@ -10,6 +10,10 @@ import {
 } from '@autoservice/contracts';
 import { toCarDto } from './car.mapper.js';
 import { createCar, deleteCar, getCars, updateCar } from './car.service.js';
+import {
+  cloudinaryUploadConfig,
+  signCloudinaryUploadParams,
+} from '../../config/cloudinary.js';
 
 export const getCarsController: RequestHandler = async (req, res) => {
   const validationResult = carsListQuerySchema.safeParse(req.query);
@@ -62,6 +66,33 @@ export const createCarController: RequestHandler = async (req, res) => {
   };
 
   res.status(responseBody.status).json(responseBody);
+};
+
+export const createCarPhotoUploadSignatureController: RequestHandler = async (
+  _req,
+  res,
+) => {
+  const timestamp = Math.floor(Date.now() / 1000);
+
+  const paramsToSign = {
+    timestamp,
+    asset_folder: cloudinaryUploadConfig.carPhotosFolder,
+  };
+
+  const signature = signCloudinaryUploadParams(paramsToSign);
+
+  res.status(200).json({
+    status: 200,
+    success: true,
+    message: 'Car photo upload signature successfully generated.',
+    data: {
+      cloudName: cloudinaryUploadConfig.cloudName,
+      apiKey: cloudinaryUploadConfig.apiKey,
+      timestamp,
+      signature,
+      assetFolder: cloudinaryUploadConfig.carPhotosFolder,
+    },
+  });
 };
 
 export const updateCarController: RequestHandler = async (req, res) => {
