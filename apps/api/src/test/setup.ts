@@ -20,6 +20,11 @@ process.env.FRONTEND_URL = 'http://localhost:3000';
 process.env.VERCEL_PROJECT_NAME = 'autoservice-formula1';
 process.env.VERCEL_TEAM_SLUG = 'test-team';
 
+process.env.CLOUDINARY_CLOUD_NAME = 'test-cloud';
+process.env.CLOUDINARY_API_KEY = 'test-api-key';
+process.env.CLOUDINARY_API_SECRET = 'test-api-secret';
+process.env.CLOUDINARY_CAR_PHOTOS_FOLDER = 'test-car-photos';
+
 beforeAll(async (): Promise<void> => {
   mongoMemoryServer = await MongoMemoryServer.create();
 
