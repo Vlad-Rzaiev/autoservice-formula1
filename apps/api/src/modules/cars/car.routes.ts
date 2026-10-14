@@ -4,6 +4,7 @@ import { authorize } from '../../middleware/authorize.js';
 import { ctrlWrapper } from '../../utils/ctrlWrapper.js';
 import {
   createCarController,
+  createCarPhotoUploadSignatureController,
   deleteCarController,
   getCarsController,
   updateCarController,
@@ -23,6 +24,13 @@ router.post(
   authenticate,
   authorize('owner', 'manager', 'client'),
   ctrlWrapper(createCarController),
+);
+
+router.post(
+  '/photo-upload-signature',
+  authenticate,
+  authorize('owner', 'manager', 'client'),
+  ctrlWrapper(createCarPhotoUploadSignatureController),
 );
 
 router.patch(

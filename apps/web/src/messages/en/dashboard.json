@@ -186,6 +186,16 @@
         "semi_automatic": "Semi-automatic",
         "cvt": "CVT",
         "other": "Other"
+      },
+      "photos": {
+        "label": "Car photos",
+        "description": "Add up to 8 photos in JPG, PNG, or WebP format. Maximum file size: 5 MB per photo.",
+        "chooseFiles": "Choose files",
+        "count": "Added {count} of {max} photos",
+        "remove": "Remove",
+        "too-many": "You can add a maximum of 8 photos.",
+        "invalid-type": "Only JPG, PNG, or WebP images are allowed.",
+        "too-large": "Each photo must be no larger than 5 MB."
       }
     },
 

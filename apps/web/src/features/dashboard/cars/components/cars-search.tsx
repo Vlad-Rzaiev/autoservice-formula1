@@ -14,7 +14,7 @@ export default function CarsSearch({
   onChange,
 }: CarsSearchProps) {
   return (
-    <div className="relative w-full sm:max-w-md">
+    <div className="relative w-full">
       <FontAwesomeIcon
         icon={faMagnifyingGlass}
         aria-hidden="true"

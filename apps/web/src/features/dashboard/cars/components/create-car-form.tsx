@@ -38,8 +38,10 @@ import { routes } from '@/config/routes';
 import { useRouter } from '@/i18n/navigation';
 import { useAuth } from '@/providers';
 import { createCar } from '../api/create-car';
+import { uploadCarPhotos } from '@/features/dashboard/cars/api/upload-car-photos';
 import { useClients } from '../../clients/api/use-clients';
 import { Section, Container } from '@/components/layout';
+import { CarPhotosField } from './car-photos-field';
 
 const initialValues = {
   ownerId: '',
@@ -90,6 +92,7 @@ export default function CreateCarForm() {
   const [values, setValues] = useState<FormValues>(initialValues);
   const [validationError, setValidationError] = useState('');
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
+  const [photos, setPhotos] = useState<File[]>([]);
 
   const calendarLocale = locale === 'uk' ? uk : locale === 'pl' ? pl : enUS;
 
@@ -98,7 +101,20 @@ export default function CreateCarForm() {
   const clientsQuery = useClients({ limit: 100 });
 
   const mutation = useMutation({
-    mutationFn: (payload: CreateCarInput) => createCar(payload),
+    mutationFn: async ({
+      payload,
+      photos,
+    }: {
+      payload: CreateCarInput;
+      photos: File[];
+    }) => {
+      const photoUrls = await uploadCarPhotos(photos);
+
+      return createCar({
+        ...payload,
+        photos: photoUrls,
+      });
+    },
 
     onSuccess: async (car) => {
       await Promise.all([
@@ -150,7 +166,10 @@ export default function CreateCarForm() {
       return;
     }
 
-    mutation.mutate(result.data);
+    mutation.mutate({
+      payload: result.data,
+      photos,
+    });
   }
 
   if (!user || !accessToken) {
@@ -515,6 +534,14 @@ export default function CreateCarForm() {
                 onChange={(event) => updateField('notes', event.target.value)}
               />
             </Field>
+          </div>
+
+          <div>
+            <CarPhotosField
+              files={photos}
+              onFilesChange={setPhotos}
+              disabled={mutation.isPending}
+            />
           </div>
 
           {(validationError || mutation.isError) && (

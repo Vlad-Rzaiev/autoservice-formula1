@@ -12,6 +12,7 @@ import {
   CarsListContent,
   CarsListSkeleton,
   CarsSearch,
+  CarsStatCards,
   type CarsListLabels,
   type CarsPaginationLabels,
 } from '@/features/dashboard';
@@ -91,7 +92,7 @@ export default function AllCarsPage() {
     <Section className="mt-4">
       <Container>
         <div className="space-y-6">
-          <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
+          <div className="flex flex-col gap-5">
             <div className="min-w-0">
               <h1 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
                 {t('title')}
@@ -101,6 +102,8 @@ export default function AllCarsPage() {
                 {t('description')}
               </p>
             </div>
+
+            <CarsStatCards />
 
             <CarsSearch
               value={searchInput}

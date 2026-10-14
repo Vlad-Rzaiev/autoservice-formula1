@@ -185,6 +185,16 @@
         "semi_automatic": "Półautomatyczna",
         "cvt": "Bezstopniowa (CVT)",
         "other": "Inna"
+      },
+      "photos": {
+        "label": "Zdjęcia samochodu",
+        "description": "Dodaj maksymalnie 8 zdjęć w formacie JPG, PNG lub WebP. Maksymalny rozmiar jednego pliku to 5 MB.",
+        "chooseFiles": "Wybierz pliki",
+        "count": "Dodano {count} z {max} zdjęć",
+        "remove": "Usuń",
+        "too-many": "Możesz dodać maksymalnie 8 zdjęć.",
+        "invalid-type": "Dozwolone są tylko zdjęcia JPG, PNG lub WebP.",
+        "too-large": "Rozmiar jednego zdjęcia nie może przekraczać 5 MB."
       }
     },
 
