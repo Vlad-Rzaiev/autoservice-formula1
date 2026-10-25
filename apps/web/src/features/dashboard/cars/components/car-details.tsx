@@ -5,10 +5,13 @@ import { useRouter } from '@/i18n/navigation';
 import { faScrewdriverWrench } from '@fortawesome/free-solid-svg-icons';
 import { useCar } from '../api/use-cars';
 import { useAuth } from '@/providers';
+import { Container, Section } from '@/components/layout';
 import { QueryState } from '@/components/states';
 import CarDetailsSkeleton from './car-details-skeleton';
 import CarDetailsHero from './car-details-hero';
-import { Container, Section } from '@/components/layout';
+import CarTechnicalSpecifications from './car-details-technical-specifications';
+import CarRepairHistory from './car-details-repairs-history';
+import CarAdditionalInformation from './car-details-additional-information';
 import { routes } from '@/config';
 
 interface CarDetailsProps {
@@ -91,6 +94,20 @@ export default function CarDetails({ carId }: CarDetailsProps) {
             onEdit={handleEditCar}
             onViewRepairs={handleViewRepairs}
           />
+
+          <CarTechnicalSpecifications
+            vin={car.vin}
+            bodyType={car.bodyType}
+            fuelType={car.fuelType}
+            transmission={car.transmission}
+            engine={car.engine}
+            color={car.color}
+            countryOfRegistration={car.countryOfRegistration}
+          />
+
+          <CarRepairHistory carId={carId} />
+
+          <CarAdditionalInformation car={car} />
         </>
       )}
     </QueryState>

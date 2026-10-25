@@ -17,7 +17,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import type { UserRole } from '@autoservice/contracts';
 import { Container, Section } from '@/components/layout';
-import { Button } from '@/components/ui';
+import { Button, Card, CardContent } from '@/components/ui';
 
 interface CarDetailsHeroProps {
   photos: string[];
@@ -158,7 +158,7 @@ export default function CarDetailsHero({
                     aria-label={`${t('photo')}: ${index + 1}`}
                     aria-pressed={activePhotoIndexSafe === index}
                     onClick={() => setActivePhotoIndex(index)}
-                    className={`relative aspect-4/3 overflow-hidden rounded-lg border-2 transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary ${
+                    className={`relative aspect-4/3 overflow-hidden rounded-lg border-2 transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary cursor-pointer ${
                       activePhotoIndexSafe === index
                         ? 'border-primary'
                         : 'border-transparent opacity-75 hover:opacity-100'
@@ -195,29 +195,33 @@ export default function CarDetailsHero({
 
             <div className="mt-5 flex flex-wrap gap-3">
               {licensePlate && (
-                <div className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-border bg-card px-3 py-2">
-                  <FontAwesomeIcon
-                    icon={faIdCard}
-                    aria-hidden="true"
-                    className="text-muted-foreground"
-                  />
-                  <span className="font-semibold tracking-wide">
-                    {licensePlate}
-                  </span>
-                </div>
+                <Card>
+                  <CardContent>
+                    <FontAwesomeIcon
+                      icon={faIdCard}
+                      aria-hidden="true"
+                      className="text-muted-foreground"
+                    />
+                    <span className="font-semibold tracking-wide">
+                      {licensePlate}
+                    </span>
+                  </CardContent>
+                </Card>
               )}
 
               {formattedMileage !== null && (
-                <div className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-border bg-card px-3 py-2">
-                  <FontAwesomeIcon
-                    icon={faGaugeHigh}
-                    aria-hidden="true"
-                    className="text-primary"
-                  />
-                  <span className="font-semibold">
-                    {formattedMileage} {t('mileageUnit')}
-                  </span>
-                </div>
+                <Card>
+                  <CardContent>
+                    <FontAwesomeIcon
+                      icon={faGaugeHigh}
+                      aria-hidden="true"
+                      className="text-primary"
+                    />
+                    <span className="font-semibold">
+                      {formattedMileage} {t('mileageUnit')}
+                    </span>
+                  </CardContent>
+                </Card>
               )}
             </div>
 

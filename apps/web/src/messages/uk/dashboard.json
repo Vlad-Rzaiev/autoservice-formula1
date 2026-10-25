@@ -258,6 +258,75 @@
       "mileageUnit": "км",
       "edit": "Редагувати",
       "viewRepairs": "Історія ремонтів"
+    },
+
+    "technicalSpecifications": {
+      "title": "Технічні характеристики",
+      "vin": "VIN-код",
+      "bodyType": "Тип кузова",
+      "fuelType": "Тип пального",
+      "transmission": "Коробка передач",
+      "engine": "Двигун",
+      "color": "Колір",
+      "countryOfRegistration": "Країна реєстрації",
+      "body-types": {
+        "sedan": "Седан",
+        "wagon": "Універсал",
+        "hatchback": "Хетчбек",
+        "coupe": "Купе",
+        "convertible": "Кабріолет",
+        "suv": "Позашляховик",
+        "crossover": "Кросовер",
+        "minivan": "Мінівен",
+        "van": "Фургон",
+        "pickup": "Пікап",
+        "other": "Інше"
+      },
+      "fuel-types": {
+        "petrol": "Бензин",
+        "diesel": "Дизель",
+        "hybrid": "Гібрид",
+        "plug_in_hybrid": "Плагін-гібрид",
+        "electric": "Електро",
+        "lpg": "LPG",
+        "cng": "CNG",
+        "hydrogen": "Водень",
+        "other": "Інше"
+      },
+      "transmissions": {
+        "manual": "Механічна",
+        "automatic": "Автоматична",
+        "semi_automatic": "Напівавтоматична",
+        "cvt": "Варіатор (CVT)",
+        "other": "Інша"
+      }
+    },
+
+    "repair-history": {
+      "title": "Історія ремонтів",
+      "description": "Історія обслуговування цього автомобіля",
+      "view-all": "Усі ремонти",
+      "loading-title": "Завантаження історії ремонтів",
+      "loading-description": "Зачекайте, поки завантажиться інформація про ремонти автомобіля.",
+      "error-title": "Не вдалося завантажити історію ремонтів",
+      "error-description": "Під час завантаження історії ремонтів сталася помилка. Спробуйте ще раз.",
+      "retry": "Спробувати ще раз",
+      "empty-title": "Ремонтів поки немає",
+      "empty-description": "Історія ремонтів цього автомобіля з'явиться тут."
+    },
+
+    "additional-information": {
+      "title": "Додаткова інформація",
+      "description": "Реєстраційні дані та додаткові відомості про автомобіль",
+      "registration-date": "Дата реєстрації",
+      "status": "Статус автомобіля",
+      "active": "Активний",
+      "inactive": "Неактивний",
+      "created-at": "Додано до системи",
+      "updated-at": "Останнє оновлення",
+      "notes": "Примітки",
+      "not-provided": "Не вказано",
+      "no-notes": "Додаткових приміток немає"
     }
   }
 }
