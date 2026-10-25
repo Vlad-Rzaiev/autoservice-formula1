@@ -33,6 +33,9 @@ export const routes = {
       list: '/dashboard/cars',
       create: '/dashboard/cars/new',
       detail: (id: string) => `/dashboard/cars/${encodeURIComponent(id)}`,
+      edit: (id: string) => `/dashboard/cars/${encodeURIComponent(id)}/edit`,
+      repairs: (id: string) =>
+        `/dashboard/cars/${encodeURIComponent(id)}/repairs`,
     },
 
     appointments: {

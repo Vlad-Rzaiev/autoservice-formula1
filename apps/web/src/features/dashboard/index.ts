@@ -34,3 +34,4 @@ export { default as CarsListContent } from './cars/components/cars-list-content'
 export { default as CarsListSkeleton } from './cars/components/cars-list-skeleton';
 export { default as CarsSearch } from './cars/components/cars-search';
 export { default as CarsStatCards } from './cars/components/cars-stat-cards';
+export { default as CarDetails } from './cars/components/car-details';

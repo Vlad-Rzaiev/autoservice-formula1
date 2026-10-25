@@ -1,4 +1,4 @@
-import { CarsListQuery } from '@autoservice/contracts';
+import type { CarsListQuery } from '@autoservice/contracts';
 
 export const carsKeys = {
   all: ['cars'] as const,
@@ -7,4 +7,9 @@ export const carsKeys = {
 
   list: (query: CarsListQuery, userId?: string) =>
     [...carsKeys.lists(), userId, query] as const,
+
+  details: () => [...carsKeys.all, 'detail'] as const,
+
+  detail: (carId: string, userId?: string) =>
+    [...carsKeys.details(), userId, carId] as const,
 };

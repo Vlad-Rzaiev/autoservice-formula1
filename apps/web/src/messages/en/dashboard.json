@@ -229,5 +229,36 @@
         "page": "Page {page} of {totalPages}"
       }
     }
+  },
+
+  "car": {
+    "loading-state": {
+      "loading-title": "Loading car",
+      "loading-description": "Please wait while we load your car information.",
+      "error-title": "Failed to load car",
+      "error-description": "Something went wrong while retrieving the car information. Please try again.",
+      "retry": "Try again",
+      "empty-title": "Car not found",
+      "empty-description": "The car may not exist, or you may not have access to it."
+    },
+
+    "main": {
+      "your-car": "Your car",
+      "client-car": "Customer's car"
+    },
+
+    "hero": {
+      "brand": "Make",
+      "model": "Model",
+      "year": "Year",
+      "generation": "Generation",
+      "licensePlate": "Registration number",
+      "photo": "Car photo",
+      "previousPhoto": "Previous photo",
+      "nextPhoto": "Next photo",
+      "mileageUnit": "km",
+      "edit": "Edit",
+      "viewRepairs": "Repair history"
+    }
   }
 }

@@ -1,4 +1,4 @@
-import { Section, Container } from '@/components/layout';
+import { CarDetails } from '@/features/dashboard';
 
 interface CarPageProps {
   params: Promise<{
@@ -9,13 +9,5 @@ interface CarPageProps {
 export default async function CarPage({ params }: CarPageProps) {
   const { id } = await params;
 
-  return (
-    <Section>
-      <Container>
-        <h1>My Car Page</h1>
-
-        <p>{`ID: ${id}`}</p>
-      </Container>
-    </Section>
-  );
+  return <CarDetails carId={id} />;
 }

@@ -9,11 +9,42 @@ import {
   type CarsListResponse,
 } from '@autoservice/contracts';
 import { toCarDto } from './car.mapper.js';
-import { createCar, deleteCar, getCars, updateCar } from './car.service.js';
+import {
+  createCar,
+  deleteCar,
+  getCarById,
+  getCars,
+  updateCar,
+} from './car.service.js';
 import {
   cloudinaryUploadConfig,
   signCloudinaryUploadParams,
 } from '../../config/cloudinary.js';
+
+export const getCarByIdController: RequestHandler = async (req, res) => {
+  const validationResult = mongoObjectIdSchema.safeParse(req.params.carId);
+
+  if (!validationResult.success) {
+    throw createHttpError(400, 'Invalid car ID.', {
+      details: validationResult.error.flatten(),
+    });
+  }
+
+  if (!req.user) {
+    throw createHttpError(401, 'Authentication required.');
+  }
+
+  const car = await getCarById(validationResult.data, req.user);
+
+  const responseBody: CarResponse = {
+    status: 200,
+    success: true,
+    message: 'Successfully found car.',
+    data: toCarDto(car),
+  };
+
+  res.status(responseBody.status).json(responseBody);
+};
 
 export const getCarsController: RequestHandler = async (req, res) => {
   const validationResult = carsListQuerySchema.safeParse(req.query);

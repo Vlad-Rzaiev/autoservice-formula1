@@ -6,6 +6,7 @@ import {
   createCarController,
   createCarPhotoUploadSignatureController,
   deleteCarController,
+  getCarByIdController,
   getCarsController,
   updateCarController,
 } from './car.controller.js';
@@ -17,6 +18,13 @@ router.get(
   authenticate,
   authorize('owner', 'manager', 'mechanic', 'client'),
   ctrlWrapper(getCarsController),
+);
+
+router.get(
+  '/:carId',
+  authenticate,
+  authorize('owner', 'manager', 'mechanic', 'client'),
+  getCarByIdController,
 );
 
 router.post(
