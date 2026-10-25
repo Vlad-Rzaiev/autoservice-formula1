@@ -228,5 +228,36 @@
         "page": "Strona {page} z {totalPages}"
       }
     }
+  },
+
+  "car": {
+    "loading-state": {
+      "loading-title": "Ładowanie samochodu",
+      "loading-description": "Poczekaj, aż załadujemy informacje o Twoim samochodzie.",
+      "error-title": "Nie udało się załadować samochodu",
+      "error-description": "Wystąpił błąd podczas pobierania informacji o samochodzie. Spróbuj ponownie.",
+      "retry": "Spróbuj ponownie",
+      "empty-title": "Nie znaleziono samochodu",
+      "empty-description": "Samochód może nie istnieć lub nie masz do niego dostępu."
+    },
+
+    "main": {
+      "your-car": "Twój samochód",
+      "client-car": "Samochód klienta"
+    },
+
+    "hero": {
+      "brand": "Marka",
+      "model": "Model",
+      "year": "Rok produkcji",
+      "generation": "Generacja",
+      "licensePlate": "Numer rejestracyjny",
+      "photo": "Zdjęcie samochodu",
+      "previousPhoto": "Poprzednie zdjęcie",
+      "nextPhoto": "Następne zdjęcie",
+      "mileageUnit": "km",
+      "edit": "Edytuj",
+      "viewRepairs": "Historia napraw"
+    }
   }
 }

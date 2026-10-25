@@ -34,10 +34,20 @@ export default function ErrorState({
       variant="error"
       className={className}
       icon={
-        <FontAwesomeIcon
-          icon={faCircleExclamation}
-          className="shrink-0 text-2xl"
-        />
+        <span
+          className="
+            flex size-14 shrink-0 items-center justify-center
+            rounded-2xl border border-red-500/15
+            bg-red-500/10 text-red-600
+            dark:text-red-400
+          "
+        >
+          <FontAwesomeIcon
+            icon={faCircleExclamation}
+            aria-hidden="true"
+            className="text-2xl"
+          />
+        </span>
       }
       actions={
         hasRetryAction ? (
@@ -46,28 +56,19 @@ export default function ErrorState({
             disabled={isRetrying}
             onClick={onRetry}
             className="
-              group min-h-11 cursor-pointer rounded-xl
-              bg-red-600 px-5 py-2.5
-              text-sm font-semibold text-white
-              shadow-[0_12px_30px_-14px_rgba(220,38,38,0.8)]
-              transition-all duration-200
-              hover:-translate-y-0.5 hover:bg-red-700
-              active:translate-y-0 active:scale-[0.98]
-              focus-visible:ring-red-500
+              min-h-11 cursor-pointer gap-2.5 rounded-xl
+              px-5 py-2.5 text-sm font-semibold
+              shadow-sm transition-colors duration-200
+              focus-visible:ring-2 focus-visible:ring-primary
+              focus-visible:ring-offset-2
               focus-visible:ring-offset-background
-              disabled:pointer-events-none
-              disabled:cursor-not-allowed
-              disabled:opacity-60
+              disabled:pointer-events-none disabled:opacity-60
             "
           >
             <FontAwesomeIcon
               icon={faRotateRight}
               aria-hidden="true"
-              className={cn(
-                'shrink-0 text-base transition-transform duration-300',
-                !isRetrying && 'group-hover:rotate-45',
-                isRetrying && 'animate-spin',
-              )}
+              className={cn('size-3.5', isRetrying && 'animate-spin')}
             />
 
             {retryLabel}

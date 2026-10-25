@@ -1,10 +1,11 @@
 import { Types } from 'mongoose';
 import createHttpError from 'http-errors';
-import type {
-  CarsListQuery,
-  CreateCarInput,
-  UpdateCarInput,
-  UserRole,
+import {
+  mongoObjectIdSchema,
+  type CarsListQuery,
+  type CreateCarInput,
+  type UpdateCarInput,
+  type UserRole,
 } from '@autoservice/contracts';
 import { CarCollection, type CarLeanDocument } from './car.model.js';
 import { UserCollection } from '../user/user.model.js';
@@ -12,6 +13,67 @@ import { RepairCollection } from '../repairs/repair.model.js';
 
 const escapeRegex = (value: string): string => {
   return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+};
+
+export const getCarById = async (
+  carId: string,
+  currentUser: {
+    userId: string;
+    role: UserRole;
+  },
+): Promise<CarLeanDocument> => {
+  const validatedCarId = mongoObjectIdSchema.parse(carId);
+
+  const car = await CarCollection.findOne({
+    _id: validatedCarId,
+    isActive: true,
+  })
+    .lean()
+    .exec();
+
+  if (!car) {
+    throw createHttpError(404, 'Car not found.');
+  }
+
+  if (currentUser.role === 'client') {
+    const owner = await UserCollection.findOne({
+      _id: car.ownerId,
+      userId: currentUser.userId,
+      role: 'client',
+    })
+      .select('_id')
+      .lean()
+      .exec();
+
+    if (!owner) {
+      throw createHttpError(403, 'Client can access only own cars.');
+    }
+  }
+
+  if (currentUser.role === 'mechanic') {
+    const mechanic = await UserCollection.findOne({
+      userId: currentUser.userId,
+      role: 'mechanic',
+    })
+      .select('_id')
+      .lean()
+      .exec();
+
+    if (!mechanic) {
+      throw createHttpError(404, 'User not found.');
+    }
+
+    const assignedRepair = await RepairCollection.exists({
+      carId: car._id,
+      assignedMechanicId: mechanic._id,
+    });
+
+    if (!assignedRepair) {
+      throw createHttpError(403, 'Mechanic can access only assigned cars.');
+    }
+  }
+
+  return car;
 };
 
 export const getCars = async (
@@ -167,12 +229,14 @@ export const updateCar = async (
     role: UserRole;
   },
 ): Promise<CarLeanDocument> => {
+  const validatedCarId = mongoObjectIdSchema.parse(carId);
+
   if (currentUser.role === 'mechanic') {
     throw createHttpError(403, 'Mechanic cannot update cars.');
   }
 
   const car = await CarCollection.findOne({
-    _id: carId,
+    _id: validatedCarId,
     isActive: true,
   }).exec();
 
@@ -184,6 +248,7 @@ export const updateCar = async (
     const owner = await UserCollection.findOne({
       _id: car.ownerId,
       userId: currentUser.userId,
+      role: 'client',
     })
       .select('_id')
       .lean()
