@@ -259,6 +259,75 @@
       "mileageUnit": "km",
       "edit": "Edit",
       "viewRepairs": "Repair history"
+    },
+
+    "technicalSpecifications": {
+      "title": "Technical Specifications",
+      "vin": "VIN",
+      "bodyType": "Body Type",
+      "fuelType": "Fuel Type",
+      "transmission": "Transmission",
+      "engine": "Engine",
+      "color": "Color",
+      "countryOfRegistration": "Country of Registration",
+      "body-types": {
+        "sedan": "Sedan",
+        "wagon": "Station Wagon",
+        "hatchback": "Hatchback",
+        "coupe": "Coupe",
+        "convertible": "Convertible",
+        "suv": "SUV",
+        "crossover": "Crossover",
+        "minivan": "Minivan",
+        "van": "Van",
+        "pickup": "Pickup Truck",
+        "other": "Other"
+      },
+      "fuel-types": {
+        "petrol": "Petrol",
+        "diesel": "Diesel",
+        "hybrid": "Hybrid",
+        "plug_in_hybrid": "Plug-in Hybrid",
+        "electric": "Electric",
+        "lpg": "LPG",
+        "cng": "CNG",
+        "hydrogen": "Hydrogen",
+        "other": "Other"
+      },
+      "transmissions": {
+        "manual": "Manual",
+        "automatic": "Automatic",
+        "semi_automatic": "Semi-automatic",
+        "cvt": "Continuously Variable Transmission (CVT)",
+        "other": "Other"
+      }
+    },
+
+    "repair-history": {
+      "title": "Repair history",
+      "description": "Service history for this vehicle",
+      "view-all": "View all repairs",
+      "loading-title": "Loading repair history",
+      "loading-description": "Please wait while the vehicle's repair history loads.",
+      "error-title": "Failed to load repair history",
+      "error-description": "An error occurred while loading the repair history. Please try again.",
+      "retry": "Try again",
+      "empty-title": "No repairs yet",
+      "empty-description": "Repair history for this vehicle will appear here."
+    },
+
+    "additional-information": {
+      "title": "Additional information",
+      "description": "Registration details and additional vehicle information",
+      "registration-date": "Registration date",
+      "status": "Vehicle status",
+      "active": "Active",
+      "inactive": "Inactive",
+      "created-at": "Added to system",
+      "updated-at": "Last updated",
+      "notes": "Notes",
+      "not-provided": "Not provided",
+      "no-notes": "No additional notes"
     }
   }
 }

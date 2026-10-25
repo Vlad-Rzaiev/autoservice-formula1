@@ -258,6 +258,75 @@
       "mileageUnit": "km",
       "edit": "Edytuj",
       "viewRepairs": "Historia napraw"
+    },
+
+    "technicalSpecifications": {
+      "title": "Dane techniczne",
+      "vin": "Numer VIN",
+      "bodyType": "Typ nadwozia",
+      "fuelType": "Rodzaj paliwa",
+      "transmission": "Skrzynia biegów",
+      "engine": "Silnik",
+      "color": "Kolor",
+      "countryOfRegistration": "Kraj rejestracji",
+      "body-types": {
+        "sedan": "Sedan",
+        "wagon": "Kombi",
+        "hatchback": "Hatchback",
+        "coupe": "Coupe",
+        "convertible": "Kabriolet",
+        "suv": "SUV",
+        "crossover": "Crossover",
+        "minivan": "Minivan",
+        "van": "Furgon",
+        "pickup": "Pickup",
+        "other": "Inne"
+      },
+      "fuel-types": {
+        "petrol": "Benzyna",
+        "diesel": "Olej napędowy",
+        "hybrid": "Hybryda",
+        "plug_in_hybrid": "Hybryda plug-in",
+        "electric": "Elektryczny",
+        "lpg": "LPG",
+        "cng": "CNG",
+        "hydrogen": "Wodór",
+        "other": "Inne"
+      },
+      "transmissions": {
+        "manual": "Manualna",
+        "automatic": "Automatyczna",
+        "semi_automatic": "Półautomatyczna",
+        "cvt": "Bezstopniowa skrzynia biegów (CVT)",
+        "other": "Inna"
+      }
+    },
+
+    "repair-history": {
+      "title": "Historia napraw",
+      "description": "Historia serwisowa tego pojazdu",
+      "view-all": "Wszystkie naprawy",
+      "loading-title": "Ładowanie historii napraw",
+      "loading-description": "Poczekaj, aż załaduje się historia napraw pojazdu.",
+      "error-title": "Nie udało się załadować historii napraw",
+      "error-description": "Wystąpił błąd podczas ładowania historii napraw. Spróbuj ponownie.",
+      "retry": "Spróbuj ponownie",
+      "empty-title": "Brak napraw",
+      "empty-description": "Historia napraw tego pojazdu pojawi się tutaj."
+    },
+
+    "additional-information": {
+      "title": "Dodatkowe informacje",
+      "description": "Dane rejestracyjne i dodatkowe informacje o pojeździe",
+      "registration-date": "Data rejestracji",
+      "status": "Status pojazdu",
+      "active": "Aktywny",
+      "inactive": "Nieaktywny",
+      "created-at": "Dodano do systemu",
+      "updated-at": "Ostatnia aktualizacja",
+      "notes": "Uwagi",
+      "not-provided": "Nie podano",
+      "no-notes": "Brak dodatkowych uwag"
     }
   }
 }
