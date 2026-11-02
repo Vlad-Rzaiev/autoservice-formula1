@@ -189,8 +189,14 @@ export type {
   ClientListResponseData,
 } from './clients/client.schemas.js';
 
-export { clientListResponseSchema } from './clients/client-response.schemas.js';
-export type { ClientListResponse } from './clients/client.responses.js';
+export {
+  clientListResponseSchema,
+  clientResponseSchema,
+} from './clients/client-response.schemas.js';
+export type {
+  ClientListResponse,
+  ClientResponse,
+} from './clients/client.responses.js';
 
 export {
   bodyTypeSchema,

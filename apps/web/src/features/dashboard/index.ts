@@ -35,3 +35,6 @@ export { default as CarsListSkeleton } from './cars/components/cars-list-skeleto
 export { default as CarsSearch } from './cars/components/cars-search';
 export { default as CarsStatCards } from './cars/components/cars-stat-cards';
 export { default as CarDetails } from './cars/components/car-details';
+
+export { default as GetClientsContainer } from './clients/components/get-clients-container';
+export { default as ClientDetails } from './clients/components/client-details';

@@ -1,8 +1,61 @@
-import type { ClientListQuery } from '@autoservice/contracts';
+import createHttpError from 'http-errors';
+import {
+  mongoObjectIdSchema,
+  type ClientListQuery,
+  type UserRole,
+} from '@autoservice/contracts';
 import { UserCollection, type UserLeanDocument } from '../user/user.model.js';
+import { escapeRegex } from '../../utils/escape-regex.js';
+import { RepairCollection } from '../repairs/repair.model.js';
 
-const escapeRegex = (value: string): string => {
-  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+const ACTIVE_REPAIR_STATUSES = [
+  'accepted',
+  'in_progress',
+  'waiting_parts',
+  'awaiting_approval',
+] as const;
+
+export const getClientById = async (
+  clientId: string,
+  currentUser: {
+    userId: string;
+    role: UserRole;
+  },
+): Promise<UserLeanDocument> => {
+  const validatedClientId = mongoObjectIdSchema.parse(clientId);
+
+  if (
+    currentUser.role === 'client' &&
+    currentUser.userId !== validatedClientId
+  ) {
+    throw createHttpError(404, 'Client not found.');
+  }
+
+  if (currentUser.role === 'mechanic') {
+    const hasAssignedRepair = await RepairCollection.exists({
+      clientId: validatedClientId,
+      assignedMechanicId: currentUser.userId,
+      status: { $in: ACTIVE_REPAIR_STATUSES },
+    }).exec();
+
+    if (!hasAssignedRepair) {
+      throw createHttpError(404, 'Client not found.');
+    }
+  }
+
+  const client = await UserCollection.findOne({
+    _id: validatedClientId,
+    role: 'client',
+    isActive: true,
+  })
+    .lean()
+    .exec();
+
+  if (!client) {
+    throw createHttpError(404, 'Client not found.');
+  }
+
+  return client;
 };
 
 export const getClients = async (
@@ -34,6 +87,7 @@ export const getClients = async (
 
   const filter = {
     role: 'client' as const,
+    isActive: true,
     ...searchFilter,
   };
 
