@@ -1,5 +1,7 @@
 import {
   clientListResponseSchema,
+  clientResponseSchema,
+  type ClientDto,
   type ClientListResponseData,
 } from '@autoservice/contracts';
 import { apiClient } from '@/lib';
@@ -23,6 +25,19 @@ export async function getClients({
   });
 
   const parsedResponse = clientListResponseSchema.parse(response.data);
+
+  return parsedResponse.data;
+}
+
+export async function getClientById(
+  clientId: string,
+  signal?: AbortSignal,
+): Promise<ClientDto> {
+  const response = await apiClient.get<unknown>(`/clients/${clientId}`, {
+    signal,
+  });
+
+  const parsedResponse = clientResponseSchema.parse(response.data);
 
   return parsedResponse.data;
 }

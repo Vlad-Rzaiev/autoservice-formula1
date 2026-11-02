@@ -2,7 +2,7 @@ import { queryOptions } from '@tanstack/react-query';
 
 import type { UserRole } from '@autoservice/contracts';
 
-import { getClients } from './get-clients';
+import { getClientById, getClients } from './get-clients';
 
 export const clientsQueryKeys = {
   all: ['clients'] as const,
@@ -21,6 +21,19 @@ export const clientsQueryKeys = {
       role ?? null,
       { page, limit, search },
     ] as const,
+
+  detail: (
+    clientId: string,
+    userId: string | undefined,
+    role: UserRole | undefined,
+  ) =>
+    [
+      ...clientsQueryKeys.all,
+      'detail',
+      clientId,
+      userId ?? null,
+      role ?? null,
+    ] as const,
 };
 
 interface ClientsQueryOptions {
@@ -30,6 +43,13 @@ interface ClientsQueryOptions {
   page?: number;
   limit?: number;
   search?: string;
+}
+
+interface ClientQueryOptions {
+  clientId: string | undefined;
+  userId: string | undefined;
+  role: UserRole | undefined;
+  accessToken: string | null;
 }
 
 export function clientsQueryOptions({
@@ -47,6 +67,21 @@ export function clientsQueryOptions({
     enabled: Boolean(
       userId && accessToken && (role === 'owner' || role === 'manager'),
     ),
+    retry: false,
+  });
+}
+
+export function clientQueryOptions({
+  clientId,
+  userId,
+  role,
+  accessToken,
+}: ClientQueryOptions) {
+  return queryOptions({
+    queryKey: clientsQueryKeys.detail(clientId ?? '', userId, role),
+    queryFn: ({ signal }) => getClientById(clientId!, signal),
+    staleTime: 30_000,
+    enabled: Boolean(clientId && userId && accessToken && role),
     retry: false,
   });
 }
