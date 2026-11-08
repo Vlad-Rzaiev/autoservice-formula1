@@ -1,5 +1,5 @@
 import type { IconDefinition } from '@fortawesome/fontawesome-svg-core';
-import { Card, CardContent } from '@/components/ui';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export interface DashboardStatCardProps {
@@ -14,15 +14,26 @@ export default function DashboardStatCard({
   icon,
 }: DashboardStatCardProps) {
   return (
-    <Card>
-      <CardContent className="flex items-center gap-4">
-        <div className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
-          <FontAwesomeIcon icon={icon} className="size-5" aria-hidden="true" />
-        </div>
+    <Card className="h-full">
+      <CardHeader>
+        <CardTitle className="text-sm text-muted-foreground">{label}</CardTitle>
+      </CardHeader>
 
-        <div className="min-w-0">
-          <p className="text-2xl font-bold tracking-tight mb-2">{value}</p>
-          <p className="truncate text-sm text-muted-foreground">{label}</p>
+      <CardContent>
+        <div className="flex items-center justify-between gap-3">
+          <p className="text-2xl font-bold tracking-tight tabular-nums">
+            {value}
+          </p>
+
+          <div
+            className={`flex size-11 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary`}
+          >
+            <FontAwesomeIcon
+              icon={icon}
+              aria-hidden="true"
+              className="text-lg"
+            />
+          </div>
         </div>
       </CardContent>
     </Card>

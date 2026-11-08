@@ -43,7 +43,9 @@ export const getClientsController: RequestHandler = async (req, res) => {
     });
   }
 
-  const { clients, pagination } = await getClients(validationResult.data);
+  const { clients, pagination, stats } = await getClients(
+    validationResult.data,
+  );
 
   const responseBody: ClientListResponse = {
     status: 200,
@@ -52,6 +54,7 @@ export const getClientsController: RequestHandler = async (req, res) => {
     data: {
       items: clients.map(toClientDto),
       pagination,
+      stats,
     },
   };
 

@@ -17,7 +17,9 @@ export default function ClientDetails({ id }: ClientDetailsProps) {
       <Container>
         <h1>CLIENT DETAILS PAGE</h1>
 
-        <p>{`CLIENT EMAIL: ${client.email}`}</p>
+        {!client && <p>LOADING.....</p>}
+
+        {client && <p>{`CLIENT EMAIL: ${client.email}`}</p>}
       </Container>
     </Section>
   );

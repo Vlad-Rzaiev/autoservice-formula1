@@ -1,8 +1,47 @@
 {
-  "title": "All Clients Page",
-  "dev": "In Development...",
-  "back-to-main": "Back to home",
-  "client": {
-    "title": "Client page with id"
+  "title": "All Clients",
+  "description": "Manage your service clients",
+  "loading-state": {
+    "loading-title": "Loading clients",
+    "loading-description": "Please wait while we retrieve the client list.",
+    "error-title": "Failed to load clients",
+    "error-description": "An error occurred while retrieving the client list.",
+    "retry": "Try again",
+    "no-results-title": "No clients found",
+    "no-results-description": "No clients match your search. Try adjusting your search query.",
+    "empty-title": "Client list is empty",
+    "empty-description": "There are no registered clients in the system yet."
+  },
+  "search": {
+    "placeholder": "Search by name, email or phone"
+  },
+  "filters": {
+    "all": "All clients",
+    "verified": "Verified email",
+    "unverified": "Unverified email"
+  },
+  "stats": {
+    "total": "Total clients",
+    "verified": "Verified",
+    "unverified": "Unverified"
+  },
+  "table": {
+    "client": "Client",
+    "email": "Email",
+    "phone": "Phone",
+    "userId": "Client ID",
+    "emailStatus": "Email status",
+    "actions": "Actions",
+    "verified": "Verified",
+    "unverified": "Not verified",
+    "notProvided": "Not provided",
+    "unknownClient": "Name not specified",
+    "viewProfile": "View profile"
+  },
+  "pagination": {
+    "showing": "Showing",
+    "of": "of",
+    "previous": "Previous",
+    "next": "Next"
   }
 }

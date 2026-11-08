@@ -1,5 +1,7 @@
 import createHttpError from 'http-errors';
 import {
+  ClientListPagination,
+  ClientListStats,
   mongoObjectIdSchema,
   type ClientListQuery,
   type UserRole,
@@ -62,12 +64,8 @@ export const getClients = async (
   query: ClientListQuery,
 ): Promise<{
   clients: UserLeanDocument[];
-  pagination: {
-    page: number;
-    limit: number;
-    totalItems: number;
-    totalPages: number;
-  };
+  pagination: ClientListPagination;
+  stats: ClientListStats;
 }> => {
   const { page, limit, search } = query;
   const skip = (page - 1) * limit;
@@ -85,21 +83,62 @@ export const getClients = async (
       }
     : {};
 
-  const filter = {
+  const baseFilter = {
     role: 'client' as const,
     isActive: true,
+  };
+
+  const filter = {
+    ...baseFilter,
     ...searchFilter,
   };
 
-  const [clients, totalItems] = await Promise.all([
+  const [clients, totalItems, statsResult] = await Promise.all([
     UserCollection.find(filter)
       .sort({ createdAt: -1 })
       .skip(skip)
       .limit(limit)
       .lean()
       .exec(),
+
     UserCollection.countDocuments(filter).exec(),
+
+    UserCollection.aggregate([
+      {
+        $match: baseFilter,
+      },
+      {
+        $group: {
+          _id: null,
+          total: { $sum: 1 },
+          verified: {
+            $sum: {
+              $cond: [{ $eq: ['$emailVerified', true] }, 1, 0],
+            },
+          },
+          unverified: {
+            $sum: {
+              $cond: [{ $ne: ['$emailVerified', true] }, 1, 0],
+            },
+          },
+        },
+      },
+      {
+        $project: {
+          _id: 0,
+          total: 1,
+          verified: 1,
+          unverified: 1,
+        },
+      },
+    ]).exec(),
   ]);
+
+  const stats: ClientListStats = statsResult[0] ?? {
+    total: 0,
+    verified: 0,
+    unverified: 0,
+  };
 
   return {
     clients,
@@ -109,5 +148,6 @@ export const getClients = async (
       totalItems,
       totalPages: Math.ceil(totalItems / limit),
     },
+    stats,
   };
 };

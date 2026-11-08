@@ -24,9 +24,18 @@ export const clientListPaginationSchema = z.object({
 
 export type ClientListPagination = z.infer<typeof clientListPaginationSchema>;
 
+export const clientListStatsSchema = z.object({
+  total: z.number().int().nonnegative(),
+  verified: z.number().int().nonnegative(),
+  unverified: z.number().int().nonnegative(),
+});
+
+export type ClientListStats = z.infer<typeof clientListStatsSchema>;
+
 export const clientListResponseDataSchema = z.object({
   items: z.array(clientDtoSchema),
   pagination: clientListPaginationSchema,
+  stats: clientListStatsSchema,
 });
 
 export type ClientListResponseData = z.infer<
