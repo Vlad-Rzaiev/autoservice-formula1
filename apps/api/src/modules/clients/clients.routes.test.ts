@@ -346,4 +346,164 @@ describe('GET /api/v1/clients', () => {
       .set('Authorization', `Bearer ${accessToken}`)
       .expect(200);
   });
+
+  it('returns client statistics', async () => {
+    const accessToken = await getManagerAccessToken();
+
+    await UserCollection.create([
+      {
+        userId: '10',
+        firstName: 'John',
+        lastName: 'Doe',
+        photo: null,
+        gender: null,
+        birthDate: null,
+        phone: null,
+        email: 'john@test.com',
+        emailVerified: true,
+        passwordHash: 'hashed-password',
+        role: 'client',
+        isActive: true,
+      },
+      {
+        userId: '11',
+        firstName: 'Jane',
+        lastName: 'Smith',
+        photo: null,
+        gender: null,
+        birthDate: null,
+        phone: null,
+        email: 'jane@test.com',
+        emailVerified: true,
+        passwordHash: 'hashed-password',
+        role: 'client',
+        isActive: true,
+      },
+      {
+        userId: '12',
+        firstName: 'Mike',
+        lastName: 'Brown',
+        photo: null,
+        gender: null,
+        birthDate: null,
+        phone: null,
+        email: 'mike@test.com',
+        emailVerified: false,
+        passwordHash: 'hashed-password',
+        role: 'client',
+        isActive: true,
+      },
+    ]);
+
+    const app = createApp();
+
+    const response = await request(app)
+      .get('/api/v1/clients')
+      .set('Authorization', `Bearer ${accessToken}`)
+      .expect(200);
+
+    expect(response.body.data.stats).toEqual({
+      total: 3,
+      verified: 2,
+      unverified: 1,
+    });
+  });
+
+  it('returns global statistics regardless of search query', async () => {
+    const accessToken = await getManagerAccessToken();
+
+    await UserCollection.create([
+      {
+        userId: '10',
+        firstName: 'John',
+        lastName: 'Doe',
+        photo: null,
+        gender: null,
+        birthDate: null,
+        phone: null,
+        email: 'john@test.com',
+        emailVerified: true,
+        passwordHash: 'hashed-password',
+        role: 'client',
+        isActive: true,
+      },
+      {
+        userId: '11',
+        firstName: 'Jane',
+        lastName: 'Smith',
+        photo: null,
+        gender: null,
+        birthDate: null,
+        phone: null,
+        email: 'jane@test.com',
+        emailVerified: false,
+        passwordHash: 'hashed-password',
+        role: 'client',
+        isActive: true,
+      },
+    ]);
+
+    const app = createApp();
+
+    const response = await request(app)
+      .get('/api/v1/clients?search=john')
+      .set('Authorization', `Bearer ${accessToken}`)
+      .expect(200);
+
+    expect(response.body.data.items).toHaveLength(1);
+
+    expect(response.body.data.stats).toEqual({
+      total: 2,
+      verified: 1,
+      unverified: 1,
+    });
+  });
+
+  it('excludes inactive clients from statistics', async () => {
+    const accessToken = await getManagerAccessToken();
+
+    await UserCollection.create([
+      {
+        userId: '10',
+        firstName: 'John',
+        lastName: 'Doe',
+        photo: null,
+        gender: null,
+        birthDate: null,
+        phone: null,
+        email: 'john@test.com',
+        emailVerified: true,
+        passwordHash: 'hashed-password',
+        role: 'client',
+        isActive: true,
+      },
+      {
+        userId: '11',
+        firstName: 'Jane',
+        lastName: 'Smith',
+        photo: null,
+        gender: null,
+        birthDate: null,
+        phone: null,
+        email: 'jane@test.com',
+        emailVerified: false,
+        passwordHash: 'hashed-password',
+        role: 'client',
+        isActive: false,
+      },
+    ]);
+
+    const app = createApp();
+
+    const response = await request(app)
+      .get('/api/v1/clients')
+      .set('Authorization', `Bearer ${accessToken}`)
+      .expect(200);
+
+    expect(response.body.data.stats).toEqual({
+      total: 1,
+      verified: 1,
+      unverified: 0,
+    });
+  });
 });

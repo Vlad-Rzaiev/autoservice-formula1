@@ -179,6 +179,7 @@ export {
   clientDtoSchema,
   clientListQuerySchema,
   clientListPaginationSchema,
+  clientListStatsSchema,
   clientListResponseDataSchema,
 } from './clients/client.schemas.js';
 
@@ -186,6 +187,7 @@ export type {
   ClientDto,
   ClientListQuery,
   ClientListPagination,
+  ClientListStats,
   ClientListResponseData,
 } from './clients/client.schemas.js';
 

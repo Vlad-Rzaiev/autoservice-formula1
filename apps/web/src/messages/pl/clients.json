@@ -1,8 +1,47 @@
 {
-  "title": "Strona wszystkich klientów",
-  "dev": "W trakcie tworzenia...",
-  "back-to-main": "Wróć na stronę główną",
-  "client": {
-    "title": "Strona klijenta z id"
+  "title": "Wszyscy klienci",
+  "description": "Zarządzanie klientami serwisu samochodowego",
+  "loading-state": {
+    "loading-title": "Ładowanie klientów",
+    "loading-description": "Proszę czekać, pobieramy listę klientów.",
+    "error-title": "Nie udało się załadować klientów",
+    "error-description": "Wystąpił błąd podczas pobierania listy klientów.",
+    "retry": "Spróbuj ponownie",
+    "no-results-title": "Nie znaleziono klientów",
+    "no-results-description": "Nie znaleziono klientów pasujących do wyszukiwania. Spróbuj zmienić wyszukiwaną frazę.",
+    "empty-title": "Lista klientów jest pusta",
+    "empty-description": "W systemie nie ma jeszcze zarejestrowanych klientów."
+  },
+  "search": {
+    "placeholder": "Szukaj według imienia, adresu e-mail lub telefonu"
+  },
+  "filters": {
+    "all": "Wszyscy klienci",
+    "verified": "Potwierdzony adres e-mail",
+    "unverified": "Niepotwierdzony adres e-mail"
+  },
+  "stats": {
+    "total": "Łączna liczba klientów",
+    "verified": "Potwierdzeni",
+    "unverified": "Niepotwierdzeni"
+  },
+  "table": {
+    "client": "Klient",
+    "email": "Adres e-mail",
+    "phone": "Telefon",
+    "userId": "ID klienta",
+    "emailStatus": "Status adresu e-mail",
+    "actions": "Akcje",
+    "verified": "Potwierdzony",
+    "unverified": "Niepotwierdzony",
+    "notProvided": "Nie podano",
+    "unknownClient": "Imie nie podano",
+    "viewProfile": "Zobacz profil"
+  },
+  "pagination": {
+    "showing": "Wyświetlono",
+    "of": "z",
+    "previous": "Poprzednia",
+    "next": "Następna"
   }
 }

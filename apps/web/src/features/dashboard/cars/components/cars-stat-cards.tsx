@@ -1,15 +1,16 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { useDashboardSummary } from '../../api/use-dashboard-summary';
-import { QueryState } from '@/components/states';
-import DashboardStatsSkeleton from '../../components/dashboard-stats-skeleton';
-import DashboardStatCard from '../../components/dashboard-stat-card';
 import {
   faCalendarCheck,
   faCar,
   faScrewdriverWrench,
 } from '@fortawesome/free-solid-svg-icons';
+import { QueryState } from '@/components/states';
+import { CardGrid } from '@/components/common';
+import { useDashboardSummary } from '../../api/use-dashboard-summary';
+import DashboardStatsSkeleton from '../../components/dashboard-stats-skeleton';
+import DashboardStatCard from '../../components/dashboard-stat-card';
 
 export default function CarsStatCards() {
   const t = useTranslations('dashboard.home');
@@ -31,7 +32,7 @@ export default function CarsStatCards() {
         isRetrying={isRefetching}
       >
         {data && (
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <CardGrid columns="three">
             <DashboardStatCard
               label={t('stats.cars')}
               value={data!.carsCount}
@@ -49,7 +50,7 @@ export default function CarsStatCards() {
               value={data!.activeRepairsCount}
               icon={faScrewdriverWrench}
             />
-          </div>
+          </CardGrid>
         )}
       </QueryState>
     </div>

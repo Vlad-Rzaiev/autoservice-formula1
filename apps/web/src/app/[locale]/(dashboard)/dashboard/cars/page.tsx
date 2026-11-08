@@ -90,63 +90,59 @@ export default function AllCarsPage() {
 
   return (
     <Section className="mt-4">
-      <Container>
-        <div className="space-y-6">
-          <div className="flex flex-col gap-5">
-            <div className="min-w-0">
-              <h1 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-                {t('title')}
-              </h1>
+      <Container className="space-y-6">
+        <div className="flex flex-col gap-5">
+          <div className="min-w-0">
+            <h1 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+              {t('title')}
+            </h1>
 
-              <p className="mt-2 max-w-2xl text-sm leading-6 text-muted-foreground sm:text-base">
-                {t('description')}
-              </p>
-            </div>
-
-            <CarsStatCards />
-
-            <CarsSearch
-              value={searchInput}
-              onChange={setSearchInput}
-              placeholder={t('search-placeholder')}
-            />
+            <p className="mt-2 max-w-2xl text-sm leading-6 text-muted-foreground sm:text-base">
+              {t('description')}
+            </p>
           </div>
 
-          <QueryState
-            isPending={isPending}
-            isError={isError}
-            isEmpty={Boolean(data && data.items.length === 0)}
-            loadingMessage={t('loading-title')}
-            loadingDescription={t('loading-description')}
-            loadingContent={
-              <CarsListSkeleton loadingLabel={t('loading-title')} />
-            }
-            errorMessage={t('error-title')}
-            errorDescription={t('error-description')}
-            retryLabel={t('retry')}
-            isRetrying={isFetching}
-            onRetry={() => void refetch()}
-            emptyMessage={search ? t('no-results-title') : t('empty-title')}
-            emptyDescription={
-              search ? t('no-results-description') : t('empty-description')
-            }
-            emptyIcon={search ? faMagnifyingGlass : faScrewdriverWrench}
-          >
-            {data && data.items.length > 0 && (
-              <CarsListContent
-                cars={data.items}
-                labels={listLabels}
-                pagination={pagination}
-                paginationLabels={paginationLabels}
-                isFetching={isFetching}
-                onPrevious={() =>
-                  setPage((current) => Math.max(1, current - 1))
-                }
-                onNext={() => setPage((current) => current + 1)}
-              />
-            )}
-          </QueryState>
+          <CarsStatCards />
+
+          <CarsSearch
+            value={searchInput}
+            onChange={setSearchInput}
+            placeholder={t('search-placeholder')}
+          />
         </div>
+
+        <QueryState
+          isPending={isPending}
+          isError={isError}
+          isEmpty={Boolean(data && data.items.length === 0)}
+          loadingMessage={t('loading-title')}
+          loadingDescription={t('loading-description')}
+          loadingContent={
+            <CarsListSkeleton loadingLabel={t('loading-title')} />
+          }
+          errorMessage={t('error-title')}
+          errorDescription={t('error-description')}
+          retryLabel={t('retry')}
+          isRetrying={isFetching}
+          onRetry={() => void refetch()}
+          emptyMessage={search ? t('no-results-title') : t('empty-title')}
+          emptyDescription={
+            search ? t('no-results-description') : t('empty-description')
+          }
+          emptyIcon={search ? faMagnifyingGlass : faScrewdriverWrench}
+        >
+          {data && data.items.length > 0 && (
+            <CarsListContent
+              cars={data.items}
+              labels={listLabels}
+              pagination={pagination}
+              paginationLabels={paginationLabels}
+              isFetching={isFetching}
+              onPrevious={() => setPage((current) => Math.max(1, current - 1))}
+              onNext={() => setPage((current) => current + 1)}
+            />
+          )}
+        </QueryState>
       </Container>
     </Section>
   );
