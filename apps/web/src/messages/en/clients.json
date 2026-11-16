@@ -43,5 +43,22 @@
     "of": "of",
     "previous": "Previous",
     "next": "Next"
+  },
+
+  "client-page": {
+    "back-to-list": "Back to clients list",
+    "verified": "Active",
+    "unverified": "Not active",
+    "loading-state": {
+      "loading-title": "Loading client",
+      "loading-description": "Please wait while we retrieve the client information.",
+      "error-title": "Failed to load client",
+      "error-description": "Something went wrong while retrieving the client information.",
+      "retry": "Try again",
+      "not-found-title": "Client not found",
+      "not-found-description": "The requested client could not be found.",
+      "empty-title": "No client information available",
+      "empty-description": "There is no additional information available for this client yet."
+    }
   }
 }

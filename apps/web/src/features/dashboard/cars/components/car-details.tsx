@@ -2,11 +2,17 @@
 
 import { useTranslations } from 'next-intl';
 import { useRouter } from '@/i18n/navigation';
-import { faScrewdriverWrench } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faArrowRight,
+  faScrewdriverWrench,
+  faUser,
+} from '@fortawesome/free-solid-svg-icons';
 import { useCar } from '../api/use-cars';
 import { useAuth } from '@/providers';
 import { Container, Section } from '@/components/layout';
 import { QueryState } from '@/components/states';
+import { ButtonLink } from '@/components/common';
 import CarDetailsSkeleton from './car-details-skeleton';
 import CarDetailsHero from './car-details-hero';
 import CarTechnicalSpecifications from './car-details-technical-specifications';
@@ -61,21 +67,36 @@ export default function CarDetails({ carId }: CarDetailsProps) {
         <>
           <Section className="mt-4">
             <Container>
-              <div className="relative border-b border-border pb-6">
-                <span className="mb-2 block text-sm font-semibold uppercase tracking-[0.2em] text-primary">
-                  {t(
-                    user?.role === 'client'
-                      ? 'main.your-car'
-                      : 'main.client-car',
-                  )}
-                </span>
-
-                <h1 className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
-                  {car.brand} {car.model}{' '}
-                  <span className="whitespace-nowrap text-muted-foreground">
-                    {car.year}
+              <div className="relative flex flex-col gap-5 pb-6 sm:flex-row sm:items-center sm:justify-between border-b border-border">
+                <div className="min-w-0">
+                  <span className="mb-2 block text-sm font-semibold uppercase tracking-[0.2em] text-primary">
+                    {t(
+                      user?.role === 'client'
+                        ? 'main.your-car'
+                        : 'main.client-car',
+                    )}
                   </span>
-                </h1>
+
+                  <h1 className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+                    {car.brand} {car.model}{' '}
+                    <span className="whitespace-nowrap text-muted-foreground">
+                      {car.year}
+                    </span>
+                  </h1>
+                </div>
+
+                {(user?.role === 'owner' || user?.role === 'manager') && (
+                  <ButtonLink
+                    href={routes.dashboard.clients.detail(car.ownerId)}
+                    variant="ctaOutline"
+                    size="sm"
+                    className="shrink-0"
+                  >
+                    <FontAwesomeIcon icon={faUser} />
+                    {t('main.owner-page')}
+                    <FontAwesomeIcon icon={faArrowRight} />
+                  </ButtonLink>
+                )}
 
                 <div className="absolute bottom-0 left-0 h-1 w-16 rounded-full bg-primary" />
               </div>

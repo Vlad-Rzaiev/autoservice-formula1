@@ -139,14 +139,7 @@ export default function ClientsContent({
                   </TableCell>
 
                   <TableCell className="text-center">
-                    <Badge
-                      variant="outline"
-                      className={
-                        client.emailVerified
-                          ? 'border-emerald-500/30 bg-emerald-500/10 text-emerald-600'
-                          : 'border-amber-500/30 bg-amber-500/10 text-amber-600'
-                      }
-                    >
+                    <Badge variant={client.emailVerified ? 'success' : 'error'}>
                       {client.emailVerified
                         ? t('table.verified')
                         : t('table.unverified')}
@@ -229,14 +222,7 @@ export default function ClientsContent({
               </div>
 
               <div className="mt-4 flex items-center justify-between gap-3">
-                <Badge
-                  variant="outline"
-                  className={
-                    client.emailVerified
-                      ? 'border-emerald-500/30 bg-emerald-500/10 text-emerald-600'
-                      : 'border-amber-500/30 bg-amber-500/10 text-amber-600'
-                  }
-                >
+                <Badge variant={client.emailVerified ? 'success' : 'error'}>
                   {client.emailVerified
                     ? t('table.verified')
                     : t('table.unverified')}
