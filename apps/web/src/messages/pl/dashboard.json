@@ -243,7 +243,8 @@
 
     "main": {
       "your-car": "Twój samochód",
-      "client-car": "Samochód klienta"
+      "client-car": "Samochód klienta",
+      "owner-page": "Strona właściciela"
     },
 
     "hero": {

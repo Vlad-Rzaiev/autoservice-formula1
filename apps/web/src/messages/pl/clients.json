@@ -43,5 +43,22 @@
     "of": "z",
     "previous": "Poprzednia",
     "next": "Następna"
+  },
+
+  "client-page": {
+    "back-to-list": "Powrót do listy klientów",
+    "verified": "Aktywny",
+    "unverified": "Nie aktywny",
+    "loading-state": {
+      "loading-title": "Ładowanie klienta",
+      "loading-description": "Proszę czekać, trwa pobieranie informacji o kliencie.",
+      "error-title": "Nie udało się załadować klienta",
+      "error-description": "Wystąpił błąd podczas pobierania informacji o kliencie.",
+      "retry": "Spróbuj ponownie",
+      "not-found-title": "Nie znaleziono klienta",
+      "not-found-description": "Nie udało się znaleźć wskazanego klienta.",
+      "empty-title": "Brak informacji o kliencie",
+      "empty-description": "Nie ma jeszcze dodatkowych informacji o tym kliencie."
+    }
   }
 }

@@ -7,3 +7,5 @@ export { cn } from './utils';
 export { iconMap, defaultIcon } from './icon-map';
 
 export { formatDate } from './format-date';
+
+export { formatPhoneNumber } from './utils';

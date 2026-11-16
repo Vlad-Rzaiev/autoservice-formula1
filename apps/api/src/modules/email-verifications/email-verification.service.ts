@@ -26,7 +26,7 @@ export const createEmailVerificationToken = async (userId: string) => {
   await EmailVerificationCollection.findOneAndUpdate(
     { userId },
     { userId, tokenHash, expiresAt },
-    { upsert: true, new: true, setDefaultsOnInsert: true },
+    { upsert: true, returnDocument: 'after', setDefaultsOnInsert: true },
   ).exec();
 
   return token;
