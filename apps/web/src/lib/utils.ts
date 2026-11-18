@@ -10,5 +10,7 @@ export function formatPhoneNumber(phone: string): string {
     return phone;
   }
 
-  return `${phone.slice(0, 3)} ${phone.slice(3, 6)} ${phone.slice(6, 9)} ${phone.slice(9)}`;
+  const formattedPhone = `${phone.slice(0, 3)} ${phone.slice(3, 6)} ${phone.slice(6, 9)} ${phone.slice(9)}`;
+
+  return formattedPhone;
 }

@@ -314,8 +314,14 @@ export { appointmentListResponseDataSchema } from './appointment/appointment-res
 
 export { AppointmentListResponseData } from './appointment/appointment-response.schemas.js';
 
-export { dashboardSummarySchema } from './dashboard/dashboard-summary.schemas.js';
+export {
+  dashboardSummarySchema,
+  dashboardSummaryQuerySchema,
+} from './dashboard/dashboard-summary.schemas.js';
 
-export type { DashboardSummaryDto } from './dashboard/dashboard-summary.schemas.js';
+export type {
+  DashboardSummaryDto,
+  DashboardSummaryQuery,
+} from './dashboard/dashboard-summary.schemas.js';
 
 export { dashboardSummaryResponseSchema } from './dashboard/dashboard-summary-response.schemas.js';

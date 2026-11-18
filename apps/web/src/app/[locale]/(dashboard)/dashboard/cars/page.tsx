@@ -140,6 +140,7 @@ export default function AllCarsPage() {
               isFetching={isFetching}
               onPrevious={() => setPage((current) => Math.max(1, current - 1))}
               onNext={() => setPage((current) => current + 1)}
+              onPageChange={setPage}
             />
           )}
         </QueryState>
