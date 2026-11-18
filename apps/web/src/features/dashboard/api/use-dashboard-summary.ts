@@ -4,10 +4,15 @@ import { useAuth } from '@/providers';
 
 import { dashboardSummaryQueryOptions } from './dashboard-query-options';
 
-export function useDashboardSummary() {
+export function useDashboardSummary(clientId?: string) {
   const { user, accessToken } = useAuth();
 
   return useQuery(
-    dashboardSummaryQueryOptions(user?.userId, user?.role, accessToken),
+    dashboardSummaryQueryOptions(
+      user?.userId,
+      user?.role,
+      accessToken,
+      clientId,
+    ),
   );
 }

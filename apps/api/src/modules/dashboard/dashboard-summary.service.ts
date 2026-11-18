@@ -1,3 +1,4 @@
+import { Types } from 'mongoose';
 import createHttpError from 'http-errors';
 import type { UserRole } from '@autoservice/contracts';
 import { AppointmentCollection } from '../appointments/appointment.model.js';
@@ -20,17 +21,76 @@ export interface DashboardSummary {
   completedRepairsCount: number;
 }
 
+interface DashboardSummaryQuery {
+  clientId?: string;
+}
+
 interface CurrentUser {
   userId: string;
   role: UserRole;
 }
 
+async function getClientDashboardSummary(
+  clientId: Types.ObjectId,
+): Promise<DashboardSummary> {
+  const [
+    carsCount,
+    appointmentsCount,
+    activeRepairsCount,
+    completedRepairsCount,
+  ] = await Promise.all([
+    CarCollection.countDocuments({
+      ownerId: clientId,
+      isActive: true,
+    }).exec(),
+
+    AppointmentCollection.countDocuments({
+      clientId,
+    }).exec(),
+
+    RepairCollection.countDocuments({
+      clientId,
+      status: { $in: activeRepairStatuses },
+    }).exec(),
+
+    RepairCollection.countDocuments({
+      clientId,
+      status: 'completed',
+    }).exec(),
+  ]);
+
+  return {
+    carsCount,
+    appointmentsCount,
+    activeRepairsCount,
+    completedRepairsCount,
+  };
+}
+
 export const getDashboardSummary = async (
   currentUser: CurrentUser,
+  query: DashboardSummaryQuery = {},
 ): Promise<DashboardSummary> => {
   const { role } = currentUser;
+  const { clientId } = query;
 
   if (role === 'owner' || role === 'manager') {
+    if (clientId) {
+      const client = await UserCollection.findOne({
+        _id: clientId,
+        role: 'client',
+      })
+        .select('_id')
+        .lean()
+        .exec();
+
+      if (!client) {
+        throw createHttpError(404, 'Client not found.');
+      }
+
+      return getClientDashboardSummary(client._id);
+    }
+
     const [
       carsCount,
       appointmentsCount,

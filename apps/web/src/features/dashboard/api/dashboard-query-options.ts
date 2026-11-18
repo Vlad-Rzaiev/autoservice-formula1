@@ -5,12 +5,17 @@ import { getDashboardSummary } from './get-dashboard-summary';
 
 export const dashboardQueryKeys = {
   all: ['dashboard'] as const,
-  summary: (userId: string | undefined, role: UserRole | undefined) =>
+  summary: (
+    userId: string | undefined,
+    role: UserRole | undefined,
+    clientId?: string,
+  ) =>
     [
       ...dashboardQueryKeys.all,
       'summary',
       userId ?? null,
       role ?? null,
+      clientId ?? null,
     ] as const,
 };
 
@@ -18,10 +23,11 @@ export function dashboardSummaryQueryOptions(
   userId: string | undefined,
   role: UserRole | undefined,
   accessToken: string | null,
+  clientId?: string,
 ) {
   return queryOptions({
-    queryKey: dashboardQueryKeys.summary(userId, role),
-    queryFn: ({ signal }) => getDashboardSummary({ signal }),
+    queryKey: dashboardQueryKeys.summary(userId, role, clientId),
+    queryFn: ({ signal }) => getDashboardSummary({ signal, clientId }),
     staleTime: 30_000,
     enabled: Boolean(userId && role && accessToken),
     retry: false,

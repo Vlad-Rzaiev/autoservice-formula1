@@ -1,10 +1,14 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faChevronLeft,
-  faChevronRight,
-} from '@fortawesome/free-solid-svg-icons';
 import type { CarListPagination } from '@autoservice/contracts';
-import { Button } from '@/components/ui/button';
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from '@/components/ui/pagination';
+
 import type { CarsPaginationLabels } from '../../config/cars-list.types';
 
 interface CarsPaginationProps {
@@ -13,7 +17,10 @@ interface CarsPaginationProps {
   isFetching: boolean;
   onPrevious: () => void;
   onNext: () => void;
+  onPageChange: (page: number) => void;
 }
+
+type PaginationPage = number | 'ellipsis';
 
 export default function CarsPagination({
   pagination,
@@ -21,46 +28,138 @@ export default function CarsPagination({
   isFetching,
   onPrevious,
   onNext,
+  onPageChange,
 }: CarsPaginationProps) {
+  const { page: currentPage, totalPages } = pagination;
+
+  const getVisiblePages = (): PaginationPage[] => {
+    if (totalPages <= 5) {
+      return Array.from(
+        { length: totalPages },
+        (_, pageIndex) => pageIndex + 1,
+      );
+    }
+
+    if (currentPage <= 3) {
+      return [1, 2, 3, 4, 'ellipsis', totalPages];
+    }
+
+    if (currentPage >= totalPages - 2) {
+      return [
+        1,
+        'ellipsis',
+        totalPages - 3,
+        totalPages - 2,
+        totalPages - 1,
+        totalPages,
+      ];
+    }
+
+    return [
+      1,
+      'ellipsis',
+      currentPage - 1,
+      currentPage,
+      currentPage + 1,
+      'ellipsis',
+      totalPages,
+    ];
+  };
+
+  const getCompactVisiblePages = (): PaginationPage[] => {
+    if (totalPages <= 3) {
+      return Array.from(
+        { length: totalPages },
+        (_, pageIndex) => pageIndex + 1,
+      );
+    }
+
+    if (currentPage <= 2) {
+      return [1, 2, 'ellipsis', totalPages];
+    }
+
+    if (currentPage >= totalPages - 1) {
+      return [1, 'ellipsis', totalPages - 1, totalPages];
+    }
+
+    return [1, 'ellipsis', currentPage, 'ellipsis', totalPages];
+  };
+
+  const renderPageItems = (
+    pages: PaginationPage[],
+    variant: 'compact' | 'regular',
+  ) =>
+    pages.map((page, pageIndex) => (
+      <PaginationItem key={`${variant}-${pageIndex}`}>
+        {page === 'ellipsis' ? (
+          <PaginationEllipsis />
+        ) : (
+          <PaginationLink
+            isActive={currentPage === page}
+            aria-label={`Go to page ${page}`}
+            aria-disabled={isFetching}
+            tabIndex={isFetching ? -1 : 0}
+            onClick={(event) => {
+              event.preventDefault();
+
+              if (!isFetching && currentPage !== page) {
+                onPageChange(page);
+              }
+            }}
+          >
+            {page}
+          </PaginationLink>
+        )}
+      </PaginationItem>
+    ));
+
   return (
-    <div className="flex flex-col gap-4 border-t border-border pt-4 sm:flex-row sm:items-center sm:justify-between">
-      <p className="text-sm text-muted-foreground">{labels.showing}</p>
+    <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+      <p className="text-center text-sm text-muted-foreground sm:text-left">
+        {labels.showing}
+      </p>
 
-      <div className="flex flex-wrap items-center gap-3">
-        <p className="text-sm text-muted-foreground">{labels.page}</p>
+      <Pagination className="mx-0 w-auto justify-center sm:justify-end">
+        <PaginationContent>
+          <PaginationItem>
+            <PaginationPrevious
+              text=""
+              aria-disabled={currentPage <= 1 || isFetching}
+              tabIndex={currentPage <= 1 || isFetching ? -1 : 0}
+              onClick={(event) => {
+                event.preventDefault();
 
-        <div className="flex items-center gap-2">
-          <Button
-            type="button"
-            variant="outline"
-            size="sm"
-            disabled={pagination.page <= 1 || isFetching}
-            onClick={onPrevious}
-          >
-            <FontAwesomeIcon
-              icon={faChevronLeft}
-              aria-hidden="true"
-              className="size-3"
+                if (currentPage > 1 && !isFetching) {
+                  onPrevious();
+                }
+              }}
             />
-            {labels.previous}
-          </Button>
+          </PaginationItem>
 
-          <Button
-            type="button"
-            variant="outline"
-            size="sm"
-            disabled={pagination.page >= pagination.totalPages || isFetching}
-            onClick={onNext}
-          >
-            {labels.next}
-            <FontAwesomeIcon
-              icon={faChevronRight}
-              aria-hidden="true"
-              className="size-3"
+          <div className="contents min-[381px]:hidden">
+            {renderPageItems(getCompactVisiblePages(), 'compact')}
+          </div>
+
+          <div className="contents max-[380px]:hidden">
+            {renderPageItems(getVisiblePages(), 'regular')}
+          </div>
+
+          <PaginationItem>
+            <PaginationNext
+              text=""
+              aria-disabled={currentPage >= totalPages || isFetching}
+              tabIndex={currentPage >= totalPages || isFetching ? -1 : 0}
+              onClick={(event) => {
+                event.preventDefault();
+
+                if (currentPage < totalPages && !isFetching) {
+                  onNext();
+                }
+              }}
             />
-          </Button>
-        </div>
-      </div>
+          </PaginationItem>
+        </PaginationContent>
+      </Pagination>
     </div>
   );
 }

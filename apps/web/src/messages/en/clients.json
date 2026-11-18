@@ -59,6 +59,103 @@
       "not-found-description": "The requested client could not be found.",
       "empty-title": "No client information available",
       "empty-description": "There is no additional information available for this client yet."
+    },
+
+    "stats": {
+      "cars": "Cars",
+      "appointments": "Service appointments",
+      "repairs": "Repairs",
+      "completed": "Completed jobs"
+    },
+
+    "info": {
+      "title": "Personal Information",
+      "id": "ID",
+      "name": "First Name",
+      "last-name": "Last Name",
+      "phone": "Phone",
+      "email": "Email",
+      "birthday": "Date of Birth",
+      "gender": "Gender",
+      "man": "Male",
+      "woman": "Female"
+    },
+
+    "cars-list": {
+      "title": "Cars",
+      "table": {
+        "car": "Vehicle",
+        "year": "Year",
+        "license-plate": "License plate",
+        "vin": "VIN",
+        "mileage": "Mileage",
+        "empty-title": "No Vehicles Added",
+        "empty-description": "This user hasn't added any vehicles yet."
+      },
+
+      "columns": {
+        "car": "Vehicle",
+        "year": "Year",
+        "license-plate": "License plate",
+        "vin": "VIN",
+        "mileage": "Mileage",
+        "unknown-license-plate": "Not specified",
+        "unknown-mileage": "Not specified",
+        "mileage-unit": "km"
+      }
+    },
+
+    "history": {
+      "title": "Service history",
+      "repairs": {
+        "title": "Repair history",
+        "description": "View repair history, current statuses, and vehicle service costs.",
+        "empty": "No repair history yet",
+        "loading": "Loading repair history...",
+        "error": "Failed to load repair history",
+        "details": "Repair details",
+        "diagnosis": "Diagnosis",
+        "mileage": "Mileage",
+        "estimatedCost": "Estimated cost",
+        "finalCost": "Final cost",
+        "createdAt": "Created",
+        "startedAt": "Started",
+        "completedAt": "Completed",
+        "paginationLabel": "Repair history pagination"
+      },
+      "appointments": {
+        "title": "Appointment history",
+        "description": "View appointment history and the status of each service visit.",
+        "empty": "No appointment history yet",
+        "loading": "Loading appointment history...",
+        "error": "Failed to load appointment history",
+        "scheduledStart": "Start",
+        "scheduledEnd": "End",
+        "paginationLabel": "Appointment history pagination"
+      },
+      "status": {
+        "pending": "Pending confirmation",
+        "confirmed": "Confirmed",
+        "accepted": "Accepted",
+        "in_progress": "In progress",
+        "waiting_parts": "Waiting for parts",
+        "awaiting_approval": "Awaiting approval",
+        "completed": "Completed",
+        "cancelled": "Cancelled",
+        "no_show": "No-show"
+      },
+      "common": {
+        "showMore": "Show more",
+        "showLess": "Show less",
+        "notes": "Notes",
+        "description": "Description",
+        "photos": "Photos",
+        "page": "Page",
+        "of": "of",
+        "previous": "Previous",
+        "next": "Next",
+        "km": "km"
+      }
     }
   }
 }

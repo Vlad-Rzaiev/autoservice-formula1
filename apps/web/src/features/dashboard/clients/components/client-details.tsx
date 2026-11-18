@@ -14,7 +14,7 @@ import ClientHeader from './client-details-header';
 import ClientStatCards from './client-details-stat-cards';
 import ClientInfo from './client-details-info';
 import ClientCarsList from './client-details-cars-list';
-import ClientRepairHistory from './client-details-repair-history';
+import ClientHistory from './client-details-history';
 import { ButtonLink } from '@/components/common';
 import { routes } from '@/config';
 import { Badge } from '@/components/ui';
@@ -34,11 +34,9 @@ export default function ClientDetails({ id }: ClientDetailsProps) {
     refetch,
   } = useClient(id);
 
-  console.log(client);
-
   return (
-    <div className="relative">
-      <Container className="mt-20 mb-6">
+    <>
+      <Container className="flex justify-between mt-20 mb-6">
         <ButtonLink
           variant="link"
           href={routes.dashboard.clients.list}
@@ -47,6 +45,12 @@ export default function ClientDetails({ id }: ClientDetailsProps) {
           <FontAwesomeIcon icon={faArrowLeft} />
           {t('back-to-list')}
         </ButtonLink>
+
+        {client && (
+          <Badge variant={client.emailVerified ? 'success' : 'error'}>
+            {client.emailVerified ? t('verified') : t('unverified')}
+          </Badge>
+        )}
       </Container>
 
       <QueryState
@@ -67,12 +71,6 @@ export default function ClientDetails({ id }: ClientDetailsProps) {
       >
         {client && (
           <>
-            <div className="absolute top-0 right-2">
-              <Badge variant={client.emailVerified ? 'success' : 'error'}>
-                {client.emailVerified ? t('verified') : t('unverified')}
-              </Badge>
-            </div>
-
             <ClientHeader
               photo={client.photo}
               firstName={client.firstName}
@@ -82,16 +80,16 @@ export default function ClientDetails({ id }: ClientDetailsProps) {
               phone={client.phone}
             />
 
-            <ClientStatCards />
+            <ClientStatCards clientId={client._id} />
 
-            <ClientInfo />
+            <ClientInfo client={client} />
 
-            <ClientCarsList />
+            <ClientCarsList clientId={client._id} />
 
-            <ClientRepairHistory />
+            <ClientHistory clientId={client._id} />
           </>
         )}
       </QueryState>
-    </div>
+    </>
   );
 }

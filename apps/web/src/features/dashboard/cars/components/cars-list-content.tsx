@@ -15,6 +15,7 @@ interface CarsListContentProps {
   isFetching: boolean;
   onPrevious: () => void;
   onNext: () => void;
+  onPageChange: (page: number) => void;
 }
 
 export default function CarsListContent({
@@ -25,6 +26,7 @@ export default function CarsListContent({
   isFetching,
   onPrevious,
   onNext,
+  onPageChange,
 }: CarsListContentProps) {
   return (
     <div className="space-y-4">
@@ -43,6 +45,7 @@ export default function CarsListContent({
           isFetching={isFetching}
           onPrevious={onPrevious}
           onNext={onNext}
+          onPageChange={onPageChange}
         />
       )}
     </div>

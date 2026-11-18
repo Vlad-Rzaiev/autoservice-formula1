@@ -59,6 +59,98 @@
       "not-found-description": "Nie udało się znaleźć wskazanego klienta.",
       "empty-title": "Brak informacji o kliencie",
       "empty-description": "Nie ma jeszcze dodatkowych informacji o tym kliencie."
+    },
+
+    "stats": {
+      "cars": "Samochody",
+      "appointments": "Wizyty serwisowe",
+      "repairs": "Naprawy",
+      "completed": "Zakończone prace"
+    },
+
+    "info": {
+      "title": "Dane osobowe",
+      "id": "ID",
+      "name": "Imię",
+      "last-name": "Nazwisko",
+      "phone": "Telefon",
+      "email": "Adres e-mail",
+      "birthday": "Data urodzenia",
+      "gender": "Płeć",
+      "man": "Mężczyzna",
+      "woman": "Kobieta"
+    },
+
+    "cars-list": {
+      "title": "Samochody",
+      "table": {
+        "car": "Samochód",
+        "year": "Rok",
+        "license-plate": "Numer rejestracyjny",
+        "vin": "VIN",
+        "mileage": "Przebieg",
+        "empty-title": "Nie dodano samochodów",
+        "empty-description": "Ten użytkownik nie dodał jeszcze żadnego samochodu."
+      },
+
+      "columns": {
+        "car": "Samochód",
+        "year": "Rok",
+        "license-plate": "Numer rejestracyjny",
+        "vin": "VIN",
+        "mileage": "Przebieg",
+        "unknown-license-plate": "Nie podano",
+        "unknown-mileage": "Nie podano",
+        "mileage-unit": "km"
+      }
+    },
+
+    "history": {
+      "title": "Historia obsługi",
+      "repairs": {
+        "title": "Historia napraw",
+        "description": "Przeglądaj historię napraw, ich statusy oraz koszty serwisowania pojazdu.",
+        "empty": "Brak historii napraw",
+        "loading": "Ładowanie historii napraw...",
+        "error": "Nie udało się załadować historii napraw",
+        "details": "Szczegóły naprawy",
+        "diagnosis": "Diagnostyka",
+        "mileage": "Przebieg",
+        "estimatedCost": "Szacowany koszt",
+        "finalCost": "Koszt końcowy",
+        "createdAt": "Utworzono",
+        "startedAt": "Rozpoczęto",
+        "completedAt": "Zakończono"
+      },
+      "appointments": {
+        "title": "Historia wizyt",
+        "description": "Przeglądaj historię wizyt serwisowych oraz status każdej z nich.",
+        "empty": "Brak historii wizyt",
+        "loading": "Ładowanie historii wizyt...",
+        "error": "Nie udało się załadować historii wizyt",
+        "scheduledStart": "Początek",
+        "scheduledEnd": "Zakończenie"
+      },
+      "status": {
+        "pending": "Oczekuje na potwierdzenie",
+        "confirmed": "Potwierdzono",
+        "accepted": "Przyjęto do realizacji",
+        "in_progress": "W trakcie realizacji",
+        "waiting_parts": "Oczekuje na części",
+        "awaiting_approval": "Oczekuje na akceptację",
+        "completed": "Zakończono",
+        "cancelled": "Anulowano",
+        "no_show": "Klient nie stawił się"
+      },
+      "common": {
+        "showMore": "Pokaż więcej",
+        "showLess": "Zwiń",
+        "notes": "Uwagi",
+        "description": "Opis",
+        "photos": "Zdjęcia",
+        "page": "Strona",
+        "of": "z"
+      }
     }
   }
 }

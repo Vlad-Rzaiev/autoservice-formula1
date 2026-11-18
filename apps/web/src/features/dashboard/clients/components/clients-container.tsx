@@ -107,6 +107,7 @@ export default function ClientsContainer() {
                   Math.min(pagination?.totalPages ?? 1, current + 1),
                 )
               }
+              onPageChange={setPage}
             />
           )}
         </QueryState>

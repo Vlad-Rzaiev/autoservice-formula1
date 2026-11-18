@@ -1,12 +1,7 @@
 'use client';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faChevronLeft,
-  faChevronRight,
-  faEye,
-  faUser,
-} from '@fortawesome/free-solid-svg-icons';
+import { faEye, faPhone, faUser } from '@fortawesome/free-solid-svg-icons';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { IconButton } from '@/components/common';
@@ -15,16 +10,23 @@ import {
   AvatarFallback,
   AvatarImage,
   Badge,
-  Button,
   Table,
   TableBody,
   TableCell,
   TableHead,
   TableHeader,
   TableRow,
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationNext,
+  PaginationPrevious,
+  PaginationEllipsis,
+  PaginationLink,
 } from '@/components/ui';
 import type { ClientDto, ClientListPagination } from '@autoservice/contracts';
 import { routes } from '@/config';
+import { formatPhoneNumber } from '@/lib';
 
 interface ClientsContentProps {
   clients: ClientDto[];
@@ -32,6 +34,7 @@ interface ClientsContentProps {
   isFetching: boolean;
   onPrevious: () => void;
   onNext: () => void;
+  onPageChange: (page: number) => void;
 }
 
 function getClientName(client: ClientDto, fallback: string): string {
@@ -55,6 +58,7 @@ export default function ClientsContent({
   isFetching,
   onPrevious,
   onNext,
+  onPageChange,
 }: ClientsContentProps) {
   const t = useTranslations('clients');
 
@@ -67,6 +71,62 @@ export default function ClientsContent({
     pagination.page * pagination.limit,
     pagination.totalItems,
   );
+
+  const getVisiblePages = () => {
+    const currentPage = pagination.page;
+    const totalPages = pagination.totalPages;
+
+    if (totalPages <= 5) {
+      return Array.from({ length: totalPages }, (_, index) => index + 1);
+    }
+
+    if (currentPage <= 3) {
+      return [1, 2, 3, 4, 'ellipsis', totalPages] as const;
+    }
+
+    if (currentPage >= totalPages - 2) {
+      return [
+        1,
+        'ellipsis',
+        totalPages - 3,
+        totalPages - 2,
+        totalPages - 1,
+        totalPages,
+      ] as const;
+    }
+
+    return [
+      1,
+      'ellipsis',
+      currentPage - 1,
+      currentPage,
+      currentPage + 1,
+      'ellipsis',
+      totalPages,
+    ] as const;
+  };
+
+  const getCompactVisiblePages = () => {
+    const currentPage = pagination.page;
+    const totalPages = pagination.totalPages;
+
+    if (totalPages <= 3) {
+      return Array.from(
+        { length: totalPages },
+        (_, pageIndex) => pageIndex + 1,
+      );
+    }
+
+    if (currentPage <= 2) {
+      return [1, 2, 'ellipsis', totalPages] as const;
+    }
+
+    if (currentPage >= totalPages - 1) {
+      return [1, 'ellipsis', totalPages - 1, totalPages] as const;
+    }
+
+    return [1, 'ellipsis', currentPage, 'ellipsis', totalPages] as const;
+  };
 
   return (
     <div className="space-y-4">
@@ -127,9 +187,21 @@ export default function ClientsContent({
                   </TableCell>
 
                   <TableCell className="text-center">
-                    <span className="text-sm text-muted-foreground">
-                      {client.phone ?? t('table.notProvided')}
-                    </span>
+                    {client.phone ? (
+                      <a
+                        href={`tel:${client.phone}`}
+                        className="text-sm text-muted-foreground transition-colors hover:text-primary"
+                      >
+                        <FontAwesomeIcon
+                          icon={faPhone}
+                          aria-hidden="true"
+                          className="text-destructive"
+                        />{' '}
+                        {formatPhoneNumber(client.phone)}
+                      </a>
+                    ) : (
+                      t('table.notProvided')
+                    )}
                   </TableCell>
 
                   <TableCell className="text-center">
@@ -206,9 +278,21 @@ export default function ClientsContent({
                   <p className="text-xs text-muted-foreground">
                     {t('table.phone')}
                   </p>
-                  <p className="mt-1 truncate text-sm text-foreground">
-                    {client.phone ?? t('table.notProvided')}
-                  </p>
+                  {client.phone ? (
+                    <a
+                      href={`tel:${client.phone}`}
+                      className="text-sm text-muted-foreground transition-colors hover:text-primary"
+                    >
+                      <FontAwesomeIcon
+                        icon={faPhone}
+                        aria-hidden="true"
+                        className="text-destructive"
+                      />{' '}
+                      {formatPhoneNumber(client.phone)}
+                    </a>
+                  ) : (
+                    t('table.notProvided')
+                  )}
                 </div>
 
                 <div className="min-w-0">
@@ -250,31 +334,106 @@ export default function ClientsContent({
           {pagination.totalItems}
         </p>
 
-        <div className="flex items-center justify-center gap-2">
-          <Button
-            variant="outline"
-            size="sm"
-            disabled={pagination.page <= 1 || isFetching}
-            onClick={onPrevious}
-          >
-            <FontAwesomeIcon icon={faChevronLeft} />
-            {t('pagination.previous')}
-          </Button>
+        <Pagination className="mx-0 w-auto justify-center sm:justify-end">
+          <PaginationContent>
+            <PaginationItem>
+              <PaginationPrevious
+                text=""
+                aria-disabled={pagination.page <= 1 || isFetching}
+                tabIndex={pagination.page <= 1 || isFetching ? -1 : 0}
+                onClick={(event) => {
+                  event.preventDefault();
 
-          <span className="min-w-16 text-center text-sm text-muted-foreground">
-            {pagination.page} / {pagination.totalPages}
-          </span>
+                  if (pagination.page > 1 && !isFetching) {
+                    onPrevious();
+                  }
+                }}
+              />
+            </PaginationItem>
 
-          <Button
-            variant="outline"
-            size="sm"
-            disabled={pagination.page >= pagination.totalPages || isFetching}
-            onClick={onNext}
-          >
-            {t('pagination.next')}
-            <FontAwesomeIcon icon={faChevronRight} />
-          </Button>
-        </div>
+            {getCompactVisiblePages().map((page, pageIndex) => (
+              <PaginationItem
+                key={`compact-${page}-${pageIndex}`}
+                className="min-[381px]:hidden"
+              >
+                {page === 'ellipsis' ? (
+                  <PaginationEllipsis />
+                ) : (
+                  <PaginationLink
+                    isActive={pagination.page === page}
+                    aria-label={`Go to page ${page}`}
+                    aria-disabled={isFetching}
+                    tabIndex={isFetching ? -1 : 0}
+                    onClick={(event) => {
+                      event.preventDefault();
+
+                      if (
+                        typeof page === 'number' &&
+                        !isFetching &&
+                        pagination.page !== page
+                      ) {
+                        onPageChange(page);
+                      }
+                    }}
+                  >
+                    {page}
+                  </PaginationLink>
+                )}
+              </PaginationItem>
+            ))}
+            {getVisiblePages().map((page, pageIndex) => (
+              <PaginationItem
+                key={`regular-${page}-${pageIndex}`}
+                className="max-[380px]:hidden"
+              >
+                {page === 'ellipsis' ? (
+                  <PaginationEllipsis />
+                ) : (
+                  <PaginationLink
+                    isActive={pagination.page === page}
+                    aria-label={`Go to page ${page}`}
+                    aria-disabled={isFetching}
+                    tabIndex={isFetching ? -1 : 0}
+                    onClick={(event) => {
+                      event.preventDefault();
+
+                      if (
+                        typeof page === 'number' &&
+                        !isFetching &&
+                        pagination.page !== page
+                      ) {
+                        onPageChange(page);
+                      }
+                    }}
+                  >
+                    {page}
+                  </PaginationLink>
+                )}
+              </PaginationItem>
+            ))}
+
+            <PaginationItem>
+              <PaginationNext
+                text=""
+                aria-disabled={
+                  pagination.page >= pagination.totalPages || isFetching
+                }
+                tabIndex={
+                  pagination.page >= pagination.totalPages || isFetching
+                    ? -1
+                    : 0
+                }
+                onClick={(event) => {
+                  event.preventDefault();
+
+                  if (pagination.page < pagination.totalPages && !isFetching) {
+                    onNext();
+                  }
+                }}
+              />
+            </PaginationItem>
+          </PaginationContent>
+        </Pagination>
       </div>
     </div>
   );
