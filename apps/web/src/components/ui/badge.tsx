@@ -21,6 +21,13 @@ const badgeVariants = cva(
         link: 'text-primary underline-offset-4 hover:underline',
         success: 'border-emerald-500/30 bg-emerald-500/10 text-emerald-600',
         error: 'border-amber-500/30 bg-amber-500/10 text-amber-600',
+
+        warning: 'bg-amber-500/10 text-amber-600',
+        info: 'bg-blue-500/10 text-blue-600',
+        progress: 'bg-sky-500/10 text-sky-600',
+        attention: 'bg-orange-500/10 text-orange-600',
+        approval: 'bg-violet-500/10 text-violet-600',
+        danger: 'bg-red-500/10 text-red-600',
       },
     },
     defaultVariants: {

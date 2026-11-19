@@ -9,15 +9,16 @@ import { useTranslations } from 'next-intl';
 import { useClient } from '@/features/dashboard/clients/api/use-client';
 import { Container } from '@/components/layout';
 import { QueryState } from '@/components/states';
+import { ButtonLink } from '@/components/common';
+import { Badge } from '@/components/ui';
 import ClientPageSkeleton from './client-page-skeleton';
 import ClientHeader from './client-details-header';
 import ClientStatCards from './client-details-stat-cards';
 import ClientInfo from './client-details-info';
 import ClientCarsList from './client-details-cars-list';
-import ClientHistory from './client-details-history';
-import { ButtonLink } from '@/components/common';
+import ClientRepairsHistory from './client-details-repairs-history';
+import ClientAppointmentsHistory from './client-details-appointments-history';
 import { routes } from '@/config';
-import { Badge } from '@/components/ui';
 
 interface ClientDetailsProps {
   id: string;
@@ -86,7 +87,9 @@ export default function ClientDetails({ id }: ClientDetailsProps) {
 
             <ClientCarsList clientId={client._id} />
 
-            <ClientHistory clientId={client._id} />
+            <ClientAppointmentsHistory clientId={client._id} />
+
+            <ClientRepairsHistory clientId={client._id} />
           </>
         )}
       </QueryState>
