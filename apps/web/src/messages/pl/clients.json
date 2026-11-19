@@ -120,7 +120,8 @@
         "finalCost": "Koszt końcowy",
         "createdAt": "Utworzono",
         "startedAt": "Rozpoczęto",
-        "completedAt": "Zakończono"
+        "completedAt": "Zakończono",
+        "paginationLabel": "Repair history pagination"
       },
       "appointments": {
         "title": "Historia wizyt",
@@ -129,7 +130,8 @@
         "loading": "Ładowanie historii wizyt...",
         "error": "Nie udało się załadować historii wizyt",
         "scheduledStart": "Początek",
-        "scheduledEnd": "Zakończenie"
+        "scheduledEnd": "Zakończenie",
+        "paginationLabel": "Appointment history pagination"
       },
       "status": {
         "pending": "Oczekuje na potwierdzenie",
@@ -149,7 +151,10 @@
         "description": "Opis",
         "photos": "Zdjęcia",
         "page": "Strona",
-        "of": "z"
+        "of": "z",
+        "previous": "Previous",
+        "next": "Next",
+        "km": "km"
       }
     }
   }

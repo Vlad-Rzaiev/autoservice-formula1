@@ -6,7 +6,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { formatActivityDate } from '../config/format-activity-date';
-import { getStatusClassName } from '../config/get-activity-status';
+import { StatusBadge } from '@/components/common';
 
 type ActivityStatus =
   | 'pending'
@@ -77,11 +77,7 @@ export function ActivityItem({
         </p>
       </div>
 
-      <span
-        className={`max-w-36 shrink-0 wrap-break-word rounded-full px-2.5 py-1 text-center text-xs font-medium ${getStatusClassName(status)}`}
-      >
-        {statusKey ? t(`status.${statusKey}`) : status}
-      </span>
+      <StatusBadge status={status} label={t(`status.${statusKey}`)} />
     </div>
   );
 }

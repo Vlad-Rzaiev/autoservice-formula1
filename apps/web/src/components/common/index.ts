@@ -34,3 +34,5 @@ export { IconItemCard } from './icon-item-card';
 export { default as Cta } from './cta';
 
 export { ButtonLoader } from './buttons/button-loader';
+
+export { StatusBadge } from './status-badge';
