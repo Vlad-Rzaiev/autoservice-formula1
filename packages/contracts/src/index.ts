@@ -242,6 +242,7 @@ export {
   repairsListQuerySchema,
   repairApprovalSchema,
   approveRepairSchema,
+  repairListItemDtoSchema,
 } from './repairs/repair.schemas.js';
 
 export type {
@@ -253,6 +254,7 @@ export type {
   RepairsListQuery,
   RepairApprovalDto,
   ApproveRepairInput,
+  RepairListItemDto,
 } from './repairs/repair.schemas.js';
 
 export {
@@ -295,6 +297,7 @@ export {
   createAppointmentSchema,
   updateAppointmentSchema,
   appointmentsListQuerySchema,
+  appointmentListItemDtoSchema,
 } from './appointment/appointment.schemas.js';
 
 export type {
@@ -303,6 +306,7 @@ export type {
   CreateAppointmentInput,
   UpdateAppointmentInput,
   AppointmentsListQuery,
+  AppointmentListItemDto,
 } from './appointment/appointment.schemas.js';
 
 export type {
@@ -310,7 +314,11 @@ export type {
   AppointmentListResponse,
 } from './appointment/appointment.responses.js';
 
-export { appointmentListResponseDataSchema } from './appointment/appointment-response.schemas.js';
+export {
+  appointmentListResponseDataSchema,
+  appointmentsListResponseSchema,
+  appointmentResponseSchema,
+} from './appointment/appointment-response.schemas.js';
 
 export { AppointmentListResponseData } from './appointment/appointment-response.schemas.js';
 

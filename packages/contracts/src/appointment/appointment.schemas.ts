@@ -97,3 +97,51 @@ export const appointmentsListQuerySchema = z
   );
 
 export type AppointmentsListQuery = z.infer<typeof appointmentsListQuerySchema>;
+
+export const appointmentListItemDtoSchema = z.object({
+  _id: mongoObjectIdSchema,
+
+  client: z.object({
+    _id: mongoObjectIdSchema,
+    firstName: z.string().nullable(),
+    lastName: z.string().nullable(),
+    phone: z.string().nullable(),
+  }),
+
+  car: z.object({
+    _id: mongoObjectIdSchema,
+    brand: z.string(),
+    model: z.string(),
+    year: z.number(),
+    licensePlate: z.string().nullable(),
+  }),
+
+  service: z
+    .object({
+      _id: mongoObjectIdSchema,
+      slug: z.string(),
+      translations: z.object({
+        uk: z.object({ title: z.string() }),
+        en: z.object({ title: z.string() }),
+        pl: z.object({ title: z.string() }),
+      }),
+    })
+    .nullable(),
+
+  assignedMechanic: z
+    .object({
+      _id: mongoObjectIdSchema,
+      firstName: z.string().nullable(),
+      lastName: z.string().nullable(),
+    })
+    .nullable(),
+
+  scheduledStart: z.string().datetime(),
+  scheduledEnd: z.string().datetime(),
+  status: appointmentStatusSchema,
+  title: z.string(),
+});
+
+export type AppointmentListItemDto = z.infer<
+  typeof appointmentListItemDtoSchema
+>;

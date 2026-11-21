@@ -1,6 +1,6 @@
 import { Container, Section } from '@/components/layout';
 
-export default function CreateCarPage() {
+export default function CreateAppointmentPage() {
   return (
     <Section>
       <Container>

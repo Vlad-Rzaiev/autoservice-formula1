@@ -156,33 +156,42 @@ describe('GET /api/v1/appointments', () => {
     await request(createApp()).get('/api/v1/appointments').expect(401);
   });
 
-  it('returns appointments for an authenticated manager', async () => {
-    const accessToken = await getAccessToken('manager');
-    const clientId = await createClient();
-    const car = await createCar(clientId);
+  it.each(['manager', 'owner'] as const)(
+    'returns appointments for an authenticated %s',
+    async (role) => {
+      const accessToken = await getAccessToken(role);
+      const clientId = await createClient();
+      const car = await createCar(clientId);
 
-    await createAppointment({
-      clientId,
-      carId: car._id.toString(),
-    });
-
-    const response = await request(createApp())
-      .get('/api/v1/appointments')
-      .set(auth(accessToken))
-      .expect(200);
-
-    expect(response.body.success).toBe(true);
-    expect(response.body.message).toBe('Appointments successfully retrieved.');
-    expect(response.body.data.items).toHaveLength(1);
-    expect(response.body.data.items[0]).toEqual(
-      expect.objectContaining({
+      await createAppointment({
         clientId,
         carId: car._id.toString(),
-        title: 'Engine diagnostics',
-        status: 'pending',
-      }),
-    );
-  });
+      });
+
+      const response = await request(createApp())
+        .get('/api/v1/appointments')
+        .set(auth(accessToken))
+        .expect(200);
+
+      expect(response.body.success).toBe(true);
+      expect(response.body.message).toBe(
+        'Appointments successfully retrieved.',
+      );
+      expect(response.body.data.items).toHaveLength(1);
+      expect(response.body.data.items[0]).toEqual(
+        expect.objectContaining({
+          client: expect.objectContaining({
+            _id: clientId,
+          }),
+          car: expect.objectContaining({
+            _id: car._id.toString(),
+          }),
+          title: 'Engine diagnostics',
+          status: 'pending',
+        }),
+      );
+    },
+  );
 
   it('returns only the authenticated client appointments', async () => {
     const accessToken = await getAccessToken('client');
@@ -326,6 +335,33 @@ describe('GET /api/v1/appointments', () => {
 
     expect(response.body.success).toBe(false);
   });
+
+  it('returns all appointments for an authenticated owner', async () => {
+    const accessToken = await getAccessToken('owner');
+    const firstClientId = await createClient('first-appointment-client');
+    const secondClientId = await createClient('second-appointment-client');
+
+    const firstCar = await createCar(firstClientId, 'WBA12345678901234');
+    const secondCar = await createCar(secondClientId, 'WBA12345678901235');
+
+    await createAppointment({
+      clientId: firstClientId,
+      carId: firstCar._id.toString(),
+    });
+
+    await createAppointment({
+      clientId: secondClientId,
+      carId: secondCar._id.toString(),
+    });
+
+    const response = await request(createApp())
+      .get('/api/v1/appointments')
+      .set(auth(accessToken))
+      .expect(200);
+
+    expect(response.body.success).toBe(true);
+    expect(response.body.data.items).toHaveLength(2);
+  });
 });
 
 describe('GET /api/v1/appointments/:appointmentId', () => {
@@ -335,31 +371,34 @@ describe('GET /api/v1/appointments/:appointmentId', () => {
       .expect(401);
   });
 
-  it('returns an appointment for an authorized manager', async () => {
-    const accessToken = await getAccessToken('manager');
-    const clientId = await createClient();
-    const car = await createCar(clientId);
-    const appointment = await createAppointment({
-      clientId,
-      carId: car._id.toString(),
-    });
-
-    const response = await request(createApp())
-      .get(`/api/v1/appointments/${appointment._id}`)
-      .set(auth(accessToken))
-      .expect(200);
-
-    expect(response.body.success).toBe(true);
-    expect(response.body.message).toBe('Appointment successfully retrieved.');
-    expect(response.body.data).toEqual(
-      expect.objectContaining({
-        _id: appointment._id.toString(),
-        title: 'Engine diagnostics',
+  it.each(['manager', 'owner'] as const)(
+    'returns appointments for an authenticated %s',
+    async (role) => {
+      const accessToken = await getAccessToken(role);
+      const clientId = await createClient();
+      const car = await createCar(clientId);
+      const appointment = await createAppointment({
         clientId,
         carId: car._id.toString(),
-      }),
-    );
-  });
+      });
+
+      const response = await request(createApp())
+        .get(`/api/v1/appointments/${appointment._id}`)
+        .set(auth(accessToken))
+        .expect(200);
+
+      expect(response.body.success).toBe(true);
+      expect(response.body.message).toBe('Appointment successfully retrieved.');
+      expect(response.body.data).toEqual(
+        expect.objectContaining({
+          _id: appointment._id.toString(),
+          title: 'Engine diagnostics',
+          clientId,
+          carId: car._id.toString(),
+        }),
+      );
+    },
+  );
 
   it('returns 403 when a client accesses another client appointment', async () => {
     const accessToken = await getAccessToken('client');
@@ -391,6 +430,47 @@ describe('GET /api/v1/appointments/:appointmentId', () => {
 
     expect(response.body.success).toBe(false);
     expect(response.body.message).toBe('Appointment not found.');
+  });
+
+  it('returns 403 when a mechanic accesses another mechanic appointment', async () => {
+    const accessToken = await getAccessToken('mechanic');
+    const clientId = await createClient();
+    const car = await createCar(clientId);
+    const otherMechanicId = await createMechanic('another-mechanic');
+
+    const appointment = await createAppointment({
+      clientId,
+      carId: car._id.toString(),
+      assignedMechanicId: otherMechanicId,
+    });
+
+    const response = await request(createApp())
+      .get(`/api/v1/appointments/${appointment._id}`)
+      .set(auth(accessToken))
+      .expect(403);
+
+    expect(response.body.success).toBe(false);
+    expect(response.body.message).toBe(
+      'You do not have access to this appointment.',
+    );
+  });
+
+  it('returns an appointment for an authenticated owner', async () => {
+    const accessToken = await getAccessToken('owner');
+    const clientId = await createClient();
+    const car = await createCar(clientId);
+
+    const appointment = await createAppointment({
+      clientId,
+      carId: car._id.toString(),
+    });
+
+    const response = await request(createApp())
+      .get(`/api/v1/appointments/${appointment._id}`)
+      .set(auth(accessToken))
+      .expect(200);
+
+    expect(response.body.success).toBe(true);
   });
 });
 
@@ -492,6 +572,38 @@ describe('POST /api/v1/appointments', () => {
     expect(response.body.success).toBe(false);
     expect(response.body.message).toBe('Invalid request body');
   });
+
+  it('creates an appointment when authenticated as owner', async () => {
+    const accessToken = await getAccessToken('owner');
+    const clientId = await createClient();
+    const car = await createCar(clientId);
+
+    const response = await request(createApp())
+      .post('/api/v1/appointments')
+      .set(auth(accessToken))
+      .send(appointmentPayload(clientId, car._id.toString()))
+      .expect(201);
+
+    expect(response.body.success).toBe(true);
+  });
+
+  it.each(['manager', 'owner'] as const)(
+    'creates an appointment when authenticated as %s',
+    async (role) => {
+      const accessToken = await getAccessToken(role);
+      const clientId = await createClient();
+      const car = await createCar(clientId);
+
+      const response = await request(createApp())
+        .post('/api/v1/appointments')
+        .set(auth(accessToken))
+        .send(appointmentPayload(clientId, car._id.toString()))
+        .expect(201);
+
+      expect(response.body.success).toBe(true);
+      expect(response.body.data).toBeDefined();
+    },
+  );
 });
 
 describe('PATCH /api/v1/appointments/:appointmentId', () => {
@@ -504,34 +616,37 @@ describe('PATCH /api/v1/appointments/:appointmentId', () => {
     expect(response.body.success).toBe(false);
   });
 
-  it('updates an appointment when authenticated as manager', async () => {
-    const accessToken = await getAccessToken('manager');
-    const clientId = await createClient();
-    const car = await createCar(clientId);
-    const appointment = await createAppointment({
-      clientId,
-      carId: car._id.toString(),
-    });
+  it.each(['manager', 'owner'] as const)(
+    'returns appointments for an authenticated %s',
+    async (role) => {
+      const accessToken = await getAccessToken(role);
+      const clientId = await createClient();
+      const car = await createCar(clientId);
+      const appointment = await createAppointment({
+        clientId,
+        carId: car._id.toString(),
+      });
 
-    const response = await request(createApp())
-      .patch(`/api/v1/appointments/${appointment._id}`)
-      .set(auth(accessToken))
-      .send({
-        title: 'Updated diagnostics',
-        description: 'Updated description',
-      })
-      .expect(200);
+      const response = await request(createApp())
+        .patch(`/api/v1/appointments/${appointment._id}`)
+        .set(auth(accessToken))
+        .send({
+          title: 'Updated diagnostics',
+          description: 'Updated description',
+        })
+        .expect(200);
 
-    expect(response.body.success).toBe(true);
-    expect(response.body.message).toBe('Appointment successfully updated.');
-    expect(response.body.data).toEqual(
-      expect.objectContaining({
-        _id: appointment._id.toString(),
-        title: 'Updated diagnostics',
-        description: 'Updated description',
-      }),
-    );
-  });
+      expect(response.body.success).toBe(true);
+      expect(response.body.message).toBe('Appointment successfully updated.');
+      expect(response.body.data).toEqual(
+        expect.objectContaining({
+          _id: appointment._id.toString(),
+          title: 'Updated diagnostics',
+          description: 'Updated description',
+        }),
+      );
+    },
+  );
 
   it('returns 400 when the update body is empty', async () => {
     const accessToken = await getAccessToken('manager');
@@ -557,6 +672,63 @@ describe('PATCH /api/v1/appointments/:appointmentId', () => {
 
     expect(response.body.success).toBe(false);
   });
+
+  it('allows a client to update their own pending appointment', async () => {
+    const accessToken = await getAccessToken('client');
+
+    const client = await UserCollection.findOne({
+      userId: 'client-1',
+    }).exec();
+
+    expect(client).not.toBeNull();
+
+    const car = await createCar(client!._id.toString());
+
+    const appointment = await createAppointment({
+      clientId: client!._id.toString(),
+      carId: car._id.toString(),
+      status: 'pending',
+    });
+
+    const response = await request(createApp())
+      .patch(`/api/v1/appointments/${appointment._id}`)
+      .set(auth(accessToken))
+      .send({
+        title: 'Updated appointment',
+      })
+      .expect(200);
+
+    expect(response.body.success).toBe(true);
+    expect(response.body.data.title).toBe('Updated appointment');
+  });
+
+  it('returns 403 when a client updates their confirmed appointment', async () => {
+    const accessToken = await getAccessToken('client');
+
+    const client = await UserCollection.findOne({
+      userId: 'client-1',
+    }).exec();
+
+    expect(client).not.toBeNull();
+
+    const car = await createCar(client!._id.toString());
+
+    const appointment = await createAppointment({
+      clientId: client!._id.toString(),
+      carId: car._id.toString(),
+      status: 'confirmed',
+    });
+
+    const response = await request(createApp())
+      .patch(`/api/v1/appointments/${appointment._id}`)
+      .set(auth(accessToken))
+      .send({
+        title: 'Updated appointment',
+      })
+      .expect(403);
+
+    expect(response.body.success).toBe(false);
+  });
 });
 
 describe('Appointment status routes', () => {
@@ -566,24 +738,27 @@ describe('Appointment status routes', () => {
       .expect(401);
   });
 
-  it('confirms an appointment when authenticated as manager', async () => {
-    const accessToken = await getAccessToken('manager');
-    const clientId = await createClient();
-    const car = await createCar(clientId);
-    const appointment = await createAppointment({
-      clientId,
-      carId: car._id.toString(),
-    });
+  it.each(['manager', 'owner'] as const)(
+    'returns appointments for an authenticated %s',
+    async (role) => {
+      const accessToken = await getAccessToken(role);
+      const clientId = await createClient();
+      const car = await createCar(clientId);
+      const appointment = await createAppointment({
+        clientId,
+        carId: car._id.toString(),
+      });
 
-    const response = await request(createApp())
-      .patch(`/api/v1/appointments/${appointment._id}/confirm`)
-      .set(auth(accessToken))
-      .expect(200);
+      const response = await request(createApp())
+        .patch(`/api/v1/appointments/${appointment._id}/confirm`)
+        .set(auth(accessToken))
+        .expect(200);
 
-    expect(response.body.success).toBe(true);
-    expect(response.body.message).toBe('Appointment successfully confirmed.');
-    expect(response.body.data.status).toBe('confirmed');
-  });
+      expect(response.body.success).toBe(true);
+      expect(response.body.message).toBe('Appointment successfully confirmed.');
+      expect(response.body.data.status).toBe('confirmed');
+    },
+  );
 
   it('returns 403 when a client tries to confirm an appointment', async () => {
     const accessToken = await getAccessToken('client');
@@ -661,24 +836,27 @@ describe('Appointment status routes', () => {
     expect(response.body.data.status).toBe('completed');
   });
 
-  it('cancels an appointment when authenticated as manager', async () => {
-    const accessToken = await getAccessToken('manager');
-    const clientId = await createClient();
-    const car = await createCar(clientId);
-    const appointment = await createAppointment({
-      clientId,
-      carId: car._id.toString(),
-    });
+  it.each(['manager', 'owner'] as const)(
+    'returns appointments for an authenticated %s',
+    async (role) => {
+      const accessToken = await getAccessToken(role);
+      const clientId = await createClient();
+      const car = await createCar(clientId);
+      const appointment = await createAppointment({
+        clientId,
+        carId: car._id.toString(),
+      });
 
-    const response = await request(createApp())
-      .patch(`/api/v1/appointments/${appointment._id}/cancel`)
-      .set(auth(accessToken))
-      .expect(200);
+      const response = await request(createApp())
+        .patch(`/api/v1/appointments/${appointment._id}/cancel`)
+        .set(auth(accessToken))
+        .expect(200);
 
-    expect(response.body.success).toBe(true);
-    expect(response.body.message).toBe('Appointment successfully cancelled.');
-    expect(response.body.data.status).toBe('cancelled');
-  });
+      expect(response.body.success).toBe(true);
+      expect(response.body.message).toBe('Appointment successfully cancelled.');
+      expect(response.body.data.status).toBe('cancelled');
+    },
+  );
 
   it('returns 403 when a mechanic tries to cancel an appointment', async () => {
     const accessToken = await getAccessToken('mechanic');
@@ -691,31 +869,76 @@ describe('Appointment status routes', () => {
     expect(response.body.success).toBe(false);
   });
 
-  it('marks an appointment as no-show when authenticated as manager', async () => {
-    const accessToken = await getAccessToken('manager');
-    const clientId = await createClient();
-    const car = await createCar(clientId);
-    const appointment = await createAppointment({
-      clientId,
-      carId: car._id.toString(),
-      status: 'confirmed',
-    });
+  it.each(['manager', 'owner'] as const)(
+    'returns appointments for an authenticated %s',
+    async (role) => {
+      const accessToken = await getAccessToken(role);
+      const clientId = await createClient();
+      const car = await createCar(clientId);
+      const appointment = await createAppointment({
+        clientId,
+        carId: car._id.toString(),
+        status: 'confirmed',
+      });
 
-    const response = await request(createApp())
-      .patch(`/api/v1/appointments/${appointment._id}/no-show`)
-      .set(auth(accessToken))
-      .expect(200);
+      const response = await request(createApp())
+        .patch(`/api/v1/appointments/${appointment._id}/no-show`)
+        .set(auth(accessToken))
+        .expect(200);
 
-    expect(response.body.success).toBe(true);
-    expect(response.body.message).toBe('Appointment marked as no-show.');
-    expect(response.body.data.status).toBe('no_show');
-  });
+      expect(response.body.success).toBe(true);
+      expect(response.body.message).toBe('Appointment marked as no-show.');
+      expect(response.body.data.status).toBe('no_show');
+    },
+  );
 
   it('returns 403 when a client tries to mark an appointment as no-show', async () => {
     const accessToken = await getAccessToken('client');
 
     const response = await request(createApp())
       .patch(`/api/v1/appointments/${new mongoose.Types.ObjectId()}/no-show`)
+      .set(auth(accessToken))
+      .expect(403);
+
+    expect(response.body.success).toBe(false);
+  });
+
+  it('returns 403 when a mechanic tries to start another mechanic appointment', async () => {
+    const accessToken = await getAccessToken('mechanic');
+    const clientId = await createClient();
+    const car = await createCar(clientId);
+    const otherMechanicId = await createMechanic('another-mechanic');
+
+    const appointment = await createAppointment({
+      clientId,
+      carId: car._id.toString(),
+      assignedMechanicId: otherMechanicId,
+      status: 'confirmed',
+    });
+
+    const response = await request(createApp())
+      .patch(`/api/v1/appointments/${appointment._id}/start`)
+      .set(auth(accessToken))
+      .expect(403);
+
+    expect(response.body.success).toBe(false);
+  });
+
+  it('returns 403 when a mechanic tries to complete another mechanic appointment', async () => {
+    const accessToken = await getAccessToken('mechanic');
+    const clientId = await createClient();
+    const car = await createCar(clientId);
+    const otherMechanicId = await createMechanic('another-mechanic');
+
+    const appointment = await createAppointment({
+      clientId,
+      carId: car._id.toString(),
+      assignedMechanicId: otherMechanicId,
+      status: 'in_progress',
+    });
+
+    const response = await request(createApp())
+      .patch(`/api/v1/appointments/${appointment._id}/complete`)
       .set(auth(accessToken))
       .expect(403);
 

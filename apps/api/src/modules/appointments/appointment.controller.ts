@@ -38,7 +38,7 @@ export const getAppointmentsController: RequestHandler = async (req, res) => {
     success: true,
     message: 'Appointments successfully retrieved.',
     data: {
-      items: result.appointments.map(toAppointmentDto),
+      items: result.appointments,
       pagination: result.pagination,
     },
   });

@@ -3,6 +3,7 @@ import createHttpError from 'http-errors';
 import type {
   ApproveRepairInput,
   CreateRepairInput,
+  RepairListItemDto,
   RepairsListQuery,
   UpdateRepairInput,
   UserRole,
@@ -13,6 +14,7 @@ import { CarCollection } from '../cars/car.model.js';
 import { ServiceCollection } from '../services/service.model.js';
 import { RepairItemCollection } from './repair-item.model.js';
 import { escapeRegex } from '../../utils/escape-regex.js';
+import { toRepairListItemDto } from './repair.mapper.js';
 
 export const getRepairs = async (
   query: RepairsListQuery,
@@ -21,7 +23,7 @@ export const getRepairs = async (
     role: UserRole;
   },
 ): Promise<{
-  repairs: RepairLeanDocument[];
+  repairs: RepairListItemDto[];
   pagination: {
     page: number;
     limit: number;
@@ -94,7 +96,7 @@ export const getRepairs = async (
 
   const [repairs, totalItems] = await Promise.all([
     RepairCollection.find(filter)
-      .sort({ createdAt: -1 })
+      .sort({ createdAt: -1, _id: -1 })
       .skip(skip)
       .limit(limit)
       .lean()
@@ -103,8 +105,93 @@ export const getRepairs = async (
     RepairCollection.countDocuments(filter).exec(),
   ]);
 
+  const clientIds = [
+    ...new Set(repairs.map((repair) => repair.clientId.toString())),
+  ];
+
+  const carIds = [...new Set(repairs.map((repair) => repair.carId.toString()))];
+
+  const serviceIds = [
+    ...new Set(
+      repairs
+        .map((repair) => repair.serviceId?.toString())
+        .filter((id): id is string => Boolean(id)),
+    ),
+  ];
+
+  const mechanicIds = [
+    ...new Set(
+      repairs
+        .map((repair) => repair.assignedMechanicId?.toString())
+        .filter((id): id is string => Boolean(id)),
+    ),
+  ];
+
+  const [clients, cars, services, mechanics] = await Promise.all([
+    UserCollection.find({ _id: { $in: clientIds } })
+      .select('_id firstName lastName phone')
+      .lean()
+      .exec(),
+
+    CarCollection.find({ _id: { $in: carIds } })
+      .select('_id brand model year licensePlate')
+      .lean()
+      .exec(),
+
+    ServiceCollection.find({ _id: { $in: serviceIds } })
+      .select('_id slug translations')
+      .lean()
+      .exec(),
+
+    UserCollection.find({ _id: { $in: mechanicIds } })
+      .select('_id firstName lastName')
+      .lean()
+      .exec(),
+  ]);
+
+  const clientsById = new Map(
+    clients.map((client) => [client._id.toString(), client]),
+  );
+
+  const carsById = new Map(cars.map((car) => [car._id.toString(), car]));
+
+  const servicesById = new Map(
+    services.map((service) => [service._id.toString(), service]),
+  );
+
+  const mechanicsById = new Map(
+    mechanics.map((mechanic) => [mechanic._id.toString(), mechanic]),
+  );
+
+  const repairListItems = repairs.map((repair) => {
+    const client = clientsById.get(repair.clientId.toString());
+    const car = carsById.get(repair.carId.toString());
+
+    if (!client || !car) {
+      throw createHttpError(
+        500,
+        'Failed to retrieve repair-related documents.',
+      );
+    }
+
+    const service = repair.serviceId
+      ? (servicesById.get(repair.serviceId.toString()) ?? null)
+      : null;
+
+    const assignedMechanic = repair.assignedMechanicId
+      ? (mechanicsById.get(repair.assignedMechanicId.toString()) ?? null)
+      : null;
+
+    return toRepairListItemDto(repair, {
+      client,
+      car,
+      service,
+      assignedMechanic,
+    });
+  });
+
   return {
-    repairs,
+    repairs: repairListItems,
     pagination: {
       page,
       limit,

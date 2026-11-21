@@ -1,8 +1,12 @@
 import z from 'zod';
-import { appointmentDtoSchema } from './appointment.schemas.js';
+import {
+  appointmentDtoSchema,
+  appointmentListItemDtoSchema,
+} from './appointment.schemas.js';
+import { createApiResponseSchema } from '../common/api-response.schema.js';
 
 export const appointmentListResponseDataSchema = z.object({
-  items: z.array(appointmentDtoSchema),
+  items: z.array(appointmentListItemDtoSchema),
   pagination: z.object({
     page: z.number().int().positive(),
     limit: z.number().int().positive(),
@@ -14,3 +18,10 @@ export const appointmentListResponseDataSchema = z.object({
 export type AppointmentListResponseData = z.infer<
   typeof appointmentListResponseDataSchema
 >;
+
+export const appointmentsListResponseSchema = createApiResponseSchema(
+  appointmentListResponseDataSchema,
+);
+
+export const appointmentResponseSchema =
+  createApiResponseSchema(appointmentDtoSchema);

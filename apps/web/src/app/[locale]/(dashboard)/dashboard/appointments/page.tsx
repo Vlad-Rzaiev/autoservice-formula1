@@ -1,21 +1,5 @@
-import { getTranslations } from 'next-intl/server';
-import { Section, Container } from '@/components/layout';
-import { DevelopmentPlaceholder } from '@/components/common';
-import { routes } from '@/config';
+import { AppointmentsContainer } from '@/features/dashboard';
 
-export default async function AllClientsPage() {
-  const t = await getTranslations('dashboard.settings');
-
-  return (
-    <Section>
-      <Container>
-        <DevelopmentPlaceholder
-          title={'Appointments'}
-          description={t('dev')}
-          linkHref={routes.marketing.home}
-          linkText={t('back-to-main')}
-        />
-      </Container>
-    </Section>
-  );
+export default async function AllAppointmentsPage() {
+  return <AppointmentsContainer />;
 }

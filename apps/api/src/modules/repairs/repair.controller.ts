@@ -48,7 +48,7 @@ export const getRepairsController: RequestHandler = async (req, res) => {
     success: true,
     message: 'Successfully found repairs.',
     data: {
-      items: repairs.map(toRepairDto),
+      items: repairs,
       pagination,
     },
   };

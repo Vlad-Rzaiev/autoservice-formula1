@@ -39,3 +39,5 @@ export { default as CarDetails } from './cars/components/car-details';
 export { default as ClientsContainer } from './clients/components/clients-container';
 export { default as ClientDetails } from './clients/components/client-details';
 export { default as ProfileDetails } from './profile/components/profile-details';
+
+export { default as AppointmentsContainer } from './appointments/components/appointments-container';

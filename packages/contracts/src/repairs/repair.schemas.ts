@@ -55,6 +55,51 @@ export const repairDtoSchema = z.object({
 
 export type RepairDto = z.infer<typeof repairDtoSchema>;
 
+export const repairListItemDtoSchema = z.object({
+  _id: mongoObjectIdSchema,
+
+  client: z.object({
+    _id: mongoObjectIdSchema,
+    firstName: z.string().nullable(),
+    lastName: z.string().nullable(),
+    phone: z.string().nullable(),
+  }),
+
+  car: z.object({
+    _id: mongoObjectIdSchema,
+    brand: z.string(),
+    model: z.string(),
+    year: z.number(),
+    licensePlate: z.string().nullable(),
+  }),
+
+  service: z
+    .object({
+      _id: mongoObjectIdSchema,
+      slug: z.string(),
+      translations: z.object({
+        uk: z.object({ title: z.string() }),
+        en: z.object({ title: z.string() }),
+        pl: z.object({ title: z.string() }),
+      }),
+    })
+    .nullable(),
+
+  assignedMechanic: z
+    .object({
+      _id: mongoObjectIdSchema,
+      firstName: z.string().nullable(),
+      lastName: z.string().nullable(),
+    })
+    .nullable(),
+
+  status: repairStatusSchema,
+  title: z.string(),
+  createdAt: z.string().datetime(),
+});
+
+export type RepairListItemDto = z.infer<typeof repairListItemDtoSchema>;
+
 export const createRepairSchema = z.object({
   clientId: mongoObjectIdSchema,
   carId: mongoObjectIdSchema,
