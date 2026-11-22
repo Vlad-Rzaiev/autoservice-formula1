@@ -1,7 +1,7 @@
 import { apiClient } from '@/lib';
 import {
   appointmentListResponseDataSchema,
-  type AppointmentDto,
+  type AppointmentListItemDto,
   type AppointmentListResponse,
 } from '@autoservice/contracts';
 
@@ -11,13 +11,13 @@ interface GetDashboardAppointmentsOptions {
 
 export async function getDashboardAppointments({
   signal,
-}: GetDashboardAppointmentsOptions = {}): Promise<AppointmentDto[]> {
+}: GetDashboardAppointmentsOptions = {}): Promise<AppointmentListItemDto[]> {
   const response = await apiClient.get<AppointmentListResponse>(
     '/appointments',
     {
       params: {
         page: 1,
-        limit: 5,
+        limit: 20,
       },
       signal,
     },

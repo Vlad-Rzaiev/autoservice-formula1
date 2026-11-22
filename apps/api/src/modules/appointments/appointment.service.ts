@@ -1,6 +1,7 @@
 import { Types } from 'mongoose';
 import createHttpError from 'http-errors';
 import type {
+  AppointmentListItemDto,
   AppointmentsListQuery,
   AppointmentStatus,
   CreateAppointmentInput,
@@ -15,12 +16,13 @@ import { UserCollection } from '../user/user.model.js';
 import { escapeRegex } from '../../utils/escape-regex.js';
 import { CarCollection } from '../cars/car.model.js';
 import { ServiceCollection } from '../services/service.model.js';
+import { toAppointmentListItemDto } from './appointment.mapper.js';
 
 export const getAppointments = async (
   query: AppointmentsListQuery,
   currentUser: { userId: string; role: UserRole },
 ): Promise<{
-  appointments: AppointmentLeanDocument[];
+  appointments: AppointmentListItemDto[];
   pagination: {
     page: number;
     limit: number;
@@ -120,7 +122,7 @@ export const getAppointments = async (
 
   const [appointments, totalItems] = await Promise.all([
     AppointmentCollection.find(filter)
-      .sort({ scheduledStart: 1 })
+      .sort({ createdAt: -1, _id: -1 })
       .skip(skip)
       .limit(limit)
       .lean()
@@ -129,8 +131,111 @@ export const getAppointments = async (
     AppointmentCollection.countDocuments(filter).exec(),
   ]);
 
+  const clientIds = [
+    ...new Map(
+      appointments.map((appointment) => [
+        appointment.clientId.toString(),
+        appointment.clientId,
+      ]),
+    ).values(),
+  ];
+
+  const carIds = [
+    ...new Map(
+      appointments.map((appointment) => [
+        appointment.carId.toString(),
+        appointment.carId,
+      ]),
+    ).values(),
+  ];
+
+  const serviceIds = [
+    ...new Map(
+      appointments.flatMap((appointment) =>
+        appointment.serviceId
+          ? [[appointment.serviceId.toString(), appointment.serviceId]]
+          : [],
+      ),
+    ).values(),
+  ];
+
+  const mechanicIds = [
+    ...new Map(
+      appointments.flatMap((appointment) =>
+        appointment.assignedMechanicId
+          ? [
+              [
+                appointment.assignedMechanicId.toString(),
+                appointment.assignedMechanicId,
+              ],
+            ]
+          : [],
+      ),
+    ).values(),
+  ];
+
+  const [clients, cars, services, mechanics] = await Promise.all([
+    UserCollection.find({ _id: { $in: clientIds } })
+      .select('_id firstName lastName phone')
+      .lean()
+      .exec(),
+
+    CarCollection.find({ _id: { $in: carIds } })
+      .select('_id brand model year licensePlate')
+      .lean()
+      .exec(),
+
+    ServiceCollection.find({ _id: { $in: serviceIds } })
+      .select('_id slug translations')
+      .lean()
+      .exec(),
+
+    UserCollection.find({ _id: { $in: mechanicIds } })
+      .select('_id firstName lastName')
+      .lean()
+      .exec(),
+  ]);
+
+  const clientsMap = new Map(
+    clients.map((client) => [client._id.toString(), client]),
+  );
+
+  const carsMap = new Map(cars.map((car) => [car._id.toString(), car]));
+
+  const servicesMap = new Map(
+    services.map((service) => [service._id.toString(), service]),
+  );
+
+  const mechanicsMap = new Map(
+    mechanics.map((mechanic) => [mechanic._id.toString(), mechanic]),
+  );
+
+  const appointmentItems = appointments.map((appointment) => {
+    const client = clientsMap.get(appointment.clientId.toString());
+    const car = carsMap.get(appointment.carId.toString());
+
+    if (!client || !car) {
+      throw createHttpError(500, 'Appointment has missing client or car data.');
+    }
+
+    const service = appointment.serviceId
+      ? (servicesMap.get(appointment.serviceId.toString()) ?? null)
+      : null;
+
+    const assignedMechanic = appointment.assignedMechanicId
+      ? (mechanicsMap.get(appointment.assignedMechanicId.toString()) ?? null)
+      : null;
+
+    return toAppointmentListItemDto(appointment, {
+      client,
+      car,
+      service,
+      assignedMechanic,
+    });
+  });
+
   return {
-    appointments,
+    appointments: appointmentItems,
     pagination: {
       page,
       limit,
@@ -368,7 +473,7 @@ export const updateAppointment = async (
 
     if (appointment.status !== 'pending') {
       throw createHttpError(
-        400,
+        403,
         'Clients can only update pending appointments.',
       );
     }

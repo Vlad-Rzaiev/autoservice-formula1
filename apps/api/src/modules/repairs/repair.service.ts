@@ -2,7 +2,10 @@ import { Types } from 'mongoose';
 import createHttpError from 'http-errors';
 import type {
   ApproveRepairInput,
+  ClientRepairHistoryQuery,
   CreateRepairInput,
+  RepairDto,
+  RepairListItemDto,
   RepairsListQuery,
   UpdateRepairInput,
   UserRole,
@@ -13,6 +16,7 @@ import { CarCollection } from '../cars/car.model.js';
 import { ServiceCollection } from '../services/service.model.js';
 import { RepairItemCollection } from './repair-item.model.js';
 import { escapeRegex } from '../../utils/escape-regex.js';
+import { toRepairDto, toRepairListItemDto } from './repair.mapper.js';
 
 export const getRepairs = async (
   query: RepairsListQuery,
@@ -21,7 +25,7 @@ export const getRepairs = async (
     role: UserRole;
   },
 ): Promise<{
-  repairs: RepairLeanDocument[];
+  repairs: RepairListItemDto[];
   pagination: {
     page: number;
     limit: number;
@@ -94,7 +98,189 @@ export const getRepairs = async (
 
   const [repairs, totalItems] = await Promise.all([
     RepairCollection.find(filter)
-      .sort({ createdAt: -1 })
+      .sort({ createdAt: -1, _id: -1 })
+      .skip(skip)
+      .limit(limit)
+      .lean()
+      .exec(),
+
+    RepairCollection.countDocuments(filter).exec(),
+  ]);
+
+  const clientIds = [
+    ...new Set(repairs.map((repair) => repair.clientId.toString())),
+  ];
+
+  const carIds = [...new Set(repairs.map((repair) => repair.carId.toString()))];
+
+  const serviceIds = [
+    ...new Set(
+      repairs
+        .map((repair) => repair.serviceId?.toString())
+        .filter((id): id is string => Boolean(id)),
+    ),
+  ];
+
+  const mechanicIds = [
+    ...new Set(
+      repairs
+        .map((repair) => repair.assignedMechanicId?.toString())
+        .filter((id): id is string => Boolean(id)),
+    ),
+  ];
+
+  const [clients, cars, services, mechanics] = await Promise.all([
+    UserCollection.find({ _id: { $in: clientIds } })
+      .select('_id firstName lastName phone')
+      .lean()
+      .exec(),
+
+    CarCollection.find({ _id: { $in: carIds } })
+      .select('_id brand model year licensePlate')
+      .lean()
+      .exec(),
+
+    ServiceCollection.find({ _id: { $in: serviceIds } })
+      .select('_id slug translations')
+      .lean()
+      .exec(),
+
+    UserCollection.find({ _id: { $in: mechanicIds } })
+      .select('_id firstName lastName')
+      .lean()
+      .exec(),
+  ]);
+
+  const clientsById = new Map(
+    clients.map((client) => [client._id.toString(), client]),
+  );
+
+  const carsById = new Map(cars.map((car) => [car._id.toString(), car]));
+
+  const servicesById = new Map(
+    services.map((service) => [service._id.toString(), service]),
+  );
+
+  const mechanicsById = new Map(
+    mechanics.map((mechanic) => [mechanic._id.toString(), mechanic]),
+  );
+
+  const repairListItems = repairs.map((repair) => {
+    const client = clientsById.get(repair.clientId.toString());
+    const car = carsById.get(repair.carId.toString());
+
+    if (!client || !car) {
+      throw createHttpError(
+        500,
+        'Failed to retrieve repair-related documents.',
+      );
+    }
+
+    const service = repair.serviceId
+      ? (servicesById.get(repair.serviceId.toString()) ?? null)
+      : null;
+
+    const assignedMechanic = repair.assignedMechanicId
+      ? (mechanicsById.get(repair.assignedMechanicId.toString()) ?? null)
+      : null;
+
+    return toRepairListItemDto(repair, {
+      client,
+      car,
+      service,
+      assignedMechanic,
+    });
+  });
+
+  return {
+    repairs: repairListItems,
+    pagination: {
+      page,
+      limit,
+      totalItems,
+      totalPages: Math.ceil(totalItems / limit),
+    },
+  };
+};
+
+export const getClientRepairHistory = async (
+  clientId: string,
+  query: ClientRepairHistoryQuery,
+  currentUser: {
+    userId: string;
+    role: UserRole;
+  },
+): Promise<{
+  repairs: RepairDto[];
+  pagination: {
+    page: number;
+    limit: number;
+    totalItems: number;
+    totalPages: number;
+  };
+}> => {
+  const { page, limit } = query;
+  const skip = (page - 1) * limit;
+
+  const client = await UserCollection.findOne({
+    _id: new Types.ObjectId(clientId),
+    role: 'client',
+  })
+    .select('_id')
+    .lean()
+    .exec();
+
+  if (!client) {
+    throw createHttpError(404, 'Client not found.');
+  }
+
+  const filter: {
+    clientId: Types.ObjectId;
+    assignedMechanicId?: Types.ObjectId;
+  } = {
+    clientId: client._id,
+  };
+
+  if (currentUser.role === 'client') {
+    const currentClient = await UserCollection.findOne({
+      userId: currentUser.userId,
+      role: 'client',
+    })
+      .select('_id')
+      .lean()
+      .exec();
+
+    if (!currentClient) {
+      throw createHttpError(404, 'User not found.');
+    }
+
+    if (currentClient._id.toString() !== client._id.toString()) {
+      throw createHttpError(
+        403,
+        'You do not have access to this client history.',
+      );
+    }
+  }
+
+  if (currentUser.role === 'mechanic') {
+    const mechanic = await UserCollection.findOne({
+      userId: currentUser.userId,
+      role: 'mechanic',
+    })
+      .select('_id')
+      .lean()
+      .exec();
+
+    if (!mechanic) {
+      throw createHttpError(404, 'User not found.');
+    }
+
+    filter.assignedMechanicId = mechanic._id;
+  }
+
+  const [repairs, totalItems] = await Promise.all([
+    RepairCollection.find(filter)
+      .sort({ createdAt: -1, _id: -1 })
       .skip(skip)
       .limit(limit)
       .lean()
@@ -104,7 +290,7 @@ export const getRepairs = async (
   ]);
 
   return {
-    repairs,
+    repairs: repairs.map(toRepairDto),
     pagination: {
       page,
       limit,

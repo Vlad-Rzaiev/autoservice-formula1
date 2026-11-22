@@ -2,11 +2,13 @@ import type { RequestHandler } from 'express';
 import createHttpError from 'http-errors';
 import {
   approveRepairSchema,
+  clientRepairHistoryQuerySchema,
   createRepairSchema,
   mongoObjectIdSchema,
   RepairResponse,
   repairsListQuerySchema,
   updateRepairSchema,
+  type ClientRepairHistoryResponse,
   type RepairsListResponse,
 } from '@autoservice/contracts';
 import { toRepairDto } from './repair.mapper.js';
@@ -16,6 +18,7 @@ import {
   cancelRepair,
   completeRepair,
   createRepair,
+  getClientRepairHistory,
   getRepairById,
   getRepairs,
   requestApprovalRepair,
@@ -48,7 +51,54 @@ export const getRepairsController: RequestHandler = async (req, res) => {
     success: true,
     message: 'Successfully found repairs.',
     data: {
-      items: repairs.map(toRepairDto),
+      items: repairs,
+      pagination,
+    },
+  };
+
+  res.status(responseBody.status).json(responseBody);
+};
+
+export const getClientRepairHistoryController: RequestHandler = async (
+  req,
+  res,
+) => {
+  if (!req.user) {
+    throw createHttpError(401, 'Authentication required.');
+  }
+
+  const clientId = req.params.clientId;
+
+  if (typeof clientId !== 'string') {
+    throw createHttpError(400, 'Invalid client id.');
+  }
+
+  const clientIdValidation = mongoObjectIdSchema.safeParse(clientId);
+
+  if (!clientIdValidation.success) {
+    throw createHttpError(400, 'Invalid client id.');
+  }
+
+  const queryValidation = clientRepairHistoryQuerySchema.safeParse(req.query);
+
+  if (!queryValidation.success) {
+    throw createHttpError(400, 'Invalid query parameters.', {
+      details: queryValidation.error.flatten(),
+    });
+  }
+
+  const { repairs, pagination } = await getClientRepairHistory(
+    clientId,
+    queryValidation.data,
+    req.user,
+  );
+
+  const responseBody: ClientRepairHistoryResponse = {
+    status: 200,
+    success: true,
+    message: 'Successfully found client repair history.',
+    data: {
+      items: repairs,
       pagination,
     },
   };

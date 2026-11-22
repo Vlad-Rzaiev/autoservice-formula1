@@ -1,4 +1,6 @@
 {
+  "appointments": {},
+
   "home": {
     "title": "Witaj, {name}!",
     "description": "Zarządzaj swoim samochodem i obsługą serwisową w jednym miejscu.",
@@ -59,7 +61,11 @@
         "accepted": "Przyjęta do realizacji",
         "waiting_parts": "Oczekiwanie na części",
         "awaiting_approval": "Oczekuje na zatwierdzenie"
-      }
+      },
+      "to-appointment": "Zobacz wizytę",
+      "to-repair": "Zobacz naprawę",
+      "to-client": "Zobacz klienta",
+      "to-car": "Zobacz pojazd"
     }
   },
 

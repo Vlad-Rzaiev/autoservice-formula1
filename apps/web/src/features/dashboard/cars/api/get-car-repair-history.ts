@@ -1,7 +1,7 @@
 import { apiClient } from '@/lib';
 import {
   repairListResponseDataSchema,
-  type RepairDto,
+  type RepairListItemDto,
   type RepairsListResponse,
 } from '@autoservice/contracts';
 
@@ -13,7 +13,7 @@ interface GetCarRepairHistoryOptions {
 export async function getCarRepairHistory({
   carId,
   signal,
-}: GetCarRepairHistoryOptions): Promise<RepairDto[]> {
+}: GetCarRepairHistoryOptions): Promise<RepairListItemDto[]> {
   const response = await apiClient.get<RepairsListResponse>('/repairs', {
     params: {
       carId,

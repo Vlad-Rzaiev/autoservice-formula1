@@ -88,6 +88,9 @@ export default function CarDetailsRepairsHistory({
                   date={getActivityDate('repairs', repair)}
                   status={repair.status}
                   locale={locale}
+                  id={repair._id}
+                  clientId={repair.client._id}
+                  carId={repair.car._id}
                 />
               </Link>
             ))}

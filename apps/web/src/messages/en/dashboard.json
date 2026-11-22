@@ -1,4 +1,6 @@
 {
+  "appointments": {},
+
   "home": {
     "title": "Welcome, {name}!",
     "description": "Manage your vehicle and service maintenance in one place.",
@@ -60,7 +62,11 @@
         "accepted": "Accepted",
         "waiting_parts": "Waiting for parts",
         "awaiting_approval": "Awaiting approval"
-      }
+      },
+      "to-appointment": "View appointment",
+      "to-repair": "View repair",
+      "to-client": "View client",
+      "to-car": "View car"
     }
   },
 
