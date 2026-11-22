@@ -8,6 +8,7 @@ import {
   cancelRepairController,
   completeRepairController,
   createRepairController,
+  getClientRepairHistoryController,
   getRepairController,
   getRepairsController,
   requestApprovalRepairController,
@@ -24,6 +25,13 @@ router.get(
   authenticate,
   authorize('owner', 'manager', 'mechanic', 'client'),
   ctrlWrapper(getRepairsController),
+);
+
+router.get(
+  '/clients/:clientId/history',
+  authenticate,
+  authorize('owner', 'manager', 'mechanic', 'client'),
+  ctrlWrapper(getClientRepairHistoryController),
 );
 
 router.get(

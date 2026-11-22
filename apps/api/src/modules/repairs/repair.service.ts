@@ -2,7 +2,9 @@ import { Types } from 'mongoose';
 import createHttpError from 'http-errors';
 import type {
   ApproveRepairInput,
+  ClientRepairHistoryQuery,
   CreateRepairInput,
+  RepairDto,
   RepairListItemDto,
   RepairsListQuery,
   UpdateRepairInput,
@@ -14,7 +16,7 @@ import { CarCollection } from '../cars/car.model.js';
 import { ServiceCollection } from '../services/service.model.js';
 import { RepairItemCollection } from './repair-item.model.js';
 import { escapeRegex } from '../../utils/escape-regex.js';
-import { toRepairListItemDto } from './repair.mapper.js';
+import { toRepairDto, toRepairListItemDto } from './repair.mapper.js';
 
 export const getRepairs = async (
   query: RepairsListQuery,
@@ -192,6 +194,103 @@ export const getRepairs = async (
 
   return {
     repairs: repairListItems,
+    pagination: {
+      page,
+      limit,
+      totalItems,
+      totalPages: Math.ceil(totalItems / limit),
+    },
+  };
+};
+
+export const getClientRepairHistory = async (
+  clientId: string,
+  query: ClientRepairHistoryQuery,
+  currentUser: {
+    userId: string;
+    role: UserRole;
+  },
+): Promise<{
+  repairs: RepairDto[];
+  pagination: {
+    page: number;
+    limit: number;
+    totalItems: number;
+    totalPages: number;
+  };
+}> => {
+  const { page, limit } = query;
+  const skip = (page - 1) * limit;
+
+  const client = await UserCollection.findOne({
+    _id: new Types.ObjectId(clientId),
+    role: 'client',
+  })
+    .select('_id')
+    .lean()
+    .exec();
+
+  if (!client) {
+    throw createHttpError(404, 'Client not found.');
+  }
+
+  const filter: {
+    clientId: Types.ObjectId;
+    assignedMechanicId?: Types.ObjectId;
+  } = {
+    clientId: client._id,
+  };
+
+  if (currentUser.role === 'client') {
+    const currentClient = await UserCollection.findOne({
+      userId: currentUser.userId,
+      role: 'client',
+    })
+      .select('_id')
+      .lean()
+      .exec();
+
+    if (!currentClient) {
+      throw createHttpError(404, 'User not found.');
+    }
+
+    if (currentClient._id.toString() !== client._id.toString()) {
+      throw createHttpError(
+        403,
+        'You do not have access to this client history.',
+      );
+    }
+  }
+
+  if (currentUser.role === 'mechanic') {
+    const mechanic = await UserCollection.findOne({
+      userId: currentUser.userId,
+      role: 'mechanic',
+    })
+      .select('_id')
+      .lean()
+      .exec();
+
+    if (!mechanic) {
+      throw createHttpError(404, 'User not found.');
+    }
+
+    filter.assignedMechanicId = mechanic._id;
+  }
+
+  const [repairs, totalItems] = await Promise.all([
+    RepairCollection.find(filter)
+      .sort({ createdAt: -1, _id: -1 })
+      .skip(skip)
+      .limit(limit)
+      .lean()
+      .exec(),
+
+    RepairCollection.countDocuments(filter).exec(),
+  ]);
+
+  return {
+    repairs: repairs.map(toRepairDto),
     pagination: {
       page,
       limit,

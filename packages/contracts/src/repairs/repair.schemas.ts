@@ -152,3 +152,12 @@ export const repairsListQuerySchema = z.object({
 });
 
 export type RepairsListQuery = z.infer<typeof repairsListQuerySchema>;
+
+export const clientRepairHistoryQuerySchema = z.object({
+  page: z.coerce.number().int().positive().default(1),
+  limit: z.coerce.number().int().positive().max(100).default(10),
+});
+
+export type ClientRepairHistoryQuery = z.infer<
+  typeof clientRepairHistoryQuerySchema
+>;

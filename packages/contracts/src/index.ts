@@ -243,6 +243,7 @@ export {
   repairApprovalSchema,
   approveRepairSchema,
   repairListItemDtoSchema,
+  clientRepairHistoryQuerySchema,
 } from './repairs/repair.schemas.js';
 
 export type {
@@ -255,6 +256,7 @@ export type {
   RepairApprovalDto,
   ApproveRepairInput,
   RepairListItemDto,
+  ClientRepairHistoryQuery,
 } from './repairs/repair.schemas.js';
 
 export {
@@ -280,9 +282,15 @@ export {
   repairItemResponseSchema,
   repairItemsListResponseDataSchema,
   repairItemsListResponseSchema,
+  clientRepairHistoryResponseDataSchema,
+  clientRepairHistoryResponseSchema,
 } from './repairs/repair-response.schemas.js';
 
-export type { RepairListResponseData } from './repairs/repair-response.schemas.js';
+export type {
+  RepairListResponseData,
+  ClientRepairHistoryResponse,
+  ClientRepairHistoryResponseData,
+} from './repairs/repair-response.schemas.js';
 
 export type {
   RepairResponse,

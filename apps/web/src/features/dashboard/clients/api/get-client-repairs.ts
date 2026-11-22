@@ -1,8 +1,8 @@
 import { apiClient } from '@/lib';
 import {
-  repairListResponseDataSchema,
-  type RepairListResponseData,
-  type RepairsListResponse,
+  clientRepairHistoryResponseDataSchema,
+  type ClientRepairHistoryResponse,
+  type ClientRepairHistoryResponseData,
 } from '@autoservice/contracts';
 
 interface GetClientRepairsOptions {
@@ -17,17 +17,20 @@ export async function getClientRepairs({
   page,
   limit,
   signal,
-}: GetClientRepairsOptions): Promise<RepairListResponseData> {
-  const response = await apiClient.get<RepairsListResponse>('/repairs', {
-    params: { clientId, page, limit },
-    signal,
-  });
+}: GetClientRepairsOptions): Promise<ClientRepairHistoryResponseData> {
+  const response = await apiClient.get<ClientRepairHistoryResponse>(
+    `/repairs/clients/${clientId}/history`,
+    {
+      params: { page, limit },
+      signal,
+    },
+  );
 
   if (!response.data.success || !('data' in response.data)) {
     throw new Error('Failed to fetch client repairs');
   }
 
-  const parsedResponse = repairListResponseDataSchema.safeParse(
+  const parsedResponse = clientRepairHistoryResponseDataSchema.safeParse(
     response.data.data,
   );
 
@@ -36,6 +39,7 @@ export async function getClientRepairs({
       'Validation issues:',
       JSON.stringify(parsedResponse.error.issues, null, 2),
     );
+
     throw parsedResponse.error;
   }
 

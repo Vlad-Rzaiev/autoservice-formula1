@@ -33,3 +33,25 @@ export const repairItemsListResponseDataSchema = z.object({
 export const repairItemsListResponseSchema = createApiResponseSchema(
   repairItemsListResponseDataSchema,
 );
+
+export const clientRepairHistoryResponseDataSchema = z.object({
+  items: z.array(repairDtoSchema),
+  pagination: z.object({
+    page: z.number().int().positive(),
+    limit: z.number().int().positive(),
+    totalItems: z.number().int().nonnegative(),
+    totalPages: z.number().int().nonnegative(),
+  }),
+});
+
+export type ClientRepairHistoryResponseData = z.infer<
+  typeof clientRepairHistoryResponseDataSchema
+>;
+
+export const clientRepairHistoryResponseSchema = createApiResponseSchema(
+  clientRepairHistoryResponseDataSchema,
+);
+
+export type ClientRepairHistoryResponse = z.infer<
+  typeof clientRepairHistoryResponseSchema
+>;
